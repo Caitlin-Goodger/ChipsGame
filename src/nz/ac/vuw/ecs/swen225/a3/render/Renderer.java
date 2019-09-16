@@ -1,3 +1,4 @@
+
 package nz.ac.vuw.ecs.swen225.a3.render;
 
 import java.awt.Color;
@@ -6,7 +7,7 @@ import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import nz.ac.vuw.ecs.swen225.a3.application.gui.MapPanel;
+import nz.ac.vuw.ecs.swen225.a3.*;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
 /**
