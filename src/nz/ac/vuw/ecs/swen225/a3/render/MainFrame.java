@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  * MainFrame that will hold panels such as display and buttons.
@@ -55,16 +56,35 @@ public class MainFrame extends JFrame {
     
     /**
      * Creates the menu bar.
-     * @return 
+     * 
+     * @return JMenuBar : Returns the menu bar created
      */
     private JMenuBar createMenuBar() {
     	JMenuBar menuBar = new JMenuBar();
     
+    	// GAME MENU
+    	
     	JMenu gameMenu = new JMenu("Game");
-    	JMenuItem exitGame = new JMenuItem();
+    	
+    	JMenuItem loadItem = new JMenuItem("Load");
+    	JMenuItem saveItem = new JMenuItem("Save");
+    	JMenuItem exitItem = new JMenuItem("Exit");
+    	
+    	gameMenu.add(loadItem);
+    	gameMenu.add(saveItem);
+    	gameMenu.addSeparator();
+    	gameMenu.add(exitItem);
+    	
+    	// OPTIONS MENU
     	
     	JMenu optionMenu = new JMenu("Options");
+    	
+    	// LEVEL MENU
+    	
     	JMenu levelMenu = new JMenu("Level");
+    	
+    	// HELP MENU
+    	
     	JMenu helpMenu = new JMenu("Help");
     	
     	menuBar.add(gameMenu);
