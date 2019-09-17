@@ -7,12 +7,18 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 public class InterfacePanel extends JPanel {
 	private JLabel levelLabel;
 	private JLabel timeLabel;
 	private JLabel chipsLeftLabel;
+	
+	private JTextField levelField;
+	private JTextField timeField;
+	private JTextField chipsLeftField;
 	
 	/**
 	 * Serial ID.
@@ -28,6 +34,10 @@ public class InterfacePanel extends JPanel {
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");
 		
+		levelField = new JTextField(10);
+		timeField = new JTextField(10);
+		chipsLeftField = new JTextField(10);
+		
 		Border innerBorder = BorderFactory.createTitledBorder("Information");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -42,6 +52,32 @@ public class InterfacePanel extends JPanel {
 		gc.weighty = 1;
 		gc.fill = GridBagConstraints.NONE;
 		
+		// LEVEL
 		
+		add(levelLabel, gc);
+		
+		gc.gridy++;
+		
+		add(levelField, gc);
+		
+		// TIME
+		
+		gc.gridy++;
+		
+		add(timeLabel, gc);
+		
+		gc.gridy++;
+		
+		add(timeField, gc);
+		
+		// CHIPS LEFT
+		
+		gc.gridy++;
+		
+		add(chipsLeftLabel, gc);
+		
+		gc.gridy++;
+		
+		add(chipsLeftField, gc);
 	}
 }

@@ -19,6 +19,7 @@ import javax.swing.KeyStroke;
  * displaying the game and holding buttons that allow interaction with the game.
  */
 public class MainFrame extends JFrame {
+	private DisplayPanel displayPanel;
 	private InterfacePanel interfacePanel;
 	
 	/**
@@ -31,7 +32,8 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		// Initializing and defining parameters.
-		setMinimumSize(new Dimension(500, 500));
+		setTitle("Chip's Challenge");
+		setMinimumSize(new Dimension(650, 500));
 		setSize(500, 500);
 		setResizable(true);
 		setLocationRelativeTo(null);
@@ -41,8 +43,11 @@ public class MainFrame extends JFrame {
 		// Add panels to main frame.
 		setJMenuBar(createMenuBar());
 		
+		displayPanel = new DisplayPanel();
+		add(displayPanel, BorderLayout.WEST);
+		
 		interfacePanel = new InterfacePanel();
-		add(interfacePanel);
+		add(interfacePanel, BorderLayout.EAST);
 
 		setVisible(true);
 	}
