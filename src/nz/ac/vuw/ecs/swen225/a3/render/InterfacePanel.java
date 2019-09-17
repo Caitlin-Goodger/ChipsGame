@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
@@ -35,9 +36,9 @@ public class InterfacePanel extends JPanel {
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");
 
-		levelField = new JTextField(5);
-		timeField = new JTextField(5);
-		chipsLeftField = new JTextField(5);
+		levelField = new JTextField("0", 5);
+		timeField = new JTextField("0", 5);
+		chipsLeftField = new JTextField("0", 5);
 
 		Border innerBorder = BorderFactory.createTitledBorder("Information");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -59,6 +60,7 @@ public class InterfacePanel extends JPanel {
 
 		gc.gridy++;
 
+		levelField.setHorizontalAlignment(SwingConstants.RIGHT);
 		levelField.setEnabled(false);
 
 		gc.anchor = GridBagConstraints.PAGE_START;
@@ -75,6 +77,7 @@ public class InterfacePanel extends JPanel {
 
 		gc.gridy++;
 
+		timeField.setHorizontalAlignment(SwingConstants.RIGHT);
 		timeField.setEnabled(false);
 
 		gc.anchor = GridBagConstraints.PAGE_START;
@@ -91,6 +94,7 @@ public class InterfacePanel extends JPanel {
 
 		gc.gridy++;
 
+		chipsLeftField.setHorizontalAlignment(SwingConstants.RIGHT);
 		chipsLeftField.setEnabled(false);
 
 		gc.anchor = GridBagConstraints.PAGE_START;

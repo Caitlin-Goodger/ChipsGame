@@ -123,11 +123,11 @@ public class MainFrame extends JFrame {
 
 		JMenu optionsMenu = new JMenu("Options");
 
-		JMenuItem pauseItem = new JMenuItem("Pause");
 		JMenuItem resumeItem = new JMenuItem("Resume");
+		JMenuItem pauseItem = new JMenuItem("Pause");
 
-		optionsMenu.add(pauseItem);
 		optionsMenu.add(resumeItem);
+		optionsMenu.add(pauseItem);
 
 		// LEVEL MENU.
 
