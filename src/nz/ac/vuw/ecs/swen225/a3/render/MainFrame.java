@@ -55,7 +55,6 @@ public class MainFrame extends JFrame {
 		setJMenuBar(createMenuBar());
 
 		// DISPLAY.
-
 		gc.weightx = 0.75;
 		gc.weighty = 1;
 
@@ -66,7 +65,6 @@ public class MainFrame extends JFrame {
 		add(displayPanel, gc);
 
 		// INTERFACE.
-
 		gc.gridx++;
 
 		gc.weightx = 0.25;
@@ -79,7 +77,6 @@ public class MainFrame extends JFrame {
 		add(interfacePanel, gc);
 
 		// INVENTORY.
-
 		gc.gridy++;
 
 		gc.weightx = 0.25;
@@ -107,7 +104,6 @@ public class MainFrame extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 
 		// GAME MENU.
-
 		JMenu gameMenu = new JMenu("Game");
 
 		JMenuItem loadItem = new JMenuItem("Load");
@@ -120,7 +116,6 @@ public class MainFrame extends JFrame {
 		gameMenu.add(exitItem);
 
 		// OPTIONS MENU.
-
 		JMenu optionsMenu = new JMenu("Options");
 
 		JMenuItem resumeItem = new JMenuItem("Resume");
@@ -130,7 +125,6 @@ public class MainFrame extends JFrame {
 		optionsMenu.add(pauseItem);
 
 		// LEVEL MENU.
-
 		JMenu levelMenu = new JMenu("Level");
 
 		JMenuItem resetItem = new JMenuItem("Reset");
@@ -138,7 +132,6 @@ public class MainFrame extends JFrame {
 		levelMenu.add(resetItem);
 
 		// HELP MENU.
-
 		JMenu helpMenu = new JMenu("Help");
 
 		JCheckBoxMenuItem rulesItem = new JCheckBoxMenuItem("Rules");
@@ -164,21 +157,18 @@ public class MainFrame extends JFrame {
 		});
 
 		// Adding to menu bar.
-
 		menuBar.add(gameMenu);
 		menuBar.add(optionsMenu);
 		menuBar.add(levelMenu);
 		menuBar.add(helpMenu);
 
 		// Setting mnemonics.
-
 		gameMenu.setMnemonic(KeyEvent.VK_G);
 		optionsMenu.setMnemonic(KeyEvent.VK_O);
 		levelMenu.setMnemonic(KeyEvent.VK_L);
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 
 		// Setting accelerators.
-
 		exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
 		saveItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		resumeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));

@@ -55,7 +55,6 @@ public class InterfacePanel extends JPanel {
 		gc.fill = GridBagConstraints.NONE;
 
 		// LEVEL.
-
 		add(levelLabel, gc);
 
 		gc.gridy++;
@@ -68,7 +67,6 @@ public class InterfacePanel extends JPanel {
 		add(levelField, gc);
 
 		// TIME.
-
 		gc.gridy++;
 
 		gc.anchor = GridBagConstraints.CENTER;
@@ -85,7 +83,6 @@ public class InterfacePanel extends JPanel {
 		add(timeField, gc);
 
 		// CHIPS LEFT.
-
 		gc.gridy++;
 
 		gc.anchor = GridBagConstraints.CENTER;
