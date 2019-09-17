@@ -14,6 +14,9 @@ public class RulesPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor for the rules panel.
+	 */
 	public RulesPanel() {
 		Border innerBorder = BorderFactory.createTitledBorder("Rules");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
