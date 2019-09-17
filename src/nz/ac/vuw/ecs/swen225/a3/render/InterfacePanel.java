@@ -7,77 +7,83 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+/**
+ * Interface panel holds the information of the game such as level, time and
+ * chips left.
+ */
 public class InterfacePanel extends JPanel {
 	private JLabel levelLabel;
 	private JLabel timeLabel;
 	private JLabel chipsLeftLabel;
-	
+
 	private JTextField levelField;
 	private JTextField timeField;
 	private JTextField chipsLeftField;
-	
+
 	/**
 	 * Serial ID.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Constructor for the interface panel.
+	 */
 	public InterfacePanel() {
 		Dimension dim = getPreferredSize();
-		dim.width = 250;
+		dim.width = 200;
 		setPreferredSize(dim);
-		
+
 		levelLabel = new JLabel("LEVEL");
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");
-		
+
 		levelField = new JTextField(10);
 		timeField = new JTextField(10);
 		chipsLeftField = new JTextField(10);
-		
+
 		Border innerBorder = BorderFactory.createTitledBorder("Information");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
-		
+
 		setLayout(new GridBagLayout());
-		
+
 		GridBagConstraints gc = new GridBagConstraints();
-		
+
 		gc.gridx = 0;
 		gc.gridy = 0;
 		gc.weightx = 1;
 		gc.weighty = 1;
 		gc.fill = GridBagConstraints.NONE;
-		
+
 		// LEVEL
-		
+
 		add(levelLabel, gc);
-		
+
 		gc.gridy++;
-		
+
 		add(levelField, gc);
-		
+
 		// TIME
-		
+
 		gc.gridy++;
-		
+
 		add(timeLabel, gc);
-		
+
 		gc.gridy++;
-		
+
 		add(timeField, gc);
-		
+
 		// CHIPS LEFT
-		
+
 		gc.gridy++;
-		
+
 		add(chipsLeftLabel, gc);
-		
+
 		gc.gridy++;
-		
+
 		add(chipsLeftField, gc);
 	}
 }
