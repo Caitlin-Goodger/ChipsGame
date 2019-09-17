@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -23,6 +24,7 @@ public class MainFrame extends JFrame {
 	private DisplayPanel displayPanel;
 	private InterfacePanel interfacePanel;
 	private InventoryPanel inventoryPanel;
+	private RulesPanel rulesPanel;
 
 	/**
 	 * Serial ID.
@@ -89,6 +91,9 @@ public class MainFrame extends JFrame {
 		inventoryPanel = new InventoryPanel();
 		add(inventoryPanel, gc);
 
+		rulesPanel = new RulesPanel();
+		add(rulesPanel, gc);
+
 		pack();
 		setVisible(true);
 	}
@@ -136,9 +141,27 @@ public class MainFrame extends JFrame {
 
 		JMenu helpMenu = new JMenu("Help");
 
-		JMenuItem rulesItem = new JMenuItem("Rules");
+		JCheckBoxMenuItem rulesItem = new JCheckBoxMenuItem("Rules");
 
 		helpMenu.add(rulesItem);
+
+		/*
+		 * Add action listener to the rules item. When rules is ticked, hides the game
+		 * and displays the rules.
+		 */
+		rulesItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JCheckBoxMenuItem menuItem = (JCheckBoxMenuItem) e.getSource();
+
+				displayPanel.setVisible(!menuItem.isSelected());
+				interfacePanel.setVisible(!menuItem.isSelected());
+				inventoryPanel.setVisible(!menuItem.isSelected());
+
+				rulesPanel.setVisible(menuItem.isSelected());
+			}
+		});
 
 		// Adding to menu bar.
 
