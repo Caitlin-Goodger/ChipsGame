@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.render;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;

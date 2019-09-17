@@ -1,6 +1,5 @@
 package nz.ac.vuw.ecs.swen225.a3.render;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 

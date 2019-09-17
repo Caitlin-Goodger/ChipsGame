@@ -1,7 +1,6 @@
 
 package nz.ac.vuw.ecs.swen225.a3.render;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -54,13 +53,13 @@ public class MainFrame extends JFrame {
 		setJMenuBar(createMenuBar());
 
 		// DISPLAY.
-		
+
 		gc.weightx = 0.75;
 		gc.weighty = 1;
-		
+
 		gc.gridwidth = 1;
 		gc.gridheight = 2;
-		
+
 		displayPanel = new DisplayPanel();
 		add(displayPanel, gc);
 
@@ -70,27 +69,27 @@ public class MainFrame extends JFrame {
 
 		gc.weightx = 0.25;
 		gc.weighty = 0.75;
-		
+
 		gc.gridwidth = 1;
 		gc.gridheight = 1;
-		
+
 		interfacePanel = new InterfacePanel();
 		add(interfacePanel, gc);
 
 		// INVENTORY.
 
 		gc.gridy++;
-		
+
 		gc.weightx = 0.25;
 		gc.weighty = 0.25;
-		
+
 		gc.gridwidth = 1;
 		gc.gridheight = 1;
-		
+
 		inventoryPanel = new InventoryPanel();
 		add(inventoryPanel, gc);
 
-//		pack();
+		pack();
 		setVisible(true);
 	}
 
