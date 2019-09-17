@@ -3,6 +3,8 @@ package nz.ac.vuw.ecs.swen225.a3.render;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -21,7 +23,8 @@ import javax.swing.KeyStroke;
 public class MainFrame extends JFrame {
 	private DisplayPanel displayPanel;
 	private InterfacePanel interfacePanel;
-	
+	private InventoryPanel inventoryPanel;
+
 	/**
 	 * Serial ID.
 	 */
@@ -34,21 +37,60 @@ public class MainFrame extends JFrame {
 		// Initializing and defining parameters.
 		setTitle("Chip's Challenge");
 		setMinimumSize(new Dimension(650, 500));
-		setSize(500, 500);
+		setSize(600, 500);
 		setResizable(true);
 		setLocationRelativeTo(null);
-		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		setLayout(new GridBagLayout());
+
+		GridBagConstraints gc = new GridBagConstraints();
+
+		gc.gridx = 0;
+		gc.gridy = 0;
+		gc.fill = GridBagConstraints.BOTH;
 
 		// Add panels to main frame.
 		setJMenuBar(createMenuBar());
+
+		// DISPLAY.
+		
+		gc.weightx = 0.75;
+		gc.weighty = 1;
+		
+		gc.gridwidth = 1;
+		gc.gridheight = 2;
 		
 		displayPanel = new DisplayPanel();
-		add(displayPanel, BorderLayout.WEST);
+		add(displayPanel, gc);
+
+		// INTERFACE.
+
+		gc.gridx++;
+
+		gc.weightx = 0.25;
+		gc.weighty = 0.75;
+		
+		gc.gridwidth = 1;
+		gc.gridheight = 1;
 		
 		interfacePanel = new InterfacePanel();
-		add(interfacePanel, BorderLayout.EAST);
+		add(interfacePanel, gc);
 
+		// INVENTORY.
+
+		gc.gridy++;
+		
+		gc.weightx = 0.25;
+		gc.weighty = 0.25;
+		
+		gc.gridwidth = 1;
+		gc.gridheight = 1;
+		
+		inventoryPanel = new InventoryPanel();
+		add(inventoryPanel, gc);
+
+//		pack();
 		setVisible(true);
 	}
 

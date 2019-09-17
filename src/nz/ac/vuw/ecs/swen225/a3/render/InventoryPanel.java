@@ -9,33 +9,33 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 /**
- * Display panel displays the board to the user.
+ * Inventory panel that holds the objects collected by the player.
  */
-public class DisplayPanel extends JPanel {
+public class InventoryPanel extends JPanel {
 	/**
 	 * Serial ID.
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Constructor for the display panel.
+	 * Constructor for the inventory panel.
 	 */
-	public DisplayPanel() {
-		Border innerBorder = BorderFactory.createTitledBorder("Display");
+	public InventoryPanel() {
+		Border innerBorder = BorderFactory.createTitledBorder("Inventory");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		setLayout(new GridLayout(9, 9));
+		setLayout(new GridLayout(2, 4));
 
-		drawPanel();
+		drawInventory();
 	}
 
 	/**
-	 * For display purposes only. Draws 9x9 tiles to screen.
+	 * For display purposes only. Draws 4x2 tiles to screen.
 	 */
-	private void drawPanel() {
-		for (int x = 0; x < 9; x++) {
-			for (int y = 0; y < 9; y++) {
+	private void drawInventory() {
+		for (int x = 0; x < 4; x++) {
+			for (int y = 0; y < 2; y++) {
 				JPanel square = new JPanel();
 				square.setBackground(Color.WHITE);
 				square.setBorder(BorderFactory.createLineBorder(Color.GRAY));

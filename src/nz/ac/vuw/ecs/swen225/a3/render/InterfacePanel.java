@@ -32,10 +32,6 @@ public class InterfacePanel extends JPanel {
 	 * Constructor for the interface panel.
 	 */
 	public InterfacePanel() {
-		Dimension dim = getPreferredSize();
-		dim.width = 200;
-		setPreferredSize(dim);
-
 		levelLabel = new JLabel("LEVEL");
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");
@@ -58,7 +54,7 @@ public class InterfacePanel extends JPanel {
 		gc.weighty = 1;
 		gc.fill = GridBagConstraints.NONE;
 
-		// LEVEL
+		// LEVEL.
 
 		add(levelLabel, gc);
 
@@ -66,7 +62,7 @@ public class InterfacePanel extends JPanel {
 
 		add(levelField, gc);
 
-		// TIME
+		// TIME.
 
 		gc.gridy++;
 
@@ -76,7 +72,7 @@ public class InterfacePanel extends JPanel {
 
 		add(timeField, gc);
 
-		// CHIPS LEFT
+		// CHIPS LEFT.
 
 		gc.gridy++;
 
