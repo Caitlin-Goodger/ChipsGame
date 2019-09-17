@@ -19,6 +19,8 @@ import javax.swing.KeyStroke;
  * displaying the game and holding buttons that allow interaction with the game.
  */
 public class MainFrame extends JFrame {
+	private InterfacePanel interfacePanel;
+	
 	/**
 	 * Serial ID.
 	 */
@@ -38,6 +40,9 @@ public class MainFrame extends JFrame {
 
 		// Add panels to main frame.
 		setJMenuBar(createMenuBar());
+		
+		interfacePanel = new InterfacePanel();
+		add(interfacePanel);
 
 		setVisible(true);
 	}
