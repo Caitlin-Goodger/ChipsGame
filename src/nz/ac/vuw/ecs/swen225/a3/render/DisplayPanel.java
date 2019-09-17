@@ -42,7 +42,7 @@ public class DisplayPanel extends JPanel {
 				JPanel square = new JPanel();
 
 				square.setBackground(Color.WHITE);
-				square.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+				square.setBorder(BorderFactory.createEtchedBorder());
 
 				add(square);
 			}
