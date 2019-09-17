@@ -60,18 +60,24 @@ public class InterfacePanel extends JPanel {
 		gc.gridy++;
 
 		levelField.setEnabled(false);
-
+		
+		gc.anchor = GridBagConstraints.PAGE_START;
+		
 		add(levelField, gc);
 
 		// TIME.
 
 		gc.gridy++;
+		
+		gc.anchor = GridBagConstraints.CENTER;
 
 		add(timeLabel, gc);
 
 		gc.gridy++;
 
 		timeField.setEnabled(false);
+		
+		gc.anchor = GridBagConstraints.PAGE_START;
 
 		add(timeField, gc);
 
@@ -79,12 +85,16 @@ public class InterfacePanel extends JPanel {
 
 		gc.gridy++;
 
+		gc.anchor = GridBagConstraints.CENTER;
+		
 		add(chipsLeftLabel, gc);
 
 		gc.gridy++;
 
 		chipsLeftField.setEnabled(false);
 
+		gc.anchor = GridBagConstraints.PAGE_START;
+		
 		add(chipsLeftField, gc);
 	}
 }

@@ -11,6 +11,8 @@ import javax.swing.border.Border;
  * Inventory panel that holds the objects collected by the player.
  */
 public class InventoryPanel extends JPanel {
+	private GridLayout gl;
+
 	/**
 	 * Serial ID.
 	 */
@@ -24,7 +26,9 @@ public class InventoryPanel extends JPanel {
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		setLayout(new GridLayout(2, 4));
+		gl = new GridLayout(2, 4);
+
+		setLayout(gl);
 
 		drawInventory();
 	}
@@ -33,9 +37,10 @@ public class InventoryPanel extends JPanel {
 	 * For display purposes only. Draws 4x2 tiles to screen.
 	 */
 	private void drawInventory() {
-		for (int x = 0; x < 4; x++) {
-			for (int y = 0; y < 2; y++) {
+		for (int x = 0; x < gl.getColumns(); x++) {
+			for (int y = 0; y < gl.getRows(); y++) {
 				JPanel square = new JPanel();
+
 				square.setBackground(Color.WHITE);
 				square.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 

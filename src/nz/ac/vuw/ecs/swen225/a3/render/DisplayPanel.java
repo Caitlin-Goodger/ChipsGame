@@ -11,6 +11,8 @@ import javax.swing.border.Border;
  * Display panel displays the board to the user.
  */
 public class DisplayPanel extends JPanel {
+	private GridLayout gl;
+
 	/**
 	 * Serial ID.
 	 */
@@ -24,7 +26,9 @@ public class DisplayPanel extends JPanel {
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		setLayout(new GridLayout(9, 9));
+		gl = new GridLayout(9, 9);
+
+		setLayout(gl);
 
 		drawPanel();
 	}
@@ -33,9 +37,10 @@ public class DisplayPanel extends JPanel {
 	 * For display purposes only. Draws 9x9 tiles to screen.
 	 */
 	private void drawPanel() {
-		for (int x = 0; x < 9; x++) {
-			for (int y = 0; y < 9; y++) {
+		for (int x = 0; x < gl.getColumns(); x++) {
+			for (int y = 0; y < gl.getRows(); y++) {
 				JPanel square = new JPanel();
+
 				square.setBackground(Color.WHITE);
 				square.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
