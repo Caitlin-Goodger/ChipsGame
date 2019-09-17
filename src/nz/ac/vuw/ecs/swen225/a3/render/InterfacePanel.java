@@ -35,9 +35,9 @@ public class InterfacePanel extends JPanel {
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");
 
-		levelField = new JTextField(10);
-		timeField = new JTextField(10);
-		chipsLeftField = new JTextField(10);
+		levelField = new JTextField(5);
+		timeField = new JTextField(5);
+		chipsLeftField = new JTextField(5);
 
 		Border innerBorder = BorderFactory.createTitledBorder("Information");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -59,6 +59,8 @@ public class InterfacePanel extends JPanel {
 
 		gc.gridy++;
 
+		levelField.setEnabled(false);
+
 		add(levelField, gc);
 
 		// TIME.
@@ -69,6 +71,8 @@ public class InterfacePanel extends JPanel {
 
 		gc.gridy++;
 
+		timeField.setEnabled(false);
+
 		add(timeField, gc);
 
 		// CHIPS LEFT.
@@ -78,6 +82,8 @@ public class InterfacePanel extends JPanel {
 		add(chipsLeftLabel, gc);
 
 		gc.gridy++;
+
+		chipsLeftField.setEnabled(false);
 
 		add(chipsLeftField, gc);
 	}

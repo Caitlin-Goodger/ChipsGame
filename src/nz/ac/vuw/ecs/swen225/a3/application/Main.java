@@ -1,36 +1,41 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
+import javax.swing.SwingUtilities;
+
 import nz.ac.vuw.ecs.swen225.a3.render.MainFrame;
 
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 
-
-
 // line 17 "model.ump"
 // line 102 "model.ump"
-public class Main
-{
+public class Main {
 
-  //------------------------
-  // MEMBER VARIABLES
-  //------------------------
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
 
-  //------------------------
-  // CONSTRUCTOR
-  //------------------------
+			@Override
+			public void run() {
+				new MainFrame();
+			}
+		});
+	}
 
-  public Main()
-  {}
+	// ------------------------
+	// MEMBER VARIABLES
+	// ------------------------
 
-  //------------------------
-  // INTERFACE
-  //------------------------
+	// ------------------------
+	// CONSTRUCTOR
+	// ------------------------
 
-  public void delete()
-  {}
+	public Main() {
+	}
 
-  public static void main(String[] args) {
-	  new MainFrame();
-  }
+	// ------------------------
+	// INTERFACE
+	// ------------------------
+
+	public void delete() {
+	}
 }
