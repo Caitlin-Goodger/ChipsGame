@@ -1,5 +1,5 @@
 
-package nz.ac.vuw.ecs.swen225.a3.render;
+package nz.ac.vuw.ecs.swen225.a3.application;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -28,6 +28,7 @@ public class MainFrame extends JFrame {
 	private RulesPanel rulesPanel;
 
 	private JFileChooser fileChooser;
+	private Filter filter;
 
 	/**
 	 * Serial ID.
@@ -48,6 +49,10 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		fileChooser = new JFileChooser();
+		filter = new Filter();
+		
+		fileChooser.addChoosableFileFilter(filter);
+		fileChooser.setFileFilter(filter);
 
 		setLayout(new GridBagLayout());
 

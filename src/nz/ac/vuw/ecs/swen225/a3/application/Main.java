@@ -2,8 +2,6 @@ package nz.ac.vuw.ecs.swen225.a3.application;
 
 import javax.swing.SwingUtilities;
 
-import nz.ac.vuw.ecs.swen225.a3.render.MainFrame;
-
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 

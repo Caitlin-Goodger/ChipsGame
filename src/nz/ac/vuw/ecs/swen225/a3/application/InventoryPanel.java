@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.render;
+package nz.ac.vuw.ecs.swen225.a3.application;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 /**
- * Display panel displays the board to the user.
+ * Inventory panel that holds the objects collected by the player.
  */
-public class DisplayPanel extends JPanel {
+public class InventoryPanel extends JPanel {
 	private GridLayout gl;
 
 	/**
@@ -19,24 +19,24 @@ public class DisplayPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Constructor for the display panel.
+	 * Constructor for the inventory panel.
 	 */
-	public DisplayPanel() {
-		Border innerBorder = BorderFactory.createTitledBorder("Display");
+	public InventoryPanel() {
+		Border innerBorder = BorderFactory.createTitledBorder("Inventory");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		gl = new GridLayout(9, 9);
+		gl = new GridLayout(2, 4);
 
 		setLayout(gl);
 
-		drawPanel();
+		drawInventory();
 	}
 
 	/**
-	 * For display purposes only. Draws 9x9 tiles to screen.
+	 * For display purposes only. Draws 4x2 tiles to screen.
 	 */
-	private void drawPanel() {
+	private void drawInventory() {
 		for (int x = 0; x < gl.getColumns(); x++) {
 			for (int y = 0; y < gl.getRows(); y++) {
 				JPanel square = new JPanel();

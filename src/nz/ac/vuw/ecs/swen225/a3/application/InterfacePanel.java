@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.render;
+package nz.ac.vuw.ecs.swen225.a3.application;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
