@@ -275,4 +275,30 @@ public class CluedoTest {
 		wall.updatePosition('W');		
 		assertEquals(4, wall.getXPositionOnScreen());
 	}
+	//Moving the chap tile on map
+	@Test public void test42() {
+		Tile chap = new Chap(5,5,5,5);
+		chap.updatePosition('N');		
+		assertEquals(6, chap.getYPosition());
+	}
+	
+	@Test public void test43() {
+		Tile chap = new Chap(5,5,5,5);
+		chap.updatePosition('S');		
+		assertEquals(4, chap.getYPosition());
+	}
+	
+	@Test public void test44() {
+		Tile chap = new Chap(5,5,5,5);
+		chap.updatePosition('E');		
+		assertEquals(6, chap.getXPosition());
+	}
+	
+	@Test public void test45() {
+		Tile chap = new Chap(5,5,5,5);
+		chap.updatePosition('W');		
+		assertEquals(4, chap.getXPosition());
+	}
+	
+	
 }
