@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -26,6 +27,8 @@ public class MainFrame extends JFrame {
 	private InventoryPanel inventoryPanel;
 	private RulesPanel rulesPanel;
 
+	private JFileChooser fileChooser;
+
 	/**
 	 * Serial ID.
 	 */
@@ -35,13 +38,16 @@ public class MainFrame extends JFrame {
 	 * Constructor for main frame.
 	 */
 	public MainFrame() {
+		super("Chip's Challenge");
+
 		// Initializing and defining parameters.
-		setTitle("Chip's Challenge");
 		setMinimumSize(new Dimension(650, 500));
 		setSize(600, 500);
 		setResizable(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		fileChooser = new JFileChooser();
 
 		setLayout(new GridBagLayout());
 
@@ -110,6 +116,44 @@ public class MainFrame extends JFrame {
 		JMenuItem saveItem = new JMenuItem("Save");
 		JMenuItem exitItem = new JMenuItem("Exit");
 
+		// Add action listener to load a saved game
+		loadItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
+					// Debug : print file chosen
+					System.out.println(fileChooser.getSelectedFile());
+				}
+			}
+		});
+
+		// Add action listener to save a current game
+		saveItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
+					// Debug : print file chosen
+					System.out.println(fileChooser.getSelectedFile());
+				}
+			}
+		});
+
+		// Add action listener to exit game
+		exitItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent ev) {
+				int action = JOptionPane.showConfirmDialog(MainFrame.this, "Do you really want to exit the game?",
+						"Confirm Exit", JOptionPane.OK_CANCEL_OPTION);
+
+				if (action == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+
 		gameMenu.add(loadItem);
 		gameMenu.add(saveItem);
 		gameMenu.addSeparator();
@@ -136,8 +180,6 @@ public class MainFrame extends JFrame {
 
 		JCheckBoxMenuItem rulesItem = new JCheckBoxMenuItem("Rules");
 
-		helpMenu.add(rulesItem);
-
 		/*
 		 * Add action listener to the rules item. When rules is ticked, hides the game
 		 * and displays the rules.
@@ -155,6 +197,8 @@ public class MainFrame extends JFrame {
 				rulesPanel.setVisible(menuItem.isSelected());
 			}
 		});
+
+		helpMenu.add(rulesItem);
 
 		// Adding to menu bar.
 		menuBar.add(gameMenu);
@@ -174,20 +218,6 @@ public class MainFrame extends JFrame {
 		resumeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
 		loadItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
 		resetItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
-
-		// Add action listener to exit game
-		exitItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent ev) {
-				int action = JOptionPane.showConfirmDialog(MainFrame.this, "Do you really want to exit the game?",
-						"Confirm Exit", JOptionPane.OK_CANCEL_OPTION);
-
-				if (action == JOptionPane.OK_OPTION) {
-					System.exit(0);
-				}
-			}
-		});
 
 		return menuBar;
 	}
