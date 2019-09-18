@@ -10,7 +10,8 @@ import javax.swing.border.Border;
  * game to the player.
  */
 public class RulesPanel extends JPanel {
-	private JLabel rules;
+	private JLabel lineOne;
+	private JLabel lineTwo;
 
 	/**
 	 * Serial ID.
@@ -25,11 +26,14 @@ public class RulesPanel extends JPanel {
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		rules = new JLabel();
+		lineOne = new JLabel();
+		lineTwo = new JLabel();
 
-		rules.setText("Play the game.");
+		lineOne.setText("Your player can move forward, backwards, left and right.");
+		lineTwo.setText("The goal of the game is to reach the exit while avoiding all obstacles.");
 
-		add(rules);
+		add(lineOne);
+		add(lineTwo);
 
 		setVisible(false);
 	}
