@@ -51,4 +51,10 @@ public interface Tile {
     // returns the image so it can be rendered
     public BufferedImage getImageToDisplay();
 
+  //used for testing and just get X position on map
+	public int getXPosition();
+
+	//used for testing and just get Y position on map
+	public int getYPosition();
+
 }

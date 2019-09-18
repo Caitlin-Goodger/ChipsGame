@@ -109,4 +109,14 @@ public class Key implements Tile
 	public int getXPositionOnScreen() {
 		return currentPositionOnScreen.getX();
 	}
+	
+	@Override
+	public int getYPosition() {
+		return currentPosition.getY();
+	}
+
+	@Override
+	public int getXPosition() {
+		return currentPosition.getX();
+	}
 }
