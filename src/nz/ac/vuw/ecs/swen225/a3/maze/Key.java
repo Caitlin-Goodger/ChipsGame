@@ -11,76 +11,102 @@ import java.awt.image.BufferedImage;
 public class Key implements Tile
 {
 
-  //------------------------
-  // MEMBER VARIABLES
-  //------------------------
+	//------------------------
+	// MEMBER VARIABLES
+	//------------------------
 
-  //Key Attributes
-  private String colour;
+	//Key Attributes
+	private String colour;
+	boolean isSolid = true; // check if player can walkThrought
+	XYPos currentPosition; // keeps track of tiles position within a grid
+	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
+	BufferedImage imageToDisplay; // the image for the tokken
+	//------------------------
+	// CONSTRUCTOR
+	//------------------------
 
-  //------------------------
-  // CONSTRUCTOR
-  //------------------------
+	public Key(String aColour, int xGrid, int yGrid, int xScreen, int yScreen)
+	{
+		colour = aColour;
+		currentPosition = new XYPos(xGrid,yGrid);
+		currentPositionOnScreen = new XYPos(xScreen,yScreen);
+	}
 
-  public Key(String aColour)
-  {
-    colour = aColour;
-  }
+	//------------------------
+	// INTERFACE
+	//------------------------
 
-  //------------------------
-  // INTERFACE
-  //------------------------
+	public boolean setColour(String aColour)
+	{
+		boolean wasSet = false;
+		colour = aColour;
+		wasSet = true;
+		return wasSet;
+	}
 
-  public boolean setColour(String aColour)
-  {
-    boolean wasSet = false;
-    colour = aColour;
-    wasSet = true;
-    return wasSet;
-  }
+	public String getColour()
+	{
+		return colour;
+	}
 
-  public String getColour()
-  {
-    return colour;
-  }
-
-  public void delete()
-  {}
+	public void delete()
+	{}
 
 
-  public String toString()
-  {
-    return super.toString() + "["+
-            "colour" + ":" + getColour()+ "]";
-  }
+	public String toString()
+	{
+		return super.toString() + "["+
+				"colour" + ":" + getColour()+ "]";
+	}
 
-  @Override
-  public void updatePosition(char direction) {
+	@Override
+	public void updatePosition(char direction) {
+		  if (direction == 'N') {
+			  currentPositionOnScreen.updatePos(0, 1);		  
+		  } 
+		  else if (direction == 'S') {
+			  currentPositionOnScreen.updatePos(0, -1);
+		  }
+		  else if (direction == 'E') {
+			  currentPositionOnScreen.updatePos(1,0);
+		  }
+		  else if (direction == 'W') {
+			  currentPositionOnScreen.updatePos(-1,0);
+		  }
+	  }
 
-  }
+	@Override
+	public void loadImage() {
 
-  @Override
-  public void loadImage() {
+	}
 
-  }
+	@Override
+	public XYPos getTilePosition() {
+		return currentPosition;
+	}
 
-  @Override
-  public XYPos getTilePosition() {
-    return null;
-  }
+	@Override
+	public XYPos getCurrentPositionOnScreen() {
+		return currentPositionOnScreen;
+	}
 
-  @Override
-  public XYPos getCurrentPositionOnScreen() {
-    return null;
-  }
+	@Override
+	public boolean isObjectSolid() {
+		return isSolid;
+	}
 
-  @Override
-  public boolean isObjectSolid() {
-    return false;
-  }
+	@Override
+	public BufferedImage getImageToDisplay() {
+		return null;
+	}
 
-  @Override
-  public BufferedImage getImageToDisplay() {
-    return null;
-  }
+	@Override
+	public int getYPositionOnScreen() {
+		return currentPositionOnScreen.getY();
+	}
+
+	@Override
+	public int getXPositionOnScreen() {
+		return currentPositionOnScreen.getX();
+	}
 }

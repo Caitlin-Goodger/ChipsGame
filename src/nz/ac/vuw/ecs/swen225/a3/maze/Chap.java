@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
+import java.awt.image.BufferedImage;
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 
@@ -58,4 +59,16 @@ public class Chap implements Tile
   public BufferedImage getImageToDisplay() {
     return null;
   }
+
+@Override
+public int getYPositionOnScreen() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public int getXPositionOnScreen() {
+	// TODO Auto-generated method stub
+	return 0;
+}
 }

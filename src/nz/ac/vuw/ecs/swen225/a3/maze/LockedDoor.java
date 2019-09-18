@@ -17,14 +17,19 @@ public class LockedDoor implements Tile
 
   //LockedDoor Attributes
   private String colour;
-
+  boolean isSolid = true; // check if player can walkThrought
+  XYPos currentPosition; // keeps track of tiles position within a grid
+  XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
+  BufferedImage imageToDisplay; // the image for the tokken
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public LockedDoor(String aColour)
+  public LockedDoor(String aColour, int xGrid, int yGrid, int xScreen, int yScreen)
   {
     colour = aColour;
+    currentPosition = new XYPos(xGrid,yGrid);
+    currentPositionOnScreen = new XYPos(xScreen,yScreen);
   }
 
   //------------------------
@@ -56,7 +61,18 @@ public class LockedDoor implements Tile
 
   @Override
   public void updatePosition(char direction) {
-
+	  if (direction == 'N') {
+		  currentPositionOnScreen.updatePos(0, 1);		  
+	  } 
+	  else if (direction == 'S') {
+		  currentPositionOnScreen.updatePos(0, -1);
+	  }
+	  else if (direction == 'E') {
+		  currentPositionOnScreen.updatePos(1,0);
+	  }
+	  else if (direction == 'W') {
+		  currentPositionOnScreen.updatePos(-1,0);
+	  }
   }
 
   @Override
@@ -66,21 +82,31 @@ public class LockedDoor implements Tile
 
   @Override
   public XYPos getTilePosition() {
-    return null;
+    return currentPosition;
   }
 
   @Override
   public XYPos getCurrentPositionOnScreen() {
-    return null;
+    return currentPositionOnScreen;
   }
 
   @Override
   public boolean isObjectSolid() {
-    return false;
+    return isSolid;
   }
 
   @Override
   public BufferedImage getImageToDisplay() {
     return null;
   }
+
+@Override
+public int getYPositionOnScreen() {
+	return currentPositionOnScreen.getY();
+}
+
+@Override
+public int getXPositionOnScreen() {
+	return currentPositionOnScreen.getX();
+}
 }

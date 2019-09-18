@@ -35,7 +35,13 @@ public interface Tile {
 
     //used to get the onscreen position
     public XYPos getCurrentPositionOnScreen();
+    
+    //used for testing and just get Y position
+    public int getYPositionOnScreen();
 
+  //used for testing and just get X position
+    public int getXPositionOnScreen();
+    
     /* check to see if the player can walk thorught this area
        true means they cannot walk here
        false means they can
