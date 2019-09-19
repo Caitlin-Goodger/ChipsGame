@@ -26,6 +26,11 @@ public class Maze
   {
     tiles = new Tile[0][0];
   }
+  
+  
+  public Tile[][] getTiles() {
+	  return tiles;
+  }
 
   //------------------------
   // INTERFACE

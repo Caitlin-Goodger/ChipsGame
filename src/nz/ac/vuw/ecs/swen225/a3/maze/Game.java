@@ -16,6 +16,8 @@ public class Game
 
   //Game Associations
   private Maze maze;
+  private Tile[][] map;
+  private Chap chap;
 
   //------------------------
   // CONSTRUCTOR
@@ -27,6 +29,7 @@ public class Game
     {
       throw new RuntimeException("Unable to create Game due to aMaze. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
+    map = maze.getTiles();
   }
 
   //------------------------
@@ -53,5 +56,39 @@ public class Game
   {
     maze = null;
   }
+  
+  /*
+   * Get the neighbouring tile from a given position and direction
+   * @param origin - original position
+   * @param direction - the direction to look in
+   * @return - the corresponding neighbouring tile if there is one, or null
+   */
+  public Tile getNeighbouringTile(XYPos origin, char direction) {
+	  int x = origin.getX();
+	  int y = origin.getY();
+	  Tile originTile = map[y][x]; //row, col
+	  Tile destination;
+	  if(originTile == null) return null;
+	  
+	  //need to implement checks for going off the maze
+	  switch(direction) {
+	  case'N':
+		  destination = map[y-1][x];
+		  break;
+	  case'E':
+		  destination = map[y][x+1];
+		  break;
+	  case'S':
+		  destination = map[y+1][x];
+		  break;
+	  default://W
+		  destination = map[y][x-1];
+		  break;
+	  }
+	  
+	  return destination;
+  }
+  
+  
 
 }
