@@ -78,6 +78,18 @@ public class Game
 		  //change the key tile to free
 		  maze.changeToFree(destination);
 	  }
+	  else if (destination instanceof LockedDoor) {
+		  LockedDoor door = (LockedDoor)destination;
+		  if(door.canUnlock(chap)) {
+			  //change the key tile to free
+			  maze.changeToFree(destination);
+			  //move chap in direction
+			  chap.updatePosition(direction);
+		  }
+		  else {
+			  //do nothing
+		  }
+	  }
 	  else if (destination instanceof Treasure) {
 		  //remove treasure from map
 		  maze.changeToFree(destination);

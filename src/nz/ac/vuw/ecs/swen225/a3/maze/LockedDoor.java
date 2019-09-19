@@ -58,6 +58,13 @@ public class LockedDoor implements Tile
     return super.toString() + "["+
             "colour" + ":" + getColour()+ "]";
   }
+  
+  /*
+   * @return - whether chap can unlock this door
+   */
+  public boolean canUnlock(Chap chap) {
+	  return chap.canUnlock(this);
+  }
 
   @Override
   public void updatePosition(char direction) {
