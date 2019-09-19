@@ -17,14 +17,18 @@ public class Maze
 
   //Maze Associations
   private Tile tiles[][];
+  private int rows;
+  private int cols;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Maze()
+  public Maze(int rows, int cols)
   {
-    tiles = new Tile[0][0];
+    tiles = new Tile[rows][cols];
+    this.rows = rows;
+    this.cols = cols;
   }
   
   
@@ -74,6 +78,20 @@ public class Maze
 	  int xs = origin.getXPositionOnScreen();
 	  int ys = origin.getYPositionOnScreen();
 	  tiles[y][x] = new Free(x,y,xs,ys);
+  }
+  
+  /*
+   * @return - true if there are still treasure left to collect in the Maze
+   */
+  public boolean hasTreasureLeft() {
+	  Tile target;
+	  for(int row = 0; row<rows; row++) {
+		  for(int col = 0; col<cols; col++) {
+			  target = tiles[row][col];
+			  if(target instanceof Treasure) return false;
+		  }
+	  }
+	  return true;
   }
 
   //------------------------

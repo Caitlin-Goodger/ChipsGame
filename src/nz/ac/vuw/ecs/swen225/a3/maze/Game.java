@@ -16,8 +16,8 @@ public class Game
 
   //Game Associations
   private Maze maze;
-  private Tile[][] map;
   private Chap chap;
+  
 
   //------------------------
   // CONSTRUCTOR
@@ -29,7 +29,6 @@ public class Game
     {
       throw new RuntimeException("Unable to create Game due to aMaze. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
-    map = maze.getTiles();
   }
 
   //------------------------
@@ -78,6 +77,29 @@ public class Game
 		  chap.pickupItem(destination);
 		  //change the key tile to free
 		  maze.changeToFree(destination);
+	  }
+	  else if (destination instanceof Treasure) {
+		  //remove treasure from map
+		  maze.changeToFree(destination);
+		  //move chap in direction
+		  chap.updatePosition(direction);
+	  }
+	  else if (destination instanceof ExitLock) {
+		  //check if there is still treasure to collect
+		  if(maze.hasTreasureLeft()) {
+			  //do nothing
+		  }
+		  else {
+			  //change ExitLock to free
+			  maze.changeToFree(destination);
+			  //move chap in direction
+			  chap.updatePosition(direction);
+		  }
+	  }
+	  else if (destination instanceof Exit) {
+		  
+		  //LEVEL COMPLETED
+		  
 	  }
 	  
 	  
