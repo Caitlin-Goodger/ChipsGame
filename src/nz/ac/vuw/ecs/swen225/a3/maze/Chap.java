@@ -1,10 +1,10 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
-
-
+import java.util.List;
 import java.awt.image.BufferedImage;
 
 // line 71 "model.ump"
@@ -19,6 +19,8 @@ public class Chap implements Tile
   XYPos currentPosition; // keeps track of tiles position within a grid
   XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
   BufferedImage imageToDisplay; // the image for the tokken
+  
+  private List<String>inventory;
   //------------------------
   // CONSTRUCTOR
   //------------------------
@@ -26,6 +28,7 @@ public class Chap implements Tile
   public Chap(int xGrid, int yGrid, int xScreen, int yScreen){
 	  currentPosition = new XYPos(xGrid,yGrid);
 	  currentPositionOnScreen = new XYPos(xScreen,yScreen);
+	  inventory = new ArrayList<String>();
   }
 
   //------------------------

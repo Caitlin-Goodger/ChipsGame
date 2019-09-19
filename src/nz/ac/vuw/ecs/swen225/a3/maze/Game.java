@@ -57,36 +57,21 @@ public class Game
     maze = null;
   }
   
+  
   /*
-   * Get the neighbouring tile from a given position and direction
-   * @param origin - original position
-   * @param direction - the direction to look in
-   * @return - the corresponding neighbouring tile if there is one, or null
+   * update chap's location in the given direction if its applicable
+   * @param direction - the desired direction to move in
    */
-  public Tile getNeighbouringTile(XYPos origin, char direction) {
-	  int x = origin.getX();
-	  int y = origin.getY();
-	  Tile originTile = map[y][x]; //row, col
-	  Tile destination;
-	  if(originTile == null) return null;
-	  
-	  //need to implement checks for going off the maze
-	  switch(direction) {
-	  case'N':
-		  destination = map[y-1][x];
-		  break;
-	  case'E':
-		  destination = map[y][x+1];
-		  break;
-	  case'S':
-		  destination = map[y+1][x];
-		  break;
-	  default://W
-		  destination = map[y][x-1];
-		  break;
+  public void move(char direction) {
+	  Tile destination = maze.getNeighbouringTile(chap.currentPosition, direction);
+	  if (destination instanceof Wall || destination == null) {
+		  //do nothing
+	  }
+	  else if (destination instanceof Free) {
+		  //move chap in direction
+		  chap.updatePosition(direction);
 	  }
 	  
-	  return destination;
   }
   
   
