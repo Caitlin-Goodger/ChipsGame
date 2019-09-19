@@ -63,6 +63,18 @@ public class Maze
 	  
 	  return destination;
   }
+  
+  /*
+   * Change a tile on the maze to a free tile
+   * @param origin - the tile to be changed
+   */
+  public void changeToFree(Tile origin) {
+	  int x = origin.getXPosition();
+	  int y = origin.getYPosition();
+	  int xs = origin.getXPositionOnScreen();
+	  int ys = origin.getYPositionOnScreen();
+	  tiles[y][x] = new Free(x,y,xs,ys);
+  }
 
   //------------------------
   // INTERFACE

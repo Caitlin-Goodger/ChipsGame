@@ -71,6 +71,15 @@ public class Game
 		  //move chap in direction
 		  chap.updatePosition(direction);
 	  }
+	  else if (destination instanceof Key) {
+		  //move chap in direction
+		  chap.updatePosition(direction);
+		  //pickup the key
+		  chap.pickupItem(destination);
+		  //change the key tile to free
+		  maze.changeToFree(destination);
+	  }
+	  
 	  
   }
   

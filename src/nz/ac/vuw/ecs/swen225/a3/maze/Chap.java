@@ -37,6 +37,16 @@ public class Chap implements Tile
 
   public void delete()
   {}
+  
+  public void pickupItem(Tile item) {
+	  if(item instanceof Key) {
+		  Key key = (Key) item;
+		  inventory.add(key.getColour()+"Key");
+	  }
+	  
+	  //can add more item Tile types later i.e. ice skaters
+	  
+  }
 
   @Override
   //Being world moves around Chap, chaps position changes on map but not screen
