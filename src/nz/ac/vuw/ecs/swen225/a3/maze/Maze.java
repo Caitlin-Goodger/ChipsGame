@@ -52,15 +52,19 @@ public class Maze
 	  //need to implement checks for going off the maze
 	  switch(direction) {
 	  case'N':
+		  if(y-1 < 0) return null;
 		  destination = tiles[y-1][x];
 		  break;
 	  case'E':
+		  if(x+1 >= cols) return null;
 		  destination = tiles[y][x+1];
 		  break;
 	  case'S':
+		  if(y+1 >= rows) return null;
 		  destination = tiles[y+1][x];
 		  break;
 	  default://W
+		  if(x-1 < 0) return null;
 		  destination = tiles[y][x-1];
 		  break;
 	  }

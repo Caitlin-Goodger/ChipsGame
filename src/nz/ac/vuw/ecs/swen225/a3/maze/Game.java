@@ -84,6 +84,12 @@ public class Game
 		  //move chap in direction
 		  chap.updatePosition(direction);
 	  }
+	  else if (destination instanceof InfoField) {
+		  //move chap in direction
+		  chap.updatePosition(direction);
+		  //displayInfo
+		  //...........
+	  }
 	  else if (destination instanceof ExitLock) {
 		  //check if there is still treasure to collect
 		  if(maze.hasTreasureLeft()) {
