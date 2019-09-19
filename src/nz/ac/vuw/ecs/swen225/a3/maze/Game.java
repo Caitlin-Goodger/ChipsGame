@@ -85,6 +85,8 @@ public class Game
 			  maze.changeToFree(destination);
 			  //move chap in direction
 			  chap.updatePosition(direction);
+			  //remove the used key from chap's inventory
+			  chap.removeItem(door.getColour(), "Key");
 		  }
 		  else {
 			  //do nothing

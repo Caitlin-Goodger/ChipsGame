@@ -75,7 +75,16 @@ public class Chap implements Tile
   /*
    * remove an item from the inventory after it is used i.e. a key
    */
-  public void removeItem() {
+  public void removeItem(String colour, String itemType) {
+	  if(inventory.containsKey(colour)) {
+		  itemType = inventory.get(colour);
+		  if(itemType.equalsIgnoreCase("Key")) {
+			  inventory.remove(colour);
+		  }
+		  
+		  //can check for multiple type items in the future
+	  }
+	  
 	  
   }
   
