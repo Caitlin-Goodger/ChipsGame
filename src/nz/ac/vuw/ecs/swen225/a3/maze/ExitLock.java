@@ -18,6 +18,8 @@ public class ExitLock implements Tile
 	XYPos currentPosition; // keeps track of tiles position within a grid
 	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the tokken
+	
+	boolean unlocked;
   //------------------------
   // CONSTRUCTOR
   //------------------------
@@ -25,6 +27,7 @@ public class ExitLock implements Tile
 	public ExitLock(int xGrid, int yGrid, int xScreen, int yScreen){
 		  currentPosition = new XYPos(xGrid,yGrid);
 		  currentPositionOnScreen = new XYPos(xScreen,yScreen);
+		  unlocked = false;
 	  }
 
   //------------------------

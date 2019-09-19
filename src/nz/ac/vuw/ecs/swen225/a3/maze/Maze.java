@@ -31,6 +31,38 @@ public class Maze
   public Tile[][] getTiles() {
 	  return tiles;
   }
+  
+  /*
+   * Get the neighbouring tile from a given position and direction
+   * @param origin - original position
+   * @param direction - the direction to look in
+   * @return - the corresponding neighbouring tile if there is one, or null
+   */
+  public Tile getNeighbouringTile(XYPos origin, char direction) {
+	  int x = origin.getX();
+	  int y = origin.getY();
+	  Tile originTile = tiles[y][x]; //row, col
+	  Tile destination;
+	  if(originTile == null) return null;
+	  
+	  //need to implement checks for going off the maze
+	  switch(direction) {
+	  case'N':
+		  destination = tiles[y-1][x];
+		  break;
+	  case'E':
+		  destination = tiles[y][x+1];
+		  break;
+	  case'S':
+		  destination = tiles[y+1][x];
+		  break;
+	  default://W
+		  destination = tiles[y][x-1];
+		  break;
+	  }
+	  
+	  return destination;
+  }
 
   //------------------------
   // INTERFACE
