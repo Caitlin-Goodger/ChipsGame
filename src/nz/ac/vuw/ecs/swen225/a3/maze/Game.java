@@ -29,6 +29,7 @@ public class Game
     {
       throw new RuntimeException("Unable to create Game due to aMaze. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
+    this.chap = maze.findChap();
   }
 
   //------------------------

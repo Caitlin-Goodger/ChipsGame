@@ -37,6 +37,23 @@ public class Maze
   }
   
   /*
+   * locate and return chap tile from the maps
+   */
+  public Chap findChap() {
+	  Tile target;
+	  Chap chap = null;
+	  for(int row = 0; row<rows; row++) {
+		  for(int col = 0; col<cols; col++) {
+			  target = tiles[row][col];
+			  if(target instanceof Chap) {
+				  chap = (Chap)target;
+			  }
+		  }
+	  }
+	  return chap;
+  }
+  
+  /*
    * Get the neighbouring tile from a given position and direction
    * @param origin - original position
    * @param direction - the direction to look in
