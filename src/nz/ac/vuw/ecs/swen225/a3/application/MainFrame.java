@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JCheckBoxMenuItem;
@@ -41,6 +42,8 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		super("Chip's Challenge");
 
+		this.addKeyListener(new KeyListener());
+
 		// Initializing and defining parameters.
 		setMinimumSize(new Dimension(650, 500));
 		setSize(600, 500);
@@ -50,7 +53,7 @@ public class MainFrame extends JFrame {
 
 		fileChooser = new JFileChooser();
 		filter = new Filter();
-		
+
 		fileChooser.addChoosableFileFilter(filter);
 		fileChooser.setFileFilter(filter);
 
@@ -225,5 +228,38 @@ public class MainFrame extends JFrame {
 		resetItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
 
 		return menuBar;
+	}
+
+	/**
+	 * Listens for key press and executes the relevant method.
+	 */
+	class KeyListener extends KeyAdapter {
+		public void keyPressed(KeyEvent evt) {
+			// Movement
+			if (evt.getKeyCode() == KeyEvent.VK_UP) {
+				System.out.println("Up was pressed");
+			}
+
+			if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+				System.out.println("Down was pressed");
+			}
+
+			if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+				System.out.println("Left was pressed");
+			}
+
+			if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+				System.out.println("Right was pressed");
+			}
+
+			// Other
+			if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+				System.out.println("Space was pressed");
+			}
+
+			if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+				System.out.println("ESC was pressed");
+			}
+		}
 	}
 }
