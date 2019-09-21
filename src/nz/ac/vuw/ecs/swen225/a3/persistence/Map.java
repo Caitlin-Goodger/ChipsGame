@@ -23,9 +23,13 @@ public class Map {
 			InputStream input = new FileInputStream("levels.json");
 			JsonReader reader = Json.createReader(input);
 			JsonObject obj = reader.readObject();
-			//System.out.println(obj);
-			JsonArray level = obj.getJsonArray("level-1");
-			System.out.println(level);
+			JsonObject level = obj.getJsonObject("level-1");
+			int width = level.getInt("width");
+			int height = level.getInt("height");
+			JsonArray tiles = level.getJsonArray("tiles");
+			System.out.println(width);
+			System.out.println(height);
+			System.out.println(tiles);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
