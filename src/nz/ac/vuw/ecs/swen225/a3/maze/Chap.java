@@ -17,6 +17,7 @@ public class Chap implements Tile {
 	BufferedImage imageToDisplay; // the image for the tokken
 
 	private Map<String, String> inventory;
+	private Tile onTile; //chap initially starts on a "free" tile
 	// ------------------------
 	// CONSTRUCTOR
 	// ------------------------
@@ -25,6 +26,7 @@ public class Chap implements Tile {
 		currentPosition = new XYPos(xGrid, yGrid);
 		currentPositionOnScreen = new XYPos(xScreen, yScreen);
 		inventory = new HashMap<String, String>();
+		onTile = new Free(xGrid, yGrid, xScreen, yScreen);
 	}
 
 	// ------------------------
@@ -79,6 +81,13 @@ public class Chap implements Tile {
 			// can check for multiple type items in the future
 		}
 
+	}
+	
+	/*
+	 * Update the tile that Chap is standing on after moving
+	 */
+	public void setOnTile(Tile tile) {
+		
 	}
 
 	@Override

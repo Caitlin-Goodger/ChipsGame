@@ -29,6 +29,9 @@ public class Game
     {
       throw new RuntimeException("Unable to create Game due to aMaze. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
+    if(maze.findChap() == null) {
+      throw new RuntimeException("did not locate chap on map!");
+    }
     this.chap = maze.findChap();
   }
 
@@ -123,6 +126,15 @@ public class Game
 		  
 	  }
 	  
+	  
+  }
+  
+  /*
+   * *Only called by the above move class
+   * Move chap in the given direction, and re-fresh the tile he was on
+   * @param - the direction to move to
+   */
+  public void moveChap(String direction) {
 	  
   }
   
