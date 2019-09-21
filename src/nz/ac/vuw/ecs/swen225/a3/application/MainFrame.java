@@ -1,7 +1,6 @@
 
 package nz.ac.vuw.ecs.swen225.a3.application;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -45,9 +44,8 @@ public class MainFrame extends JFrame {
 		this.addKeyListener(new KeyListener());
 
 		// Initializing and defining parameters.
-		setMinimumSize(new Dimension(650, 500));
-		setSize(600, 500);
-		setResizable(true);
+		setSize(500, 500);
+		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
