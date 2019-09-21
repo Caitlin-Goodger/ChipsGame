@@ -9,11 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Free;
-import nz.ac.vuw.ecs.swen225.a3.maze.InfoField;
-import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
 
 /**
@@ -52,12 +48,12 @@ public class DisplayPanel extends JPanel {
 			for (int y = 0; y < gl.getRows(); y++) {
 				JPanel square = new JPanel();
 
-				// Setting a default path to free as others not implemented yet.
-				String path = "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC2.png";
+				String path;
 
 				// Gets the correct image path.
-				if (level[x][y] instanceof Free || level[x][y] instanceof Wall || level[x][y] instanceof InfoField
-						|| level[x][y] instanceof Key) {
+				if (level[x][y].getImagePath() == null) {
+					path = "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC2.png";
+				} else {
 					path = level[x][y].getImagePath();
 				}
 
