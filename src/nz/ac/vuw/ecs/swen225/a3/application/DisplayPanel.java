@@ -11,8 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
+import nz.ac.vuw.ecs.swen225.a3.maze.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
+import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
 /**
  * Display panel displays the board to the user.
@@ -50,6 +53,7 @@ public class DisplayPanel extends JPanel {
 	 * For display purposes only. Draws 9x9 tiles to screen.
 	 */
 	private void drawPanel() {
+		Renderer ren = new Renderer();
 		Tile[][] level = game.getMaze().getTiles();
 
 		for (int x = 0; x < gl.getColumns(); x++) {
@@ -65,6 +69,10 @@ public class DisplayPanel extends JPanel {
 
 				ImageIcon icon = new ImageIcon(new File(path).getAbsolutePath());
 				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+				if ( level[x][y] instanceof Key) scaledImage = ren.mergeImages(path, true).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+				else if ( level[x][y] instanceof LockedDoor) scaledImage = ren.mergeImages(path, false).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
 
 				JLabel img = new JLabel(new ImageIcon(scaledImage));
 
