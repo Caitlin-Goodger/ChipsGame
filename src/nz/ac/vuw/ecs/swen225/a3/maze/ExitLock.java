@@ -96,6 +96,6 @@ public class ExitLock implements Tile {
 
 	@Override
 	public String toString() {
-		return "Exit Lock";
+		return "L";
 	}
 }

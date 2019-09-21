@@ -93,6 +93,6 @@ public class Treasure implements Tile {
 
 	@Override
 	public String toString() {
-		return "Treasure";
+		return "T";
 	}
 }
