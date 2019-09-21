@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
 
@@ -18,6 +19,8 @@ import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
  */
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
+	
+	private Game game;
 
 	/**
 	 * Serial ID.
@@ -27,7 +30,9 @@ public class DisplayPanel extends JPanel {
 	/**
 	 * Constructor for the display panel.
 	 */
-	public DisplayPanel() {
+	public DisplayPanel(Game game) {
+		this.game = game;
+		
 		Border innerBorder = BorderFactory.createTitledBorder("Display");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -36,6 +41,8 @@ public class DisplayPanel extends JPanel {
 
 		setLayout(gl);
 
+		game.getMaze().setTiles();;
+		
 		drawPanel();
 	}
 
@@ -43,7 +50,7 @@ public class DisplayPanel extends JPanel {
 	 * For display purposes only. Draws 9x9 tiles to screen.
 	 */
 	private void drawPanel() {
-		Tile[][] level = new Level().convertLevel();
+		Tile[][] level = game.getMaze().getTiles();
 
 		for (int x = 0; x < gl.getColumns(); x++) {
 			for (int y = 0; y < gl.getRows(); y++) {

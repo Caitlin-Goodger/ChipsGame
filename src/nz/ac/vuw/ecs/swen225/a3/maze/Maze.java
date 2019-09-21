@@ -1,10 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
-
-
-import java.util.*;
+import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
 
 // line 28 "model.ump"
 // line 117 "model.ump"
@@ -33,7 +29,12 @@ public class Maze
   
   
   public Tile[][] getTiles() {
+	  System.out.println(tiles);
 	  return tiles;
+  }
+  
+  public void setTiles() {
+	  tiles = new Level().convertLevel();
   }
   
   /*

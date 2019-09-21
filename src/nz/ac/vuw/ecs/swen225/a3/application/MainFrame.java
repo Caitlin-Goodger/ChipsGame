@@ -17,6 +17,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import nz.ac.vuw.ecs.swen225.a3.maze.Game;
+
 /**
  * MainFrame that will hold panels and menus that will be responsible for
  * displaying the game and holding buttons that allow interaction with the game.
@@ -30,6 +32,8 @@ public class MainFrame extends JFrame {
 	private JFileChooser fileChooser;
 	private Filter filter;
 
+	private Game game;
+
 	/**
 	 * Serial ID.
 	 */
@@ -38,8 +42,10 @@ public class MainFrame extends JFrame {
 	/**
 	 * Constructor for main frame.
 	 */
-	public MainFrame() {
+	public MainFrame(Game game) {
 		super("Chip's Challenge");
+
+		this.game = game;
 
 		this.addKeyListener(new KeyListener());
 
@@ -73,7 +79,7 @@ public class MainFrame extends JFrame {
 		gc.gridwidth = 1;
 		gc.gridheight = 2;
 
-		displayPanel = new DisplayPanel();
+		displayPanel = new DisplayPanel(game);
 		add(displayPanel, gc);
 
 		// INTERFACE.
