@@ -39,7 +39,7 @@ public class Level {
 	/**
 	 * Converts the level with tiles as ID into a level with tiles as tile objects.
 	 */
-	public void convertLevel() {
+	public Tile[][] convertLevel() {
 		// Gets the width and height of the current level.
 		int width = levelAsInt[0].length;
 		int height = levelAsInt.length;
@@ -87,7 +87,7 @@ public class Level {
 			}
 		}
 
-		printConvertedLevel();
+		return levelAsTile;
 	}
 
 	/**
