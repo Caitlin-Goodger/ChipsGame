@@ -1,77 +1,63 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
 /*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 
+/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 
 import java.awt.image.BufferedImage;
 
 // line 54 "model.ump"
 // line 142 "model.ump"
-public class InfoField implements Tile
-{
+public class InfoField implements Tile {
 
-	//------------------------
+	// ------------------------
 	// MEMBER VARIABLES
-	//------------------------
+	// ------------------------
 
-	//InfoField Attributes
+	// InfoField Attributes
 	private String text;
 	boolean isSolid = true; // check if player can walkThrought
 	XYPos currentPosition; // keeps track of tiles position within a grid
 	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the tokken
-	//------------------------
+	// ------------------------
 	// CONSTRUCTOR
-	//------------------------
+	// ------------------------
 
-	public InfoField(String aText,int xGrid, int yGrid, int xScreen, int yScreen)
-	{
+	public InfoField(String aText, int xGrid, int yGrid, int xScreen, int yScreen) {
 		text = aText;
-		currentPosition = new XYPos(xGrid,yGrid);
-		currentPositionOnScreen = new XYPos(xScreen,yScreen);
+		currentPosition = new XYPos(xGrid, yGrid);
+		currentPositionOnScreen = new XYPos(xScreen, yScreen);
 	}
 
-	//------------------------
+	// ------------------------
 	// INTERFACE
-	//------------------------
+	// ------------------------
 
-	public boolean setText(String aText)
-	{
+	public boolean setText(String aText) {
 		boolean wasSet = false;
 		text = aText;
 		wasSet = true;
 		return wasSet;
 	}
 
-	public String getText()
-	{
+	public String getText() {
 		return text;
 	}
 
-	public void delete()
-	{}
-
-
-	public String toString()
-	{
-		return super.toString() + "["+
-				"text" + ":" + getText()+ "]";
+	public void delete() {
 	}
 
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
-			currentPositionOnScreen.updatePos(0, 1);		  
-		} 
-		else if (direction == 'S') {
+			currentPositionOnScreen.updatePos(0, 1);
+		} else if (direction == 'S') {
 			currentPositionOnScreen.updatePos(0, -1);
-		}
-		else if (direction == 'E') {
-			currentPositionOnScreen.updatePos(1,0);
-		}
-		else if (direction == 'W') {
-			currentPositionOnScreen.updatePos(-1,0);
+		} else if (direction == 'E') {
+			currentPositionOnScreen.updatePos(1, 0);
+		} else if (direction == 'W') {
+			currentPositionOnScreen.updatePos(-1, 0);
 		}
 	}
 
@@ -109,7 +95,7 @@ public class InfoField implements Tile
 	public int getXPositionOnScreen() {
 		return currentPositionOnScreen.getX();
 	}
-	
+
 	@Override
 	public int getYPosition() {
 		return currentPosition.getY();
@@ -118,5 +104,10 @@ public class InfoField implements Tile
 	@Override
 	public int getXPosition() {
 		return currentPosition.getX();
+	}
+
+	@Override
+	public String toString() {
+		return "Info Field";
 	}
 }
