@@ -24,11 +24,13 @@ public class Renderer {
 
     }
 
+    // used just for the basic key
     //addToWall is used to either add to the wall texture or to add the floor texture
     //true is wall
     //false is floor
     public Image mergeImages(String toAddOnTop, boolean addToWall) {
         // creates the image
+        Image returnImage;
         BufferedImage toAdd = null;
         try { toAdd = (BufferedImage) ImageIO.read(new File(new File(toAddOnTop).getAbsolutePath())); }
         catch (IOException e) { e.printStackTrace(); }
@@ -41,10 +43,46 @@ public class Renderer {
             }
         }
 
-        Image returnImage  = toAdd;
+       returnImage  = toAdd;
 
         return returnImage;
 
     }
+
+    // used if a key is needed to be colored
+    public Image mergeImages(String toAddOnTop, boolean addToWall, Color tintColor) {
+        // creates the image
+        Image returnImage;
+        Color col, holdColor;
+        BufferedImage toAdd = null;
+
+
+        try { toAdd = (BufferedImage) ImageIO.read(new File(new File(toAddOnTop).getAbsolutePath())); }
+        catch (IOException e) { e.printStackTrace(); }
+
+        //combine the images
+        for (int i = 0; i < toAdd.getWidth(); i++){
+            for (int u = 0; u < toAdd.getHeight(); u++){
+                if (toAdd.getRGB(i,u) == 0 && addToWall)toAdd.setRGB(i,u,floor.getRGB(i,u));
+                else if (toAdd.getRGB(i,u) == 0 && addToWall == false)toAdd.setRGB(i,u,wall.getRGB(i,u));
+                else if (toAdd.getRGB(i,u) == Color.black.getRGB()) toAdd.setRGB(i,u,Color.black.getRGB());
+                else {
+                    holdColor = new Color(toAdd.getRGB(i,u), true);
+
+                    col = new Color(((holdColor.getRed() + tintColor.getRed()) / 2)
+                            ,((holdColor.getGreen() + tintColor.getGreen()) / 2),
+                            ((holdColor.getBlue() + tintColor.getBlue()) / 2));
+
+                    toAdd.setRGB(i,u,col.getRGB());
+                }
+            }
+        }
+
+        returnImage  = toAdd;
+
+        return returnImage;
+    }
+
+
 
 }
