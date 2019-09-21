@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.io.File;
 
 import javax.swing.BorderFactory;
@@ -46,8 +47,6 @@ public class DisplayPanel extends JPanel {
 
 		for (int x = 0; x < gl.getColumns(); x++) {
 			for (int y = 0; y < gl.getRows(); y++) {
-				JPanel square = new JPanel();
-
 				String path;
 
 				// Gets the correct image path.
@@ -57,13 +56,12 @@ public class DisplayPanel extends JPanel {
 					path = level[x][y].getImagePath();
 				}
 
-				JLabel img = new JLabel(new ImageIcon(new File(path).getAbsolutePath()));
+				ImageIcon icon = new ImageIcon(new File(path).getAbsolutePath());
+				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-				square.add(img);
-				square.setBorder(BorderFactory.createEtchedBorder());
+				JLabel img = new JLabel(new ImageIcon(scaledImage));
 
-				add(square);
-
+				add(img);
 			}
 		}
 	}
