@@ -82,7 +82,7 @@ public class Key implements Tile {
 	}
 
 	@Override
-	public BufferedImage getImageToDisplay() {
+	public String getImagePath() {
 		return null;
 	}
 

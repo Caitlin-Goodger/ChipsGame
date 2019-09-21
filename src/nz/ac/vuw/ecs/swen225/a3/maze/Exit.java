@@ -67,7 +67,7 @@ public class Exit implements Tile {
 	}
 
 	@Override
-	public BufferedImage getImageToDisplay() {
+	public String getImagePath() {
 		return null;
 	}
 

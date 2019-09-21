@@ -72,7 +72,7 @@ public class Wall implements Tile {
 	}
 
 	@Override
-	public BufferedImage getImageToDisplay() {
+	public String getImagePath() {
 		return null;
 	}
 

@@ -67,7 +67,7 @@ public class Free implements Tile {
 	}
 
 	@Override
-	public BufferedImage getImageToDisplay() {
+	public String getImagePath() {
 		return null;
 	}
 

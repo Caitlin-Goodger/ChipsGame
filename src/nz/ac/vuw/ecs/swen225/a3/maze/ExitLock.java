@@ -70,7 +70,7 @@ public class ExitLock implements Tile {
 	}
 
 	@Override
-	public BufferedImage getImageToDisplay() {
+	public String getImagePath() {
 		return null;
 	}
 

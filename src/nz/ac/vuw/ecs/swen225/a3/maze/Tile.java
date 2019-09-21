@@ -49,7 +49,7 @@ public interface Tile {
     public boolean isObjectSolid();
 
     // returns the image so it can be rendered
-    public BufferedImage getImageToDisplay();
+    public String getImagePath();
 
   //used for testing and just get X position on map
 	public int getXPosition();
