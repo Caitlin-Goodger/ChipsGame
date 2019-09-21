@@ -73,7 +73,7 @@ public class Wall implements Tile {
 
 	@Override
 	public String getImagePath() {
-		return null;
+		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC1.png";
 	}
 
 	@Override
