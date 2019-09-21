@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
-import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.*;
 import java.io.File;
 
 import javax.swing.BorderFactory;
@@ -67,8 +66,14 @@ public class DisplayPanel extends JPanel {
 				ImageIcon icon = new ImageIcon(new File(path).getAbsolutePath());
 				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-				if ( level[x][y] instanceof Key) scaledImage = ren.mergeImages(path, true).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-				else if ( level[x][y] instanceof LockedDoor) scaledImage = ren.mergeImages(path, false).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+				// used to change the color of the key and lock also able to place them on backgrounds 
+				if ( level[x][y] instanceof Key) {
+					scaledImage = ren.mergeImages(path, true, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+				}
+				else if ( level[x][y] instanceof LockedDoor) {
+					scaledImage = ren.mergeImages(path, false, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+				}
+
 
 
 				JLabel img = new JLabel(new ImageIcon(scaledImage));
