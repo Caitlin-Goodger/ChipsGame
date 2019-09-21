@@ -90,6 +90,15 @@ public class Maze
   }
   
   /*
+   * set a tile on the maze
+   */
+  public void setTile(XYPos pos, Tile tile) {
+	  int x = pos.getX();
+	  int y = pos.getY();
+	  tiles[y][x] = tile;
+  }
+  
+  /*
    * Change a tile on the maze to a free tile
    * @param origin - the tile to be changed
    */

@@ -84,6 +84,13 @@ public class Chap implements Tile {
 	}
 	
 	/*
+	 * 
+	 */
+	public Tile getOnTile() {
+		return this.onTile;
+	}
+	
+	/*
 	 * Update the tile that Chap is standing on after moving
 	 */
 	public void setOnTile(Tile tile) {

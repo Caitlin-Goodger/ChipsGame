@@ -71,16 +71,15 @@ public class Game
 		  //do nothing
 	  }
 	  else if (destination instanceof Free) {
-		  //move chap in direction
-		  chap.updatePosition(direction);
+		  moveChap(direction, destination);
 	  }
 	  else if (destination instanceof Key) {
-		  //move chap in direction
-		  chap.updatePosition(direction);
 		  //pickup the key
 		  chap.pickupItem(destination);
-		  //change the key tile to free
+		  //remove key from map
 		  maze.changeToFree(destination);
+		  //move chap in direction
+		  moveChap(direction, destination);
 	  }
 	  else if (destination instanceof LockedDoor) {
 		  LockedDoor door = (LockedDoor)destination;
@@ -100,11 +99,11 @@ public class Game
 		  //remove treasure from map
 		  maze.changeToFree(destination);
 		  //move chap in direction
-		  chap.updatePosition(direction);
+		  moveChap(direction, destination);
 	  }
 	  else if (destination instanceof InfoField) {
 		  //move chap in direction
-		  chap.updatePosition(direction);
+		  moveChap(direction, destination);
 		  //displayInfo
 		  //...........
 	  }
@@ -114,10 +113,7 @@ public class Game
 			  //do nothing
 		  }
 		  else {
-			  //change ExitLock to free
-			  maze.changeToFree(destination);
-			  //move chap in direction
-			  chap.updatePosition(direction);
+			  moveChap(direction, destination);
 		  }
 	  }
 	  else if (destination instanceof Exit) {
@@ -131,11 +127,22 @@ public class Game
   
   /*
    * *Only called by the above move class
-   * Move chap in the given direction, and re-fresh the tile he was on
+   * Move chap in the given direction, and 
+   * re-fresh the tile he WAS on by replaceing it with chap's current onTile, and
+   * update onTile for chap
    * @param - the direction to move to
    */
-  public void moveChap(String direction) {
+  public void moveChap(char direction, Tile destinationTile) {
+	  XYPos originalPos = chap.currentPosition;
 	  
+	  //move chap in direction
+	  chap.updatePosition(direction);
+	  //re-fresh the tile he WAS on by replaceing it with chap's current onTile
+	  maze.setTile(originalPos, chap.getOnTile());
+	  //update onTile for chap
+	  chap.setOnTile(destinationTile);
+	 
+	 
   }
   
   
