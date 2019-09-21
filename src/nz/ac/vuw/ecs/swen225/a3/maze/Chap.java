@@ -94,7 +94,7 @@ public class Chap implements Tile {
 	 * Update the tile that Chap is standing on after moving
 	 */
 	public void setOnTile(Tile tile) {
-		
+		onTile = tile;
 	}
 
 	@Override

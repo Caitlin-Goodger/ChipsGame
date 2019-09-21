@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.io.File;
 
 import javax.swing.BorderFactory;
@@ -9,10 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.XYPos;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
 /**
@@ -20,7 +24,7 @@ import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
  */
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
-	
+
 	private Game game;
 
 	/**
@@ -33,7 +37,7 @@ public class DisplayPanel extends JPanel {
 	 */
 	public DisplayPanel(Game game) {
 		this.game = game;
-		
+
 		Border innerBorder = BorderFactory.createTitledBorder("Display");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -41,7 +45,7 @@ public class DisplayPanel extends JPanel {
 		gl = new GridLayout(9, 9);
 
 		setLayout(gl);
-		
+
 		drawPanel();
 	}
 
@@ -52,8 +56,13 @@ public class DisplayPanel extends JPanel {
 		Renderer ren = new Renderer();
 		Tile[][] level = game.getMaze().getTiles();
 
-		for (int x = 0; x < gl.getColumns(); x++) {
-			for (int y = 0; y < gl.getRows(); y++) {
+		Chap chap = game.getMaze().findChap();
+		XYPos chapLocation = chap.getTilePosition();
+
+		// Minus 4 from Chap's location for each dimension to get starting
+		// point.
+		for (int x = chapLocation.getX() - 4; x < gl.getColumns(); x++) {
+			for (int y = chapLocation.getY() - 4; y < gl.getRows(); y++) {
 				String path;
 
 				// Gets the correct image path.
@@ -66,15 +75,13 @@ public class DisplayPanel extends JPanel {
 				ImageIcon icon = new ImageIcon(new File(path).getAbsolutePath());
 				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-				// used to change the color of the key and lock also able to place them on backgrounds 
-				if ( level[x][y] instanceof Key) {
+				// used to change the color of the key and lock also able to place them on
+				// backgrounds
+				if (level[x][y] instanceof Key) {
 					scaledImage = ren.mergeImages(path, true, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-				}
-				else if ( level[x][y] instanceof LockedDoor) {
+				} else if (level[x][y] instanceof LockedDoor) {
 					scaledImage = ren.mergeImages(path, false, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				}
-
-
 
 				JLabel img = new JLabel(new ImageIcon(scaledImage));
 
