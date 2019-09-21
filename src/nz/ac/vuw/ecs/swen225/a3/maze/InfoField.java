@@ -108,6 +108,6 @@ public class InfoField implements Tile {
 
 	@Override
 	public String toString() {
-		return "K";
+		return "I";
 	}
 }
