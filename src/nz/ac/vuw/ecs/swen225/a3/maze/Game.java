@@ -89,7 +89,7 @@ public class Game
 			  //move chap in direction
 			  chap.updatePosition(direction);
 			  //remove the used key from chap's inventory
-			  //chap.removeItem(door.getColour(), "Key");
+			  //chap.removeItem(door.getColour(), "Key"); //removes key from inventory
 		  }
 		  else {
 			  //do nothing
