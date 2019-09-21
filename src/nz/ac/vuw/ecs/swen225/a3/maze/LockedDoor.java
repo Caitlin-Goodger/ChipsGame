@@ -115,6 +115,6 @@ public class LockedDoor implements Tile {
 
 	@Override
 	public String toString() {
-		return "Locked Door";
+		return "D";
 	}
 }

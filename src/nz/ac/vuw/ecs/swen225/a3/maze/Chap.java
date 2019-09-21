@@ -158,6 +158,6 @@ public class Chap implements Tile {
 
 	@Override
 	public String toString() {
-		return "Chap";
+		return "C";
 	}
 }

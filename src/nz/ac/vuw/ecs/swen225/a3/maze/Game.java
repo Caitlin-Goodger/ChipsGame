@@ -23,13 +23,14 @@ public class Game {
 	public Game(Maze aMaze) {
 		this.maze = aMaze;
 
-//		if (!setMaze(aMaze)) {
-//			throw new RuntimeException(
-//					"Unable to create Game due to aMaze. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
-//		}
-//		if (maze.findChap() == null) {
-//			throw new RuntimeException("did not locate chap on map!");
-//		}
+		if (!setMaze(aMaze)) {
+			throw new RuntimeException(
+					"Unable to create Game due to aMaze. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
+		}
+		if (maze.findChap() == null) {
+			throw new RuntimeException("did not locate chap on map!");
+		}
+			
 		this.chap = maze.findChap();
 	}
 

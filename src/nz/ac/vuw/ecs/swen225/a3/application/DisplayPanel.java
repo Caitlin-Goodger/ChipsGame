@@ -13,7 +13,6 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
 /**
@@ -42,8 +41,6 @@ public class DisplayPanel extends JPanel {
 		gl = new GridLayout(9, 9);
 
 		setLayout(gl);
-
-		game.getMaze().setTiles();;
 		
 		drawPanel();
 	}
@@ -51,7 +48,7 @@ public class DisplayPanel extends JPanel {
 	/**
 	 * For display purposes only. Draws 9x9 tiles to screen.
 	 */
-	private void drawPanel() {
+	public void drawPanel() {
 		Renderer ren = new Renderer();
 		Tile[][] level = game.getMaze().getTiles();
 

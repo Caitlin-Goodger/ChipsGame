@@ -93,6 +93,6 @@ public class Exit implements Tile {
 
 	@Override
 	public String toString() {
-		return "Exit";
+		return "X";
 	}
 }

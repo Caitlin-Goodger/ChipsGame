@@ -93,6 +93,6 @@ public class Free implements Tile {
 
 	@Override
 	public String toString() {
-		return "Free";
+		return "F";
 	}
 }
