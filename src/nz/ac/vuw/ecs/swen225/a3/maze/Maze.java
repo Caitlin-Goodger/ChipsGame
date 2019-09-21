@@ -112,17 +112,18 @@ public class Maze
   }
   
   /*
-   * @return - true if there are still treasure left to collect in the Maze
+   * @return - number of treasures remaining in this level
    */
-  public boolean hasTreasureLeft() {
+  public int remainingTreasure() {
 	  Tile target;
+	  int count = 0;
 	  for(int row = 0; row<rows; row++) {
 		  for(int col = 0; col<cols; col++) {
 			  target = tiles[row][col];
-			  if(target instanceof Treasure) return false;
+			  if(target instanceof Treasure) count++;
 		  }
 	  }
-	  return true;
+	  return count;
   }
 
   //------------------------

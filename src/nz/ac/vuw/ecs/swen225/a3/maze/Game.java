@@ -97,7 +97,7 @@ public class Game {
 			// ...........
 		} else if (destination instanceof ExitLock) {
 			// check if there is still treasure to collect
-			if (maze.hasTreasureLeft()) {
+			if (maze.remainingTreasure() != 0) {
 				// do nothing
 			} else {
 				moveChap(direction, destination);
