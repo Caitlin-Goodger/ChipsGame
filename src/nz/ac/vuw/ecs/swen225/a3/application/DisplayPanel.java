@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Free;
+import nz.ac.vuw.ecs.swen225.a3.maze.InfoField;
+import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Level;
@@ -54,7 +56,8 @@ public class DisplayPanel extends JPanel {
 				String path = "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC2.png";
 
 				// Gets the correct image path.
-				if (level[x][y] instanceof Free || level[x][y] instanceof Wall) {
+				if (level[x][y] instanceof Free || level[x][y] instanceof Wall || level[x][y] instanceof InfoField
+						|| level[x][y] instanceof Key) {
 					path = level[x][y].getImagePath();
 				}
 
