@@ -28,7 +28,7 @@ import org.junit.Test;
 //import swen225.*;
 
 
-public class CluedoTest {
+public class GameTest {
 	
 	@Test public void test01() {
 		assertEquals(1,1);
