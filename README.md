@@ -2,8 +2,18 @@
 
 ## For my team mates ##
 
-Working on:
-- GUI
+To-do:
+- Inventory working (Display items)
+- Info Field show information
+- Implement pause game
+- Implement camera follow
+- Implement key colours and lock colours
+- Time tracker
+- Show chips left
+- Show level
+- Implement more levels
+- Method to save game
+- Method to load game
 
 ## How to play: ##
 
