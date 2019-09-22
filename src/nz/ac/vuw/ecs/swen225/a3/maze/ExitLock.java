@@ -13,7 +13,7 @@ public class ExitLock implements Tile {
 	boolean unlocked;
 
 	/**
-	 * Constructor for the exit tile. 
+	 * Constructor for the exitlock tile. 
 	 * @param xGrid = x co-ordinate in of the tile on the grid.
 	 * @param yGrid = y co-ordinate in of the tile on the grid.
 	 * @param xScreen = x co-ordinate in of the tile on the screen.
