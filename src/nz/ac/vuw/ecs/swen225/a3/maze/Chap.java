@@ -15,7 +15,7 @@ public class Chap implements Tile {
 	private Tile onTile; 
 	
 	/**
-	 * Constructor for the Chap file. 
+	 * Constructor for the Chap tile. 
 	 * @param xGrid = x co-ordinate in of the tile on the grid.
 	 * @param yGrid = y co-ordinate in of the tile on the grid.
 	 * @param xScreen = x co-ordinate in of the tile on the screen.
