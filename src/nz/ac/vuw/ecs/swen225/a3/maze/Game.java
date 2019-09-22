@@ -94,6 +94,10 @@ public class Game {
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof InfoField) {
+			InfoField info = (InfoField) this.getMaze().getTile(destination.getYPosition(), destination.getXPosition());
+			
+			System.out.println(info.getText());
+			
 			// move chap in direction
 			moveChap(direction, destination);
 			// displayInfo

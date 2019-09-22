@@ -284,6 +284,7 @@ public class MainFrame extends JFrame {
 			}
 
 			interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
+			interfacePanel.levelField.setText(game.getMaze().getLevel());
 			
 			displayPanel.removeAll();
 			displayPanel.drawPanel();
