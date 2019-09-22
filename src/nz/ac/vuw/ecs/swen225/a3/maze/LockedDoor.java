@@ -106,7 +106,7 @@ public class LockedDoor implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC6.png";
+		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC11.png";
 	}
 
 	/**
