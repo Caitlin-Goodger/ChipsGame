@@ -759,4 +759,48 @@ public class GameTest {
 		assertEquals(5, tile.getYPosition());
 	}
 	
+	@Test public void test136() {
+		Tile tile = new Chap(5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test137() {
+		Tile tile = new Exit(5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test138() {
+		Tile tile = new ExitLock(5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test139() {
+		Tile tile = new Free(5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test140() {
+		Tile tile = new InfoField(null,5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test141() {
+		Tile tile = new Key(null,5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test142() {
+		Tile tile = new LockedDoor(null,5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test143() {
+		Tile tile = new Treasure(5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
+	
+	@Test public void test144() {
+		Tile tile = new Wall(5,5,5,5);	
+		assertEquals(true, tile.loadImage());
+	}
 }

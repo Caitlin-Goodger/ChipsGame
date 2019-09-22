@@ -44,8 +44,6 @@ public class Key implements Tile {
 		return colour;
 	}
 
-	public void delete() {
-	}
 
 	/**
 	 * Update the position that the tile is in.
@@ -69,8 +67,8 @@ public class Key implements Tile {
 	 * Load the image of the tile. 
 	 */
 	@Override
-	public void loadImage() {
-
+	public boolean loadImage() {
+		return true;
 	}
 
 	/**

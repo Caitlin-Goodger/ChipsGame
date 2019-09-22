@@ -46,8 +46,8 @@ public class ExitLock implements Tile {
 	 * Load the image of the tile. 
 	 */
 	@Override
-	public void loadImage() {
-
+	public boolean loadImage() {
+		return true;
 	}
 
 	/**

@@ -25,7 +25,7 @@ public interface Tile {
     /**
      *  Used to load the images bassed off the file path note using bufferedImage
      */
-    public void loadImage();
+    public boolean loadImage();
 
     /**
      * used to get the tiles positions
