@@ -62,6 +62,7 @@ public class Key implements Tile {
 		} else if (direction == 'W') {
 			currentPosition.updatePos(-1, 0);
 		}
+		currentPositionOnScreen = currentPosition;
 	}
 
 	/**

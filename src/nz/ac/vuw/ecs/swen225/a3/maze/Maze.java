@@ -2,8 +2,6 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
-// line 28 "model.ump"
-// line 117 "model.ump"
 public class Maze {
 
 	private Tile tiles[][];
