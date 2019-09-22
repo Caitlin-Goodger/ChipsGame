@@ -126,8 +126,8 @@ public class Game {
 		chap.updatePosition(direction);
 		XYPos destinationPos = chap.currentPosition;
 		// re-fresh the tile he WAS on by replaceing it with chap's current onTile
-		System.out.printf("setting original pos %s to chap's previous which is %s\n", originalPos.toString(),
-				chap.getOnTile().toString());
+//		System.out.printf("setting original pos %s to chap's previous which is %s\n", originalPos.toString(),
+//				chap.getOnTile().toString());
 		maze.setTile(originalPos, chap.getOnTile());
 		maze.setTile(destinationPos, chap);
 		// update onTile for chap

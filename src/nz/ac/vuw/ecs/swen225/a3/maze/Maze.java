@@ -106,11 +106,11 @@ public class Maze {
 			break;
 		}
 
-		System.out.printf("original pos:%s\n", origin.toString());
-		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
-		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
-				destination.toString());
-		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(), destination.getYPosition());
+//		System.out.printf("original pos:%s\n", origin.toString());
+//		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
+//		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
+//				destination.toString());
+//		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(), destination.getYPosition());
 		return destination;
 	}
 
@@ -121,7 +121,7 @@ public class Maze {
 		int x = pos.getX();
 		int y = pos.getY();
 		tiles[y][x] = tile;
-		System.out.printf("Setting tile at %s to %s--\n", pos.toString(), tile.toString());
+//		System.out.printf("Setting tile at %s to %s--\n", pos.toString(), tile.toString());
 		return true;
 	}
 	
@@ -143,7 +143,7 @@ public class Maze {
 		int y = target.getYPosition();
 		int xs = target.getXPositionOnScreen();
 		int ys = target.getYPositionOnScreen();
-		System.out.printf("Setting tile at x:%d y:%d which is %s to FREE\n", x, y, tiles[y][x].toString());
+//		System.out.printf("Setting tile at x:%d y:%d which is %s to FREE\n", x, y, tiles[y][x].toString());
 		tiles[y][x] = new Free(x, y, xs, ys);
 		return true;
 	}
