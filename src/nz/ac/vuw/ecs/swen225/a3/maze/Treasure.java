@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Treasure implements Tile {
 
-	boolean isSolid = true; // check if player can walkThrought
+	boolean isSolid = false; // check if player can walkThrought
 	XYPos currentPosition; // keeps track of tiles position within a grid
 	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the token

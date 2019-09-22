@@ -279,13 +279,13 @@ public class GameTest {
 	@Test public void test42() {
 		Tile chap = new Chap(5,5,5,5);
 		chap.updatePosition('N');		
-		assertEquals(6, chap.getYPosition());
+		assertEquals(4, chap.getYPosition());
 	}
 	
 	@Test public void test43() {
 		Tile chap = new Chap(5,5,5,5);
 		chap.updatePosition('S');		
-		assertEquals(4, chap.getYPosition());
+		assertEquals(6, chap.getYPosition());
 	}
 	
 	@Test public void test44() {
@@ -569,4 +569,194 @@ public class GameTest {
 		Tile tile = new Wall(5,5,5,5);		
 		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
 	}
+	
+	@Test public void test100() {
+		Tile tile = new Chap(5,5,5,5);		
+		assertEquals(false, tile.isObjectSolid());
+	}
+	
+	@Test public void test101() {
+		Tile tile = new Chap(5,5,5,5);		
+		assertEquals("C", tile.toString());
+	}
+	
+	@Test public void test102() {
+		Tile tile = new Chap(5,5,5,5);		
+		assertEquals("resources/CC6.png", tile.getImagePath());
+	}
+	
+	@Test public void test103() {
+		Tile tile = new Exit(5,5,5,5);		
+		assertEquals(true, tile.isObjectSolid());
+	}
+	
+	@Test public void test104() {
+		Tile tile = new Exit(5,5,5,5);		
+		assertEquals("X", tile.toString());
+	}
+	
+	@Test public void test105() {
+		Tile tile = new Exit(5,5,5,5);		
+		assertEquals("resources/CC10.png", tile.getImagePath());
+	}
+	
+	@Test public void test106() {
+		Tile tile = new ExitLock(5,5,5,5);		
+		assertEquals(true, tile.isObjectSolid());
+	}
+	
+	@Test public void test107() {
+		Tile tile = new ExitLock(5,5,5,5);		
+		assertEquals("L", tile.toString());
+	}
+	
+	@Test public void test108() {
+		Tile tile = new ExitLock(5,5,5,5);		
+		assertEquals("resources/CC9.png", tile.getImagePath());
+	}
+	
+	@Test public void test109() {
+		Tile tile = new Free(5,5,5,5);		
+		assertEquals(false, tile.isObjectSolid());
+	}
+	
+	@Test public void test110() {
+		Tile tile = new Free(5,5,5,5);		
+		assertEquals("F", tile.toString());
+	}
+	
+	@Test public void test111() {
+		Tile tile = new Free(5,5,5,5);		
+		assertEquals("resources/CC2.png", tile.getImagePath());
+	}
+	
+	@Test public void test112() {
+		Tile tile = new InfoField(null,5,5,5,5);		
+		assertEquals(false, tile.isObjectSolid());
+	}
+	
+	@Test public void test113() {
+		Tile tile = new InfoField(null,5,5,5,5);		
+		assertEquals("I", tile.toString());
+	}
+	
+	@Test public void test114() {
+		Tile tile = new InfoField(null,5,5,5,5);		
+		assertEquals("resources/CC8.png", tile.getImagePath());
+	}
+	
+	@Test public void test115() {
+		Tile tile = new Key(null,5,5,5,5);		
+		assertEquals(false, tile.isObjectSolid());
+	}
+	
+	@Test public void test116() {
+		Tile tile = new Key(null,5,5,5,5);		
+		assertEquals("K", tile.toString());
+	}
+	
+	@Test public void test117() {
+		Tile tile = new Key(null,5,5,5,5);		
+		assertEquals("resources/CC12.png", tile.getImagePath());
+	}
+	
+	@Test public void test118() {
+		Tile tile = new LockedDoor(null,5,5,5,5);		
+		assertEquals(true, tile.isObjectSolid());
+	}
+	
+	@Test public void test119() {
+		Tile tile = new LockedDoor(null,5,5,5,5);		
+		assertEquals("D", tile.toString());
+	}
+	
+	@Test public void test120() {
+		Tile tile = new LockedDoor(null,5,5,5,5);		
+		assertEquals("resources/CC11.png", tile.getImagePath());
+	}
+	
+	@Test public void test121() {
+		Tile tile = new Treasure(5,5,5,5);		
+		assertEquals(false, tile.isObjectSolid());
+	}
+	
+	@Test public void test122() {
+		Tile tile = new Treasure(5,5,5,5);		
+		assertEquals("T", tile.toString());
+	}
+	
+	@Test public void test123() {
+		Tile tile = new Treasure(5,5,5,5);		
+		assertEquals("resources/CC7.png", tile.getImagePath());
+	}
+	
+	@Test public void test124() {
+		Tile tile = new Wall(5,5,5,5);		
+		assertEquals(true, tile.isObjectSolid());
+	}
+	
+	@Test public void test125() {
+		Tile tile = new Wall(5,5,5,5);		
+		assertEquals("W", tile.toString());
+	}
+	
+	@Test public void test126() {
+		Tile tile = new Wall(5,5,5,5);		
+		assertEquals("resources/CC1.png", tile.getImagePath());
+	}
+	
+	@Test public void test127() {
+		Tile tile = new Chap(5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test128() {
+		Tile tile = new Exit(5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test129() {
+		Tile tile = new ExitLock(5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test130() {
+		Tile tile = new Free(5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test131() {
+		Tile tile = new InfoField(null,5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test132() {
+		Tile tile = new Key(null,5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test133() {
+		Tile tile = new LockedDoor(null,5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test134() {
+		Tile tile = new Treasure(5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
+	@Test public void test135() {
+		Tile tile = new Wall(5,5,5,5);
+		tile.updatePosition('D');		
+		assertEquals(5, tile.getYPosition());
+	}
+	
 }
