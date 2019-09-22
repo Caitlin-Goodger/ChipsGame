@@ -119,7 +119,7 @@ public class Game {
 	 * @param - the direction to move to
 	 */
 	public void moveChap(char direction, Tile destinationTile) {
-		XYPos originalPos = chap.currentPosition;
+		XYPos originalPos = new XYPos(chap.getXPosition(), chap.getYPosition());
 		// move chap in direction
 		chap.updatePosition(direction);
 		XYPos destinationPos = chap.currentPosition;
