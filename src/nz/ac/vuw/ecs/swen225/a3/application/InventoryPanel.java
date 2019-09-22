@@ -1,12 +1,17 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+
+import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 
 /**
  * Inventory panel that holds the objects collected by the player.
@@ -14,6 +19,8 @@ import javax.swing.border.Border;
 public class InventoryPanel extends JPanel {
 	private GridLayout gl;
 
+	private Game game;
+	
 	/**
 	 * Serial ID.
 	 */
@@ -22,7 +29,9 @@ public class InventoryPanel extends JPanel {
 	/**
 	 * Constructor for the inventory panel.
 	 */
-	public InventoryPanel() {
+	public InventoryPanel(Game game) {
+		this.game = game;
+		
 		Border innerBorder = BorderFactory.createTitledBorder("Inventory");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -37,17 +46,37 @@ public class InventoryPanel extends JPanel {
 	/**
 	 * For display purposes only. Draws 4x2 tiles to screen.
 	 */
-	private void drawInventory() {
-		for (int x = 0; x < gl.getColumns(); x++) {
-			for (int y = 0; y < gl.getRows(); y++) {
-				JPanel square = new JPanel();
-				square.setPreferredSize(new Dimension(50, 15));
+	public void drawInventory() {
+		int itemsAdded = 0;
 
-				square.setBackground(Color.WHITE);
-				square.setBorder(BorderFactory.createEtchedBorder());
+		Map<String, String> inventory = game.getChap().returnInventory();
 
-				add(square);
+		for (String item : inventory.keySet()) {
+			String path = null;
+			
+			if (item.equals("yellow")) {
+				path = "resources/CC12.png";
 			}
+
+			ImageIcon icon = new ImageIcon(new File(path).getPath());
+			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+			JLabel img = new JLabel(new ImageIcon(scaledImage));
+
+			add(img);
+
+			itemsAdded++;
+		}
+
+		for (int x = itemsAdded; x < 8; x++) {
+			String path = "resources/CC2.png";
+
+			ImageIcon icon = new ImageIcon(new File(path).getPath());
+			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+			JLabel img = new JLabel(new ImageIcon(scaledImage));
+
+			add(img);
 		}
 	}
 }

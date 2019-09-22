@@ -210,4 +210,14 @@ public class Chap implements Tile {
 		this.currentPosition = pos;
 		
 	}
+
+	
+	/**
+	 * Returns the inventory.
+	 * 
+	 * @return level
+	 */
+	public Map<String, String> returnInventory() {
+		return inventory;
+	}
 }

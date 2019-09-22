@@ -7,7 +7,8 @@ public class Game {
 
 	/**
 	 * Constructor for the Game
-	 * @param aMaze = maze for the game. 
+	 * 
+	 * @param aMaze = maze for the game.
 	 */
 	public Game(Maze aMaze) {
 		this.maze = aMaze;
@@ -19,12 +20,13 @@ public class Game {
 		if (maze.findChap() == null) {
 			throw new RuntimeException("did not locate chap on map!");
 		}
-			
+
 		this.chap = maze.findChap();
 	}
 
 	/**
-	 * Get the maze. 
+	 * Get the maze.
+	 * 
 	 * @return
 	 */
 	public Maze getMaze() {
@@ -32,7 +34,8 @@ public class Game {
 	}
 
 	/**
-	 * Set the Maze. 
+	 * Set the Maze.
+	 * 
 	 * @param aNewMaze
 	 * @return
 	 */
@@ -46,7 +49,7 @@ public class Game {
 	}
 
 	/**
-	 * Delete the maze. 
+	 * Delete the maze.
 	 */
 	public void delete() {
 		maze = null;
@@ -59,9 +62,9 @@ public class Game {
 	 */
 	public void move(char direction) {
 		Tile destination = maze.getNeighbouringTile(chap.currentPosition, direction);
-	    if (destination == null) {
-	    	//do nothing
-		}else if (destination instanceof Wall) {
+		if (destination == null) {
+			// do nothing
+		} else if (destination instanceof Wall) {
 			// do nothing
 		} else if (destination instanceof Free) {
 			moveChap(direction, destination);
@@ -69,14 +72,14 @@ public class Game {
 			// pickup the key
 			chap.pickupItem(destination);
 			// remove key from map
-			//maze.changeToFree(destination);
+			// maze.changeToFree(destination);
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof LockedDoor) {
 			LockedDoor door = (LockedDoor) destination;
 			if (door.canUnlock(chap)) {
 				// change the key tile to free
-				//maze.changeToFree(destination);
+				// maze.changeToFree(destination);
 				// move chap in direction
 				moveChap(direction, destination);
 				// remove the used key from chap's inventory
@@ -87,7 +90,7 @@ public class Game {
 			}
 		} else if (destination instanceof Treasure) {
 			// remove treasure from map
-			//maze.changeToFree(destination);
+			// maze.changeToFree(destination);
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof InfoField) {
@@ -98,7 +101,7 @@ public class Game {
 		} else if (destination instanceof ExitLock) {
 			// check if there is still treasure to collect
 			if (maze.remainingTreasure() != 0) {
-				// do nothing 
+				// do nothing
 			} else {
 				moveChap(direction, destination);
 			}
@@ -123,12 +126,22 @@ public class Game {
 		chap.updatePosition(direction);
 		XYPos destinationPos = chap.currentPosition;
 		// re-fresh the tile he WAS on by replaceing it with chap's current onTile
-		System.out.printf ("setting original pos %s to chap's previous which is %s\n", originalPos.toString(), chap.getOnTile().toString());
+		System.out.printf("setting original pos %s to chap's previous which is %s\n", originalPos.toString(),
+				chap.getOnTile().toString());
 		maze.setTile(originalPos, chap.getOnTile());
 		maze.setTile(destinationPos, chap);
 		// update onTile for chap
 		chap.setOnTile(destinationTile);
 
+	}
+
+	/**
+	 * Returns the chap.
+	 * 
+	 * @return chap
+	 */
+	public Chap getChap() {
+		return chap;
 	}
 
 }

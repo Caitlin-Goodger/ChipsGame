@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
 		gc.gridwidth = 1;
 		gc.gridheight = 1;
 
-		inventoryPanel = new InventoryPanel();
+		inventoryPanel = new InventoryPanel(game);
 		add(inventoryPanel, gc);
 
 		rulesPanel = new RulesPanel();
@@ -290,6 +290,12 @@ public class MainFrame extends JFrame {
 			
 			displayPanel.revalidate();
 			displayPanel.repaint();
+			
+			inventoryPanel.removeAll();
+			inventoryPanel.drawInventory();
+			
+			inventoryPanel.revalidate();
+			inventoryPanel.repaint();
 		}
 	}
 }
