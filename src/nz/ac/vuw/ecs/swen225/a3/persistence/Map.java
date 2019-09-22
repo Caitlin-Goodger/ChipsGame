@@ -37,6 +37,8 @@ public class Map {
 	 */
 	public boolean readFile(Maze maze, String levelName, String filename) {
 		try {
+			int keyColor = 0;
+			int doorColor = 0;
 			InputStream input = new FileInputStream(filename);
 			JsonReader reader = Json.createReader(input);
 			JsonObject obj = reader.readObject();
@@ -72,13 +74,30 @@ public class Map {
 						//tile = new ExitLock(j, i, j, i);
 						break;
 					case 5:
-						tile = new Key("yellow", i, j, i, j);
-					    //tile = new Key("yellow", j, i, j, i);
-						break;
+						if(keyColor == 0) {
+							tile = new Key("yellow", i, j, i, j);
+							keyColor ++;
+							//tile = new Key("yellow", j, i, j, i);
+							break;
+						}
+						else if (keyColor == 1) {
+							tile = new Key("blue", i, j, i, j);
+							keyColor --;
+							break;
+						}
 					case 6:
-						tile = new LockedDoor("yellow", i, j, i, j);
-						//tile = new LockedDoor("yellow", j, i, j, i);
-						break;
+						if(doorColor == 0) {
+							tile = new LockedDoor("yellow", i, j, i, j);
+							doorColor ++;
+							//tile = new LockedDoor("yellow", j, i, j, i);
+							break;
+						}
+						else if(doorColor == 1) {
+							tile = new LockedDoor("blue", i, j, i, j);
+							doorColor --;
+							//tile = new LockedDoor("yellow", j, i, j, i);
+							break;
+						}
 					case 7:
 						tile = new InfoField("Info Field",i, j, i, j);
 						//tile = new InfoField("Info Field", j, i, j, i);

@@ -60,7 +60,7 @@ public class InventoryPanel extends JPanel {
 		for (String item : inventory.keySet()) {
 			String path = null;
 
-			if (item.equals("yellow")) {
+			if (item.equals("yellow") || item.equals("blue")) {
 				path = "resources/CC12.png";
 			}
 
