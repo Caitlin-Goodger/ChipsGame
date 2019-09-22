@@ -21,6 +21,11 @@ public interface Tile {
        around him not he moves around the world
      */
     public void updatePosition(char direction);
+    
+    /*
+     * re-set the x and y value for XYPos
+     */
+    public void resetPosition(XYPos pos);
 
     /**
      *  Used to load the images bassed off the file path note using bufferedImage

@@ -187,4 +187,13 @@ public class Chap implements Tile {
 	public String toString() {
 		return "C";
 	}
+	
+	/*
+	 * re-set the XYPos
+	 */
+	@Override
+	public void resetPosition(XYPos pos) {
+		this.currentPosition = pos;
+		
+	}
 }

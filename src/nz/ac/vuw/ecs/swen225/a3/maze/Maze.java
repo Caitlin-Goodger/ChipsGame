@@ -101,6 +101,28 @@ public class Maze {
 			break;
 		}
 		
+//		case 'N':
+//			if (y - 1 < 0)
+//				return null;
+//			destination = tiles[x][y - 1];
+//			break;
+//		case 'E':
+//			if (x + 1 >= cols)
+//				return null;
+//			destination = tiles[x + 1][y];
+//			break;
+//		case 'S':
+//			if (y + 1 >= rows)
+//				return null;
+//			destination = tiles[x][y + 1];
+//			break;
+//		default:// W
+//			if (x - 1 < 0)
+//				return null;
+//			destination = tiles[x - 1][y];
+//			break;
+//		}
+		
 		System.out.printf("original pos:%s\n", origin.toString());
 		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
 		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n",direction, destination.toString());
@@ -129,6 +151,8 @@ public class Maze {
 		int xs = target.getXPositionOnScreen();
 		int ys = target.getYPositionOnScreen();
 		tiles[x][y] = new Free(x, y, xs, ys);
+		System.out.printf("Setting tile at x:%d y:%d to FREE", x,y);
+		
 	}
 
 	/*

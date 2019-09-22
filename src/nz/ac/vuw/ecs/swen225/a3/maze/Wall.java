@@ -117,4 +117,10 @@ public class Wall implements Tile {
 	public String toString() {
 		return "W";
 	}
+
+	@Override
+	public void resetPosition(XYPos pos) {
+		this.currentPosition = pos;
+		
+	}
 }

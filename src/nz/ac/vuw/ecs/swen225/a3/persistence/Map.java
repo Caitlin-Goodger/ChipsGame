@@ -53,30 +53,39 @@ public class Map {
 					switch (value) {
 					case 0:
 						tile = new Free(i, j, i, j);
+						//tile = new Free(j, i, j, i);
 						break;
 					case 1:
 						tile = new Wall(i, j, i, j);
+						//tile = new Wall(j, i, j, i);
 						break;
 					case 2:
 						tile = new Chap(i, j, i, j);
+						//tile = new Chap(j, i, j, i);
 						break;
 					case 3:
 						tile = new Exit(i, j, i, j);
+						//tile = new Exit(j, i, j, i);
 						break;
 					case 4:
 						tile = new ExitLock(i, j, i, j);
+						//tile = new ExitLock(j, i, j, i);
 						break;
 					case 5:
 						tile = new Key("yellow", i, j, i, j);
+					    //tile = new Key("yellow", j, i, j, i);
 						break;
 					case 6:
 						tile = new LockedDoor("yellow", i, j, i, j);
+						//tile = new LockedDoor("yellow", j, i, j, i);
 						break;
 					case 7:
 						tile = new InfoField("Info Field",i, j, i, j);
+						//tile = new InfoField("Info Field", j, i, j, i);
 						break;
 					default:
 						tile = new Treasure(i, j, i, j);
+						//tile = new Treasure(j, i, j, i);
 					}
 
 					tiles[i][j] = tile;

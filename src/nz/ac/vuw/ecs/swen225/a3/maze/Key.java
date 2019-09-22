@@ -142,4 +142,13 @@ public class Key implements Tile {
 	public String toString() {
 		return "K";
 	}
+	
+	/*
+	 * re-set the XYPos
+	 */
+	@Override
+	public void resetPosition(XYPos pos) {
+		this.currentPosition = pos;
+		
+	}
 }

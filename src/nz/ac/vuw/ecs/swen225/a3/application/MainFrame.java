@@ -245,28 +245,28 @@ public class MainFrame extends JFrame {
 				System.out.println();
 				System.out.println("Up was pressed");
 				game.move('N');
-				game.getMaze().printConvertedLevel();
+				//game.getMaze().printConvertedLevel();
 			}
 
 			if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
 				System.out.println();
 				System.out.println("Down was pressed");
 				game.move('S');
-				game.getMaze().printConvertedLevel();
+				//game.getMaze().printConvertedLevel();
 			}
 
 			if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
 				System.out.println();
 				System.out.println("Left was pressed");
 				game.move('W');
-				game.getMaze().printConvertedLevel();
+				//game.getMaze().printConvertedLevel();
 			}
 
 			if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
 				System.out.println();
 				System.out.println("Right was pressed");
 				game.move('E');
-				game.getMaze().printConvertedLevel();
+				//game.getMaze().printConvertedLevel();
 			}
 
 			// Other
