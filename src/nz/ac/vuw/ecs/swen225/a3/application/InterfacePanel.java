@@ -19,11 +19,9 @@ public class InterfacePanel extends JPanel {
 	private JLabel timeLabel;
 	private JLabel chipsLeftLabel;
 
-	private JTextField levelField;
+	public JTextField levelField;
 	private JTextField timeField;
 	public JTextField chipsLeftField;
-
-	private int totalChipsLeft;
 
 	/**
 	 * Serial ID.
