@@ -10,8 +10,9 @@ import java.io.IOException;
 public class Renderer {
     String wallPath = "resources/CC1.png";
     String floorPath = "resources/CC2.png";
+    String inventortPath = "resources/CC13.png";
 
-    BufferedImage wall, floor;
+    BufferedImage wall, floor, inv;
 
     public Renderer() {
         // render the floor
@@ -20,6 +21,9 @@ public class Renderer {
 
         // render the wall
         try { floor = (BufferedImage) ImageIO.read(new File(floorPath)); }
+        catch (IOException e) { e.printStackTrace(); }
+
+        try { inv = (BufferedImage) ImageIO.read(new File(inventortPath)); }
         catch (IOException e) { e.printStackTrace(); }
 
     }
@@ -50,7 +54,7 @@ public class Renderer {
     }
 
     // used if a key is needed to be colored
-    public Image mergeImages(String toAddOnTop, boolean addToWall, Color tintColor) {
+    public Image mergeImages(String toAddOnTop, int addToWall, Color tintColor) {
         // creates the image
         Image returnImage;
         Color col, holdColor;
@@ -63,8 +67,11 @@ public class Renderer {
         //combine the images
         for (int i = 0; i < toAdd.getWidth(); i++){
             for (int u = 0; u < toAdd.getHeight(); u++){
-                if (toAdd.getRGB(i,u) == 0 && addToWall)toAdd.setRGB(i,u,floor.getRGB(i,u));
-                else if (toAdd.getRGB(i,u) == 0 && addToWall == false)toAdd.setRGB(i,u,wall.getRGB(i,u));
+                // added the basic backgrounds
+                if (toAdd.getRGB(i,u) == 0 && addToWall == 1)toAdd.setRGB(i,u,floor.getRGB(i,u));
+                else if (toAdd.getRGB(i,u) == 0 && addToWall == 2)toAdd.setRGB(i,u,wall.getRGB(i,u));
+                else if (toAdd.getRGB(i,u) == 0 && addToWall == 3)toAdd.setRGB(i,u,inv.getRGB(i,u));
+
                 else if (toAdd.getRGB(i,u) == Color.black.getRGB()) toAdd.setRGB(i,u,Color.black.getRGB());
                 else {
                     holdColor = new Color(toAdd.getRGB(i,u), true);

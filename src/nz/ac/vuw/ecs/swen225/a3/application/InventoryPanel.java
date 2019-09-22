@@ -69,7 +69,7 @@ public class InventoryPanel extends JPanel {
 
 			// used to change the color of the key and lock also able to place them on
 			// backgrounds
-			scaledImage = ren.mergeImages(path, true, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+			scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
 			JLabel img = new JLabel(new ImageIcon(scaledImage));
 
@@ -79,7 +79,7 @@ public class InventoryPanel extends JPanel {
 		}
 
 		for (int x = itemsAdded; x < 8; x++) {
-			String path = "resources/CC2.png";
+			String path = "resources/CC13.png";
 
 			ImageIcon icon = new ImageIcon(new File(path).getPath());
 			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);

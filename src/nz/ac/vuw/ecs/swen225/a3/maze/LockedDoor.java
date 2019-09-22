@@ -107,7 +107,8 @@ public class LockedDoor implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "resources/CC11.png";
+
+		return isSolid == true ? "resources/CC11.png" :"resources/CC2.png" ;
 	}
 
 	/**

@@ -77,9 +77,9 @@ public class DisplayPanel extends JPanel {
 				// used to change the color of the key and lock also able to place them on
 				// backgrounds
 				if (level[x][y] instanceof Key) {
-					scaledImage = ren.mergeImages(path, true, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+					scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				} else if (level[x][y] instanceof LockedDoor) {
-					scaledImage = ren.mergeImages(path, false, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+					scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				}
 
 				if(level[x][y] instanceof Treasure) totalChipsLeft++;
