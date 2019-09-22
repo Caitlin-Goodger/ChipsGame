@@ -277,6 +277,12 @@ public class MainFrame extends JFrame {
 			if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.out.println("ESC was pressed");
 			}
+			
+			displayPanel.removeAll();
+			displayPanel.drawPanel();
+			
+			displayPanel.revalidate();
+			displayPanel.repaint();
 		}
 	}
 }
