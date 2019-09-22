@@ -76,7 +76,7 @@ public class Game {
 			// pickup the key
 			chap.pickupItem(destination);
 			// remove key from map
-			maze.changeToFree(destination);
+			//maze.changeToFree(destination);
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof LockedDoor) {
@@ -85,7 +85,7 @@ public class Game {
 			if (door.canUnlock(chap)) {
 				System.out.println("can unlock!");
 				// change the key tile to free
-				maze.changeToFree(destination);
+				//maze.changeToFree(destination);
 				// move chap in direction
 				moveChap(direction, destination);
 				// remove the used key from chap's inventory
@@ -97,7 +97,7 @@ public class Game {
 		} else if (destination instanceof Treasure) {
 			System.out.println("Destination is treasure!!");
 			// remove treasure from map
-			maze.changeToFree(destination);
+			//maze.changeToFree(destination);
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof InfoField) {
@@ -136,7 +136,7 @@ public class Game {
 		chap.updatePosition(direction);
 		XYPos destinationPos = chap.currentPosition;
 		// re-fresh the tile he WAS on by replaceing it with chap's current onTile
-		System.out.println("setting original pos to chap's previous, and then destination to chap:");
+		System.out.printf ("setting original pos %s to chap's previous which is %s\n", originalPos.toString(), chap.getOnTile().toString());
 		maze.setTile(originalPos, chap.getOnTile());
 		maze.setTile(destinationPos, chap);
 		// update onTile for chap

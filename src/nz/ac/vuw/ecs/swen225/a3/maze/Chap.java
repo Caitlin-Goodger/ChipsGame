@@ -79,6 +79,9 @@ public class Chap implements Tile {
 	 * @return Tile. 
 	 */
 	public Tile getOnTile() {
+		if(this.onTile instanceof Key || this.onTile instanceof Treasure || this.onTile instanceof LockedDoor) {
+			return new Free(currentPosition.X, currentPosition.Y, currentPositionOnScreen.X, currentPositionOnScreen.Y);
+		}
 		return this.onTile;
 	}
 	

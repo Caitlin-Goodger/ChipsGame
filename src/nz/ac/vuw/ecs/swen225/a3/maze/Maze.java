@@ -72,7 +72,7 @@ public class Maze {
 	public Tile getNeighbouringTile(XYPos origin, char direction) {
 		int x = origin.getX();
 		int y = origin.getY();
-		Tile originTile = tiles[x][y]; // row, col
+		Tile originTile = tiles[y][x]; // row, col
 		Tile destination;
 		if (originTile == null)
 			return null;
@@ -83,21 +83,25 @@ public class Maze {
 			if (y - 1 < 0)
 				return null;
 			destination = tiles[y - 1][x];
+			destination.resetPosition(new XYPos(x,y-1));
 			break;
 		case 'E':
 			if (x + 1 >= cols)
 				return null;
 			destination = tiles[y][x + 1];
+			destination.resetPosition(new XYPos(x+1,y));
 			break;
 		case 'S':
 			if (y + 1 >= rows)
 				return null;
 			destination = tiles[y + 1][x];
+			destination.resetPosition(new XYPos(x,y+1));
 			break;
 		default:// W
 			if (x - 1 < 0)
 				return null;
 			destination = tiles[y][x - 1];
+			destination.resetPosition(new XYPos(x-1,y));
 			break;
 		}
 		
@@ -150,8 +154,8 @@ public class Maze {
 		int y = target.getYPosition();
 		int xs = target.getXPositionOnScreen();
 		int ys = target.getYPositionOnScreen();
-		tiles[x][y] = new Free(x, y, xs, ys);
-		System.out.printf("Setting tile at x:%d y:%d to FREE", x,y);
+		System.out.printf("Setting tile at x:%d y:%d which is %s to FREE\n", x,y, tiles[y][x].toString());
+		tiles[y][x] = new Free(x,y,xs,ys);
 		
 	}
 
