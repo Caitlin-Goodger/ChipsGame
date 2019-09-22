@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
@@ -12,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
+import nz.ac.vuw.ecs.swen225.a3.maze.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
+import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
 /**
  * Inventory panel that holds the objects collected by the player.
@@ -20,7 +24,7 @@ public class InventoryPanel extends JPanel {
 	private GridLayout gl;
 
 	private Game game;
-	
+
 	/**
 	 * Serial ID.
 	 */
@@ -31,7 +35,7 @@ public class InventoryPanel extends JPanel {
 	 */
 	public InventoryPanel(Game game) {
 		this.game = game;
-		
+
 		Border innerBorder = BorderFactory.createTitledBorder("Inventory");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -47,19 +51,25 @@ public class InventoryPanel extends JPanel {
 	 * For display purposes only. Draws 4x2 tiles to screen.
 	 */
 	public void drawInventory() {
+		Renderer ren = new Renderer();
+
 		int itemsAdded = 0;
 
 		Map<String, String> inventory = game.getChap().returnInventory();
 
 		for (String item : inventory.keySet()) {
 			String path = null;
-			
+
 			if (item.equals("yellow")) {
 				path = "resources/CC12.png";
 			}
 
 			ImageIcon icon = new ImageIcon(new File(path).getPath());
 			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+
+			// used to change the color of the key and lock also able to place them on
+			// backgrounds
+			scaledImage = ren.mergeImages(path, true, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
 			JLabel img = new JLabel(new ImageIcon(scaledImage));
 
