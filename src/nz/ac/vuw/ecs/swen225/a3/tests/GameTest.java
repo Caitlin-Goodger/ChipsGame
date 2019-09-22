@@ -480,4 +480,93 @@ public class GameTest {
 		assertEquals(5, tile.getYPosition());
 	}
 	
+	@Test public void test82() {
+		Tile chap = new Chap(5,5,5,5);		
+		assertEquals(5, chap.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test83() {
+		Tile chap = new Chap(5,5,5,5);		
+		assertEquals(5, chap.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test84() {
+		Tile chap = new Exit(5,5,5,5);		
+		assertEquals(5, chap.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test85() {
+		Tile tile = new Exit(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test86() {
+		Tile tile = new ExitLock(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test87() {
+		Tile tile = new ExitLock(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test88() {
+		Tile tile = new Free(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test89() {
+		Tile tile = new Free(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test90() {
+		Tile tile = new InfoField(null,5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test91() {
+		Tile tile = new InfoField(null,5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test92() {
+		Tile tile = new Key(null,5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test93() {
+		Tile tile = new Key(null,5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test94() {
+		Tile tile = new LockedDoor(null,5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test95() {
+		Tile tile = new LockedDoor(null,5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test96() {
+		Tile tile = new Treasure(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test97() {
+		Tile tile = new Treasure(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
+	
+	@Test public void test98() {
+		Tile tile = new Wall(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getX());
+	}
+	
+	@Test public void test99() {
+		Tile tile = new Wall(5,5,5,5);		
+		assertEquals(5, tile.getCurrentPositionOnScreen().getY());
+	}
 }
