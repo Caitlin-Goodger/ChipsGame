@@ -1,39 +1,34 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-/*PLEASE DO NOT EDIT THIS CODE*/
-
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
-
 import java.awt.image.BufferedImage;
 
-// line 44 "model.ump"
-// line 132 "model.ump"
 public class Key implements Tile {
 
-	// ------------------------
-	// MEMBER VARIABLES
-	// ------------------------
-
-	// Key Attributes
 	private String colour;
 	boolean isSolid = true; // check if player can walkThrought
 	XYPos currentPosition; // keeps track of tiles position within a grid
 	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
-	BufferedImage imageToDisplay; // the image for the tokken
-	// ------------------------
-	// CONSTRUCTOR
-	// ------------------------
+	BufferedImage imageToDisplay; // the image for the token
 
+	/**
+	 * Constructor for the Key class. 
+	 * @param aColour = colour of the key. 
+	 * @param xGrid = x co-ordinate in of the tile on the grid.
+	 * @param yGrid = y co-ordinate in of the tile on the grid.
+	 * @param xScreen = x co-ordinate in of the tile on the screen.
+	 * @param yScreen = y co-ordinate in of the tile on the screen.
+	 */
 	public Key(String aColour, int xGrid, int yGrid, int xScreen, int yScreen) {
 		colour = aColour;
 		currentPosition = new XYPos(xGrid, yGrid);
 		currentPositionOnScreen = new XYPos(xScreen, yScreen);
 	}
-
-	// ------------------------
-	// INTERFACE
-	// ------------------------
-
+	
+	/**
+	 * Set of the colour of the key. 
+	 * @param aColour
+	 * @return
+	 */
 	public boolean setColour(String aColour) {
 		boolean wasSet = false;
 		colour = aColour;
@@ -41,6 +36,10 @@ public class Key implements Tile {
 		return wasSet;
 	}
 
+	/**
+	 * Get the colour of the key. 
+	 * @return
+	 */
 	public String getColour() {
 		return colour;
 	}
@@ -48,64 +47,98 @@ public class Key implements Tile {
 	public void delete() {
 	}
 
+	/**
+	 * Update the position that the tile is in.
+	 * @param direction = direction. 
+	 */
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
-			currentPositionOnScreen.updatePos(0, 1);
+			currentPosition.updatePos(0, 1);
 		} else if (direction == 'S') {
-			currentPositionOnScreen.updatePos(0, -1);
+			currentPosition.updatePos(0, -1);
 		} else if (direction == 'E') {
-			currentPositionOnScreen.updatePos(1, 0);
+			currentPosition.updatePos(1, 0);
 		} else if (direction == 'W') {
-			currentPositionOnScreen.updatePos(-1, 0);
+			currentPosition.updatePos(-1, 0);
 		}
 	}
 
+	/**
+	 * Load the image of the tile. 
+	 */
 	@Override
 	public void loadImage() {
 
 	}
 
+	/**
+	 * Get the current position of the tile on the grid. 
+	 */
 	@Override
 	public XYPos getTilePosition() {
 		return currentPosition;
 	}
 
+	/**
+	 * Get the current position of the tile on the screen. 
+	 */
 	@Override
 	public XYPos getCurrentPositionOnScreen() {
 		return currentPositionOnScreen;
 	}
 
+	/**
+	 * Check whether the object is solid. 
+	 */
 	@Override
 	public boolean isObjectSolid() {
 		return isSolid;
 	}
 
+	/**
+	 * Get the path of the image. 
+	 */
 	@Override
 	public String getImagePath() {
-		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC12.png";
+		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC6.png";
 	}
 
+	/**
+	 * Get the y co-ordinate of the tile on the screen. 
+	 */
 	@Override
 	public int getYPositionOnScreen() {
 		return currentPositionOnScreen.getY();
 	}
 
+	/**
+	 * Get the x co-ordinate of the tile on the screen. 
+	 */
 	@Override
 	public int getXPositionOnScreen() {
 		return currentPositionOnScreen.getX();
 	}
 
+	/**
+	 * Get the y co-ordinate of the tile on the grid. 
+	 */
 	@Override
 	public int getYPosition() {
 		return currentPosition.getY();
 	}
 
+	/**
+	 * Get the x co-ordinate of the tile on the grid.
+	 */
 	@Override
 	public int getXPosition() {
 		return currentPosition.getX();
 	}
 
+	/**
+	 * To String Method.
+	 */
 	@Override
 	public String toString() {
 		return "K";
