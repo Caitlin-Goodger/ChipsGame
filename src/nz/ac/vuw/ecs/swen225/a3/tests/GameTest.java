@@ -803,4 +803,37 @@ public class GameTest {
 		Tile tile = new Wall(5,5,5,5);	
 		assertEquals(true, tile.loadImage());
 	}
+	
+	@Test public void test145() {
+		InfoField tile = new InfoField("InfoField",5,5,5,5);	
+		assertEquals("InfoField", tile.getText());
+	}
+	
+	@Test public void test146() {
+		InfoField tile = new InfoField("InfoField",5,5,5,5);	
+		tile.setText("Info");
+		assertEquals("Info", tile.getText());
+	}
+	
+	@Test public void test147() {
+		Key tile = new Key("yellow",5,5,5,5);	
+		assertEquals("yellow", tile.getColour());
+	}
+	
+	@Test public void test148() {
+		Key tile = new Key("yellow",5,5,5,5);
+		tile.setColour("red");
+		assertEquals("red", tile.getColour());
+	}
+	
+	@Test public void test149() {
+		LockedDoor tile = new LockedDoor("yellow",5,5,5,5);	
+		assertEquals("yellow", tile.getColour());
+	}
+	
+	@Test public void test150() {
+		LockedDoor tile = new LockedDoor("yellow",5,5,5,5);
+		tile.setColour("red");
+		assertEquals("red", tile.getColour());
+	}
 }
