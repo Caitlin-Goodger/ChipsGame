@@ -72,12 +72,12 @@ public class Maze {
 	public Tile getNeighbouringTile(XYPos origin, char direction) {
 		int x = origin.getX();
 		int y = origin.getY();
-		Tile originTile = tiles[y][x]; // row, col
+		Tile originTile = tiles[x][y]; // row, col
 		Tile destination;
 		if (originTile == null)
 			return null;
 
-		// need to implement checks for going off the maze
+		 //need to implement checks for going off the maze
 		switch (direction) {
 		case 'N':
 			if (y - 1 < 0)
@@ -100,7 +100,11 @@ public class Maze {
 			destination = tiles[y][x - 1];
 			break;
 		}
-
+		
+		System.out.printf("original pos:%s\n", origin.toString());
+		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
+		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n",direction, destination.toString());
+		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(), destination.getYPosition());
 		return destination;
 	}
 
@@ -111,6 +115,7 @@ public class Maze {
 		int x = pos.getX();
 		int y = pos.getY();
 		tiles[y][x] = tile;
+		System.out.printf("Setting tile at %s to %s--\n", pos.toString(), tile.toString());
 	}
 
 	/*
@@ -118,12 +123,12 @@ public class Maze {
 	 * 
 	 * @param origin - the tile to be changed
 	 */
-	public void changeToFree(Tile origin) {
-		int x = origin.getXPosition();
-		int y = origin.getYPosition();
-		int xs = origin.getXPositionOnScreen();
-		int ys = origin.getYPositionOnScreen();
-		tiles[y][x] = new Free(x, y, xs, ys);
+	public void changeToFree(Tile target) {
+		int x = target.getXPosition();
+		int y = target.getYPosition();
+		int xs = target.getXPositionOnScreen();
+		int ys = target.getYPositionOnScreen();
+		tiles[x][y] = new Free(x, y, xs, ys);
 	}
 
 	/*

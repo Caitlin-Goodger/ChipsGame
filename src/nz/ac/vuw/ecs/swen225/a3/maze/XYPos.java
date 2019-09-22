@@ -35,4 +35,8 @@ public class XYPos {
         X = X + addToX;
         Y = Y + addToY;
     }
+    
+    public String toString() {
+    	return "X:"+ this.X + " Y:" + this.Y;
+    }
 }
