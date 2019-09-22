@@ -8,18 +8,18 @@ import java.io.File;
 import java.io.IOException;
 
 public class Renderer {
-    String wallPath = "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC1.png";
-    String floorPath = "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC2.png";
+    String wallPath = "resources/CC1.png";
+    String floorPath = "resources/CC2.png";
 
     BufferedImage wall, floor;
 
     public Renderer() {
         // render the floor
-        try { wall = (BufferedImage) ImageIO.read(new File(new File(wallPath).getAbsolutePath())); }
+        try { wall = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(wallPath).getFile())); }
         catch (IOException e) { e.printStackTrace(); }
 
         // render the wall
-        try { floor = (BufferedImage) ImageIO.read(new File(new File(floorPath).getAbsolutePath())); }
+        try { floor = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(floorPath).getFile())); }
         catch (IOException e) { e.printStackTrace(); }
 
     }
@@ -32,7 +32,7 @@ public class Renderer {
         // creates the image
         Image returnImage;
         BufferedImage toAdd = null;
-        try { toAdd = (BufferedImage) ImageIO.read(new File(new File(toAddOnTop).getAbsolutePath())); }
+        try { toAdd = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(toAddOnTop).getFile())); }
         catch (IOException e) { e.printStackTrace(); }
 
         //combine the images
@@ -57,7 +57,7 @@ public class Renderer {
         BufferedImage toAdd = null;
 
 
-        try { toAdd = (BufferedImage) ImageIO.read(new File(new File(toAddOnTop).getAbsolutePath())); }
+        try { toAdd = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(toAddOnTop).getFile())); }
         catch (IOException e) { e.printStackTrace(); }
 
         //combine the images

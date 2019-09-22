@@ -97,9 +97,9 @@ public class Chap implements Tile {
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
-			currentPosition.updatePos(0, 1);
-		} else if (direction == 'S') {
 			currentPosition.updatePos(0, -1);
+		} else if (direction == 'S') {
+			currentPosition.updatePos(0, 1);
 		} else if (direction == 'E') {
 			currentPosition.updatePos(1, 0);
 		} else if (direction == 'W') {
@@ -145,7 +145,7 @@ public class Chap implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC6.png";
+		return "resources/CC6.png";
 	}
 
 	/**

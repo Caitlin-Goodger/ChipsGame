@@ -77,7 +77,7 @@ public class Exit implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC10.png";
+		return "resources/CC10.png";
 	}
 
 	/**

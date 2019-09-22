@@ -77,7 +77,7 @@ public class Free implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC2.png";
+		return "resources/CC2.png";
 	}
 
 	/**

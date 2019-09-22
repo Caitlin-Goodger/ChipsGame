@@ -100,7 +100,7 @@ public class InfoField implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC8.png";
+		return "resources/CC8.png";
 	}
 
 	/**

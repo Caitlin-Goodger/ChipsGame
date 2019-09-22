@@ -69,12 +69,12 @@ public class DisplayPanel extends JPanel {
 
 				// Gets the correct image path.
 				if (level[x][y].getImagePath() == null) {
-					path = "src\\nz\\ac\\vuw\\ecs\\swen225\\a3\\IMG\\CC2.png";
+					path = "resources/CC2.png";
 				} else {
 					path = level[x][y].getImagePath();
 				}
 
-				ImageIcon icon = new ImageIcon(new File(path).getAbsolutePath());
+				ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource(path).getFile());
 				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
 				// used to change the color of the key and lock also able to place them on
