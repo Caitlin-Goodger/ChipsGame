@@ -35,9 +35,9 @@ public class Map {
 	/**
 	 * Read in the json file. Levels are stored as a 2D array of ints. 
 	 */
-	public void readFile(Maze maze, String levelName) {
+	public boolean readFile(Maze maze, String levelName, String filename) {
 		try {
-			InputStream input = new FileInputStream("levels.json");
+			InputStream input = new FileInputStream(filename);
 			JsonReader reader = Json.createReader(input);
 			JsonObject obj = reader.readObject();
 			JsonObject level = obj.getJsonObject(levelName);
@@ -94,13 +94,13 @@ public class Map {
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		}
-		
+		return true;
 	}
 	
-	public static void main(String[] args) {
-		Map m = new Map();
-		//m.readFile();
-	}
+//	public static void main(String[] args) {
+//		Map m = new Map();
+//		//m.readFile();
+//	}
 }

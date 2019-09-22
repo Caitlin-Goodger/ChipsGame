@@ -76,6 +76,10 @@ public class Chap implements Tile {
 
 	}
 	
+	public Map<String, String> getInventory() {
+		return inventory;
+	}
+	
 	/**
 	 * Get the tile that chap is on.
 	 * @return Tile. 

@@ -2,10 +2,12 @@ package nz.ac.vuw.ecs.swen225.a3.tests;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,13 +19,17 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Exit;
 import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
 import nz.ac.vuw.ecs.swen225.a3.maze.Free;
+import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
+import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
 import nz.ac.vuw.ecs.swen225.a3.maze.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+
 import org.junit.Test;
 //import swen225.*;
 
@@ -587,7 +593,7 @@ public class GameTest {
 	
 	@Test public void test103() {
 		Tile tile = new Exit(5,5,5,5);		
-		assertEquals(true, tile.isObjectSolid());
+		assertEquals(false, tile.isObjectSolid());
 	}
 	
 	@Test public void test104() {
@@ -836,4 +842,426 @@ public class GameTest {
 		tile.setColour("red");
 		assertEquals("red", tile.getColour());
 	}
+	
+	@Test public void test151() {
+		Chap tile = new Chap(5,5,5,5);	
+		assertEquals(5, tile.getYPositionOnScreen());
+	}
+	
+	@Test public void test152() {
+		Chap tile = new Chap(5,5,5,5);	
+		assertEquals(5, tile.getXPositionOnScreen());
+	}
+	
+	@Test public void test153() {
+		Chap tile = new Chap(5,5,5,5);	
+		tile.resetPosition(new XYPos(4,4));
+		assertEquals(4, tile.getXPosition());
+	}
+	
+	@Test public void test154() {
+		Chap tile = new Chap(5,5,5,5);	
+		Tile t = new Free(4,4,4,4);
+		tile.setOnTile(t);
+		assertEquals(t, tile.getOnTile());
+	}
+	
+	@Test public void test155() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key t = new Key(null,4,4,4,4);
+		tile.setOnTile(t);
+		assertEquals(5, tile.getOnTile().getXPosition());
+	}
+	
+	@Test public void test156() {
+		Chap tile = new Chap(5,5,5,5);	
+		Treasure t = new Treasure(4,4,4,4);
+		tile.setOnTile(t);
+		assertEquals(5, tile.getOnTile().getXPosition());
+	}
+	
+	@Test public void test157() {
+		Chap tile = new Chap(5,5,5,5);	
+		LockedDoor t = new LockedDoor(null,4,4,4,4);
+		tile.setOnTile(t);
+		assertEquals(5, tile.getOnTile().getXPosition());
+	}
+	
+	@Test public void test158() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		assertEquals(1, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test159() {
+		Chap tile = new Chap(5,5,5,5);	
+		Free f = new Free(4,4,4,4);
+		tile.pickupItem(f);
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test160() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "Key");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test161() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("blue", "Key");
+		assertEquals(1, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test162() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("blue", "Treasure");
+		assertEquals(1, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test163() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "key");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test164() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "KEy");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test165() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "KEY");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test166() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "kEy");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test167() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "kEY");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test168() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "KeY");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test169() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		tile.removeItem("red", "keY");
+		assertEquals(0, tile.getInventory().keySet().size());
+	}
+	
+	@Test public void test170() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		LockedDoor l = new LockedDoor("red",3,3,3,3);
+		assertEquals(true, tile.canUnlock(l));
+	}
+	
+	@Test public void test171() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("red",4,4,4,4);
+		tile.pickupItem(k);
+		LockedDoor l = new LockedDoor("blue",3,3,3,3);
+		assertEquals(false, tile.canUnlock(l));
+	}
+	
+	@Test public void test172() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("blue",4,4,4,4);
+		tile.pickupItem(k);
+		LockedDoor l = new LockedDoor("blue",3,3,3,3);
+		assertEquals(true, tile.canUnlock(l));
+	}
+	
+	@Test public void test173() {
+		Chap tile = new Chap(5,5,5,5);	
+		Key k = new Key("blue",4,4,4,4);
+		tile.pickupItem(k);
+		LockedDoor l = new LockedDoor("blue",3,3,3,3);
+		assertEquals(true, l.canUnlock(tile));
+	}
+	
+	@Test public void test174() {
+		Map m = new Map();
+		Maze maze = new Maze(9,9,"1");
+		assertEquals(true, m.readFile(maze, "level-1","levels.json"));
+	}
+	
+	@Test public void test175() {
+		Map m = new Map();
+		Maze maze = new Maze(9,9,"1");
+		assertEquals(false, m.readFile(maze, "level-1","level.json"));
+	}
+	
+	@Test public void test176() {
+		Map m = new Map();
+		Maze maze = new Maze(9,9,"1");
+		assertThrows(NullPointerException.class, () -> { 
+			m.readFile(maze, "level-76","levels.json");
+		});		
+	}
+	
+	@Test public void test177() {
+		Maze maze = new Maze(9,9,"1");
+		assertEquals(4,maze.findChap().getXPosition());
+	}
+	
+	@Test public void test178() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(2,2);
+		Tile t = maze.getNeighbouringTile(xy, 'N');
+		assertEquals(t,maze.getTile(1, 2));
+	}
+	
+	@Test public void test179() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(2,2);
+		Tile t = maze.getNeighbouringTile(xy, 'E');
+		assertEquals(t,maze.getTile(2, 3));
+	}
+	
+	@Test public void test180() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(2,2);
+		Tile t = maze.getNeighbouringTile(xy, 'S');
+		assertEquals(t,maze.getTile(3, 2));
+	}
+	
+	@Test public void test181() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(2,2);
+		Tile t = maze.getNeighbouringTile(xy, 'W');
+		assertEquals(t,maze.getTile(2, 1));
+	}
+	
+	@Test public void test182() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(12,12);
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> { 
+			Tile t = maze.getNeighbouringTile(xy, 'W');
+		});		
+	}
+	
+	@Test public void test183() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(0,0);
+		Tile t = maze.getNeighbouringTile(xy, 'N');
+		assertEquals(t,null);
+	}
+	
+	@Test public void test184() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(8,8);
+		Tile t = maze.getNeighbouringTile(xy, 'S');
+		assertEquals(t,null);
+	}
+	
+	@Test public void test185() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(0,0);
+		Tile t = maze.getNeighbouringTile(xy, 'W');
+		assertEquals(t,null);
+	}
+	
+	@Test public void test186() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(8,8);
+		Tile t = maze.getNeighbouringTile(xy, 'E');
+		assertEquals(t,null);
+	}
+	
+	@Test public void test187() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(7,7);
+		Tile t = maze.getNeighbouringTile(xy, 'E');
+		assertEquals(true,maze.setTile(xy, t));
+	}
+	
+	@Test public void test188() {
+		Maze maze = new Maze(9,9,"1");
+		XYPos xy = new XYPos(7,7);
+		Tile t = maze.getNeighbouringTile(xy, 'E');
+		assertEquals(true,maze.changeToFree(t));
+	}
+	
+	@Test public void test189() {
+		Maze maze = new Maze(9,9,"1");
+		assertEquals(5,maze.remainingTreasure());
+	}
+	
+	@Test public void test190() {
+		Maze maze = new Maze(9,9,"1");
+		assertEquals("C",maze.getTiles()[4][4].toString());
+	}
+	
+	@Test public void test191() {
+		Chap tile = new Chap(4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test192() {
+		Exit tile = new Exit(4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test193() {
+		Tile tile = new ExitLock(4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test194() {
+		Tile tile = new Free(4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test195() {
+		Tile tile = new InfoField(null,4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test196() {
+		Tile tile = new Key(null,4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test197() {
+		Tile tile = new LockedDoor(null,4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test198() {
+		Tile tile = new Treasure(4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test199() {
+		Wall tile = new Wall(4,4,4,4);
+		XYPos xy = new XYPos(2,2);
+		tile.resetPosition(xy);
+		assertEquals(2,tile.getXPosition());
+	}
+	
+	@Test public void test200() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		assertEquals(maze,game.getMaze());
+	}
+	
+	@Test public void test201() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.delete();
+		assertEquals(null,game.getMaze());
+	}
+	
+	@Test public void test202() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		assertEquals(false,game.setMaze(null));
+	}
+	
+	@Test public void test203() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.move('N');
+		assertEquals(true,true);
+	}
+	
+	@Test public void test204() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.move('W');
+		game.move('W');
+		game.move('W');
+		assertEquals(true,true);
+	}
+	
+	@Test public void test205() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.move('W');
+		game.move('W');
+		game.move('N');
+		assertEquals(true,true);
+	}
+	
+	@Test public void test206() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.move('W');
+		game.move('W');
+		game.move('N');
+		game.move('N');
+		game.move('W');
+		assertEquals(true,true);
+	}
+	
+	@Test public void test207() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.move('N');
+		game.move('N');
+		game.move('N');
+		assertEquals(true,true);
+	}
+	
+	@Test public void test208() {
+		Maze maze = new Maze(9,9,"1");
+		Game game = new Game(maze);
+		game.move('N');
+		game.move('N');
+		game.move('W');
+		game.move('W');
+		game.move('W');
+		assertEquals(true,true);
+	}
+		
 }

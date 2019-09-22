@@ -15,8 +15,7 @@ public class Maze {
 		this.rows = rows;
 		this.cols = cols;
 		this.level = level;
-
-		new Map().readFile(this, level);
+		new Map().readFile(this,"level-1","levels.json");
 	}
 
 	public Tile[][] getTiles() {
@@ -118,26 +117,35 @@ public class Maze {
 	/*
 	 * set a tile on the maze
 	 */
-	public void setTile(XYPos pos, Tile tile) {
+	public boolean setTile(XYPos pos, Tile tile) {
 		int x = pos.getX();
 		int y = pos.getY();
 		tiles[y][x] = tile;
 		System.out.printf("Setting tile at %s to %s--\n", pos.toString(), tile.toString());
+		return true;
 	}
+	
+	/**
+	 * Get a tile on the maze
+	 */
+	public Tile getTile(int x, int y) {
+		return tiles[x][y];
+	}
+
 
 	/*
 	 * Change a tile on the maze to a free tile
 	 * 
 	 * @param origin - the tile to be changed
 	 */
-	public void changeToFree(Tile target) {
+	public boolean changeToFree(Tile target) {
 		int x = target.getXPosition();
 		int y = target.getYPosition();
 		int xs = target.getXPositionOnScreen();
 		int ys = target.getYPositionOnScreen();
 		System.out.printf("Setting tile at x:%d y:%d which is %s to FREE\n", x, y, tiles[y][x].toString());
 		tiles[y][x] = new Free(x, y, xs, ys);
-
+		return true;
 	}
 
 	/*

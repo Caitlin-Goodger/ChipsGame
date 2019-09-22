@@ -1,25 +1,14 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-/*PLEASE DO NOT EDIT THIS CODE*/
-
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
-
-// line 25 "model.ump"
-// line 112 "model.ump"
 public class Game {
 
-	// ------------------------
-	// MEMBER VARIABLES
-	// ------------------------
-
-	// Game Associations
 	private Maze maze;
 	private Chap chap;
 
-	// ------------------------
-	// CONSTRUCTOR
-	// ------------------------
-
+	/**
+	 * Constructor for the Game
+	 * @param aMaze = maze for the game. 
+	 */
 	public Game(Maze aMaze) {
 		this.maze = aMaze;
 
@@ -34,15 +23,19 @@ public class Game {
 		this.chap = maze.findChap();
 	}
 
-	// ------------------------
-	// INTERFACE
-	// ------------------------
-	/* Code from template association_GetOne */
+	/**
+	 * Get the maze. 
+	 * @return
+	 */
 	public Maze getMaze() {
 		return maze;
 	}
 
-	/* Code from template association_SetUnidirectionalOne */
+	/**
+	 * Set the Maze. 
+	 * @param aNewMaze
+	 * @return
+	 */
 	public boolean setMaze(Maze aNewMaze) {
 		boolean wasSet = false;
 		if (aNewMaze != null) {
@@ -52,11 +45,14 @@ public class Game {
 		return wasSet;
 	}
 
+	/**
+	 * Delete the maze. 
+	 */
 	public void delete() {
 		maze = null;
 	}
 
-	/*
+	/**
 	 * update chap's location in the given direction if its applicable
 	 * 
 	 * @param direction - the desired direction to move in
@@ -114,7 +110,7 @@ public class Game {
 
 	}
 
-	/*
+	/**
 	 * *Only called by the above move class Move chap in the given direction, and
 	 * re-fresh the tile he WAS on by replaceing it with chap's current onTile, and
 	 * update onTile for chap
