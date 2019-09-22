@@ -15,11 +15,11 @@ public class Renderer {
 
     public Renderer() {
         // render the floor
-        try { wall = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(wallPath).getFile())); }
+        try { wall = (BufferedImage) ImageIO.read(new File(wallPath)); }
         catch (IOException e) { e.printStackTrace(); }
 
         // render the wall
-        try { floor = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(floorPath).getFile())); }
+        try { floor = (BufferedImage) ImageIO.read(new File(floorPath)); }
         catch (IOException e) { e.printStackTrace(); }
 
     }
@@ -32,7 +32,7 @@ public class Renderer {
         // creates the image
         Image returnImage;
         BufferedImage toAdd = null;
-        try { toAdd = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(toAddOnTop).getFile())); }
+        try { toAdd = (BufferedImage) ImageIO.read(new File(toAddOnTop)); }
         catch (IOException e) { e.printStackTrace(); }
 
         //combine the images
@@ -57,7 +57,7 @@ public class Renderer {
         BufferedImage toAdd = null;
 
 
-        try { toAdd = (BufferedImage) ImageIO.read(new File(getClass().getClassLoader().getResource(toAddOnTop).getFile())); }
+        try { toAdd = (BufferedImage) ImageIO.read(new File(toAddOnTop)); }
         catch (IOException e) { e.printStackTrace(); }
 
         //combine the images
