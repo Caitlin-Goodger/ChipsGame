@@ -120,11 +120,12 @@ public class Game {
 	 */
 	public void moveChap(char direction, Tile destinationTile) {
 		XYPos originalPos = chap.currentPosition;
-
 		// move chap in direction
 		chap.updatePosition(direction);
+		XYPos destinationPos = chap.currentPosition;
 		// re-fresh the tile he WAS on by replaceing it with chap's current onTile
 		maze.setTile(originalPos, chap.getOnTile());
+		maze.setTile(destinationPos, chap);
 		// update onTile for chap
 		chap.setOnTile(destinationTile);
 
