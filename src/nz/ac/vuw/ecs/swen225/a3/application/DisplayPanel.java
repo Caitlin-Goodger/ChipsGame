@@ -11,12 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.Game;
-import nz.ac.vuw.ecs.swen225.a3.maze.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
-import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.maze.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.maze.*;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
 /**
@@ -24,9 +19,9 @@ import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
  */
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
+	public int totalChipsLeft;
 
 	private Game game;
-
 	/**
 	 * Serial ID.
 	 */
@@ -42,6 +37,7 @@ public class DisplayPanel extends JPanel {
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
+
 		gl = new GridLayout(9, 9);
 
 		setLayout(gl);
@@ -53,6 +49,7 @@ public class DisplayPanel extends JPanel {
 	 * For display purposes only. Draws 9x9 tiles to screen.
 	 */
 	public void drawPanel() {
+		totalChipsLeft = 0;
 		Renderer ren = new Renderer();
 		Tile[][] level = game.getMaze().getTiles();
 
@@ -84,6 +81,8 @@ public class DisplayPanel extends JPanel {
 				} else if (level[x][y] instanceof LockedDoor) {
 					scaledImage = ren.mergeImages(path, false, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				}
+
+				if(level[x][y] instanceof Treasure) totalChipsLeft++;
 
 				JLabel img = new JLabel(new ImageIcon(scaledImage));
 

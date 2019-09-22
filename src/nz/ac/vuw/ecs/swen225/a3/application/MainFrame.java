@@ -35,6 +35,8 @@ public class MainFrame extends JFrame {
 
 	private Game game;
 
+	// used for tracking states in game
+
 	/**
 	 * Serial ID.
 	 */
@@ -112,6 +114,8 @@ public class MainFrame extends JFrame {
 
 		pack();
 		setVisible(true);
+
+		interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
 	}
 
 	/**
@@ -277,6 +281,8 @@ public class MainFrame extends JFrame {
 			if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
 				System.out.println("ESC was pressed");
 			}
+
+			interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
 			
 			displayPanel.removeAll();
 			displayPanel.drawPanel();
