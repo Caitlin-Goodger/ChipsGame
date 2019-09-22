@@ -11,6 +11,7 @@ public class Chap implements Tile {
 	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the token
 
+	private int facing = 6;
 	private Map<String, String> inventory;
 	private Tile onTile; 
 	
@@ -101,12 +102,16 @@ public class Chap implements Tile {
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
+			facing = 5;
 			currentPosition.updatePos(0, -1);
 		} else if (direction == 'S') {
+			facing = 6;
 			currentPosition.updatePos(0, 1);
 		} else if (direction == 'E') {
+			facing=3;
 			currentPosition.updatePos(1, 0);
 		} else if (direction == 'W') {
+			facing = 4;
 			currentPosition.updatePos(-1, 0);
 		}
 		currentPositionOnScreen = currentPosition;
@@ -149,7 +154,8 @@ public class Chap implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "resources/CC6.png";
+
+		return "resources/CC"+facing+".png";
 	}
 
 	/**
