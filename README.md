@@ -9,8 +9,6 @@ To-do:
 - Implement camera follow
 - Implement key colours and lock colours
 - Time tracker
-- Show chips left
-- Show level
 - Implement more levels
 - Method to save game
 - Method to load game
