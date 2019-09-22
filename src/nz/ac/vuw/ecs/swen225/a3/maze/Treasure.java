@@ -119,6 +119,9 @@ public class Treasure implements Tile {
 		return "T";
 	}
 	
+	/*
+	 * re-set the XYPos
+	 */
 	@Override
 	public void resetPosition(XYPos pos) {
 		this.currentPosition = pos;

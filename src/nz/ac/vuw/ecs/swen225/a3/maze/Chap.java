@@ -52,6 +52,7 @@ public class Chap implements Tile {
 	public void pickupItem(Tile item) {
 		if (item instanceof Key) {
 			Key key = (Key) item;
+			System.out.println("Picked up a "+key.getColour()+"key!");
 			inventory.put(key.getColour(), "Key");
 		}
 		// can add more item Tile types later i.e. ice skaters

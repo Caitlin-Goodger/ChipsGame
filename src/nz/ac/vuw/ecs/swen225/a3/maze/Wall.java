@@ -118,6 +118,9 @@ public class Wall implements Tile {
 		return "W";
 	}
 
+	/*
+	 * re-set the XYPos
+	 */
 	@Override
 	public void resetPosition(XYPos pos) {
 		this.currentPosition = pos;
