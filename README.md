@@ -3,8 +3,6 @@
 ## For my team mates ##
 
 To-do:
-- Inventory working (Display items)
-- Info Field show information
 - Implement pause game
 - Implement camera follow
 - Implement key colours and lock colours
