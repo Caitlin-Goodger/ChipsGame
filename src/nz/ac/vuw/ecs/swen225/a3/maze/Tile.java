@@ -1,22 +1,17 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
-
 import java.awt.image.BufferedImage;
 
-// line 32 "model.ump"
 public interface Tile {
 
-    // interface variable
     boolean isSolid = false; // check if player can walkThrought
     XYPos currentPosition = null; // keeps track of tiles position within a grid
     XYPos currentPositionOnScreen = null; // keeps track of a tiles position on screen
-    BufferedImage imageToDisplay = null; // the image for the tokken
+    BufferedImage imageToDisplay = null; // the image for the token
 
 
-    /*
-       the char that are used to indicated direction are showen bellow
+    /**
+       the char that are used to indicated direction are shown bellow
        Direction   char
        North         N
        South         S
@@ -27,34 +22,57 @@ public interface Tile {
      */
     public void updatePosition(char direction);
 
-    // used to load the images bassed off the file path note using bufferedImage
+    /**
+     *  Used to load the images bassed off the file path note using bufferedImage
+     */
     public void loadImage();
 
-    //used to get the tiles positions
+    /**
+     * used to get the tiles positions
+     * @return
+     */
     public XYPos getTilePosition();
 
-    //used to get the onscreen position
+    /**
+     * used to get the onscreen position
+     * @return
+     */
     public XYPos getCurrentPositionOnScreen();
     
-    //used for testing and just get Y position
+    /**
+     * used for testing and just get Y position
+     * @return
+     */
     public int getYPositionOnScreen();
 
-  //used for testing and just get X position
+    /**
+     * used for testing and just get X position
+     * @return
+     */
     public int getXPositionOnScreen();
     
-    /* check to see if the player can walk thorught this area
-       true means they cannot walk here
-       false means they can
+    /**
+     *  check to see if the player can walk through this tile
+     *  true means they cannot walk here
+     *  false means they can
      */
     public boolean isObjectSolid();
 
-    // returns the image so it can be rendered
+    /**
+     *  returns the image so it can be rendered
+     * @return
+     */
     public String getImagePath();
 
-  //used for testing and just get X position on map
+    /**
+     * used for testing and just get X position on map
+     * @return
+     */
 	public int getXPosition();
 
-	//used for testing and just get Y position on map
+	/**
+	 * used for testing and just get Y position on map
+	 */
 	public int getYPosition();
 
 }
