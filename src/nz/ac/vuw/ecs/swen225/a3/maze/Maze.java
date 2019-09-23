@@ -84,33 +84,33 @@ public class Maze {
 			if (y - 1 < 0)
 				return null;
 			destination = tiles[y - 1][x];
-			destination.resetPosition(new XYPos(x, y - 1));
+//			destination.resetPosition(new XYPos(x, y - 1));
 			break;
 		case 'E':
 			if (x + 1 >= cols)
 				return null;
 			destination = tiles[y][x + 1];
-			destination.resetPosition(new XYPos(x + 1, y));
+//			destination.resetPosition(new XYPos(x + 1, y));
 			break;
 		case 'S':
 			if (y + 1 >= rows)
 				return null;
 			destination = tiles[y + 1][x];
-			destination.resetPosition(new XYPos(x, y + 1));
+//			destination.resetPosition(new XYPos(x, y + 1));
 			break;
 		default:// W
 			if (x - 1 < 0)
 				return null;
 			destination = tiles[y][x - 1];
-			destination.resetPosition(new XYPos(x - 1, y));
+//			destination.resetPosition(new XYPos(x - 1, y));
 			break;
 		}
 
-//		System.out.printf("original pos:%s\n", origin.toString());
-//		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
-//		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
-//				destination.toString());
-//		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(), destination.getYPosition());
+		System.out.printf("original pos:%s\n", origin.toString());
+		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
+		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
+				destination.toString());
+		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(), destination.getYPosition());
 		return destination;
 	}
 
