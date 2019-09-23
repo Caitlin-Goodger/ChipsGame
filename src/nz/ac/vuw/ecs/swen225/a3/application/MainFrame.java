@@ -35,6 +35,8 @@ public class MainFrame extends JFrame {
 
 	private Game game;
 
+	private boolean paused = false;
+
 	// used for tracking states in game
 
 	/**
@@ -213,6 +215,8 @@ public class MainFrame extends JFrame {
 				inventoryPanel.setVisible(!menuItem.isSelected());
 
 				rulesPanel.setVisible(menuItem.isSelected());
+
+				paused = menuItem.isSelected();
 			}
 		});
 
@@ -245,58 +249,63 @@ public class MainFrame extends JFrame {
 	 */
 	class KeyListener extends KeyAdapter {
 		public void keyPressed(KeyEvent evt) {
-			// Movement
-			if (evt.getKeyCode() == KeyEvent.VK_UP) {
-//				System.out.println();
-//				System.out.println("Up was pressed");
-				game.move('N');
-				//game.getMaze().printConvertedLevel();
-			}
+			if (!paused) {
+				// Movement
+				if (evt.getKeyCode() == KeyEvent.VK_UP) {
+//					System.out.println();
+//					System.out.println("Up was pressed");
+					game.move('N');
+					// game.getMaze().printConvertedLevel();
+				}
 
-			if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-//				System.out.println();
-//				System.out.println("Down was pressed");
-				game.move('S');
-				//game.getMaze().printConvertedLevel();
-			}
+				if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+//					System.out.println();
+//					System.out.println("Down was pressed");
+					game.move('S');
+					// game.getMaze().printConvertedLevel();
+				}
 
-			if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
-//				System.out.println();
-//				System.out.println("Left was pressed");
-				game.move('W');
-				//game.getMaze().printConvertedLevel();
-			}
+				if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+//					System.out.println();
+//					System.out.println("Left was pressed");
+					game.move('W');
+					// game.getMaze().printConvertedLevel();
+				}
 
-			if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
-//				System.out.println();
-//				System.out.println("Right was pressed");
-				game.move('E');
-				//game.getMaze().printConvertedLevel();
-			}
+				if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+//					System.out.println();
+//					System.out.println("Right was pressed");
+					game.move('E');
+					// game.getMaze().printConvertedLevel();
+				}
 
-			// Other
-			if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-				System.out.println("Space was pressed");
-			}
+				// Other
+				if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+					System.out.println("Space was pressed");
+				}
 
-			if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
-				System.out.println("ESC was pressed");
-			}
+				if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+					System.out.println("ESC was pressed");
+				}
 
-			interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
-			interfacePanel.levelField.setText(game.getMaze().getLevel());
-			
-			displayPanel.removeAll();
-			displayPanel.drawPanel();
-			
-			displayPanel.revalidate();
-			displayPanel.repaint();
-			
-			inventoryPanel.removeAll();
-			inventoryPanel.drawInventory();
-			
-			inventoryPanel.revalidate();
-			inventoryPanel.repaint();
+				interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
+				interfacePanel.levelField.setText(game.getMaze().getLevel());
+
+				displayPanel.removeAll();
+				displayPanel.drawPanel();
+
+				displayPanel.revalidate();
+				displayPanel.repaint();
+
+				inventoryPanel.removeAll();
+				inventoryPanel.drawInventory();
+
+				inventoryPanel.revalidate();
+				inventoryPanel.repaint();
+			} else {
+				// Debug : checks game is paused in rules
+				System.out.println("Game is paused");
+			}
 		}
 	}
 }
