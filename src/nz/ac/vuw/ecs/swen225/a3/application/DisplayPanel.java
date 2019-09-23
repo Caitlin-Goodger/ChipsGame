@@ -37,7 +37,6 @@ public class DisplayPanel extends JPanel {
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-
 		gl = new GridLayout(9, 9);
 
 		setLayout(gl);
@@ -60,15 +59,15 @@ public class DisplayPanel extends JPanel {
 		// point.
 		// chapLocation.getX() - 4
 		// chapLocation.getY() - 4
-		for (int x = chapLocation.getY() - 4; x < chapLocation.getY() - 4 + gl.getColumns(); x++) {
-			for (int y = chapLocation.getX() - 4; y < chapLocation.getX() - 4 + gl.getRows(); y++) {
+		for (int y = chapLocation.getY() - 4; y < chapLocation.getY() - 4 + gl.getColumns(); y++) {
+			for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getRows(); x++) {
 				String path;
 
 				// Gets the correct image path.
-				if (level[x][y].getImagePath() == null) {
+				if (level[y][x].getImagePath() == null) {
 					path = "resources/CC2.png";
 				} else {
-					path = level[x][y].getImagePath();
+					path = level[y][x].getImagePath();
 				}
 
 				ImageIcon icon = new ImageIcon(new File(path).getPath());
@@ -76,13 +75,14 @@ public class DisplayPanel extends JPanel {
 
 				// used to change the color of the key and lock also able to place them on
 				// backgrounds
-				if (level[x][y] instanceof Key) {
+				if (level[y][x] instanceof Key) {
 					scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-				} else if (level[x][y] instanceof LockedDoor) {
+				} else if (level[y][x] instanceof LockedDoor) {
 					scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				}
 
-				if(level[x][y] instanceof Treasure) totalChipsLeft++;
+				if (level[y][x] instanceof Treasure)
+					totalChipsLeft++;
 
 				JLabel img = new JLabel(new ImageIcon(scaledImage));
 
