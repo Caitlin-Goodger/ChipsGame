@@ -113,6 +113,8 @@ public class Game {
 				// do nothing
 			} else {
 				moveChap(direction, destination);
+
+
 			}
 		} else if (destination instanceof Exit) {
 

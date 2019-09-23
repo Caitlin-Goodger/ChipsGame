@@ -164,6 +164,7 @@ public class Maze {
 		return count;
 	}
 
+
 	/**
 	 * Set the 2D array of tiles.
 	 * 

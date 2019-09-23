@@ -52,8 +52,10 @@ public class DisplayPanel extends JPanel {
 		Renderer ren = new Renderer();
 		Tile[][] level = game.getMaze().getTiles();
 
+		ExitLock exit;
 		Chap chap = game.getMaze().findChap();
 		XYPos chapLocation = chap.getTilePosition();
+		totalChipsLeft = game.getMaze().remainingTreasure();
 
 		// Minus 4 from Chap's location for each dimension to get starting
 		// point.
@@ -81,10 +83,13 @@ public class DisplayPanel extends JPanel {
 					scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				}
 
-				if (level[y][x] instanceof Treasure)
-					totalChipsLeft++;
+				if (totalChipsLeft == 0 && level[y][x] instanceof ExitLock){
+					exit = (ExitLock)level[y][x];
+					exit.isSolid(false);
+					level[y][x] = exit;
+				}
 
-				JLabel img = new JLabel(new ImageIcon(scaledImage));
+					JLabel img = new JLabel(new ImageIcon(scaledImage));
 
 				add(img);
 			}

@@ -42,6 +42,8 @@ public class ExitLock implements Tile {
 		currentPositionOnScreen = currentPosition;
 	}
 
+	public void isSolid(boolean set) { isSolid = set;}
+
 	/**
 	 * Load the image of the tile. 
 	 */
@@ -79,7 +81,7 @@ public class ExitLock implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return "resources/CC9.png";
+		return isSolid ? "resources/CC9.png" : "resources/CC15.png";
 	}
 
 	/**
