@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
@@ -34,6 +35,8 @@ public class InventoryPanel extends JPanel {
 	 * Constructor for the inventory panel.
 	 */
 	public InventoryPanel(Game game) {
+		setPreferredSize(new Dimension(getWidth(), 40));
+		
 		this.game = game;
 
 		Border innerBorder = BorderFactory.createTitledBorder("Inventory");

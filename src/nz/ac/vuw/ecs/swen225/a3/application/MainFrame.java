@@ -17,7 +17,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Free;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 
 /**
@@ -29,6 +28,8 @@ public class MainFrame extends JFrame {
 	private InterfacePanel interfacePanel;
 	private InventoryPanel inventoryPanel;
 	private RulesPanel rulesPanel;
+
+	private TextPanel textPanel;
 
 	private JFileChooser fileChooser;
 	private Filter filter;
@@ -113,6 +114,9 @@ public class MainFrame extends JFrame {
 
 		rulesPanel = new RulesPanel();
 		add(rulesPanel, gc);
+
+		textPanel = new TextPanel(game);
+		add(textPanel, gc);
 
 		pack();
 		setVisible(true);
@@ -287,6 +291,15 @@ public class MainFrame extends JFrame {
 				if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
 					System.out.println("ESC was pressed");
 				}
+
+				// Only get the label of InfoField if standing on one, need otherwise error from
+				// grabbing nothing.
+				if (game.onField()) {
+					textPanel.getLabel().setText(game.getInfoField().getText());
+				}
+
+				inventoryPanel.setVisible(!game.onField());
+				textPanel.setVisible(game.onField());
 
 				interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
 				interfacePanel.levelField.setText(game.getMaze().getLevel());

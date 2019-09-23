@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -32,6 +33,8 @@ public class InterfacePanel extends JPanel {
 	 * Constructor for the interface panel.
 	 */
 	public InterfacePanel() {
+		setPreferredSize(new Dimension(250, getHeight()));
+		
 		levelLabel = new JLabel("LEVEL");
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");

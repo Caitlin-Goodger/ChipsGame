@@ -5,6 +5,9 @@ public class Game {
 	private Maze maze;
 	private Chap chap;
 
+	private InfoField info;
+	private boolean onField = false;
+
 	/**
 	 * Constructor for the Game
 	 * 
@@ -61,6 +64,8 @@ public class Game {
 	 * @param direction - the desired direction to move in
 	 */
 	public void move(char direction) {
+		onField = false;
+		
 		Tile destination = maze.getNeighbouringTile(chap.currentPosition, direction);
 		if (destination == null) {
 			// do nothing
@@ -94,9 +99,9 @@ public class Game {
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof InfoField) {
-			InfoField info = (InfoField) this.getMaze().getTile(destination.getYPosition(), destination.getXPosition());
+			info = (InfoField) this.getMaze().getTile(destination.getYPosition(), destination.getXPosition());
 			
-			System.out.println(info.getText());
+			onField = true;
 			
 			// move chap in direction
 			moveChap(direction, destination);
@@ -148,4 +153,21 @@ public class Game {
 		return chap;
 	}
 
+	/**
+	 * Returns the info field.
+	 * 
+	 * @return info
+	 */
+	public InfoField getInfoField() {
+		return info;
+	}
+
+	/**
+	 * Returns if chap is on field.
+	 * 
+	 * @return onField
+	 */
+	public boolean onField() {
+		return onField;
+	}
 }
