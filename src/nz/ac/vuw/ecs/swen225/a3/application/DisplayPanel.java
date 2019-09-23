@@ -60,8 +60,8 @@ public class DisplayPanel extends JPanel {
 		// point.
 		// chapLocation.getX() - 4
 		// chapLocation.getY() - 4
-		for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getColumns(); x++) {
-			for (int y = chapLocation.getY() - 4; y < chapLocation.getY() - 4 + gl.getRows(); y++) {
+		for (int x = chapLocation.getY() - 4; x < chapLocation.getY() - 4 + gl.getColumns(); x++) {
+			for (int y = chapLocation.getX() - 4; y < chapLocation.getX() - 4 + gl.getRows(); y++) {
 				String path;
 
 				// Gets the correct image path.
