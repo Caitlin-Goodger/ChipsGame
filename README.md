@@ -4,7 +4,6 @@
 
 To-do:
 - Implement pause game
-- Implement camera follow
 - Implement key colours and lock colours
 - Time tracker
 - Implement more levels
