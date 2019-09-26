@@ -13,14 +13,19 @@ public class Chap implements Tile {
 
 	private int facing = 6;
 	private Map<String, String> inventory;
-	private Tile onTile; 
-	
+	private Tile onTile;
+
 	/**
-	 * Constructor for the Chap tile. 
-	 * @param xGrid = x co-ordinate in of the tile on the grid.
-	 * @param yGrid = y co-ordinate in of the tile on the grid.
-	 * @param xScreen = x co-ordinate in of the tile on the screen.
-	 * @param yScreen = y co-ordinate in of the tile on the screen.
+	 * Constructor for the Chap tile.
+	 * 
+	 * @param xGrid   = x co-ordinate in of the tile on the
+	 *                grid.
+	 * @param yGrid   = y co-ordinate in of the tile on the
+	 *                grid.
+	 * @param xScreen = x co-ordinate in of the tile on the
+	 *                screen.
+	 * @param yScreen = y co-ordinate in of the tile on the
+	 *                screen.
 	 */
 	public Chap(int xGrid, int yGrid, int xScreen, int yScreen) {
 		currentPosition = new XYPos(xGrid, yGrid);
@@ -29,9 +34,9 @@ public class Chap implements Tile {
 		onTile = new Free(xGrid, yGrid, xScreen, yScreen);
 	}
 
-
 	/**
 	 * Given a locked door, see if chap can unlock it
+	 * 
 	 * @param - the door to be unlocked
 	 */
 	public boolean canUnlock(LockedDoor door) {
@@ -47,13 +52,15 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Pick up an item from the maze and add to chap's inventory.
+	 * Pick up an item from the maze and add to chap's
+	 * inventory.
+	 * 
 	 * @param - the Tile with a pickup-able item
 	 */
 	public void pickupItem(Tile item) {
 		if (item instanceof Key) {
 			Key key = (Key) item;
-			System.out.println("Picked up a "+key.getColour()+"key!");
+			System.out.println("Picked up a " + key.getColour() + "key!");
 			inventory.put(key.getColour(), "Key");
 		}
 		// can add more item Tile types later i.e. ice skaters
@@ -61,8 +68,9 @@ public class Chap implements Tile {
 
 	/**
 	 * Remove an item from the inventory.
-	 * @param colour = colour of the item.
-	 * @param itemType = type of the item. 
+	 * 
+	 * @param colour   = colour of the item.
+	 * @param itemType = type of the item.
 	 */
 	public void removeItem(String colour, String itemType) {
 		if (inventory.containsKey(colour)) {
@@ -75,25 +83,29 @@ public class Chap implements Tile {
 		}
 
 	}
-	
+
 	public Map<String, String> getInventory() {
 		return inventory;
 	}
-	
+
 	/**
 	 * Get the tile that chap is on.
-	 * @return Tile. 
+	 * 
+	 * @return Tile.
 	 */
 	public Tile getOnTile() {
-		if(this.onTile instanceof Key || this.onTile instanceof Treasure || this.onTile instanceof LockedDoor) {
-			return new Free(currentPosition.X, currentPosition.Y, currentPositionOnScreen.X, currentPositionOnScreen.Y);
+		if (this.onTile instanceof Key || this.onTile instanceof Treasure
+				|| this.onTile instanceof LockedDoor) {
+			return new Free(currentPosition.X, currentPosition.Y, currentPositionOnScreen.X,
+					currentPositionOnScreen.Y);
 		}
 		return this.onTile;
 	}
-	
+
 	/**
 	 * Update the tile that Chap is on.
-	 * @param tile = tile to move Chap to. 
+	 * 
+	 * @param tile = tile to move Chap to.
 	 */
 	public void setOnTile(Tile tile) {
 		onTile = tile;
@@ -101,7 +113,8 @@ public class Chap implements Tile {
 
 	/**
 	 * Update the position that the tile is in.
-	 * @param direction = direction. 
+	 * 
+	 * @param direction = direction.
 	 */
 	@Override
 	public void updatePosition(char direction) {
@@ -112,7 +125,7 @@ public class Chap implements Tile {
 			facing = 6;
 			currentPosition.updatePos(0, 1);
 		} else if (direction == 'E') {
-			facing=3;
+			facing = 3;
 			currentPosition.updatePos(1, 0);
 		} else if (direction == 'W') {
 			facing = 4;
@@ -122,7 +135,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Load the image of the tile. 
+	 * Load the image of the tile.
 	 */
 	@Override
 	public boolean loadImage() {
@@ -130,7 +143,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the current position of the tile on the grid. 
+	 * Get the current position of the tile on the grid.
 	 */
 	@Override
 	public XYPos getTilePosition() {
@@ -138,7 +151,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the current position of the tile on the screen. 
+	 * Get the current position of the tile on the screen.
 	 */
 	@Override
 	public XYPos getCurrentPositionOnScreen() {
@@ -146,7 +159,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Check whether the object is solid. 
+	 * Check whether the object is solid.
 	 */
 	@Override
 	public boolean isObjectSolid() {
@@ -154,16 +167,16 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the path of the image. 
+	 * Get the path of the image.
 	 */
 	@Override
 	public String getImagePath() {
 
-		return "resources/CC"+facing+".png";
+		return "resources/CC" + facing + ".png";
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the screen. 
+	 * Get the y co-ordinate of the tile on the screen.
 	 */
 	@Override
 	public int getYPositionOnScreen() {
@@ -171,7 +184,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the x co-ordinate of the tile on the screen. 
+	 * Get the x co-ordinate of the tile on the screen.
 	 */
 	@Override
 	public int getXPositionOnScreen() {
@@ -179,7 +192,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid. 
+	 * Get the y co-ordinate of the tile on the grid.
 	 */
 	@Override
 	public int getYPosition() {
@@ -201,17 +214,16 @@ public class Chap implements Tile {
 	public String toString() {
 		return "C";
 	}
-	
+
 	/*
 	 * re-set the XYPos
 	 */
 	@Override
 	public void resetPosition(XYPos pos) {
 		this.currentPosition = pos;
-		
+
 	}
 
-	
 	/**
 	 * Returns the inventory.
 	 * 
@@ -219,5 +231,12 @@ public class Chap implements Tile {
 	 */
 	public Map<String, String> returnInventory() {
 		return inventory;
+	}
+
+	/**
+	 * Resets the chaps inventory/
+	 */
+	public void resetInventory() {
+		inventory.clear();
 	}
 }
