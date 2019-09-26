@@ -20,8 +20,9 @@ import javax.swing.KeyStroke;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 
 /**
- * MainFrame that will hold panels and menus that will be responsible for
- * displaying the game and holding buttons that allow interaction with the game.
+ * MainFrame that will hold panels and menus that will be
+ * responsible for displaying the game and holding buttons
+ * that allow interaction with the game.
  */
 public class MainFrame extends JFrame {
 	private DisplayPanel displayPanel;
@@ -169,8 +170,9 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent ev) {
-				int action = JOptionPane.showConfirmDialog(MainFrame.this, "Do you really want to exit the game?",
-						"Confirm Exit", JOptionPane.OK_CANCEL_OPTION);
+				int action = JOptionPane.showConfirmDialog(MainFrame.this,
+						"Do you really want to exit the game?", "Confirm Exit",
+						JOptionPane.OK_CANCEL_OPTION);
 
 				if (action == JOptionPane.OK_OPTION) {
 					System.exit(0);
@@ -205,8 +207,8 @@ public class MainFrame extends JFrame {
 		JCheckBoxMenuItem rulesItem = new JCheckBoxMenuItem("Rules");
 
 		/*
-		 * Add action listener to the rules item. When rules is ticked, hides the game
-		 * and displays the rules.
+		 * Add action listener to the rules item. When rules is
+		 * ticked, hides the game and displays the rules.
 		 */
 		rulesItem.addActionListener(new ActionListener() {
 
@@ -292,11 +294,15 @@ public class MainFrame extends JFrame {
 					System.out.println("ESC was pressed");
 				}
 
-				// Only get the label of InfoField if standing on one, need otherwise error from
+				// Only get the label of InfoField if standing on one, need
+				// otherwise error from
 				// grabbing nothing.
 				if (game.onField()) {
 					textPanel.getLabel().setText(game.getInfoField().getText());
 				}
+
+				// Update the total number of chips every move.
+				displayPanel.setTotalChips(game.getMaze().remainingTreasure());
 
 				inventoryPanel.setVisible(!game.onField());
 				textPanel.setVisible(game.onField());

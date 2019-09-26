@@ -19,7 +19,7 @@ import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
  */
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
-	public int totalChipsLeft;
+	public int totalChipsLeft = 10;
 
 	private Game game;
 	/**
@@ -48,21 +48,26 @@ public class DisplayPanel extends JPanel {
 	 * For display purposes only. Draws 9x9 tiles to screen.
 	 */
 	public void drawPanel() {
-		totalChipsLeft = 0;
 		Renderer ren = new Renderer();
 		Tile[][] level = game.getMaze().getTiles();
 
 		ExitLock exit;
 		Chap chap = game.getMaze().findChap();
 		XYPos chapLocation = chap.getTilePosition();
-		totalChipsLeft = game.getMaze().remainingTreasure();
 
-		// Minus 4 from Chap's location for each dimension to get starting
+		// Minus 4 from Chap's location for each dimension to get
+		// starting
 		// point.
 		// chapLocation.getX() - 4
 		// chapLocation.getY() - 4
 		for (int y = chapLocation.getY() - 4; y < chapLocation.getY() - 4 + gl.getColumns(); y++) {
 			for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getRows(); x++) {
+				if (totalChipsLeft == 0 && level[y][x] instanceof ExitLock) {
+					exit = (ExitLock) level[y][x];
+					exit.isSolid(false);
+					level[y][x] = exit;
+				}
+				
 				String path;
 
 				// Gets the correct image path.
@@ -75,46 +80,56 @@ public class DisplayPanel extends JPanel {
 				ImageIcon icon = new ImageIcon(new File(path).getPath());
 				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-				// used to change the color of the key and lock also able to place them on
+				// used to change the color of the key and lock also able to
+				// place them on
 				// backgrounds
 				if (level[y][x] instanceof Key) {
 					Key key = (Key) level[y][x];
-					
-					switch(key.getColour()) {
+
+					switch (key.getColour()) {
 					case "red":
-						scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50,
+								Image.SCALE_SMOOTH);
 						break;
 					case "yellow":
-						scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50,
+								50, Image.SCALE_SMOOTH);
 						break;
 					default:
-							scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50,
+								Image.SCALE_SMOOTH);
 					}
 				} else if (level[y][x] instanceof LockedDoor) {
 					LockedDoor lockedDoor = (LockedDoor) level[y][x];
-					
-					switch(lockedDoor.getColour()) {
+
+					switch (lockedDoor.getColour()) {
 					case "red":
-						scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50,
+								Image.SCALE_SMOOTH);
 						break;
 					case "yellow":
-						scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50,
+								50, Image.SCALE_SMOOTH);
 						break;
 					default:
-						scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
+								Image.SCALE_SMOOTH);
 					}
 				}
 
-				if (totalChipsLeft == 0 && level[y][x] instanceof ExitLock){
-					exit = (ExitLock)level[y][x];
-					exit.isSolid(false);
-					level[y][x] = exit;
-				}
-
-					JLabel img = new JLabel(new ImageIcon(scaledImage));
+				JLabel img = new JLabel(new ImageIcon(scaledImage));
 
 				add(img);
 			}
 		}
+	}
+
+	/**
+	 * Sets total chips left.
+	 * 
+	 * @param i
+	 */
+	public void setTotalChips(int i) {
+		totalChipsLeft = i;
 	}
 }
