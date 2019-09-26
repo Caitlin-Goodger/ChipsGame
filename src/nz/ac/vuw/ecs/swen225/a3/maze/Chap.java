@@ -240,9 +240,18 @@ public class Chap implements Tile {
 		inventory.clear();
 	}
 
+	/**
+	 * Takes the new level and gets the starting position of
+	 * that new level, sets the onYile of the character to a
+	 * free tile with parameters of starting position and resets
+	 * inventory.
+	 * 
+	 * @param m
+	 */
 	public void newLevel(Maze m) {
 		resetPosition(new XYPos(m.getStartingPos().getX(), m.getStartingPos().getY()));
-		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY(), m.getStartingPos().getX(), m.getStartingPos().getY()));
+		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY(),
+				m.getStartingPos().getX(), m.getStartingPos().getY()));
 		resetInventory();
 	}
 }
