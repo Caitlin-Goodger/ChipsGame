@@ -78,7 +78,18 @@ public class DisplayPanel extends JPanel {
 				// used to change the color of the key and lock also able to place them on
 				// backgrounds
 				if (level[y][x] instanceof Key) {
-					scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+					Key key = (Key) level[y][x];
+					
+					switch(key.getColour()) {
+					case "red":
+						scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						break;
+					case "yellow":
+						scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						break;
+					default:
+							scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+					}
 				} else if (level[y][x] instanceof LockedDoor) {
 					scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 				}

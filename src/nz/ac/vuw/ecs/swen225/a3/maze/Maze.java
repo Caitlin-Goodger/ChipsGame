@@ -117,13 +117,13 @@ public class Maze {
 			break;
 		}
 
-		System.out.printf("original pos:%s\n", origin.toString());
-		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(),
-				originTile.getYPosition());
-		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
-				destination.toString());
-		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(),
-				destination.getYPosition());
+//		System.out.printf("original pos:%s\n", origin.toString());
+//		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(),
+//				originTile.getYPosition());
+//		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
+//				destination.toString());
+//		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(),
+//				destination.getYPosition());
 		return destination;
 	}
 
