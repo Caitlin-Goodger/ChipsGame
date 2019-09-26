@@ -4,13 +4,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import javax.json.*;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.json.JsonReader;
-import javax.json.stream.JsonParser;
-import javax.swing.SwingUtilities;
 
-
-import nz.ac.vuw.ecs.swen225.a3.application.MainFrame;
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Exit;
 import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
@@ -26,19 +24,21 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
 public class Map {
 
 	/**
-	 * Constructor for the Map class. 
+	 * Constructor for the Map class.
 	 */
 	public Map() {
-		
+
 	}
-	
+
 	/**
-	 * Read in the json file. Levels are stored as a 2D array of ints. 
+	 * Read in the json file. Levels are stored as a 2D array of
+	 * ints.
 	 */
 	public boolean readFile(Maze maze, String levelName, String filename) {
 		try {
 			int keyColor = 0;
 			int doorColor = 0;
+			int infoID = 0;
 			InputStream input = new FileInputStream(filename);
 			JsonReader reader = Json.createReader(input);
 			JsonObject obj = reader.readObject();
@@ -49,9 +49,9 @@ public class Map {
 			Tile[][] tiles = new Tile[width][height];
 			maze.setRow(height);
 			maze.setCol(width);
-			for(int i = 0;i<width;i++) {
+			for (int i = 0; i < width; i++) {
 				JsonArray array = jTiles.getJsonArray(i);
-				for(int j =0;j<height;j++) {
+				for (int j = 0; j < height; j++) {
 					int value = array.getInt(j);
 					Tile tile;
 					switch (value) {
@@ -76,35 +76,42 @@ public class Map {
 						tile = new ExitLock(j, i, j, i);
 						break;
 					case 5:
-						if(keyColor == 0) {
+						if (keyColor == 0) {
 //							tile = new Key("yellow", i, j, i, j);
 							tile = new Key("yellow", j, i, j, i);
-							keyColor ++;
+							keyColor++;
 							break;
-						}
-						else if (keyColor == 1) {
+						} else if (keyColor == 1) {
 //							tile = new Key("blue", i, j, i, j);
 							tile = new Key("blue", j, i, j, i);
-							keyColor --;
+							keyColor--;
 							break;
 						}
 					case 6:
-						if(doorColor == 0) {
+						if (doorColor == 0) {
 //							tile = new LockedDoor("yellow", i, j, i, j);
-							doorColor ++;
+							doorColor++;
 							tile = new LockedDoor("yellow", j, i, j, i);
 							break;
-						}
-						else if(doorColor == 1) {
+						} else if (doorColor == 1) {
 //							tile = new LockedDoor("blue", i, j, i, j);
-							doorColor --;
+							doorColor--;
 							tile = new LockedDoor("blue", j, i, j, i);
 							break;
 						}
 					case 7:
-//						tile = new InfoField("Info Field",i, j, i, j);
-						tile = new InfoField("Info Field", j, i, j, i);
-						break;
+						// tile = new InfoField("Info Field",i, j, i, j);\
+						if (infoID == 0) {
+							tile = new InfoField(
+									"<html>" +
+									"Welcome to Chip's Challenge! <br>" +
+									"Collect the correct key colours <br>" +
+									"to unlock the doors and <br>" +
+									"collect all the treasure!" +
+									"<html>",
+									j, i, j, i);
+							break;
+						}
 					default:
 //						tile = new Treasure(i, j, i, j);
 						tile = new Treasure(j, i, j, i);
@@ -120,7 +127,7 @@ public class Map {
 		}
 		return true;
 	}
-	
+
 //	public static void main(String[] args) {
 //		Map m = new Map();
 //		//m.readFile();
