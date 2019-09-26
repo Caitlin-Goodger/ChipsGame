@@ -122,7 +122,7 @@ public class Game {
 			String level = maze.getNextLevel();
 			System.out.println(level);
 			new Map().readFile(maze,level,"levels.json");
-			this.getChap().resetInventory();
+			this.getChap().newLevel(this.getMaze());
 			// LEVEL COMPLETED
 
 		}

@@ -236,7 +236,13 @@ public class Chap implements Tile {
 	/**
 	 * Resets the chaps inventory/
 	 */
-	public void resetInventory() {
+	private void resetInventory() {
 		inventory.clear();
+	}
+
+	public void newLevel(Maze m) {
+		resetPosition(new XYPos(m.getStartingPos().getX(), m.getStartingPos().getY()));
+		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY(), m.getStartingPos().getX(), m.getStartingPos().getY()));
+		resetInventory();
 	}
 }

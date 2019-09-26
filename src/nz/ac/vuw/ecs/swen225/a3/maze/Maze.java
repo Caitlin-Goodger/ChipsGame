@@ -10,7 +10,7 @@ public class Maze {
 	private int rows;
 	private int cols;
 	private ArrayList<String> levels = new ArrayList();
-	
+
 	private String level;
 
 	public Maze(int rows, int cols, String level) {
@@ -23,7 +23,7 @@ public class Maze {
 		levels.add("level-3");
 		levels.add("level-4");
 		levels.add("level-5");
-		new Map().readFile(this,level,"levels.json");
+		new Map().readFile(this, level, "levels.json");
 	}
 
 	public Tile[][] getTiles() {
@@ -31,7 +31,8 @@ public class Maze {
 	}
 
 	/**
-	 * Method for debugging, prints the converted level to see if it looks correct.
+	 * Method for debugging, prints the converted level to see
+	 * if it looks correct.
 	 */
 	public void printConvertedLevel() {
 		// Gets the width and height of the current level.
@@ -70,13 +71,15 @@ public class Maze {
 	}
 
 	/*
-	 * Get the neighbouring tile from a given position and direction
+	 * Get the neighbouring tile from a given position and
+	 * direction
 	 * 
 	 * @param origin - original position
 	 * 
 	 * @param direction - the direction to look in
 	 * 
-	 * @return - the corresponding neighbouring tile if there is one, or null
+	 * @return - the corresponding neighbouring tile if there is
+	 * one, or null
 	 */
 	public Tile getNeighbouringTile(XYPos origin, char direction) {
 		int x = origin.getX();
@@ -115,10 +118,12 @@ public class Maze {
 		}
 
 		System.out.printf("original pos:%s\n", origin.toString());
-		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(), originTile.getYPosition());
+		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(),
+				originTile.getYPosition());
 		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
 				destination.toString());
-		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(), destination.getYPosition());
+		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(),
+				destination.getYPosition());
 		return destination;
 	}
 
@@ -132,14 +137,13 @@ public class Maze {
 //		System.out.printf("Setting tile at %s to %s--\n", pos.toString(), tile.toString());
 		return true;
 	}
-	
+
 	/**
 	 * Get a tile on the maze
 	 */
 	public Tile getTile(int x, int y) {
 		return tiles[x][y];
 	}
-
 
 	/*
 	 * Change a tile on the maze to a free tile
@@ -172,7 +176,6 @@ public class Maze {
 		return count;
 	}
 
-
 	/**
 	 * Set the 2D array of tiles.
 	 * 
@@ -197,8 +200,8 @@ public class Maze {
 	public String getNextLevel() {
 		// TODO Auto-generated method stub
 		int index = 0;
-		for(int i =0;i<levels.size();i++) {
-			if(levels.get(i).equals(level)) {
+		for (int i = 0; i < levels.size(); i++) {
+			if (levels.get(i).equals(level)) {
 				index = i;
 			}
 		}
@@ -217,4 +220,22 @@ public class Maze {
 		cols = width;
 	}
 
+	/**
+	 * Gets the XYPos for new map.
+	 * 
+	 * @return x
+	 */
+	public XYPos getStartingPos() {
+		XYPos spawn = null;
+
+		for (int row = 0; row < rows; row++) {
+			for (int col = 0; col < cols; col++) {
+				if(tiles[row][col] instanceof Chap) {
+					spawn = new XYPos(row, col);
+				}
+			}
+		}
+
+		return spawn;
+	}
 }
