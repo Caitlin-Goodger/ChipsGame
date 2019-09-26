@@ -19,7 +19,7 @@ import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
  */
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
-	public int totalChipsLeft = 10;
+	public int totalChipsLeft;
 
 	private Game game;
 	/**
@@ -32,7 +32,8 @@ public class DisplayPanel extends JPanel {
 	 */
 	public DisplayPanel(Game game) {
 		this.game = game;
-
+		this.totalChipsLeft = game.getMaze().remainingTreasure();
+		
 		Border innerBorder = BorderFactory.createTitledBorder("Display");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
