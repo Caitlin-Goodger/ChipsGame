@@ -91,7 +91,18 @@ public class DisplayPanel extends JPanel {
 							scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 					}
 				} else if (level[y][x] instanceof LockedDoor) {
-					scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+					LockedDoor lockedDoor = (LockedDoor) level[y][x];
+					
+					switch(lockedDoor.getColour()) {
+					case "red":
+						scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						break;
+					case "yellow":
+						scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+						break;
+					default:
+						scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+					}
 				}
 
 				if (totalChipsLeft == 0 && level[y][x] instanceof ExitLock){

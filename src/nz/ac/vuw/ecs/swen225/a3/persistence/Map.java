@@ -98,7 +98,7 @@ public class Map {
 						else if(doorColor == 1) {
 //							tile = new LockedDoor("blue", i, j, i, j);
 							doorColor --;
-							tile = new LockedDoor("yellow", j, i, j, i);
+							tile = new LockedDoor("blue", j, i, j, i);
 							break;
 						}
 					case 7:
