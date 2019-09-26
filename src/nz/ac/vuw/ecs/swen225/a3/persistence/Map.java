@@ -47,6 +47,8 @@ public class Map {
 			int height = level.getInt("height");
 			JsonArray jTiles = level.getJsonArray("tiles");
 			Tile[][] tiles = new Tile[width][height];
+			maze.setRow(height);
+			maze.setCol(width);
 			for(int i = 0;i<width;i++) {
 				JsonArray array = jTiles.getJsonArray(i);
 				for(int j =0;j<height;j++) {

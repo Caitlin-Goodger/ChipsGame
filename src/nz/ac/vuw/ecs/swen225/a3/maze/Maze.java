@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
+import java.util.ArrayList;
+
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
 public class Maze {
@@ -7,7 +9,8 @@ public class Maze {
 	private Tile tiles[][];
 	private int rows;
 	private int cols;
-
+	private ArrayList<String> levels = new ArrayList();
+	
 	private String level;
 
 	public Maze(int rows, int cols, String level) {
@@ -15,7 +18,12 @@ public class Maze {
 		this.rows = rows;
 		this.cols = cols;
 		this.level = level;
-		new Map().readFile(this,"level-1","levels.json");
+		levels.add("level-1");
+		levels.add("level-2");
+		levels.add("level-3");
+		levels.add("level-4");
+		levels.add("level-5");
+		new Map().readFile(this,level,"levels.json");
 	}
 
 	public Tile[][] getTiles() {
@@ -184,6 +192,29 @@ public class Maze {
 		level = level.replaceAll("[^0-9]+", " ");
 
 		return level;
+	}
+
+	public String getNextLevel() {
+		// TODO Auto-generated method stub
+		int index = 0;
+		for(int i =0;i<levels.size();i++) {
+			if(levels.get(i).equals(level)) {
+				index = i;
+			}
+		}
+		index++;
+		level = levels.get(index);
+		return level;
+	}
+
+	public void setRow(int height) {
+		// TODO Auto-generated method stub
+		rows = height;
+	}
+
+	public void setCol(int width) {
+		// TODO Auto-generated method stub
+		cols = width;
 	}
 
 }

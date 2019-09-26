@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
+import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+
 public class Game {
 
 	private Maze maze;
@@ -117,7 +119,9 @@ public class Game {
 
 			}
 		} else if (destination instanceof Exit) {
-
+			String level = maze.getNextLevel();
+			System.out.println(level);
+			new Map().readFile(maze,level,"levels.json");
 			// LEVEL COMPLETED
 
 		}
