@@ -4,9 +4,7 @@
 
 To-do:
 - Implement pause game
-- Implement key colours and lock colours
 - Time tracker
-- Implement more levels
 - Method to save game
 - Method to load game
 
