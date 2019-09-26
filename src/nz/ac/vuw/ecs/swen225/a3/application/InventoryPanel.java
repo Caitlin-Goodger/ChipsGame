@@ -19,7 +19,8 @@ import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
 /**
- * Inventory panel that holds the objects collected by the player.
+ * Inventory panel that holds the objects collected by the
+ * player.
  */
 public class InventoryPanel extends JPanel {
 	private GridLayout gl;
@@ -36,7 +37,7 @@ public class InventoryPanel extends JPanel {
 	 */
 	public InventoryPanel(Game game) {
 		setPreferredSize(new Dimension(getWidth(), 40));
-		
+
 		this.game = game;
 
 		Border innerBorder = BorderFactory.createTitledBorder("Inventory");
@@ -70,9 +71,22 @@ public class InventoryPanel extends JPanel {
 			ImageIcon icon = new ImageIcon(new File(path).getPath());
 			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-			// used to change the color of the key and lock also able to place them on
+			// used to change the color of the key and lock also able to
+			// place them on
 			// backgrounds
-			scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+			switch (item) {
+			case "red":
+				scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50,
+						Image.SCALE_SMOOTH);
+				break;
+			case "yellow":
+				scaledImage = ren.mergeImages(path, 3, Color.YELLOW).getScaledInstance(50, 50,
+						Image.SCALE_SMOOTH);
+				break;
+			default:
+				scaledImage = ren.mergeImages(path, 3, Color.BLUE).getScaledInstance(50, 50,
+						Image.SCALE_SMOOTH);
+			}
 
 			JLabel img = new JLabel(new ImageIcon(scaledImage));
 
