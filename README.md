@@ -25,12 +25,12 @@ Exit Lock = 4
 Info Field = 7   
 Treasure = 8   
 
-Red key = 9
-Blue key = 10
-Green key = 11
-Yellow key = 12
+Red key = 9   
+Blue key = 10     
+Green key = 11   
+Yellow key = 12   
 
-Red lock = 13
-Blue lock = 14
-Green lock = 15
-Yellow lock = 16
+Red lock = 13   
+Blue lock = 14   
+Green lock = 15   
+Yellow lock = 16   
