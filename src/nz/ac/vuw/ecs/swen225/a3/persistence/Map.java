@@ -59,23 +59,29 @@ public class Map {
 //						tile = new Free(i, j, i, j);
 						tile = new Free(j, i, j, i);
 						break;
+						
 					case 1:
 //						tile = new Wall(i, j, i, j);
 						tile = new Wall(j, i, j, i);
 						break;
+						
 					case 2:
 //						tile = new Chap(i, j, i, j);
 						tile = new Chap(j, i, j, i);
 						break;
+						
 					case 3:
 //						tile = new Exit(i, j, i, j);
 						tile = new Exit(j, i, j, i);
 						break;
+						
 					case 4:
 //						tile = new ExitLock(i, j, i, j);
 						tile = new ExitLock(j, i, j, i);
 						break;
-					case 5:
+						
+					//case 5 & 6 become irrelevant with cases 9-16, but leaving in for now
+/*					case 5:
 						if (keyColor == 0) {
 //							tile = new Key("yellow", i, j, i, j);
 							tile = new Key("yellow", j, i, j, i);
@@ -87,6 +93,7 @@ public class Map {
 							keyColor--;
 							break;
 						}
+						
 					case 6:
 						if (doorColor == 0) {
 //							tile = new LockedDoor("yellow", i, j, i, j);
@@ -98,7 +105,8 @@ public class Map {
 							doorColor--;
 							tile = new LockedDoor("blue", j, i, j, i);
 							break;
-						}
+						}*/
+
 					case 7:
 						// tile = new InfoField("Info Field",i, j, i, j);\
 						if (infoID == 0) {
@@ -112,9 +120,46 @@ public class Map {
 									j, i, j, i);
 							break;
 						}
-					default:
-//						tile = new Treasure(i, j, i, j);
+						
+					case 8:
 						tile = new Treasure(j, i, j, i);
+						break;
+						
+					case 9:
+						tile = new Key("red", j, i, j, i);
+						break;
+						
+					case 10:
+						tile = new Key("blue", j, i, j, i);
+						break;
+						
+					case 11:
+						tile = new Key("green", j, i, j, i);
+						break;
+						
+					case 12:
+						tile = new Key("yellow", j, i, j, i);
+						break;
+						
+					case 13:
+						tile = new LockedDoor("red", j, i, j, i);
+						break;
+						
+					case 14:
+						tile = new LockedDoor("blue", j, i, j, i);
+						break;
+						
+					case 15: 
+						tile = new LockedDoor("green", j, i, j, i);
+						break;
+						
+					case 16: 
+						tile = new LockedDoor("yellow", j, i, j, i);
+						break;
+						
+					default:
+						tile = new Free(j, i, j, i);
+						break;
 					}
 
 					tiles[i][j] = tile;

@@ -96,6 +96,10 @@ public class DisplayPanel extends JPanel {
 						scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50,
 								50, Image.SCALE_SMOOTH);
 						break;
+					case "green":
+						scaledImage = ren.mergeImages(path, 1, Color.GREEN).getScaledInstance(50,
+								50, Image.SCALE_SMOOTH);
+						break;
 					default:
 						scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50,
 								Image.SCALE_SMOOTH);
@@ -110,6 +114,10 @@ public class DisplayPanel extends JPanel {
 						break;
 					case "yellow":
 						scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50,
+								50, Image.SCALE_SMOOTH);
+						break;
+					case "green":
+						scaledImage = ren.mergeImages(path, 2, Color.GREEN).getScaledInstance(50,
 								50, Image.SCALE_SMOOTH);
 						break;
 					default:

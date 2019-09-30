@@ -64,7 +64,7 @@ public class InventoryPanel extends JPanel {
 		for (String item : inventory.keySet()) {
 			String path = null;
 
-			if (item.equals("yellow") || item.equals("blue")) {
+			if (item.equals("yellow") || item.equals("blue") || item.equals("red") || item.equals("green")) {
 				path = "resources/CC12.png";
 			}
 
@@ -81,6 +81,10 @@ public class InventoryPanel extends JPanel {
 				break;
 			case "yellow":
 				scaledImage = ren.mergeImages(path, 3, Color.YELLOW).getScaledInstance(50, 50,
+						Image.SCALE_SMOOTH);
+				break;
+			case "green":
+				scaledImage = ren.mergeImages(path, 3, Color.GREEN).getScaledInstance(50, 50,
 						Image.SCALE_SMOOTH);
 				break;
 			default:
