@@ -231,7 +231,7 @@ public class Maze {
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < cols; col++) {
 				if(tiles[row][col] instanceof Chap) {
-					spawn = new XYPos(row, col);
+					spawn = new XYPos(col, row);
 				}
 			}
 		}

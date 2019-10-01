@@ -11,7 +11,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 // line 17 "model.ump"
 // line 102 "model.ump"
 public class Main {
-	private static Game game = new Game(new Maze(17, 17, "level-1"));
+	private static Game game = new Game(new Maze(32, 32, "level-1"));
 	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
