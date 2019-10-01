@@ -4,17 +4,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
-
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JFileChooser;
-
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Exit;
 import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
@@ -31,7 +20,6 @@ import nz.ac.vuw.ecs.swen225.a3.maze.XYPos;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
 import org.junit.Test;
-//import swen225.*;
 
 
 /**
