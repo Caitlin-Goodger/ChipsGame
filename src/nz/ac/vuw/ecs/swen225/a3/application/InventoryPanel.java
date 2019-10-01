@@ -71,9 +71,7 @@ public class InventoryPanel extends JPanel {
 			ImageIcon icon = new ImageIcon(new File(path).getPath());
 			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
-			// used to change the color of the key and lock also able to
-			// place them on
-			// backgrounds
+			// change color of key image to match color value of key being displayed
 			switch (item) {
 			case "red":
 				scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50,
