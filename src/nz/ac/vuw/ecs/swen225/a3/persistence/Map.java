@@ -21,6 +21,11 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
 
+/**
+ * Map class used for reading and saving to files. 
+ * @author Caitlin
+ *
+ */
 public class Map {
 
 	/**
@@ -33,6 +38,10 @@ public class Map {
 	/**
 	 * Read in the level json file. Levels are stored as a 2D array of
 	 * integers.
+	 * @param maze = Maze to set to.
+	 * @param levelName = level to read in from file. 
+	 * @param filename = file name that level is stored in. 
+	 * @return boolean. 
 	 */
 	public boolean readFile(Maze maze, String levelName, String filename) {
 		try {

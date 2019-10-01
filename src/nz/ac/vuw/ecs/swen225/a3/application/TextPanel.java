@@ -24,6 +24,7 @@ public class TextPanel extends JPanel {
 
 	/**
 	 * Constructor for the inventory panel.
+	 * @param game = Game for this panel. 
 	 */
 	public TextPanel(Game game) {
 		setPreferredSize(new Dimension(getWidth(), 40));

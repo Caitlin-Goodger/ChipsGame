@@ -2,6 +2,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Treasure tile. Is an implementation of the tile class. 
+ * @author Caitlin
+ *
+ */
 public class Treasure implements Tile {
 
 	boolean isSolid = false; // check if player can walkThrought

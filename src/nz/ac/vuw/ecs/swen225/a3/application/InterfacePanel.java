@@ -20,8 +20,14 @@ public class InterfacePanel extends JPanel {
 	private JLabel timeLabel;
 	private JLabel chipsLeftLabel;
 
+	/**
+	 * Text field for the level.
+	 */
 	public JTextField levelField;
 	private JTextField timeField;
+	/**
+	 * Text field for the chips left. 
+	 */
 	public JTextField chipsLeftField;
 
 	/**

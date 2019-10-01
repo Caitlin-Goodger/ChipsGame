@@ -19,6 +19,9 @@ import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
  */
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
+	/**
+	 * Total number of chips left in the maze. 
+	 */
 	public int totalChipsLeft;
 
 	private Game game;
@@ -29,6 +32,7 @@ public class DisplayPanel extends JPanel {
 
 	/**
 	 * Constructor for the display panel.
+	 * @param game = Game to display. 
 	 */
 	public DisplayPanel(Game game) {
 		this.game = game;
@@ -136,7 +140,7 @@ public class DisplayPanel extends JPanel {
 	/**
 	 * Sets total chips left.
 	 * 
-	 * @param i
+	 * @param i = chips to set. 
 	 */
 	public void setTotalChips(int i) {
 		totalChipsLeft = i;

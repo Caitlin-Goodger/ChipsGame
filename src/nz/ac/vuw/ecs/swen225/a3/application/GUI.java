@@ -1,26 +1,20 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 
-
-
-// line 6 "model.ump"
-// line 87 "model.ump"
+/**
+ * Class for the GUI. 
+ * @author Caitlin
+ */
 public class GUI
 {
 
-  //------------------------
-  // MEMBER VARIABLES
-  //------------------------
-
-  //GUI Associations
   private MainFrame frame;
 
-  //------------------------
-  // CONSTRUCTOR
-  //------------------------
 
+  /**
+   * Constructor for the GUI class. 
+   * @param aFrame = main frame of GUI. 
+   */
   public GUI(MainFrame aFrame)
   {
     if (!setFrame(aFrame))
@@ -29,15 +23,21 @@ public class GUI
     }
   }
 
-  //------------------------
-  // INTERFACE
-  //------------------------
-  /* Code from template association_GetOne */
+  /**
+   * Get the main frame of the GUI. 
+   * @return MainFrame. 
+   */
   public MainFrame getFrame()
   {
     return frame;
   }
-  /* Code from template association_SetUnidirectionalOne */
+  
+  
+  /**
+   * Set the main frame of the GUI. 
+   * @param aNewFrame = new frame to set. 
+   * @return boolean. 
+   */
   public boolean setFrame(MainFrame aNewFrame)
   {
     boolean wasSet = false;
@@ -49,7 +49,10 @@ public class GUI
     return wasSet;
   }
 
-  public void delete()
+  /**
+   * Delete the frame by setting to null. 
+   */
+public void delete()
   {
     frame = null;
   }

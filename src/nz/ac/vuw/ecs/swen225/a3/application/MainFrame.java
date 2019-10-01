@@ -48,6 +48,7 @@ public class MainFrame extends JFrame {
 
 	/**
 	 * Constructor for main frame.
+	 * @param game = Game for this frame. 
 	 */
 	public MainFrame(Game game) {
 		super("Chip's Challenge");

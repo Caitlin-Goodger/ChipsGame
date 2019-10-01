@@ -2,6 +2,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Wall tile. Is an implemenation of the tile class.
+ * @author Caitlin
+ *
+ */
 public class Wall implements Tile {
 
 	boolean isSolid = true; // check if player can walkThrought

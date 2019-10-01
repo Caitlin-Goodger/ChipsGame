@@ -2,6 +2,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * InfoField tile. Is an implementation of the Tile class. 
+ * @author Caitlin
+ *
+ */
 public class InfoField implements Tile {
 
 	private String text;
@@ -27,7 +32,7 @@ public class InfoField implements Tile {
 	/**
 	 * Set the text of the info Field. 
 	 * @param aText
-	 * @return
+	 * @return boolean. 
 	 */
 	public boolean setText(String aText) {
 		boolean wasSet = false;

@@ -34,6 +34,7 @@ public class InventoryPanel extends JPanel {
 
 	/**
 	 * Constructor for the inventory panel.
+	 * @param game = Game that this is for. 
 	 */
 	public InventoryPanel(Game game) {
 		setPreferredSize(new Dimension(getWidth(), 40));

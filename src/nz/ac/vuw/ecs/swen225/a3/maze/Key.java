@@ -2,6 +2,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * 
+ * @author Caitlin
+ *
+ */
 public class Key implements Tile {
 
 	private String colour;
@@ -27,7 +32,7 @@ public class Key implements Tile {
 	/**
 	 * Set of the colour of the key. 
 	 * @param aColour
-	 * @return
+	 * @return boolean
 	 */
 	public boolean setColour(String aColour) {
 		boolean wasSet = false;
@@ -38,7 +43,7 @@ public class Key implements Tile {
 
 	/**
 	 * Get the colour of the key. 
-	 * @return
+	 * @return boolean
 	 */
 	public String getColour() {
 		return colour;

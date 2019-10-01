@@ -1,5 +1,10 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
+/**
+ * XYPos class. Used to store the x and y co-ordinates of a tile. 
+ * @author Caitlin
+ *
+ */
 public class XYPos {
     int X;
     int Y;
@@ -16,13 +21,13 @@ public class XYPos {
 
     /**
      * Get the x value.
-     * @return
+     * @return int. 
      */
     public int getX() { return X; }
 
     /**
      * Get the y value. 
-     * @return
+     * @return int. 
      */
     public int getY() { return Y; }
 

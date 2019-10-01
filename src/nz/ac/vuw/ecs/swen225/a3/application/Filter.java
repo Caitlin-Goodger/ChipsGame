@@ -40,6 +40,11 @@ public class Filter extends FileFilter {
 	 * Utility class. Returns the extension of file.
 	 */
 	public static class Utils {
+		/**
+		 * Get the file Extension. 
+		 * @param name
+		 * @return String. 
+		 */
 		public static String getFileExtension(String name) {
 			int pointIndex = name.lastIndexOf(".");
 

@@ -5,14 +5,18 @@ import javax.swing.SwingUtilities;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 
-/*PLEASE DO NOT EDIT THIS CODE*/
-/*This code was generated using the UMPLE 1.29.1.4648.92f3aa193 modeling language!*/
 
-// line 17 "model.ump"
-// line 102 "model.ump"
+/**
+ * Main class of the game. Where the game is run from. 
+ * @author Caitlin
+ */
 public class Main {
 	private static Game game = new Game(new Maze(32, 32, "level-1"));
 	
+	/**
+	 * Main method. Where game is run from. 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -23,21 +27,4 @@ public class Main {
 		});
 	}
 
-	// ------------------------
-	// MEMBER VARIABLES
-	// ------------------------
-
-	// ------------------------
-	// CONSTRUCTOR
-	// ------------------------
-
-	public Main() {
-	}
-
-	// ------------------------
-	// INTERFACE
-	// ------------------------
-
-	public void delete() {
-	}
 }

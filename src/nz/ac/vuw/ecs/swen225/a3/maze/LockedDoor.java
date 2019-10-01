@@ -2,6 +2,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Locked Door tile. Is an implementation of the tile class. 
+ * @author Caitlin
+ *
+ */
 public class LockedDoor implements Tile {
 
 	private String colour;
@@ -27,7 +32,7 @@ public class LockedDoor implements Tile {
 	/**
 	 * Set the colour of the lock.
 	 * @param aColour = colour to set. 
-	 * @return
+	 * @return boolean. 
 	 */
 	public boolean setColour(String aColour) {
 		boolean wasSet = false;
@@ -38,7 +43,7 @@ public class LockedDoor implements Tile {
 
 	/**
 	 * Get the colour of the lock. 
-	 * @return
+	 * @return String. 
 	 */
 	public String getColour() {
 		return colour;
@@ -46,6 +51,7 @@ public class LockedDoor implements Tile {
 
 	/**
 	 * Check to see if the chap can unlock this door. 
+	 * @param chap = Chap tile trying to unlock the door. 
 	 * @return - whether chap can unlock this door
 	 */
 	public boolean canUnlock(Chap chap) {

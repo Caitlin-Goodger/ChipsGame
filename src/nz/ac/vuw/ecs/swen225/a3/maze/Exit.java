@@ -3,12 +3,16 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 import java.awt.image.BufferedImage;
 
 
+/**
+ * Exit Tile. Is an implementation of the tile class. 
+ * @author Caitlin
+ */
 public class Exit implements Tile {
 
 	boolean isSolid = false; // check if player can walkThrought
 	XYPos currentPosition; // keeps track of tiles position within a grid
 	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
-	BufferedImage imageToDisplay; // the image for the tokken
+	BufferedImage imageToDisplay; // the image for the token
 	
 	/**
 	 * Constructor for the exit tile. 

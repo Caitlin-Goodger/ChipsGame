@@ -3,6 +3,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Free Tile. Is an implementation of the tile class. 
+ * @author Caitlin
+ *
+ */
 public class Free implements Tile {
 
 	boolean isSolid = false; // check if player can walkThrought

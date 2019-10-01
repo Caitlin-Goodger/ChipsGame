@@ -7,6 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Renderer class. Used to render the GUI. 
+ * @author Caitlin
+ *
+ */
 public class Renderer {
     String wallPath = "resources/CC1.png";
     String floorPath = "resources/CC2.png";
@@ -14,6 +19,9 @@ public class Renderer {
 
     BufferedImage wall, floor, inv;
 
+    /**
+     * Constructor for the Rendered Class. 
+     */
     public Renderer() {
         // render the floor
         try { wall = (BufferedImage) ImageIO.read(new File(wallPath)); }
@@ -28,10 +36,12 @@ public class Renderer {
 
     }
 
-    // used just for the basic key
-    //addToWall is used to either add to the wall texture or to add the floor texture
-    //true is wall
-    //false is floor
+    /**
+     * Merge two images together.
+     * @param toAddOnTop = image to put on the top. 
+     * @param addToWall = boolean. True is a wall and false is free. 
+     * @return Image. 
+     */
     public Image mergeImages(String toAddOnTop, boolean addToWall) {
         // creates the image
         Image returnImage;
@@ -53,7 +63,13 @@ public class Renderer {
 
     }
 
-    // used if a key is needed to be colored
+    /**
+     * Merge two images together with a colour tint. 
+     * @param toAddOnTop = image to put on the top. 
+     * @param addToWall = boolean. True is a wall and false is free. 
+     * @param tintColor = colour tint to add. 
+     * @return Image. 
+     */
     public Image mergeImages(String toAddOnTop, int addToWall, Color tintColor) {
         // creates the image
         Image returnImage;

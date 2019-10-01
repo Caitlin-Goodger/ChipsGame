@@ -2,6 +2,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
+/**
+ * Game class. Where all the game logic is. 
+ * @author Caitlin
+ *
+ */
 public class Game {
 
 	private Maze maze;
@@ -32,7 +37,7 @@ public class Game {
 	/**
 	 * Get the maze.
 	 * 
-	 * @return
+	 * @return Maze. 
 	 */
 	public Maze getMaze() {
 		return maze;
@@ -42,7 +47,7 @@ public class Game {
 	 * Set the Maze.
 	 * 
 	 * @param aNewMaze
-	 * @return
+	 * @return boolean. 
 	 */
 	public boolean setMaze(Maze aNewMaze) {
 		boolean wasSet = false;
@@ -131,19 +136,16 @@ public class Game {
 
 	/**
 	 * *Only called by the above move class Move chap in the given direction, and
-	 * re-fresh the tile he WAS on by replaceing it with chap's current onTile, and
+	 * re-fresh the tile he WAS on by replacing it with chap's current onTile, and
 	 * update onTile for chap
-	 * 
-	 * @param - the direction to move to
+	 * @param direction = direction to move. 
+	 * @param destinationTile = tile to move to. 
 	 */
 	public void moveChap(char direction, Tile destinationTile) {
 		XYPos originalPos = new XYPos(chap.getXPosition(), chap.getYPosition());
 		// move chap in direction
 		chap.updatePosition(direction);
 		XYPos destinationPos = chap.currentPosition;
-		// re-fresh the tile he WAS on by replaceing it with chap's current onTile
-//		System.out.printf("setting original pos %s to chap's previous which is %s\n", originalPos.toString(),
-//				chap.getOnTile().toString());
 		maze.setTile(originalPos, chap.getOnTile());
 		maze.setTile(destinationPos, chap);
 		// update onTile for chap

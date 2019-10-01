@@ -3,6 +3,11 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * ExitLock Tile. Is an implementation of the Tile class. 
+ * @author Caitlin
+ *
+ */
 public class ExitLock implements Tile {
 
 	boolean isSolid = true; // check if player can walkThrought
@@ -42,6 +47,10 @@ public class ExitLock implements Tile {
 		currentPositionOnScreen = currentPosition;
 	}
 
+	/**
+	 * Check if the tile is solid
+	 * @param set
+	 */
 	public void isSolid(boolean set) { isSolid = set;}
 
 	/**

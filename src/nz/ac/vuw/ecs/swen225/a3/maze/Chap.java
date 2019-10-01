@@ -4,6 +4,11 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Chap tile. It is a implementation of Tile. 
+ * @author Caitlin
+ *
+ */
 public class Chap implements Tile {
 
 	boolean isSolid = false;
@@ -36,8 +41,8 @@ public class Chap implements Tile {
 
 	/**
 	 * Given a locked door, see if chap can unlock it
-	 * 
-	 * @param - the door to be unlocked
+	 * @param door = door to be unlcoked. 
+	 * @return boolean. 
 	 */
 	public boolean canUnlock(LockedDoor door) {
 		String colour = door.getColour();
@@ -54,8 +59,7 @@ public class Chap implements Tile {
 	/**
 	 * Pick up an item from the maze and add to chap's
 	 * inventory.
-	 * 
-	 * @param - the Tile with a pickup-able item
+	 * @param item =  the Tile with a pickup-able item.
 	 */
 	public void pickupItem(Tile item) {
 		if (item instanceof Key) {
@@ -84,6 +88,10 @@ public class Chap implements Tile {
 
 	}
 
+	/**
+	 * Get the current inventory of the game. 
+	 * @return Map<String,String>.
+	 */
 	public Map<String, String> getInventory() {
 		return inventory;
 	}

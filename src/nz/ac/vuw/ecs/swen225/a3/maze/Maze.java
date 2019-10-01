@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
+/**
+ * Class for the Maze of the game. 
+ * @author Caitlin
+ *
+ */
 public class Maze {
 
 	private Tile tiles[][];
@@ -13,6 +18,12 @@ public class Maze {
 
 	private String level;
 
+	/**
+	 * Constructor for the maze class. 
+	 * @param rows = number of rows in the maze. 
+	 * @param cols = number of columns in the maze.
+	 * @param level = level that this maze is for. 
+	 */
 	public Maze(int rows, int cols, String level) {
 		tiles = new Tile[rows][cols];
 		this.rows = rows;
@@ -26,6 +37,10 @@ public class Maze {
 		new Map().readFile(this, level, "levels.json");
 	}
 
+	/**
+	 * Get the 2D array of tile for this maze. 
+	 * @return Tile[][]
+	 */
 	public Tile[][] getTiles() {
 		return tiles;
 	}
@@ -53,8 +68,10 @@ public class Maze {
 		}
 	}
 
-	/*
-	 * locate and return chap tile from the maps
+
+	/**
+	 * Find Chap in the maze.
+	 * @return Chap.
 	 */
 	public Chap findChap() {
 		Tile target;
@@ -70,7 +87,7 @@ public class Maze {
 		return chap;
 	}
 
-	/*
+	/**
 	 * Get the neighbouring tile from a given position and
 	 * direction
 	 * 
@@ -117,38 +134,38 @@ public class Maze {
 			break;
 		}
 
-//		System.out.printf("original pos:%s\n", origin.toString());
-//		System.out.printf("originTile pos:x:%d, y:%d\n", originTile.getXPosition(),
-//				originTile.getYPosition());
-//		System.out.printf("looking for neighbouring tile in direction %c, it is %s\n", direction,
-//				destination.toString());
-//		System.out.printf("destination pos:x:%d, y:%d\n", destination.getXPosition(),
-//				destination.getYPosition());
 		return destination;
 	}
 
-	/*
+	/**
 	 * set a tile on the maze
+	 * @param pos = position to set the tile at.
+	 * @param tile = Tile to set. 
+	 * @return boolean
 	 */
 	public boolean setTile(XYPos pos, Tile tile) {
 		int x = pos.getX();
 		int y = pos.getY();
 		tiles[y][x] = tile;
-//		System.out.printf("Setting tile at %s to %s--\n", pos.toString(), tile.toString());
 		return true;
 	}
 
 	/**
 	 * Get a tile on the maze
+	 * @param x = x value to get the tile at.
+	 * @param y = y value to get the tile at.
+	 * @return Tile. 
 	 */
 	public Tile getTile(int x, int y) {
 		return tiles[x][y];
 	}
 
-	/*
+	/**
 	 * Change a tile on the maze to a free tile
+	 * @param target = Tile to change to free. 
 	 * 
 	 * @param origin - the tile to be changed
+	 * @return boolean. 
 	 */
 	public boolean changeToFree(Tile target) {
 		int x = target.getXPosition();
@@ -160,7 +177,7 @@ public class Maze {
 		return true;
 	}
 
-	/*
+	/**
 	 * @return - number of treasures remaining in this level
 	 */
 	public int remainingTreasure() {
@@ -191,14 +208,16 @@ public class Maze {
 	 * @return level
 	 */
 	public String getLevel() {
-		// Regex.
 		level = level.replaceAll("[^0-9]+", " ");
 
 		return level;
 	}
 
+	/**
+	 * Get the next level name. 
+	 * @return String
+	 */
 	public String getNextLevel() {
-		// TODO Auto-generated method stub
 		int index = 0;
 		for (int i = 0; i < levels.size(); i++) {
 			if (levels.get(i).equals(level)) {
@@ -210,13 +229,19 @@ public class Maze {
 		return level;
 	}
 
+	/**
+	 * Set the number of rows.
+	 * @param height = rows to set. 
+	 */
 	public void setRow(int height) {
-		// TODO Auto-generated method stub
 		rows = height;
 	}
 
+	/**
+	 * Set the number of columns
+	 * @param width = cols to set. 
+	 */
 	public void setCol(int width) {
-		// TODO Auto-generated method stub
 		cols = width;
 	}
 

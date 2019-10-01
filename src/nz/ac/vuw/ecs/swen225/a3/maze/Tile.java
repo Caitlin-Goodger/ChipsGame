@@ -2,12 +2,29 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Interface for all the tiles. 
+ * @author Caitlin
+ *
+ */
 public interface Tile {
 
-    boolean isSolid = false; // check if player can walkThrought
-    XYPos currentPosition = null; // keeps track of tiles position within a grid
-    XYPos currentPositionOnScreen = null; // keeps track of a tiles position on screen
-    BufferedImage imageToDisplay = null; // the image for the token
+    /**
+     * Check if the tile is solid. 
+     */
+    boolean isSolid = false; 
+    /**
+     * Position of the tile in the maze
+     */
+    XYPos currentPosition = null; 
+    /**
+     * Position of the tile on the screen 
+     */
+    XYPos currentPositionOnScreen = null; 
+    /**
+     * IMage for the tile. 
+     */
+    BufferedImage imageToDisplay = null;
 
 
     /**
@@ -19,40 +36,43 @@ public interface Tile {
        West          W
        also note updatePosition will do nothing on Chap because the world moves
        around him not he moves around the world
+     * @param direction = direction to go in. 
      */
     public void updatePosition(char direction);
     
-    /*
+    /**
      * re-set the x and y value for XYPos
+     * @param pos = position to reset to. 
      */
     public void resetPosition(XYPos pos);
 
     /**
-     *  Used to load the images bassed off the file path note using bufferedImage
+     *  Used to load the images based off the file path note using bufferedImage
+     * @return boolean. 
      */
     public boolean loadImage();
 
     /**
      * used to get the tiles positions
-     * @return
+     * @return XYPos
      */
     public XYPos getTilePosition();
 
     /**
-     * used to get the onscreen position
-     * @return
+     * used to get the on screen position
+     * @return XYPos
      */
     public XYPos getCurrentPositionOnScreen();
     
     /**
      * used for testing and just get Y position
-     * @return
+     * @return int
      */
     public int getYPositionOnScreen();
 
     /**
      * used for testing and just get X position
-     * @return
+     * @return int
      */
     public int getXPositionOnScreen();
     
@@ -60,23 +80,25 @@ public interface Tile {
      *  check to see if the player can walk through this tile
      *  true means they cannot walk here
      *  false means they can
+     * @return boolean
      */
     public boolean isObjectSolid();
 
     /**
      *  returns the image so it can be rendered
-     * @return
+     * @return String
      */
     public String getImagePath();
 
     /**
      * used for testing and just get X position on map
-     * @return
+     * @return int. 
      */
 	public int getXPosition();
 
 	/**
 	 * used for testing and just get Y position on map
+	 * @return int. 
 	 */
 	public int getYPosition();
 
