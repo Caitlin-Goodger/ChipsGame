@@ -1015,115 +1015,115 @@ public class GameTest {
 	
 	@Test public void test174() {
 		Map m = new Map();
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		assertEquals(true, m.readFile(maze, "level-1","levels.json"));
 	}
 	
 	@Test public void test175() {
 		Map m = new Map();
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		assertEquals(false, m.readFile(maze, "level-1","level.json"));
 	}
 	
 	@Test public void test176() {
 		Map m = new Map();
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		assertThrows(NullPointerException.class, () -> { 
 			m.readFile(maze, "level-76","levels.json");
 		});		
 	}
 	
 	@Test public void test177() {
-		Maze maze = new Maze(9,9,"1");
-		assertEquals(4,maze.findChap().getXPosition());
+		Maze maze = new Maze(32,32,"level-1");
+		assertEquals(15,maze.findChap().getXPosition());
 	}
 	
 	@Test public void test178() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'N');
 		assertEquals(t,maze.getTile(1, 2));
 	}
 	
 	@Test public void test179() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(t,maze.getTile(2, 3));
 	}
 	
 	@Test public void test180() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'S');
 		assertEquals(t,maze.getTile(3, 2));
 	}
 	
 	@Test public void test181() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'W');
 		assertEquals(t,maze.getTile(2, 1));
 	}
 	
 	@Test public void test182() {
-		Maze maze = new Maze(9,9,"1");
-		XYPos xy = new XYPos(12,12);
+		Maze maze = new Maze(32,32,"level-1");
+		XYPos xy = new XYPos(32,32);
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> { 
 			Tile t = maze.getNeighbouringTile(xy, 'W');
 		});		
 	}
 	
 	@Test public void test183() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(0,0);
 		Tile t = maze.getNeighbouringTile(xy, 'N');
 		assertEquals(t,null);
 	}
 	
 	@Test public void test184() {
-		Maze maze = new Maze(9,9,"1");
-		XYPos xy = new XYPos(8,8);
+		Maze maze = new Maze(32,32,"level-1");
+		XYPos xy = new XYPos(31,31);
 		Tile t = maze.getNeighbouringTile(xy, 'S');
 		assertEquals(t,null);
 	}
 	
 	@Test public void test185() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(0,0);
 		Tile t = maze.getNeighbouringTile(xy, 'W');
 		assertEquals(t,null);
 	}
 	
 	@Test public void test186() {
-		Maze maze = new Maze(9,9,"1");
-		XYPos xy = new XYPos(8,8);
+		Maze maze = new Maze(32,32,"level-1");
+		XYPos xy = new XYPos(31,31);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(t,null);
 	}
 	
 	@Test public void test187() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(7,7);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(true,maze.setTile(xy, t));
 	}
 	
 	@Test public void test188() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(7,7);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(true,maze.changeToFree(t));
 	}
 	
 	@Test public void test189() {
-		Maze maze = new Maze(9,9,"1");
-		assertEquals(5,maze.remainingTreasure());
+		Maze maze = new Maze(32,32,"level-1");
+		assertEquals(11,maze.remainingTreasure());
 	}
 	
 	@Test public void test190() {
-		Maze maze = new Maze(9,9,"1");
-		assertEquals("C",maze.getTiles()[4][4].toString());
+		Maze maze = new Maze(32,32,"level-1");
+		assertEquals("C",maze.getTiles()[14][15].toString());
 	}
 	
 	@Test public void test191() {
@@ -1190,33 +1190,33 @@ public class GameTest {
 	}
 	
 	@Test public void test200() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		assertEquals(maze,game.getMaze());
 	}
 	
 	@Test public void test201() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.delete();
 		assertEquals(null,game.getMaze());
 	}
 	
 	@Test public void test202() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		assertEquals(false,game.setMaze(null));
 	}
 	
 	@Test public void test203() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.move('N');
 		assertEquals(true,true);
 	}
 	
 	@Test public void test204() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.move('W');
 		game.move('W');
@@ -1225,7 +1225,7 @@ public class GameTest {
 	}
 	
 	@Test public void test205() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.move('W');
 		game.move('W');
@@ -1234,7 +1234,7 @@ public class GameTest {
 	}
 	
 	@Test public void test206() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.move('W');
 		game.move('W');
@@ -1245,7 +1245,7 @@ public class GameTest {
 	}
 	
 	@Test public void test207() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.move('N');
 		game.move('N');
@@ -1254,7 +1254,7 @@ public class GameTest {
 	}
 	
 	@Test public void test208() {
-		Maze maze = new Maze(9,9,"1");
+		Maze maze = new Maze(32,32,"level-1");
 		Game game = new Game(maze);
 		game.move('N');
 		game.move('N');
