@@ -1617,7 +1617,7 @@ public class GameTest {
 		Maze maze = new Maze(32,32,"level-1");
 		XYPos xy = new XYPos(32,32);
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> { 
-			Tile t = maze.getNeighbouringTile(xy, 'W');
+			maze.getNeighbouringTile(xy, 'W');
 		});		
 	}
 	
