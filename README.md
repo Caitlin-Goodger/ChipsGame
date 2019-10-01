@@ -21,6 +21,7 @@ Chap = 2
 Exit = 3   
 Exit Lock = 4   
 ~~Key = 5~~   
+Enemy AI = 5   
 ~~Locked Door = 6~~   
 Info Field = 7   
 Treasure = 8   
