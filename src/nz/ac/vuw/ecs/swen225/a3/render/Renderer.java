@@ -50,13 +50,14 @@ public class Renderer {
         catch (IOException e) { e.printStackTrace(); }
 
         //combine the images
-        for (int i = 0; i < toAdd.getWidth(); i++){
-            for (int u = 0; u < toAdd.getHeight(); u++){
-                if (toAdd.getRGB(i,u) == 0 && addToWall)toAdd.setRGB(i,u,floor.getRGB(i,u));
-                else if (toAdd.getRGB(i,u) == 0 && addToWall == false)toAdd.setRGB(i,u,wall.getRGB(i,u));
-            }
+        if(toAdd != null) {
+	        for (int i = 0; i < toAdd.getWidth(); i++){
+	            for (int u = 0; u < toAdd.getHeight(); u++){
+	                if (toAdd.getRGB(i,u) == 0 && addToWall)toAdd.setRGB(i,u,floor.getRGB(i,u));
+	                else if (toAdd.getRGB(i,u) == 0 && addToWall == false)toAdd.setRGB(i,u,wall.getRGB(i,u));
+	            }
+	        }
         }
-
        returnImage  = toAdd;
 
         return returnImage;
@@ -81,24 +82,26 @@ public class Renderer {
         catch (IOException e) { e.printStackTrace(); }
 
         //combine the images
-        for (int i = 0; i < toAdd.getWidth(); i++){
-            for (int u = 0; u < toAdd.getHeight(); u++){
-                // added the basic backgrounds
-                if (toAdd.getRGB(i,u) == 0 && addToWall == 1)toAdd.setRGB(i,u,floor.getRGB(i,u));
-                else if (toAdd.getRGB(i,u) == 0 && addToWall == 2)toAdd.setRGB(i,u,wall.getRGB(i,u));
-                else if (toAdd.getRGB(i,u) == 0 && addToWall == 3)toAdd.setRGB(i,u,inv.getRGB(i,u));
-
-                else if (toAdd.getRGB(i,u) == Color.black.getRGB()) toAdd.setRGB(i,u,Color.black.getRGB());
-                else {
-                    holdColor = new Color(toAdd.getRGB(i,u), true);
-
-                    col = new Color(((holdColor.getRed() + tintColor.getRed()) / 2)
-                            ,((holdColor.getGreen() + tintColor.getGreen()) / 2),
-                            ((holdColor.getBlue() + tintColor.getBlue()) / 2));
-
-                    toAdd.setRGB(i,u,col.getRGB());
-                }
-            }
+        if(toAdd != null ) {
+	        for (int i = 0; i < toAdd.getWidth(); i++){
+	            for (int u = 0; u < toAdd.getHeight(); u++){
+	                // added the basic backgrounds
+	                if (toAdd.getRGB(i,u) == 0 && addToWall == 1)toAdd.setRGB(i,u,floor.getRGB(i,u));
+	                else if (toAdd.getRGB(i,u) == 0 && addToWall == 2)toAdd.setRGB(i,u,wall.getRGB(i,u));
+	                else if (toAdd.getRGB(i,u) == 0 && addToWall == 3)toAdd.setRGB(i,u,inv.getRGB(i,u));
+	
+	                else if (toAdd.getRGB(i,u) == Color.black.getRGB()) toAdd.setRGB(i,u,Color.black.getRGB());
+	                else {
+	                    holdColor = new Color(toAdd.getRGB(i,u), true);
+	
+	                    col = new Color(((holdColor.getRed() + tintColor.getRed()) / 2)
+	                            ,((holdColor.getGreen() + tintColor.getGreen()) / 2),
+	                            ((holdColor.getBlue() + tintColor.getBlue()) / 2));
+	
+	                    toAdd.setRGB(i,u,col.getRGB());
+	                }
+	            }
+	        }
         }
 
         returnImage  = toAdd;

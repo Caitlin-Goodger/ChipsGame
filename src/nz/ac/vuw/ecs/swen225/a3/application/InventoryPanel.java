@@ -68,34 +68,36 @@ public class InventoryPanel extends JPanel {
 			if (item.equals("yellow") || item.equals("blue") || item.equals("red") || item.equals("green")) {
 				path = "resources/CC12.png";
 			}
-
-			ImageIcon icon = new ImageIcon(new File(path).getPath());
-			Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-
-			// change color of key image to match color value of key being displayed
-			switch (item) {
-			case "red":
-				scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50,
-						Image.SCALE_SMOOTH);
-				break;
-			case "yellow":
-				scaledImage = ren.mergeImages(path, 3, Color.YELLOW).getScaledInstance(50, 50,
-						Image.SCALE_SMOOTH);
-				break;
-			case "green":
-				scaledImage = ren.mergeImages(path, 3, Color.GREEN).getScaledInstance(50, 50,
-						Image.SCALE_SMOOTH);
-				break;
-			default:
-				scaledImage = ren.mergeImages(path, 3, Color.BLUE).getScaledInstance(50, 50,
-						Image.SCALE_SMOOTH);
+			
+			if(path!= null) {
+				ImageIcon icon = new ImageIcon(new File(path).getPath());
+				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+	
+				// change color of key image to match color value of key being displayed
+				switch (item) {
+				case "red":
+					scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50,
+							Image.SCALE_SMOOTH);
+					break;
+				case "yellow":
+					scaledImage = ren.mergeImages(path, 3, Color.YELLOW).getScaledInstance(50, 50,
+							Image.SCALE_SMOOTH);
+					break;
+				case "green":
+					scaledImage = ren.mergeImages(path, 3, Color.GREEN).getScaledInstance(50, 50,
+							Image.SCALE_SMOOTH);
+					break;
+				default:
+					scaledImage = ren.mergeImages(path, 3, Color.BLUE).getScaledInstance(50, 50,
+							Image.SCALE_SMOOTH);
+				}
+	
+				JLabel img = new JLabel(new ImageIcon(scaledImage));
+	
+				add(img);
+	
+				itemsAdded++;
 			}
-
-			JLabel img = new JLabel(new ImageIcon(scaledImage));
-
-			add(img);
-
-			itemsAdded++;
 		}
 
 		for (int x = itemsAdded; x < 8; x++) {
