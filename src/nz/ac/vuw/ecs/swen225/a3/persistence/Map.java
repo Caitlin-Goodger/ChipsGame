@@ -17,6 +17,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
+import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
@@ -82,6 +83,9 @@ public class Map {
 						
 					case 4:
 						tile = new ExitLock(j, i, j, i);
+						break;
+					case 5:
+						tile = new Monster(j, i, j, i);
 						break;
 
 					case 7:					
