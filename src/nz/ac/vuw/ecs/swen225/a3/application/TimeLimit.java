@@ -5,32 +5,41 @@ import java.util.TimerTask;
 
 public class TimeLimit {
 	private Timer timer;
-	private int interval;
+	private int time;
 	private MainFrame mf;
 
 	public TimeLimit(int seconds, MainFrame mf) {
 		this.timer = new Timer();
-		this.interval = seconds;
+		this.time = seconds;
 		this.mf = mf;
 
 		timer.scheduleAtFixedRate(new TimerTask() {
 
 			public void run() {
-				mf.getInterfacePanel().setTime(setInterval());
+				mf.getInterfacePanel().setTime(tick());
 			}
 		}, 0, 1000);
 	}
 
 	/**
-	 * Decreases interval until time is 0, then timer stops
+	 * Decreases time until time is 0, then timer stops
 	 * 
-	 * @return interval--
+	 * @return time--
 	 */
-	private int setInterval() {
-		if (interval == 0) {
+	private int tick() {
+		if (time == 0) {
 			timer.cancel();
 		}
 
-		return interval--;
+		return time--;
+	}
+
+	/**
+	 * Sets the time. Used on new level.
+	 * 
+	 * @param time
+	 */
+	public void setTime(int time) {
+		this.time = time;
 	}
 }

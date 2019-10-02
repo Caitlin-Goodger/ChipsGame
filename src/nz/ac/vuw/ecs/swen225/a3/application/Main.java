@@ -27,6 +27,7 @@ public class Main {
 				game = new Game(new Maze(32, 32, "level-1"));
 				mf = new MainFrame(game);
 				tl = new TimeLimit(60, mf);
+				game.setTimeLimit(tl);
 			}
 		});
 	}

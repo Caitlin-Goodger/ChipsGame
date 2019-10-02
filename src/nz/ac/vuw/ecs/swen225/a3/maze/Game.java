@@ -3,10 +3,12 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 import java.util.ArrayList;
 import java.util.List;
 
+import nz.ac.vuw.ecs.swen225.a3.application.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
 /**
- * Game class. Where all the game logic is. 
+ * Game class. Where all the game logic is.
+ * 
  * @author Caitlin
  *
  */
@@ -17,6 +19,8 @@ public class Game {
 
 	private InfoField info;
 	private boolean onField = false;
+
+	private static TimeLimit tl;
 
 	/**
 	 * Constructor for the Game
@@ -40,7 +44,7 @@ public class Game {
 	/**
 	 * Get the maze.
 	 * 
-	 * @return Maze. 
+	 * @return Maze.
 	 */
 	public Maze getMaze() {
 		return maze;
@@ -50,7 +54,7 @@ public class Game {
 	 * Set the Maze.
 	 * 
 	 * @param aNewMaze
-	 * @return boolean. 
+	 * @return boolean.
 	 */
 	public boolean setMaze(Maze aNewMaze) {
 		boolean wasSet = false;
@@ -67,13 +71,13 @@ public class Game {
 	public void delete() {
 		maze = null;
 	}
-	
+
 	/**
 	 * Move all the monsters
 	 */
 	public void moveMonsters() {
 		ArrayList<Monster> monsters = maze.getMonsters();
-		for(int i =0;i<monsters.size();i++) {
+		for (int i = 0; i < monsters.size(); i++) {
 			Monster m = monsters.get(i);
 			m.move(this);
 		}
@@ -86,7 +90,7 @@ public class Game {
 	 */
 	public void move(char direction) {
 		onField = false;
-		
+
 		Tile destination = maze.getNeighbouringTile(chap.currentPosition, direction);
 		if (destination == null) {
 			// do nothing
@@ -121,9 +125,9 @@ public class Game {
 			moveChap(direction, destination);
 		} else if (destination instanceof InfoField) {
 			info = (InfoField) this.getMaze().getTile(destination.getYPosition(), destination.getXPosition());
-			
+
 			onField = true;
-			
+
 			// move chap in direction
 			moveChap(direction, destination);
 			// displayInfo
@@ -135,13 +139,13 @@ public class Game {
 			} else {
 				moveChap(direction, destination);
 
-
 			}
 		} else if (destination instanceof Exit) {
 			String level = maze.getNextLevel();
 			System.out.println(level);
-			new Map().readFile(maze,level,"levels.json");
+			new Map().readFile(maze, level, "levels.json");
 			this.getChap().newLevel(this.getMaze());
+			tl.setTime(60); // Set time at the moment, implement time for each level.
 			// LEVEL COMPLETED
 
 		}
@@ -152,8 +156,9 @@ public class Game {
 	 * *Only called by the above move class Move chap in the given direction, and
 	 * re-fresh the tile he WAS on by replacing it with chap's current onTile, and
 	 * update onTile for chap
-	 * @param direction = direction to move. 
-	 * @param destinationTile = tile to move to. 
+	 * 
+	 * @param direction       = direction to move.
+	 * @param destinationTile = tile to move to.
 	 */
 	public void moveChap(char direction, Tile destinationTile) {
 		XYPos originalPos = new XYPos(chap.getXPosition(), chap.getYPosition());
@@ -192,5 +197,14 @@ public class Game {
 	 */
 	public boolean onField() {
 		return onField;
+	}
+
+	/**
+	 * Sets the time limit in game.
+	 * 
+	 * @param tl
+	 */
+	public void setTimeLimit(TimeLimit tl) {
+		this.tl = tl;
 	}
 }
