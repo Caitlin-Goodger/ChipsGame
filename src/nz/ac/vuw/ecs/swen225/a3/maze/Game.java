@@ -145,7 +145,7 @@ public class Game {
 			System.out.println(level);
 			new Map().readFile(maze, level, "levels.json");
 			this.getChap().newLevel(this.getMaze());
-			tl.setTime(60); // Set time at the moment, implement time for each level.
+			tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
 			// LEVEL COMPLETED
 
 		}

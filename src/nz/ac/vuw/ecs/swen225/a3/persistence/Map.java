@@ -56,10 +56,12 @@ public class Map {
 			//JsonObject level = obj.getJsonObject("level-2");
 			int width = level.getInt("width");
 			int height = level.getInt("height");
+			int time = level.getInt("time");
 			JsonArray jTiles = level.getJsonArray("tiles");
 			Tile[][] tiles = new Tile[width][height];
 			maze.setRow(height);
 			maze.setCol(width);
+			maze.setTime(time);
 			for (int i = 0; i < width; i++) {
 				JsonArray array = jTiles.getJsonArray(i);
 				for (int j = 0; j < height; j++) {

@@ -18,6 +18,7 @@ public class Maze {
 	private ArrayList<String> levels = new ArrayList();
 
 	private String level;
+	private int time;
 	private ArrayList<Monster> monsters = new ArrayList();
 
 	/**
@@ -272,5 +273,23 @@ public class Maze {
 	
 	public void addToMonsters(Monster m) {
 		monsters.add(m);
+	}
+
+	/**
+	 * Sets the time of maze.
+	 * 
+	 * @param time
+	 */
+	public void setTime(int time) {
+		this.time = time;
+	}
+	
+	/**
+	 * Gets the time of maze.
+	 * 
+	 * @return time
+	 */
+	public int getTime() {
+		return time;
 	}
 }
