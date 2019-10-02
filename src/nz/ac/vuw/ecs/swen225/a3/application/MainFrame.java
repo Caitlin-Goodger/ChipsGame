@@ -332,4 +332,13 @@ public class MainFrame extends JFrame {
 			}
 		}
 	}
+	
+	/**
+	 * Returns the interface panel.
+	 * 
+	 * @return interfacePanel
+	 */
+	public InterfacePanel getInterfacePanel() {
+		return interfacePanel;
+	}
 }

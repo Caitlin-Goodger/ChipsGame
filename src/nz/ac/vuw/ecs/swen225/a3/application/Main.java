@@ -11,7 +11,9 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
  * @author Caitlin
  */
 public class Main {
-	private static Game game = new Game(new Maze(32, 32, "level-1"));
+	private static MainFrame mf;
+	private static Game game;
+	private static TimeLimit tl;
 	
 	/**
 	 * Main method. Where game is run from. 
@@ -22,7 +24,9 @@ public class Main {
 
 			@Override
 			public void run() {
-				new MainFrame(game);
+				game = new Game(new Maze(32, 32, "level-1"));
+				mf = new MainFrame(game);
+				tl = new TimeLimit(60, mf);
 			}
 		});
 	}

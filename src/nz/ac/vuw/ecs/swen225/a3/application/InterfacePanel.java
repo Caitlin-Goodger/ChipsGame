@@ -107,4 +107,13 @@ public class InterfacePanel extends JPanel {
 
 		add(chipsLeftField, gc);
 	}
+
+	/**
+	 * Sets the time displayed.
+	 * 
+	 * @param setInterval
+	 */
+	public void setTime(int time) {
+		timeField.setText(Integer.toString(time));
+	}
 }
