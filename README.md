@@ -4,7 +4,6 @@
 
 To-do:
 - Implement pause game
-- Time tracker
 - Method to save game
 - Method to load game
 
