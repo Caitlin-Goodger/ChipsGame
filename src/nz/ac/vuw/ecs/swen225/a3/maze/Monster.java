@@ -2,6 +2,7 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 /**
@@ -37,48 +38,52 @@ public class Monster implements Tile {
 		ArrayList<Tile> freeTiles = new ArrayList();
 		int x = currentPosition.getX();
 		int y = currentPosition.getY();
-		if(!m.getTile(x-1, y).isObjectSolid()) {
+		if(m.getTile(x-1, y) instanceof Free) {
 			freeTiles.add(m.getTile(x-1, y));
-		}if(!m.getTile(x+1, y).isObjectSolid()) {
+		}if(m.getTile(x+1, y) instanceof Free) {
 			freeTiles.add(m.getTile(x+1, y));
-		}if(!m.getTile(x, y-1).isObjectSolid()) {
+		}if(m.getTile(x, y-1) instanceof Free) {
 			freeTiles.add(m.getTile(x, y-1));
-		}if(!m.getTile(x, y+1).isObjectSolid()) {
+		}if(m.getTile(x, y+1) instanceof Free) {
 			freeTiles.add(m.getTile(x, y+1));
 		}
-		int directionN = 1 + (int) (Math.random() * (freeTiles.size()-1)+1);
+		
+		Random r = new Random();
+		int directionN = r.nextInt(freeTiles.size());
 		Tile moveTo = freeTiles.get(directionN);
 		
 		char direction = 'D';
 		
-		if(directionN==1) {
+		if(directionN==0) {
 			direction = 'W';
-		} else if (directionN==2) {
+		} else if (directionN==1) {
 			direction = 'E';
-		} else if (directionN==3) {
-			direction = 'N';
-		} else {
+		} else if (directionN==2) {
 			direction = 'S';
+		} else {
+			direction = 'N';
 		}
 		
-		XYPos original = currentPosition;
+		XYPos original = new XYPos(currentPosition.getX(),currentPosition.getY());
 		updatePosition(direction);
 		XYPos destination = currentPosition;
 		m.setTile(original,onTile);
 		m.setTile(destination,this);
 		setOnTile(moveTo);
 		
-		
-		
-//		XYPos originalPos = new XYPos(chap.getXPosition(), chap.getYPosition());
-//		// move chap in direction
-//		chap.updatePosition(direction);
-//		XYPos destinationPos = chap.currentPosition;
-//		maze.setTile(originalPos, chap.getOnTile());
-//		maze.setTile(destinationPos, chap);
-//		// update onTile for chap
-//		chap.setOnTile(destinationTile);
 
+//		if(m.getTile(x, y+1) instanceof Free) {
+//			Tile moveTo = (m.getTile(x, y+1));
+//			System.out.println("fjdksahf");
+//			char direction = 'N';
+//			
+//			XYPos original = new XYPos(currentPosition.getX(),currentPosition.getY());
+//			updatePosition(direction);
+//			XYPos destination = currentPosition;
+//			m.setTile(original,onTile);
+//			m.setTile(destination,this);
+//			setOnTile(moveTo);
+//		}	
 	}
 
 	private void setOnTile(Tile moveTo) {

@@ -1,5 +1,8 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
 /**
@@ -63,6 +66,17 @@ public class Game {
 	 */
 	public void delete() {
 		maze = null;
+	}
+	
+	/**
+	 * Move all the monsters
+	 */
+	public void moveMonsters() {
+		ArrayList<Monster> monsters = maze.getMonsters();
+		for(int i =0;i<monsters.size();i++) {
+			Monster m = monsters.get(i);
+			m.move(this);
+		}
 	}
 
 	/**

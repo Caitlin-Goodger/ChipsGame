@@ -1,6 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 
@@ -17,6 +18,7 @@ public class Maze {
 	private ArrayList<String> levels = new ArrayList();
 
 	private String level;
+	private ArrayList<Monster> monsters = new ArrayList();
 
 	/**
 	 * Constructor for the maze class. 
@@ -262,5 +264,13 @@ public class Maze {
 		}
 
 		return spawn;
+	}
+	
+	public ArrayList<Monster> getMonsters() {
+		return monsters;
+	}
+	
+	public void addToMonsters(Monster m) {
+		monsters.add(m);
 	}
 }

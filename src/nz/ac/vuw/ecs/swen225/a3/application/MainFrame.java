@@ -262,6 +262,7 @@ public class MainFrame extends JFrame {
 //					System.out.println();
 //					System.out.println("Up was pressed");
 					game.move('N');
+					game.moveMonsters();
 					// game.getMaze().printConvertedLevel();
 				}
 
@@ -269,6 +270,7 @@ public class MainFrame extends JFrame {
 //					System.out.println();
 //					System.out.println("Down was pressed");
 					game.move('S');
+					game.moveMonsters();
 					// game.getMaze().printConvertedLevel();
 				}
 
@@ -276,6 +278,7 @@ public class MainFrame extends JFrame {
 //					System.out.println();
 //					System.out.println("Left was pressed");
 					game.move('W');
+					game.moveMonsters();
 					// game.getMaze().printConvertedLevel();
 				}
 
@@ -283,6 +286,7 @@ public class MainFrame extends JFrame {
 //					System.out.println();
 //					System.out.println("Right was pressed");
 					game.move('E');
+					game.moveMonsters();
 					// game.getMaze().printConvertedLevel();
 				}
 

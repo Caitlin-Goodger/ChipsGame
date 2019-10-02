@@ -53,6 +53,7 @@ public class Map {
 			JsonReader reader = Json.createReader(input);
 			JsonObject obj = reader.readObject();
 			JsonObject level = obj.getJsonObject(levelName);
+			//JsonObject level = obj.getJsonObject("level-2");
 			int width = level.getInt("width");
 			int height = level.getInt("height");
 			JsonArray jTiles = level.getJsonArray("tiles");
@@ -86,6 +87,8 @@ public class Map {
 						break;
 					case 5:
 						tile = new Monster(j, i, j, i);
+						Monster m = (Monster) tile;
+						maze.addToMonsters(m);
 						break;
 
 					case 7:					
