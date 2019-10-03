@@ -60,8 +60,8 @@ public class FileReader {
 			int time = level.getInt("time");
 			JsonArray jTiles = level.getJsonArray("tiles");
 			Tile[][] tiles = new Tile[width][height];
-			maze.setRow(height);
-			maze.setCol(width);
+			maze.setHeight(height);
+			maze.setWidth(width);
 			maze.setTime(time);
 			for (int i = 0; i < width; i++) {
 				JsonArray array = jTiles.getJsonArray(i);

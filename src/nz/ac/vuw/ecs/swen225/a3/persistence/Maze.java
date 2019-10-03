@@ -16,33 +16,38 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  *
  */
 public class Maze {
-	private Tile tiles[][];
-	private int rows;
-	private int cols;
-	private ArrayList<String> levels = new ArrayList();
+	private FileReader fileReader;
 
-	private String level;
-	private int time;
-	private ArrayList<Monster> monsters = new ArrayList();
+	private ArrayList<String> levels = new ArrayList<String>();
+
+	private Tile tiles[][];
+	private int width, height;
+	private String levelName;
+	private int timeLimit;
+
+	// Monster array.
+	private ArrayList<Monster> monsters = new ArrayList<Monster>();
 
 	/**
-	 * Constructor for the maze class.
+	 * Constructor for Maze.
 	 * 
-	 * @param rows  = number of rows in the maze.
-	 * @param cols  = number of columns in the maze.
-	 * @param level = level that this maze is for.
+	 * @param width
+	 * @param height
+	 * @param levelName
 	 */
-	public Maze(int rows, int cols, String level) {
-		tiles = new Tile[rows][cols];
-		this.rows = rows;
-		this.cols = cols;
-		this.level = level;
+	public Maze(int width, int height, String levelName) {
+		tiles = new Tile[height][width];
+
+		this.height = height;
+		this.width = width;
+		this.levelName = levelName;
+
+		// Adds the levels.
 		levels.add("level-1");
 		levels.add("level-2");
-		levels.add("level-3");
-		levels.add("level-4");
-		levels.add("level-5");
-		new FileReader().read(this, level, "levels.json");
+
+		fileReader = new FileReader();
+		fileReader.read(this, levelName, "levels.json");
 	}
 
 	/**
@@ -85,14 +90,16 @@ public class Maze {
 	public Chap findChap() {
 		Tile target;
 		Chap chap = null;
-		for (int row = 0; row < rows; row++) {
-			for (int col = 0; col < cols; col++) {
+
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < width; col++) {
 				target = tiles[row][col];
 				if (target instanceof Chap) {
 					chap = (Chap) target;
 				}
 			}
 		}
+
 		return chap;
 	}
 
@@ -124,13 +131,13 @@ public class Maze {
 //			destination.resetPosition(new XYPos(x, y - 1));
 			break;
 		case 'E':
-			if (x + 1 >= cols)
+			if (x + 1 >= width)
 				return null;
 			destination = tiles[y][x + 1];
 //			destination.resetPosition(new XYPos(x + 1, y));
 			break;
 		case 'S':
-			if (y + 1 >= rows)
+			if (y + 1 >= height)
 				return null;
 			destination = tiles[y + 1][x];
 //			destination.resetPosition(new XYPos(x, y + 1));
@@ -172,29 +179,13 @@ public class Maze {
 	}
 
 	/**
-	 * Change a tile on the maze to a free tile
-	 * 
-	 * @param target = Tile to change to free.
-	 * 
-	 * @param origin - the tile to be changed
-	 * @return boolean.
-	 */
-	public boolean changeToFree(Tile target) {
-		int x = target.getXPosition();
-		int y = target.getYPosition();
-//		System.out.printf("Setting tile at x:%d y:%d which is %s to FREE\n", x, y, tiles[y][x].toString());
-		tiles[y][x] = new Free(x, y);
-		return true;
-	}
-
-	/**
 	 * @return - number of treasures remaining in this level
 	 */
 	public int remainingTreasure() {
 		Tile target;
 		int count = 0;
-		for (int row = 0; row < rows; row++) {
-			for (int col = 0; col < cols; col++) {
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < width; col++) {
 				target = tiles[row][col];
 				if (target instanceof Treasure)
 					count++;
@@ -206,10 +197,10 @@ public class Maze {
 	/**
 	 * Set the 2D array of tiles.
 	 * 
-	 * @param tiles2
+	 * @param tile
 	 */
-	public void setTiles(Tile[][] tiles2) {
-		tiles = tiles2;
+	public void setTiles(Tile[][] tile) {
+		tiles = tile;
 	}
 
 	/**
@@ -218,9 +209,9 @@ public class Maze {
 	 * @return level
 	 */
 	public String getLevel() {
-		level = level.replaceAll("[^0-9]+", " ");
+		levelName = levelName.replaceAll("[^0-9]+", " ");
 
-		return level;
+		return levelName;
 	}
 
 	/**
@@ -231,43 +222,43 @@ public class Maze {
 	public String getNextLevel() {
 		int index = 0;
 		for (int i = 0; i < levels.size(); i++) {
-			if (levels.get(i).equals(level)) {
+			if (levels.get(i).equals(levelName)) {
 				index = i;
 			}
 		}
 		index++;
-		level = levels.get(index);
-		return level;
+		levelName = levels.get(index);
+		return levelName;
 	}
 
 	/**
-	 * Set the number of rows.
+	 * Set the height.
 	 * 
-	 * @param height = rows to set.
+	 * @param height
 	 */
-	public void setRow(int height) {
-		rows = height;
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 	/**
-	 * Set the number of columns
+	 * Set the width.
 	 * 
-	 * @param width = cols to set.
+	 * @param width
 	 */
-	public void setCol(int width) {
-		cols = width;
+	public void setWidth(int width) {
+		this.width = width;
 	}
 
 	/**
 	 * Gets the XYPos for new map.
 	 * 
-	 * @return x
+	 * @return spawn
 	 */
 	public XYPos getStartingPos() {
 		XYPos spawn = null;
 
-		for (int row = 0; row < rows; row++) {
-			for (int col = 0; col < cols; col++) {
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < width; col++) {
 				if (tiles[row][col] instanceof Chap) {
 					spawn = new XYPos(col, row);
 				}
@@ -291,7 +282,7 @@ public class Maze {
 	 * @param time
 	 */
 	public void setTime(int time) {
-		this.time = time;
+		this.timeLimit = time;
 	}
 
 	/**
@@ -300,6 +291,6 @@ public class Maze {
 	 * @return time
 	 */
 	public int getTime() {
-		return time;
+		return timeLimit;
 	}
 }

@@ -1660,16 +1660,18 @@ public class GameTest {
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(true,maze.setTile(xy, t));
 	}
+
+	// Don't need these anymore
 	
-	/**
-	 * Testing change to free method in Maze class.  
-	 */
-	@Test public void test188() {
-		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(7,7);
-		Tile t = maze.getNeighbouringTile(xy, 'E');
-		assertEquals(true,maze.changeToFree(t));
-	}
+//	/**
+//	 * Testing change to free method in Maze class.  
+//	 */
+//	@Test public void test188() {
+//		Maze maze = new Maze(32,32,"level-1");
+//		XYPos xy = new XYPos(7,7);
+//		Tile t = maze.getNeighbouringTile(xy, 'E');
+//		assertEquals(true,maze.changeToFree(t));
+//	}
 	
 	/**
 	 * Testing get amount of remaining treasure method in Maze class.  
