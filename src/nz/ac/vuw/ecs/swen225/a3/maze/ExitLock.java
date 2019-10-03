@@ -104,13 +104,4 @@ public class ExitLock implements Tile {
 	public String toString() {
 		return "L";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

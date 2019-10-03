@@ -10,16 +10,15 @@ import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
 /**
  * Main class of the game. Where the game is run from.
- * 
- * @author Caitlin
  */
 public class Main {
 	private static FileReader fileReader;
 	private static Maze maze;
 
-	private static MainFrame mf;
+	private static MainFrame mainFrame;
 	private static Game game;
-	private static TimeLimit tl;
+
+	private static TimeLimit timeLimit;
 
 	/**
 	 * Main method. Where game is run from.
@@ -33,18 +32,19 @@ public class Main {
 			public void run() {
 				fileReader = new FileReader("level-1");
 				fileReader.read();
-				
-				// Create a new maze passing in the parameters generated from the file reader.
+
+				// Create a new maze passing in the parameters generated
+				// from the file reader.
 				maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
 						fileReader.getTimeLimit(), fileReader.getMazeLayout());
 
 				game = new Game(maze);
 
-				mf = new MainFrame(game);
+				mainFrame = new MainFrame(game);
 
-				tl = new TimeLimit(60, mf);
+				timeLimit = new TimeLimit(60, mainFrame);
 
-				game.setTimeLimit(tl);
+				game.setTimeLimit(timeLimit);
 			}
 		});
 	}

@@ -92,13 +92,4 @@ public class Exit implements Tile {
 	public String toString() {
 		return "X";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

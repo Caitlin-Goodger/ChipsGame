@@ -41,7 +41,7 @@ public class FileReader {
 
 	// Variables for monsters.
 	private List<Monster> monsters = new ArrayList<Monster>();
-	
+
 	// Variables for reader.
 	private InputStream input;
 	private JsonReader reader;
@@ -73,7 +73,7 @@ public class FileReader {
 			height = level.getInt("height");
 			timeLimit = level.getInt("time");
 			mazeLayout = new Tile[width][height];
-			
+
 			createMazeLayout();
 		} catch (FileNotFoundException e) {
 			throw new Error("File not found.", e);
@@ -114,8 +114,10 @@ public class FileReader {
 					break;
 				case 5:
 					tile = new Monster(row, col);
+
 					Monster m = (Monster) tile;
 					addMonster(m);
+
 					break;
 				case 7:
 					if (infoFieldID == 0) {
@@ -123,8 +125,11 @@ public class FileReader {
 								+ "Collect the correct key colours <br>"
 								+ "to unlock the doors and <br>" + "collect all the treasure!"
 								+ "<html>", row, col);
-						break;
+					} else {
+						tile = new InfoField("null", row, col);
 					}
+
+					break;
 				case 8:
 					tile = new Treasure(row, col);
 					break;
@@ -197,7 +202,7 @@ public class FileReader {
 	public Tile[][] getMazeLayout() {
 		return this.mazeLayout;
 	}
-	
+
 	/**
 	 * Return the name of level.
 	 * 
@@ -206,17 +211,17 @@ public class FileReader {
 	public String getLevelName() {
 		return this.levelName;
 	}
-	
+
 	/**
 	 * Returns the array of monsters.
 	 * 
 	 * @param monster
-	 * @return 
+	 * @return
 	 */
 	public List<Monster> getMonsters() {
 		return Collections.unmodifiableList(this.monsters);
 	}
-	
+
 	/**
 	 * Add monster.
 	 * 

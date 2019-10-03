@@ -93,13 +93,4 @@ public class Wall implements Tile {
 	public String toString() {
 		return "W";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

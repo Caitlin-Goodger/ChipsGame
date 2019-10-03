@@ -194,7 +194,6 @@ public class Chap implements Tile {
 	/*
 	 * re-set the XYPos
 	 */
-	@Override
 	public void resetPosition(Position pos) {
 		this.currentPosition = pos;
 

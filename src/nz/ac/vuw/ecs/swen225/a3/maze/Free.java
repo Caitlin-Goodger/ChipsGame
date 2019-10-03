@@ -93,13 +93,4 @@ public class Free implements Tile {
 	public String toString() {
 		return "F";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

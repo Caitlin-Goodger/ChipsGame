@@ -118,13 +118,4 @@ public class InfoField implements Tile {
 	public String toString() {
 		return "I";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

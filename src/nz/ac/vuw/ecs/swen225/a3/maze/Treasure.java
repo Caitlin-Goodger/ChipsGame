@@ -93,13 +93,4 @@ public class Treasure implements Tile {
 	public String toString() {
 		return "T";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

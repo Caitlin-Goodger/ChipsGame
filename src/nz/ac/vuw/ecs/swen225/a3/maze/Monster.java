@@ -159,13 +159,4 @@ public class Monster implements Tile {
 	public String toString() {
 		return "M";
 	}
-
-	/**
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

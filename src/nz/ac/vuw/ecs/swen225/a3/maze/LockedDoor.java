@@ -129,13 +129,4 @@ public class LockedDoor implements Tile {
 	public String toString() {
 		return "D";
 	}
-
-	/*
-	 * re-set the XYPos
-	 */
-	@Override
-	public void resetPosition(Position pos) {
-		this.currentPosition = pos;
-
-	}
 }

@@ -30,13 +30,6 @@ public interface Tile {
 	public void updatePosition(char direction);
 
 	/**
-	 * re-set the x and y value for XYPos
-	 * 
-	 * @param pos = position to reset to.
-	 */
-	public void resetPosition(Position pos);
-
-	/**
 	 * used to get the tiles positions
 	 * 
 	 * @return XYPos
