@@ -78,8 +78,6 @@ public class Game {
 	public void moveMonsters() {
 		List<Monster> monsters = maze.getMonsters();
 		
-		System.out.println(monsters.size());
-		
 		for (int i = 0; i < monsters.size(); i++) {
 			Monster m = monsters.get(i);
 			m.move(this);
