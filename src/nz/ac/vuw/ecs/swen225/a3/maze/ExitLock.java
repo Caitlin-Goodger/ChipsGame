@@ -1,12 +1,10 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-
-import java.awt.image.BufferedImage;
-
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
- * ExitLock Tile. Is an implementation of the Tile class. 
+ * ExitLock Tile. Is an implementation of the Tile class.
+ * 
  * @author Caitlin
  *
  */
@@ -17,11 +15,16 @@ public class ExitLock implements Tile {
 	private boolean unlocked;
 
 	/**
-	 * Constructor for the exitlock tile. 
-	 * @param xGrid = x co-ordinate in of the tile on the grid.
-	 * @param yGrid = y co-ordinate in of the tile on the grid.
-	 * @param xScreen = x co-ordinate in of the tile on the screen.
-	 * @param yScreen = y co-ordinate in of the tile on the screen.
+	 * Constructor for the exitlock tile.
+	 * 
+	 * @param xGrid   = x co-ordinate in of the tile on the
+	 *                grid.
+	 * @param yGrid   = y co-ordinate in of the tile on the
+	 *                grid.
+	 * @param xScreen = x co-ordinate in of the tile on the
+	 *                screen.
+	 * @param yScreen = y co-ordinate in of the tile on the
+	 *                screen.
 	 */
 	public ExitLock(int xGrid, int yGrid) {
 		currentPosition = new XYPos(xGrid, yGrid);
@@ -29,7 +32,8 @@ public class ExitLock implements Tile {
 
 	/**
 	 * Update the position that the tile is in.
-	 * @param direction = direction. 
+	 * 
+	 * @param direction = direction.
 	 */
 	@Override
 	public void updatePosition(char direction) {
@@ -46,12 +50,15 @@ public class ExitLock implements Tile {
 
 	/**
 	 * Check if the tile is solid
+	 * 
 	 * @param set
 	 */
-	public void isSolid(boolean set) { isSolid = set;}
+	public void isSolid(boolean set) {
+		isSolid = set;
+	}
 
 	/**
-	 * Get the current position of the tile on the grid. 
+	 * Get the current position of the tile on the grid.
 	 */
 	@Override
 	public XYPos getTilePosition() {
@@ -59,7 +66,7 @@ public class ExitLock implements Tile {
 	}
 
 	/**
-	 * Check whether the object is solid. 
+	 * Check whether the object is solid.
 	 */
 	@Override
 	public boolean isObjectSolid() {
@@ -67,7 +74,7 @@ public class ExitLock implements Tile {
 	}
 
 	/**
-	 * Get the path of the image. 
+	 * Get the path of the image.
 	 */
 	@Override
 	public String getImagePath() {
@@ -75,7 +82,7 @@ public class ExitLock implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid. 
+	 * Get the y co-ordinate of the tile on the grid.
 	 */
 	@Override
 	public int getYPosition() {
@@ -97,13 +104,13 @@ public class ExitLock implements Tile {
 	public String toString() {
 		return "L";
 	}
-	
+
 	/*
 	 * re-set the XYPos
 	 */
 	@Override
 	public void resetPosition(XYPos pos) {
 		this.currentPosition = pos;
-		
+
 	}
 }

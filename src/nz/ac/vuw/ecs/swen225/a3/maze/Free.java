@@ -1,12 +1,10 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-
-import java.awt.image.BufferedImage;
-
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
- * Free Tile. Is an implementation of the tile class. 
+ * Free Tile. Is an implementation of the tile class.
+ * 
  * @author Caitlin
  *
  */
@@ -15,11 +13,16 @@ public class Free implements Tile {
 	private XYPos currentPosition; // keeps track of tiles position within a grid
 
 	/**
-	 * Constructor for the free tile. 
-	 * @param xGrid = x co-ordinate in of the tile on the grid.
-	 * @param yGrid = y co-ordinate in of the tile on the grid.
-	 * @param xScreen = x co-ordinate in of the tile on the screen.
-	 * @param yScreen = y co-ordinate in of the tile on the screen.
+	 * Constructor for the free tile.
+	 * 
+	 * @param xGrid   = x co-ordinate in of the tile on the
+	 *                grid.
+	 * @param yGrid   = y co-ordinate in of the tile on the
+	 *                grid.
+	 * @param xScreen = x co-ordinate in of the tile on the
+	 *                screen.
+	 * @param yScreen = y co-ordinate in of the tile on the
+	 *                screen.
 	 */
 	public Free(int xGrid, int yGrid) {
 		currentPosition = new XYPos(xGrid, yGrid);
@@ -27,7 +30,8 @@ public class Free implements Tile {
 
 	/**
 	 * Update the position that the tile is in.
-	 * @param direction = direction. 
+	 * 
+	 * @param direction = direction.
 	 */
 	@Override
 	public void updatePosition(char direction) {
@@ -43,7 +47,7 @@ public class Free implements Tile {
 	}
 
 	/**
-	 * Get the current position of the tile on the grid. 
+	 * Get the current position of the tile on the grid.
 	 */
 	@Override
 	public XYPos getTilePosition() {
@@ -51,7 +55,7 @@ public class Free implements Tile {
 	}
 
 	/**
-	 * Check whether the object is solid. 
+	 * Check whether the object is solid.
 	 */
 	@Override
 	public boolean isObjectSolid() {
@@ -59,7 +63,7 @@ public class Free implements Tile {
 	}
 
 	/**
-	 * Get the path of the image. 
+	 * Get the path of the image.
 	 */
 	@Override
 	public String getImagePath() {
@@ -67,7 +71,7 @@ public class Free implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid. 
+	 * Get the y co-ordinate of the tile on the grid.
 	 */
 	@Override
 	public int getYPosition() {
@@ -89,13 +93,13 @@ public class Free implements Tile {
 	public String toString() {
 		return "F";
 	}
-	
+
 	/*
 	 * re-set the XYPos
 	 */
 	@Override
 	public void resetPosition(XYPos pos) {
 		this.currentPosition = pos;
-		
+
 	}
 }

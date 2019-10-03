@@ -1,13 +1,13 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
- * Class for the Maze of the game. 
+ * Class for the Maze of the game.
+ * 
  * @author Caitlin
  *
  */
@@ -22,10 +22,11 @@ public class Maze {
 	private ArrayList<Monster> monsters = new ArrayList();
 
 	/**
-	 * Constructor for the maze class. 
-	 * @param rows = number of rows in the maze. 
-	 * @param cols = number of columns in the maze.
-	 * @param level = level that this maze is for. 
+	 * Constructor for the maze class.
+	 * 
+	 * @param rows  = number of rows in the maze.
+	 * @param cols  = number of columns in the maze.
+	 * @param level = level that this maze is for.
 	 */
 	public Maze(int rows, int cols, String level) {
 		tiles = new Tile[rows][cols];
@@ -41,7 +42,8 @@ public class Maze {
 	}
 
 	/**
-	 * Get the 2D array of tile for this maze. 
+	 * Get the 2D array of tile for this maze.
+	 * 
 	 * @return Tile[][]
 	 */
 	public Tile[][] getTiles() {
@@ -71,9 +73,9 @@ public class Maze {
 		}
 	}
 
-
 	/**
 	 * Find Chap in the maze.
+	 * 
 	 * @return Chap.
 	 */
 	public Chap findChap() {
@@ -94,12 +96,12 @@ public class Maze {
 	 * Get the neighbouring tile from a given position and
 	 * direction
 	 * 
-	 * @param origin - original position
+	 * @param origin    - original position
 	 * 
 	 * @param direction - the direction to look in
 	 * 
 	 * @return - the corresponding neighbouring tile if there is
-	 * one, or null
+	 *         one, or null
 	 */
 	public Tile getNeighbouringTile(XYPos origin, char direction) {
 		int x = origin.getX();
@@ -142,8 +144,9 @@ public class Maze {
 
 	/**
 	 * set a tile on the maze
-	 * @param pos = position to set the tile at.
-	 * @param tile = Tile to set. 
+	 * 
+	 * @param pos  = position to set the tile at.
+	 * @param tile = Tile to set.
 	 * @return boolean
 	 */
 	public boolean setTile(XYPos pos, Tile tile) {
@@ -155,9 +158,10 @@ public class Maze {
 
 	/**
 	 * Get a tile on the maze
+	 * 
 	 * @param x = x value to get the tile at.
 	 * @param y = y value to get the tile at.
-	 * @return Tile. 
+	 * @return Tile.
 	 */
 	public Tile getTile(int x, int y) {
 		return tiles[x][y];
@@ -165,10 +169,11 @@ public class Maze {
 
 	/**
 	 * Change a tile on the maze to a free tile
-	 * @param target = Tile to change to free. 
+	 * 
+	 * @param target = Tile to change to free.
 	 * 
 	 * @param origin - the tile to be changed
-	 * @return boolean. 
+	 * @return boolean.
 	 */
 	public boolean changeToFree(Tile target) {
 		int x = target.getXPosition();
@@ -215,7 +220,8 @@ public class Maze {
 	}
 
 	/**
-	 * Get the next level name. 
+	 * Get the next level name.
+	 * 
 	 * @return String
 	 */
 	public String getNextLevel() {
@@ -232,7 +238,8 @@ public class Maze {
 
 	/**
 	 * Set the number of rows.
-	 * @param height = rows to set. 
+	 * 
+	 * @param height = rows to set.
 	 */
 	public void setRow(int height) {
 		rows = height;
@@ -240,7 +247,8 @@ public class Maze {
 
 	/**
 	 * Set the number of columns
-	 * @param width = cols to set. 
+	 * 
+	 * @param width = cols to set.
 	 */
 	public void setCol(int width) {
 		cols = width;
@@ -256,7 +264,7 @@ public class Maze {
 
 		for (int row = 0; row < rows; row++) {
 			for (int col = 0; col < cols; col++) {
-				if(tiles[row][col] instanceof Chap) {
+				if (tiles[row][col] instanceof Chap) {
 					spawn = new XYPos(col, row);
 				}
 			}
@@ -264,11 +272,11 @@ public class Maze {
 
 		return spawn;
 	}
-	
+
 	public ArrayList<Monster> getMonsters() {
 		return monsters;
 	}
-	
+
 	public void addToMonsters(Monster m) {
 		monsters.add(m);
 	}
@@ -281,7 +289,7 @@ public class Maze {
 	public void setTime(int time) {
 		this.time = time;
 	}
-	
+
 	/**
 	 * Gets the time of maze.
 	 * 

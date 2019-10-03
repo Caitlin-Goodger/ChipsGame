@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
@@ -85,7 +84,8 @@ public class Game {
 	}
 
 	/**
-	 * update chap's location in the given direction if its applicable
+	 * update chap's location in the given direction if its
+	 * applicable
 	 * 
 	 * @param direction - the desired direction to move in
 	 */
@@ -114,7 +114,8 @@ public class Game {
 				// move chap in direction
 				moveChap(direction, destination);
 				// remove the used key from chap's inventory
-				// chap.removeItem(door.getColour(), "Key"); //removes key from inventory
+				// chap.removeItem(door.getColour(), "Key"); //removes key
+				// from inventory
 			} else {
 				System.out.println("No Corresponding Key!");
 				// do nothing
@@ -125,7 +126,8 @@ public class Game {
 			// move chap in direction
 			moveChap(direction, destination);
 		} else if (destination instanceof InfoField) {
-			info = (InfoField) this.getMaze().getTile(destination.getYPosition(), destination.getXPosition());
+			info = (InfoField) this.getMaze().getTile(destination.getYPosition(),
+					destination.getXPosition());
 
 			onField = true;
 
@@ -154,9 +156,10 @@ public class Game {
 	}
 
 	/**
-	 * *Only called by the above move class Move chap in the given direction, and
-	 * re-fresh the tile he WAS on by replacing it with chap's current onTile, and
-	 * update onTile for chap
+	 * *Only called by the above move class Move chap in the
+	 * given direction, and re-fresh the tile he WAS on by
+	 * replacing it with chap's current onTile, and update
+	 * onTile for chap
 	 * 
 	 * @param direction       = direction to move.
 	 * @param destinationTile = tile to move to.

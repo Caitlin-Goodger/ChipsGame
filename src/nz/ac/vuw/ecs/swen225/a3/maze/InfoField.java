@@ -1,11 +1,10 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import java.awt.image.BufferedImage;
-
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
- * InfoField tile. Is an implementation of the Tile class. 
+ * InfoField tile. Is an implementation of the Tile class.
+ * 
  * @author Caitlin
  *
  */
@@ -15,12 +14,17 @@ public class InfoField implements Tile {
 	private XYPos currentPosition; // keeps track of tiles position within a grid
 
 	/**
-	 * Constructor for the info field tile. 
-	 * @param aText = text for the info field. 
-	 * @param xGrid = x co-ordinate in of the tile on the grid.
-	 * @param yGrid = y co-ordinate in of the tile on the grid.
-	 * @param xScreen = x co-ordinate in of the tile on the screen.
-	 * @param yScreen = y co-ordinate in of the tile on the screen.
+	 * Constructor for the info field tile.
+	 * 
+	 * @param aText   = text for the info field.
+	 * @param xGrid   = x co-ordinate in of the tile on the
+	 *                grid.
+	 * @param yGrid   = y co-ordinate in of the tile on the
+	 *                grid.
+	 * @param xScreen = x co-ordinate in of the tile on the
+	 *                screen.
+	 * @param yScreen = y co-ordinate in of the tile on the
+	 *                screen.
 	 */
 	public InfoField(String aText, int xGrid, int yGrid) {
 		text = aText;
@@ -28,9 +32,10 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Set the text of the info Field. 
+	 * Set the text of the info Field.
+	 * 
 	 * @param aText
-	 * @return boolean. 
+	 * @return boolean.
 	 */
 	public boolean setText(String aText) {
 		boolean wasSet = false;
@@ -40,7 +45,8 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Get the text of the info field. 
+	 * Get the text of the info field.
+	 * 
 	 * @return String.
 	 */
 	public String getText() {
@@ -49,7 +55,8 @@ public class InfoField implements Tile {
 
 	/**
 	 * Update the position that the tile is in.
-	 * @param direction = direction. 
+	 * 
+	 * @param direction = direction.
 	 */
 	@Override
 	public void updatePosition(char direction) {
@@ -65,7 +72,7 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Get the current position of the tile on the grid. 
+	 * Get the current position of the tile on the grid.
 	 */
 	@Override
 	public XYPos getTilePosition() {
@@ -73,7 +80,7 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Check whether the object is solid. 
+	 * Check whether the object is solid.
 	 */
 	@Override
 	public boolean isObjectSolid() {
@@ -81,7 +88,7 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Get the path of the image. 
+	 * Get the path of the image.
 	 */
 	@Override
 	public String getImagePath() {
@@ -89,7 +96,7 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid. 
+	 * Get the y co-ordinate of the tile on the grid.
 	 */
 	@Override
 	public int getYPosition() {
@@ -111,13 +118,13 @@ public class InfoField implements Tile {
 	public String toString() {
 		return "I";
 	}
-	
+
 	/*
 	 * re-set the XYPos
 	 */
 	@Override
 	public void resetPosition(XYPos pos) {
 		this.currentPosition = pos;
-		
+
 	}
 }

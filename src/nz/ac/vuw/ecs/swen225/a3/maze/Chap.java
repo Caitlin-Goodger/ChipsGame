@@ -1,13 +1,13 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
- * Chap tile. It is a implementation of Tile. 
+ * Chap tile. It is a implementation of Tile.
+ * 
  * @author Caitlin
  *
  */
@@ -39,8 +39,9 @@ public class Chap implements Tile {
 
 	/**
 	 * Given a locked door, see if chap can unlock it
-	 * @param door = door to be unlcoked. 
-	 * @return boolean. 
+	 * 
+	 * @param door = door to be unlcoked.
+	 * @return boolean.
 	 */
 	public boolean canUnlock(LockedDoor door) {
 		String colour = door.getColour();
@@ -57,7 +58,8 @@ public class Chap implements Tile {
 	/**
 	 * Pick up an item from the maze and add to chap's
 	 * inventory.
-	 * @param item =  the Tile with a pickup-able item.
+	 * 
+	 * @param item = the Tile with a pickup-able item.
 	 */
 	public void pickupItem(Tile item) {
 		if (item instanceof Key) {
@@ -87,7 +89,8 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the current inventory of the game. 
+	 * Get the current inventory of the game.
+	 * 
 	 * @return Map<String,String>.
 	 */
 	public Map<String, String> getInventory() {
