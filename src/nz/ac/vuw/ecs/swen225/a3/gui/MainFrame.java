@@ -1,5 +1,5 @@
 
-package nz.ac.vuw.ecs.swen225.a3.application;
+package nz.ac.vuw.ecs.swen225.a3.gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
+import nz.ac.vuw.ecs.swen225.a3.util.Filter;
 
 /**
  * MainFrame that will hold panels and menus that will be

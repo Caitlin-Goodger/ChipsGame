@@ -3,7 +3,7 @@ package nz.ac.vuw.ecs.swen225.a3.util;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import nz.ac.vuw.ecs.swen225.a3.application.MainFrame;
+import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 
 public class TimeLimit {
 	private Timer timer;

@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.application;
+package nz.ac.vuw.ecs.swen225.a3.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
