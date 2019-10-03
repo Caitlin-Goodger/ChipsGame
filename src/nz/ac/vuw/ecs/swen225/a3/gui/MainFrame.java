@@ -304,7 +304,7 @@ public class MainFrame extends JFrame {
 				// otherwise error from
 				// grabbing nothing.
 				if (game.onField()) {
-					textPanel.getLabel().setText(game.getInfoField().getText());
+					textPanel.getLabel().setText(game.getInfoField().getInfoFieldText());
 				}
 
 				// Update the total number of chips every move.

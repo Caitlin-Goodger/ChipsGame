@@ -4,54 +4,45 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * InfoField tile. Is an implementation of the Tile class.
- * 
- * @author Caitlin
- *
+ * InfoField class is responsible for keeping the position
+ * of the info field and storing the information.
  */
 public class InfoField implements Tile {
 	private String text;
-	private boolean isSolid = false; // check if player can walkThrought
-	private Position currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition;
 
 	/**
-	 * Constructor for the info field tile.
+	 * Constructor for the info field.
 	 * 
-	 * @param aText   = text for the info field.
-	 * @param xGrid   = x co-ordinate in of the tile on the
-	 *                grid.
-	 * @param yGrid   = y co-ordinate in of the tile on the
-	 *                grid.
-	 * @param xScreen = x co-ordinate in of the tile on the
-	 *                screen.
-	 * @param yScreen = y co-ordinate in of the tile on the
-	 *                screen.
+	 * @param text
+	 * @param xGrid
+	 * @param yGrid
 	 */
-	public InfoField(String aText, int xGrid, int yGrid) {
-		text = aText;
-		currentPosition = new Position(xGrid, yGrid);
+	public InfoField(String text, int xGrid, int yGrid) {
+		this.text = text;
+		this.currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
-	 * Set the text of the info Field.
+	 * Sets the text in the info field.
 	 * 
-	 * @param aText
-	 * @return boolean.
+	 * @param text
 	 */
-	public boolean setText(String aText) {
-		boolean wasSet = false;
-		text = aText;
-		wasSet = true;
-		return wasSet;
+	public void setInfoFieldText(String text) {
+		assert text != null;
+
+		this.text = text;
 	}
 
 	/**
-	 * Get the text of the info field.
+	 * Gets the text in the info field.
 	 * 
-	 * @return String.
+	 * @return text
 	 */
-	public String getText() {
-		return text;
+	public String getInfoFieldText() {
+		assert this.text != null;
+
+		return this.text;
 	}
 
 	/**
@@ -63,23 +54,27 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid.
+	 * Get the y-coordinate of the info field.
 	 */
 	@Override
 	public int getYPosition() {
-		return currentPosition.getY();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getY();
 	}
 
 	/**
-	 * Get the x co-ordinate of the tile on the grid.
+	 * Get the x-coordinate of the info field.
 	 */
 	@Override
 	public int getXPosition() {
-		return currentPosition.getX();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getX();
 	}
 
 	/**
-	 * To String Method.
+	 * Turns the tile into a string. Used for debugging.
 	 */
 	@Override
 	public String toString() {
