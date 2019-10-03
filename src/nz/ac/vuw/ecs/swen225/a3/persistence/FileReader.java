@@ -20,9 +20,9 @@ import nz.ac.vuw.ecs.swen225.a3.maze.InfoField;
 import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
+import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 
 /**
  * FileReader class is responsible for reading in a file to

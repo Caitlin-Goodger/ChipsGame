@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
+import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**

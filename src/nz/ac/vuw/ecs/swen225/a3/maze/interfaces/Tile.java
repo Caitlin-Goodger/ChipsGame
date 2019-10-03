@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.maze;
+package nz.ac.vuw.ecs.swen225.a3.maze.interfaces;
 
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 

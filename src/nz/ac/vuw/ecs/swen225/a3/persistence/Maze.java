@@ -6,8 +6,8 @@ import java.util.List;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
+import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**

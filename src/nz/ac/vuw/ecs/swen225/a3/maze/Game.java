@@ -2,6 +2,7 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.List;
 
+import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
