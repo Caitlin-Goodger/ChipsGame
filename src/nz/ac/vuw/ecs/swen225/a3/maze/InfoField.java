@@ -2,6 +2,8 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+
 /**
  * InfoField tile. Is an implementation of the Tile class. 
  * @author Caitlin

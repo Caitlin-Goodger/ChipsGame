@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+
 /**
  * Chap tile. It is a implementation of Tile. 
  * @author Caitlin
@@ -104,8 +106,8 @@ public class Chap implements Tile {
 	public Tile getOnTile() {
 		if (this.onTile instanceof Key || this.onTile instanceof Treasure
 				|| this.onTile instanceof LockedDoor) {
-			return new Free(currentPosition.X, currentPosition.Y, currentPositionOnScreen.X,
-					currentPositionOnScreen.Y);
+			return new Free(currentPosition.getX(), currentPosition.getY(), currentPositionOnScreen.getX(),
+					currentPositionOnScreen.getY());
 		}
 		return this.onTile;
 	}

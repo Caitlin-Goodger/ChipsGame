@@ -3,8 +3,9 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 import java.util.ArrayList;
 import java.util.List;
 
-import nz.ac.vuw.ecs.swen225.a3.application.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
  * Game class. Where all the game logic is.

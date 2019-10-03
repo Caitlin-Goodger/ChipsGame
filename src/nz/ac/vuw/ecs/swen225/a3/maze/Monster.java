@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+
 
 /**
  * Monster Tile. Is an implementation of the tile class. 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
  * Class for the Maze of the game. 

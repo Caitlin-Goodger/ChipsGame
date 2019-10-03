@@ -13,6 +13,7 @@ import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.*;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
  * Display panel displays the board to the user.

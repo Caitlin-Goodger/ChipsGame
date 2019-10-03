@@ -2,6 +2,8 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+
 /**
  * Wall tile. Is an implemenation of the tile class.
  * @author Caitlin

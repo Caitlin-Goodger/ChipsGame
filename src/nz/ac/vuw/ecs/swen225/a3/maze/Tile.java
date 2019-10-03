@@ -2,6 +2,8 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.awt.image.BufferedImage;
 
+import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+
 /**
  * Interface for all the tiles. 
  * @author Caitlin

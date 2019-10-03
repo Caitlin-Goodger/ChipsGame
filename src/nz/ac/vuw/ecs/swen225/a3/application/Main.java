@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
+import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
 
 /**
