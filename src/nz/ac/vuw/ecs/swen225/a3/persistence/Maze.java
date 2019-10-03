@@ -12,15 +12,12 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Class for the Maze of the game.
- * 
- * @author Caitlin
- *
  */
 public class Maze {
 	private ArrayList<String> levels = new ArrayList<String>();
 
 	private FileReader fileReader;
-	
+
 	private Tile mazeLayout[][];
 	private int width, height;
 	private String levelName;
@@ -38,10 +35,10 @@ public class Maze {
 	 */
 	public Maze(FileReader fileReader, int width, int height, int timeLimit, Tile[][] mapLayout) {
 		this.fileReader = fileReader;
-		
+
 		this.levelName = fileReader.getLevelName();
 		this.monsters = fileReader.getMonsters();
-		
+
 		this.width = width;
 		this.height = height;
 		this.timeLimit = timeLimit;
@@ -50,7 +47,6 @@ public class Maze {
 		// Adds the levels.
 		levels.add("level-1");
 		levels.add("level-2");
-		levels.add("level-3");
 	}
 
 	/**
@@ -93,7 +89,7 @@ public class Maze {
 	public Chap findChap() {
 		Tile target;
 		Chap chap = null;
-		
+
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
 				target = mazeLayout[row][col];
@@ -125,31 +121,26 @@ public class Maze {
 		if (originTile == null)
 			return null;
 
-		// need to implement checks for going off the maze
 		switch (direction) {
 		case 'N':
 			if (y - 1 < 0)
 				return null;
 			destination = mazeLayout[y - 1][x];
-//			destination.resetPosition(new XYPos(x, y - 1));
 			break;
 		case 'E':
 			if (x + 1 >= width)
 				return null;
 			destination = mazeLayout[y][x + 1];
-//			destination.resetPosition(new XYPos(x + 1, y));
 			break;
 		case 'S':
 			if (y + 1 >= height)
 				return null;
 			destination = mazeLayout[y + 1][x];
-//			destination.resetPosition(new XYPos(x, y + 1));
 			break;
-		default:// W
+		default: // W
 			if (x - 1 < 0)
 				return null;
 			destination = mazeLayout[y][x - 1];
-//			destination.resetPosition(new XYPos(x - 1, y));
 			break;
 		}
 
@@ -198,15 +189,6 @@ public class Maze {
 	}
 
 	/**
-	 * Set the 2D array of tiles.
-	 * 
-	 * @param tile
-	 */
-	public void setTiles(Tile[][] tile) {
-		mazeLayout = tile;
-	}
-
-	/**
 	 * Get the next level name.
 	 * 
 	 * @return String
@@ -214,32 +196,14 @@ public class Maze {
 	public void getNextLevel() {
 		fileReader = new FileReader("level-2");
 		fileReader.read();
-		
+
 		this.width = fileReader.getWidth();
 		this.height = fileReader.getHeight();
 		this.timeLimit = fileReader.getTimeLimit();
 		this.mazeLayout = fileReader.getMazeLayout();
-		
+
 		this.levelName = fileReader.getLevelName();
 		this.monsters = fileReader.getMonsters();
-	}
-
-	/**
-	 * Set the height.
-	 * 
-	 * @param height
-	 */
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	/**
-	 * Set the width.
-	 * 
-	 * @param width
-	 */
-	public void setWidth(int width) {
-		this.width = width;
 	}
 
 	/**
@@ -247,7 +211,7 @@ public class Maze {
 	 * 
 	 * @return spawn
 	 */
-	public Position getStartingPos() {
+	public Position getSpawn() {
 		Position spawn = null;
 
 		for (int row = 0; row < height; row++) {
@@ -263,15 +227,6 @@ public class Maze {
 
 	public List<Monster> getMonsters() {
 		return Collections.unmodifiableList(this.monsters);
-	}
-
-	/**
-	 * Sets the time of maze.
-	 * 
-	 * @param time
-	 */
-	public void setTime(int time) {
-		this.timeLimit = time;
 	}
 
 	/**

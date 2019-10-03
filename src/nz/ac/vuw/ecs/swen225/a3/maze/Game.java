@@ -139,7 +139,7 @@ public class Game {
 			}
 		} else if (destination instanceof Exit) {
 			maze.getNextLevel();
-			this.getChap().newLevel(this.getMaze());
+			this.getChap().resetPlayer(this.getMaze());
 			tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
 		}
 	}

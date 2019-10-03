@@ -214,9 +214,9 @@ public class Chap implements Tile {
 	 * 
 	 * @param m
 	 */
-	public void newLevel(Maze m) {
-		resetPosition(new Position(m.getStartingPos().getX(), m.getStartingPos().getY()));
-		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY()));
+	public void resetPlayer(Maze m) {
+		resetPosition(new Position(m.getSpawn().getX(), m.getSpawn().getY()));
+		setOnTile(new Free(m.getSpawn().getX(), m.getSpawn().getY()));
 		resetInventory();
 	}
 
