@@ -12,7 +12,6 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  *
  */
 public class Maze {
-
 	private Tile tiles[][];
 	private int rows;
 	private int cols;

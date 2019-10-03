@@ -10,10 +10,8 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  *
  */
 public class Wall implements Tile {
-
-	boolean isSolid = true; // check if player can walkThrought
-	XYPos currentPosition; // keeps track of tiles position within a grid
-	BufferedImage imageToDisplay; // the image for the token
+	private boolean isSolid = true; // check if player can walkThrought
+	private XYPos currentPosition; // keeps track of tiles position within a grid
 
 	/**
 	 * Constructor for the Wall class. 

@@ -92,7 +92,7 @@ public class Game {
 	public void move(char direction) {
 		onField = false;
 
-		Tile destination = maze.getNeighbouringTile(chap.currentPosition, direction);
+		Tile destination = maze.getNeighbouringTile(chap.getCurrentPosition(), direction);
 		if (destination == null) {
 			// do nothing
 		} else if (destination instanceof Wall) {
@@ -165,7 +165,7 @@ public class Game {
 		XYPos originalPos = new XYPos(chap.getXPosition(), chap.getYPosition());
 		// move chap in direction
 		chap.updatePosition(direction);
-		XYPos destinationPos = chap.currentPosition;
+		XYPos destinationPos = chap.getCurrentPosition();
 		maze.setTile(originalPos, chap.getOnTile());
 		maze.setTile(destinationPos, chap);
 		// update onTile for chap

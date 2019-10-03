@@ -11,12 +11,10 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  *
  */
 public class ExitLock implements Tile {
+	private boolean isSolid = true; // check if player can walkThrought
+	private XYPos currentPosition; // keeps track of tiles position within a grid
 
-	boolean isSolid = true; // check if player can walkThrought
-	XYPos currentPosition; // keeps track of tiles position within a grid
-	BufferedImage imageToDisplay; // the image for the token
-
-	boolean unlocked;
+	private boolean unlocked;
 
 	/**
 	 * Constructor for the exitlock tile. 

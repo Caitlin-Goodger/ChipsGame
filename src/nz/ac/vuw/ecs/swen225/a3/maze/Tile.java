@@ -19,11 +19,6 @@ public interface Tile {
      * Position of the tile in the maze
      */
     XYPos currentPosition = null; 
-    /**
-     * IMage for the tile. 
-     */
-    BufferedImage imageToDisplay = null;
-
 
     /**
        the char that are used to indicated direction are shown bellow

@@ -6,8 +6,8 @@ package nz.ac.vuw.ecs.swen225.a3.util;
  *
  */
 public class XYPos {
-    int X;
-    int Y;
+    private int X;
+    private int Y;
     
     /**
      * Constructor for the XYPos class. 

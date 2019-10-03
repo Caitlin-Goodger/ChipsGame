@@ -12,10 +12,8 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  *
  */
 public class Chap implements Tile {
-
-	boolean isSolid = false;
-	XYPos currentPosition; // keeps track of tiles position within a grid
-	BufferedImage imageToDisplay; // the image for the token
+	private boolean isSolid = false;
+	private XYPos currentPosition; // keeps track of tiles position within a grid
 
 	private int facing = 6;
 	private Map<String, String> inventory;
@@ -226,5 +224,14 @@ public class Chap implements Tile {
 		resetPosition(new XYPos(m.getStartingPos().getX(), m.getStartingPos().getY()));
 		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY()));
 		resetInventory();
+	}
+
+	/**
+	 * Returns the chap's current position.
+	 * 
+	 * @return currentPosition
+	 */
+	public XYPos getCurrentPosition() {
+		return currentPosition;
 	}
 }
