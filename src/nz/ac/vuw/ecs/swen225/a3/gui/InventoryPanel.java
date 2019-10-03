@@ -60,7 +60,7 @@ public class InventoryPanel extends JPanel {
 
 		int itemsAdded = 0;
 
-		Map<String, String> inventory = game.getChap().returnInventory();
+		Map<String, String> inventory = game.getChap().getInventory();
 
 		for (String item : inventory.keySet()) {
 			String path = null;

@@ -60,7 +60,7 @@ public class DisplayPanel extends JPanel {
 
 		ExitLock exit;
 		Chap chap = game.getMaze().findChap();
-		Position chapLocation = chap.getTilePosition();
+		Position chapLocation = chap.getChapPosition();
 
 		// Minus 4 from Chap's location for each dimension to get
 		// starting
