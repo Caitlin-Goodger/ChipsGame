@@ -3,6 +3,7 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 import java.util.ArrayList;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
+import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 

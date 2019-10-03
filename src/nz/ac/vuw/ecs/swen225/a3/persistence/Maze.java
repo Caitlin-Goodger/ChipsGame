@@ -1,8 +1,12 @@
-package nz.ac.vuw.ecs.swen225.a3.maze;
+package nz.ac.vuw.ecs.swen225.a3.persistence;
 
 import java.util.ArrayList;
 
-import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
+import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.Free;
+import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
