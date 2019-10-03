@@ -4,40 +4,30 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * ExitLock Tile. Is an implementation of the Tile class.
- * 
- * @author Caitlin
- *
+ * ExitLock class is responsible for keeping the position of
+ * the exit lock.
  */
 public class ExitLock implements Tile {
-	private boolean isSolid = true; // check if player can walkThrought
-	private Position currentPosition; // keeps track of tiles position within a grid
-
-	private boolean unlocked;
+	private boolean isSolid = true; // Checks if player can walk through exit lock.
+	private Position currentPosition;
 
 	/**
-	 * Constructor for the exitlock tile.
+	 * Constructor for the exit lock.
 	 * 
-	 * @param xGrid   = x co-ordinate in of the tile on the
-	 *                grid.
-	 * @param yGrid   = y co-ordinate in of the tile on the
-	 *                grid.
-	 * @param xScreen = x co-ordinate in of the tile on the
-	 *                screen.
-	 * @param yScreen = y co-ordinate in of the tile on the
-	 *                screen.
+	 * @param xGrid
+	 * @param yGrid
 	 */
 	public ExitLock(int xGrid, int yGrid) {
-		currentPosition = new Position(xGrid, yGrid);
+		this.currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
-	 * Check if the tile is solid
+	 * Sets the exit lock to un-solid when unlocked.
 	 * 
-	 * @param set
+	 * @param solid
 	 */
-	public void isSolid(boolean set) {
-		isSolid = set;
+	public void unlockExitLock() {
+		this.isSolid = false;
 	}
 
 	/**
@@ -45,27 +35,31 @@ public class ExitLock implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-		return isSolid ? "resources/CC9.png" : "resources/CC15.png";
+		return this.isSolid ? "resources/CC9.png" : "resources/CC15.png";
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid.
+	 * Get the y-coordinate of the exit lock.
 	 */
 	@Override
 	public int getYPosition() {
-		return currentPosition.getY();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getY();
 	}
 
 	/**
-	 * Get the x co-ordinate of the tile on the grid.
+	 * Get the x-coordinate of the exit.
 	 */
 	@Override
 	public int getXPosition() {
-		return currentPosition.getX();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getX();
 	}
 
 	/**
-	 * To String Method.
+	 * Turns the tile into a string. Used for debugging.
 	 */
 	@Override
 	public String toString() {

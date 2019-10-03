@@ -71,7 +71,7 @@ public class DisplayPanel extends JPanel {
 			for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getRows(); x++) {
 				if (totalChipsLeft == 0 && level[y][x] instanceof ExitLock) {
 					exit = (ExitLock) level[y][x];
-					exit.isSolid(false);
+					exit.unlockExitLock();
 					level[y][x] = exit;
 				}
 				
