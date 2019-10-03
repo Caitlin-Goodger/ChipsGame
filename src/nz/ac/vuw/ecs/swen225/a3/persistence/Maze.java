@@ -1,6 +1,8 @@
 package nz.ac.vuw.ecs.swen225.a3.persistence;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
@@ -15,17 +17,17 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
  *
  */
 public class Maze {
-	private FileReader fileReader;
-
 	private ArrayList<String> levels = new ArrayList<String>();
 
-	private Tile tiles[][];
+	private FileReader fileReader;
+	
+	private Tile mazeLayout[][];
 	private int width, height;
 	private String levelName;
 	private int timeLimit;
 
 	// Monster array.
-	private ArrayList<Monster> monsters = new ArrayList<Monster>();
+	private List<Monster> monsters = new ArrayList<Monster>();
 
 	/**
 	 * Constructor for Maze.
@@ -34,19 +36,21 @@ public class Maze {
 	 * @param height
 	 * @param levelName
 	 */
-	public Maze(int width, int height, String levelName) {
-		tiles = new Tile[height][width];
-
-		this.height = height;
+	public Maze(FileReader fileReader, int width, int height, int timeLimit, Tile[][] mapLayout) {
+		this.fileReader = fileReader;
+		
+		this.levelName = fileReader.getLevelName();
+		this.monsters = fileReader.getMonsters();
+		
 		this.width = width;
-		this.levelName = levelName;
+		this.height = height;
+		this.timeLimit = timeLimit;
+		this.mazeLayout = mapLayout;
 
 		// Adds the levels.
 		levels.add("level-1");
 		levels.add("level-2");
-
-		fileReader = new FileReader();
-		fileReader.read(this, levelName, "levels.json");
+		levels.add("level-3");
 	}
 
 	/**
@@ -55,7 +59,7 @@ public class Maze {
 	 * @return Tile[][]
 	 */
 	public Tile[][] getTiles() {
-		return tiles;
+		return mazeLayout;
 	}
 
 	/**
@@ -64,18 +68,18 @@ public class Maze {
 	 */
 	public void printConvertedLevel() {
 		// Gets the width and height of the current level.
-		int height = tiles[0].length;
-		int width = tiles.length;
+		int height = mazeLayout[0].length;
+		int width = mazeLayout.length;
 
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				// Go to next line once end of line is reached.
 				if (x == width - 1) {
-					System.out.print(tiles[y][x].toString() + " ");
+					System.out.print(mazeLayout[y][x].toString() + " ");
 
 					System.out.println();
 				} else {
-					System.out.print(tiles[y][x].toString() + " ");
+					System.out.print(mazeLayout[y][x].toString() + " ");
 				}
 			}
 		}
@@ -89,10 +93,10 @@ public class Maze {
 	public Chap findChap() {
 		Tile target;
 		Chap chap = null;
-
+		
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
-				target = tiles[row][col];
+				target = mazeLayout[row][col];
 				if (target instanceof Chap) {
 					chap = (Chap) target;
 				}
@@ -116,7 +120,7 @@ public class Maze {
 	public Tile getNeighbouringTile(Position origin, char direction) {
 		int x = origin.getX();
 		int y = origin.getY();
-		Tile originTile = tiles[y][x]; // row, col
+		Tile originTile = mazeLayout[y][x]; // row, col
 		Tile destination;
 		if (originTile == null)
 			return null;
@@ -126,25 +130,25 @@ public class Maze {
 		case 'N':
 			if (y - 1 < 0)
 				return null;
-			destination = tiles[y - 1][x];
+			destination = mazeLayout[y - 1][x];
 //			destination.resetPosition(new XYPos(x, y - 1));
 			break;
 		case 'E':
 			if (x + 1 >= width)
 				return null;
-			destination = tiles[y][x + 1];
+			destination = mazeLayout[y][x + 1];
 //			destination.resetPosition(new XYPos(x + 1, y));
 			break;
 		case 'S':
 			if (y + 1 >= height)
 				return null;
-			destination = tiles[y + 1][x];
+			destination = mazeLayout[y + 1][x];
 //			destination.resetPosition(new XYPos(x, y + 1));
 			break;
 		default:// W
 			if (x - 1 < 0)
 				return null;
-			destination = tiles[y][x - 1];
+			destination = mazeLayout[y][x - 1];
 //			destination.resetPosition(new XYPos(x - 1, y));
 			break;
 		}
@@ -162,7 +166,7 @@ public class Maze {
 	public boolean setTile(Position pos, Tile tile) {
 		int x = pos.getX();
 		int y = pos.getY();
-		tiles[y][x] = tile;
+		mazeLayout[y][x] = tile;
 		return true;
 	}
 
@@ -174,7 +178,7 @@ public class Maze {
 	 * @return Tile.
 	 */
 	public Tile getTile(int x, int y) {
-		return tiles[x][y];
+		return mazeLayout[x][y];
 	}
 
 	/**
@@ -185,7 +189,7 @@ public class Maze {
 		int count = 0;
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
-				target = tiles[row][col];
+				target = mazeLayout[row][col];
 				if (target instanceof Treasure)
 					count++;
 			}
@@ -199,18 +203,7 @@ public class Maze {
 	 * @param tile
 	 */
 	public void setTiles(Tile[][] tile) {
-		tiles = tile;
-	}
-
-	/**
-	 * Returns the level the character is currently on.
-	 * 
-	 * @return level
-	 */
-	public String getLevel() {
-		levelName = levelName.replaceAll("[^0-9]+", " ");
-
-		return levelName;
+		mazeLayout = tile;
 	}
 
 	/**
@@ -218,16 +211,18 @@ public class Maze {
 	 * 
 	 * @return String
 	 */
-	public String getNextLevel() {
-		int index = 0;
-		for (int i = 0; i < levels.size(); i++) {
-			if (levels.get(i).equals(levelName)) {
-				index = i;
-			}
-		}
-		index++;
-		levelName = levels.get(index);
-		return levelName;
+	public void getNextLevel() {
+		fileReader = new FileReader("level-2");
+		fileReader.read();
+		fileReader.createMaze();
+		
+		this.width = fileReader.getWidth();
+		this.height = fileReader.getHeight();
+		this.timeLimit = fileReader.getTimeLimit();
+		this.mazeLayout = fileReader.getMazeLayout();
+		
+		this.levelName = fileReader.getLevelName();
+		this.monsters = fileReader.getMonsters();
 	}
 
 	/**
@@ -258,7 +253,7 @@ public class Maze {
 
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
-				if (tiles[row][col] instanceof Chap) {
+				if (mazeLayout[row][col] instanceof Chap) {
 					spawn = new Position(col, row);
 				}
 			}
@@ -267,12 +262,8 @@ public class Maze {
 		return spawn;
 	}
 
-	public ArrayList<Monster> getMonsters() {
-		return monsters;
-	}
-
-	public void addToMonsters(Monster m) {
-		monsters.add(m);
+	public List<Monster> getMonsters() {
+		return Collections.unmodifiableList(this.monsters);
 	}
 
 	/**
@@ -291,5 +282,14 @@ public class Maze {
 	 */
 	public int getTime() {
 		return timeLimit;
+	}
+
+	/**
+	 * Gets the name of the level.
+	 * 
+	 * @return levelName
+	 */
+	public String getLevelName() {
+		return levelName;
 	}
 }

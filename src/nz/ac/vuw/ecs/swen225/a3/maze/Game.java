@@ -1,11 +1,10 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
-import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
+import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
 /**
  * Game class. Where all the game logic is.
@@ -77,7 +76,10 @@ public class Game {
 	 * Move all the monsters
 	 */
 	public void moveMonsters() {
-		ArrayList<Monster> monsters = maze.getMonsters();
+		List<Monster> monsters = maze.getMonsters();
+		
+		System.out.println(monsters.size());
+		
 		for (int i = 0; i < monsters.size(); i++) {
 			Monster m = monsters.get(i);
 			m.move(this);
@@ -145,15 +147,10 @@ public class Game {
 
 			}
 		} else if (destination instanceof Exit) {
-			String level = maze.getNextLevel();
-			System.out.println(level);
-			new FileReader().read(maze, level, "levels.json");
+			maze.getNextLevel();
 			this.getChap().newLevel(this.getMaze());
 			tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
-			// LEVEL COMPLETED
-
 		}
-
 	}
 
 	/**

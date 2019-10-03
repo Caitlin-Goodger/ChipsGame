@@ -125,7 +125,7 @@ public class MainFrame extends JFrame {
 		setVisible(true);
 
 		interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
-		interfacePanel.levelField.setText(game.getMaze().getLevel());
+		interfacePanel.levelField.setText(game.getMaze().getLevelName());
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class MainFrame extends JFrame {
 //					System.out.println("Up was pressed");
 					game.move('N');
 					game.moveMonsters();
-					// game.getMaze().printConvertedLevel();
+//					 game.getMaze().printConvertedLevel();
 				}
 
 				if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -272,7 +272,7 @@ public class MainFrame extends JFrame {
 //					System.out.println("Down was pressed");
 					game.move('S');
 					game.moveMonsters();
-					// game.getMaze().printConvertedLevel();
+//					 game.getMaze().printConvertedLevel();
 				}
 
 				if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -280,7 +280,7 @@ public class MainFrame extends JFrame {
 //					System.out.println("Left was pressed");
 					game.move('W');
 					game.moveMonsters();
-					// game.getMaze().printConvertedLevel();
+//					 game.getMaze().printConvertedLevel();
 				}
 
 				if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -288,7 +288,7 @@ public class MainFrame extends JFrame {
 //					System.out.println("Right was pressed");
 					game.move('E');
 					game.moveMonsters();
-					// game.getMaze().printConvertedLevel();
+//					 game.getMaze().printConvertedLevel();
 				}
 
 				// Other
@@ -314,7 +314,7 @@ public class MainFrame extends JFrame {
 				textPanel.setVisible(game.onField());
 
 				interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
-				interfacePanel.levelField.setText(game.getMaze().getLevel());
+				interfacePanel.levelField.setText(game.getMaze().getLevelName());
 
 				displayPanel.removeAll();
 				displayPanel.drawPanel();

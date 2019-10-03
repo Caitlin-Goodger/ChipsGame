@@ -4,6 +4,7 @@ import javax.swing.SwingUtilities;
 
 import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
@@ -13,6 +14,9 @@ import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
  * @author Caitlin
  */
 public class Main {
+	private static FileReader fileReader;
+	private static Maze maze;
+
 	private static MainFrame mf;
 	private static Game game;
 	private static TimeLimit tl;
@@ -27,10 +31,19 @@ public class Main {
 
 			@Override
 			public void run() {
-				game = new Game(new Maze(32, 32, "level-1"));
+				fileReader = new FileReader("level-1");
+				fileReader.read();
+				fileReader.createMaze();
+
+				maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
+						fileReader.getTimeLimit(), fileReader.getMazeLayout());
+
+				game = new Game(maze);
+
 				mf = new MainFrame(game);
+
 				tl = new TimeLimit(60, mf);
-				
+
 				game.setTimeLimit(tl);
 			}
 		});
