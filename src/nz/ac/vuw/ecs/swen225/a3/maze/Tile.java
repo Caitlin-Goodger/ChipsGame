@@ -4,9 +4,6 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Interface for all the tiles.
- * 
- * @author Caitlin
- *
  */
 public interface Tile {
 
@@ -28,13 +25,6 @@ public interface Tile {
 	 * @param direction = direction to go in.
 	 */
 	public void updatePosition(char direction);
-
-	/**
-	 * used to get the tiles positions
-	 * 
-	 * @return XYPos
-	 */
-	public Position getTilePosition();
 
 	/**
 	 * check to see if the player can walk through this tile

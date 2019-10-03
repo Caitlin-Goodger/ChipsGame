@@ -72,14 +72,6 @@ public class InfoField implements Tile {
 	}
 
 	/**
-	 * Get the current position of the tile on the grid.
-	 */
-	@Override
-	public Position getTilePosition() {
-		return currentPosition;
-	}
-
-	/**
 	 * Check whether the object is solid.
 	 */
 	@Override
