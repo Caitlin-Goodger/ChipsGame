@@ -33,7 +33,6 @@ public class Main {
 			public void run() {
 				fileReader = new FileReader("level-1");
 				fileReader.read();
-				fileReader.createMaze();
 				
 				// Create a new maze passing in the parameters generated from the file reader.
 				maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),

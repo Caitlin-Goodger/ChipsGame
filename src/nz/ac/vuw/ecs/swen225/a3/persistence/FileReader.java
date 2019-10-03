@@ -73,15 +73,17 @@ public class FileReader {
 			height = level.getInt("height");
 			timeLimit = level.getInt("time");
 			mazeLayout = new Tile[width][height];
+			
+			createMazeLayout();
 		} catch (FileNotFoundException e) {
 			throw new Error("File not found.", e);
 		}
 	}
 
 	/**
-	 * Creates the maze.
+	 * Creates the maze layout.
 	 */
-	public void createMaze() {
+	private void createMazeLayout() {
 		int keyColor = 0;
 		int doorColor = 0;
 		int infoFieldID = 0;

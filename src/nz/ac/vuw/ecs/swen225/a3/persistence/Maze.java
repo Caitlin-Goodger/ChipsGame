@@ -214,7 +214,6 @@ public class Maze {
 	public void getNextLevel() {
 		fileReader = new FileReader("level-2");
 		fileReader.read();
-		fileReader.createMaze();
 		
 		this.width = fileReader.getWidth();
 		this.height = fileReader.getHeight();
