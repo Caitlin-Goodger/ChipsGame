@@ -69,26 +69,26 @@ public class Map {
 					Tile tile;
 					switch (value) {
 					case 0:
-						tile = new Free(j, i, j, i);
+						tile = new Free(j, i);
 						break;
 						
 					case 1:
-						tile = new Wall(j, i, j, i);
+						tile = new Wall(j, i);
 						break;
 						
 					case 2:
-						tile = new Chap(j, i, j, i);
+						tile = new Chap(j, i);
 						break;
 						
 					case 3:
-						tile = new Exit(j, i, j, i);
+						tile = new Exit(j, i);
 						break;
 						
 					case 4:
-						tile = new ExitLock(j, i, j, i);
+						tile = new ExitLock(j, i);
 						break;
 					case 5:
-						tile = new Monster(j, i, j, i);
+						tile = new Monster(j, i);
 						Monster m = (Monster) tile;
 						maze.addToMonsters(m);
 						break;
@@ -102,48 +102,48 @@ public class Map {
 									"to unlock the doors and <br>" +
 									"collect all the treasure!" +
 									"<html>",
-									j, i, j, i);
+									j, i);
 							break;
 						}
 						
 					case 8:
-						tile = new Treasure(j, i, j, i);
+						tile = new Treasure(j, i);
 						break;
 						
 					case 9:
-						tile = new Key("red", j, i, j, i);
+						tile = new Key("red", j, i);
 						break;
 						
 					case 10:
-						tile = new Key("blue", j, i, j, i);
+						tile = new Key("blue", j, i);
 						break;
 						
 					case 11:
-						tile = new Key("green", j, i, j, i);
+						tile = new Key("green", j, i);
 						break;
 						
 					case 12:
-						tile = new Key("yellow", j, i, j, i);
+						tile = new Key("yellow", j, i);
 						break;
 						
 					case 13:
-						tile = new LockedDoor("red", j, i, j, i);
+						tile = new LockedDoor("red", j, i);
 						break;
 						
 					case 14:
-						tile = new LockedDoor("blue", j, i, j, i);
+						tile = new LockedDoor("blue", j, i);
 						break;
 						
 					case 15: 
-						tile = new LockedDoor("green", j, i, j, i);
+						tile = new LockedDoor("green", j, i);
 						break;
 						
 					case 16: 
-						tile = new LockedDoor("yellow", j, i, j, i);
+						tile = new LockedDoor("yellow", j, i);
 						break;
 						
 					default:
-						tile = new Free(j, i, j, i);
+						tile = new Free(j, i);
 						break;
 					}
 

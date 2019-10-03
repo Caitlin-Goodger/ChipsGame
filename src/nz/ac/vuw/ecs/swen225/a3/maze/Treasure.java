@@ -13,7 +13,6 @@ public class Treasure implements Tile {
 
 	boolean isSolid = false; // check if player can walkThrought
 	XYPos currentPosition; // keeps track of tiles position within a grid
-	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the token
 
 	/**
@@ -23,9 +22,8 @@ public class Treasure implements Tile {
 	 * @param xScreen = x co-ordinate in of the tile on the screen.
 	 * @param yScreen = y co-ordinate in of the tile on the screen.
 	 */
-	public Treasure(int xGrid, int yGrid, int xScreen, int yScreen) {
+	public Treasure(int xGrid, int yGrid) {
 		currentPosition = new XYPos(xGrid, yGrid);
-		currentPositionOnScreen = new XYPos(xScreen, yScreen);
 	}
 
 	/**
@@ -43,15 +41,6 @@ public class Treasure implements Tile {
 		} else if (direction == 'W') {
 			currentPosition.updatePos(-1, 0);
 		}
-		currentPositionOnScreen = currentPosition;
-	}
-
-	/**
-	 * Load the image of the tile. 
-	 */
-	@Override
-	public boolean loadImage() {
-		return true;
 	}
 
 	/**
@@ -60,14 +49,6 @@ public class Treasure implements Tile {
 	@Override
 	public XYPos getTilePosition() {
 		return currentPosition;
-	}
-
-	/**
-	 * Get the current position of the tile on the screen. 
-	 */
-	@Override
-	public XYPos getCurrentPositionOnScreen() {
-		return currentPositionOnScreen;
 	}
 
 	/**
@@ -84,22 +65,6 @@ public class Treasure implements Tile {
 	@Override
 	public String getImagePath() {
 		return "resources/CC7.png";
-	}
-
-	/**
-	 * Get the y co-ordinate of the tile on the screen. 
-	 */
-	@Override
-	public int getYPositionOnScreen() {
-		return currentPositionOnScreen.getY();
-	}
-
-	/**
-	 * Get the x co-ordinate of the tile on the screen. 
-	 */
-	@Override
-	public int getXPositionOnScreen() {
-		return currentPositionOnScreen.getX();
 	}
 
 	/**

@@ -174,10 +174,8 @@ public class Maze {
 	public boolean changeToFree(Tile target) {
 		int x = target.getXPosition();
 		int y = target.getYPosition();
-		int xs = target.getXPositionOnScreen();
-		int ys = target.getYPositionOnScreen();
 //		System.out.printf("Setting tile at x:%d y:%d which is %s to FREE\n", x, y, tiles[y][x].toString());
-		tiles[y][x] = new Free(x, y, xs, ys);
+		tiles[y][x] = new Free(x, y);
 		return true;
 	}
 

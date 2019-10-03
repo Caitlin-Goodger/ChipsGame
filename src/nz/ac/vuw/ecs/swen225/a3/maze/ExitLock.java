@@ -14,7 +14,6 @@ public class ExitLock implements Tile {
 
 	boolean isSolid = true; // check if player can walkThrought
 	XYPos currentPosition; // keeps track of tiles position within a grid
-	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the token
 
 	boolean unlocked;
@@ -26,9 +25,8 @@ public class ExitLock implements Tile {
 	 * @param xScreen = x co-ordinate in of the tile on the screen.
 	 * @param yScreen = y co-ordinate in of the tile on the screen.
 	 */
-	public ExitLock(int xGrid, int yGrid, int xScreen, int yScreen) {
+	public ExitLock(int xGrid, int yGrid) {
 		currentPosition = new XYPos(xGrid, yGrid);
-		currentPositionOnScreen = new XYPos(xScreen, yScreen);
 	}
 
 	/**
@@ -46,7 +44,6 @@ public class ExitLock implements Tile {
 		} else if (direction == 'W') {
 			currentPosition.updatePos(-1, 0);
 		}
-		currentPositionOnScreen = currentPosition;
 	}
 
 	/**
@@ -56,27 +53,11 @@ public class ExitLock implements Tile {
 	public void isSolid(boolean set) { isSolid = set;}
 
 	/**
-	 * Load the image of the tile. 
-	 */
-	@Override
-	public boolean loadImage() {
-		return true;
-	}
-
-	/**
 	 * Get the current position of the tile on the grid. 
 	 */
 	@Override
 	public XYPos getTilePosition() {
 		return currentPosition;
-	}
-
-	/**
-	 * Get the current position of the tile on the screen. 
-	 */
-	@Override
-	public XYPos getCurrentPositionOnScreen() {
-		return currentPositionOnScreen;
 	}
 
 	/**
@@ -93,22 +74,6 @@ public class ExitLock implements Tile {
 	@Override
 	public String getImagePath() {
 		return isSolid ? "resources/CC9.png" : "resources/CC15.png";
-	}
-
-	/**
-	 * Get the y co-ordinate of the tile on the screen. 
-	 */
-	@Override
-	public int getYPositionOnScreen() {
-		return currentPositionOnScreen.getY();
-	}
-
-	/**
-	 * Get the x co-ordinate of the tile on the screen. 
-	 */
-	@Override
-	public int getXPositionOnScreen() {
-		return currentPositionOnScreen.getX();
 	}
 
 	/**

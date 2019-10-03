@@ -15,7 +15,6 @@ public class Chap implements Tile {
 
 	boolean isSolid = false;
 	XYPos currentPosition; // keeps track of tiles position within a grid
-	XYPos currentPositionOnScreen; // keeps track of a tiles position on screen
 	BufferedImage imageToDisplay; // the image for the token
 
 	private int facing = 6;
@@ -34,11 +33,10 @@ public class Chap implements Tile {
 	 * @param yScreen = y co-ordinate in of the tile on the
 	 *                screen.
 	 */
-	public Chap(int xGrid, int yGrid, int xScreen, int yScreen) {
+	public Chap(int xGrid, int yGrid) {
 		currentPosition = new XYPos(xGrid, yGrid);
-		currentPositionOnScreen = new XYPos(xScreen, yScreen);
 		inventory = new HashMap<String, String>();
-		onTile = new Free(xGrid, yGrid, xScreen, yScreen);
+		onTile = new Free(xGrid, yGrid);
 	}
 
 	/**
@@ -106,8 +104,7 @@ public class Chap implements Tile {
 	public Tile getOnTile() {
 		if (this.onTile instanceof Key || this.onTile instanceof Treasure
 				|| this.onTile instanceof LockedDoor) {
-			return new Free(currentPosition.getX(), currentPosition.getY(), currentPositionOnScreen.getX(),
-					currentPositionOnScreen.getY());
+			return new Free(currentPosition.getX(), currentPosition.getY());
 		}
 		return this.onTile;
 	}
@@ -141,15 +138,6 @@ public class Chap implements Tile {
 			facing = 4;
 			currentPosition.updatePos(-1, 0);
 		}
-		currentPositionOnScreen = currentPosition;
-	}
-
-	/**
-	 * Load the image of the tile.
-	 */
-	@Override
-	public boolean loadImage() {
-		return true;
 	}
 
 	/**
@@ -158,14 +146,6 @@ public class Chap implements Tile {
 	@Override
 	public XYPos getTilePosition() {
 		return currentPosition;
-	}
-
-	/**
-	 * Get the current position of the tile on the screen.
-	 */
-	@Override
-	public XYPos getCurrentPositionOnScreen() {
-		return currentPositionOnScreen;
 	}
 
 	/**
@@ -183,22 +163,6 @@ public class Chap implements Tile {
 	public String getImagePath() {
 
 		return "resources/CC" + facing + ".png";
-	}
-
-	/**
-	 * Get the y co-ordinate of the tile on the screen.
-	 */
-	@Override
-	public int getYPositionOnScreen() {
-		return currentPositionOnScreen.getY();
-	}
-
-	/**
-	 * Get the x co-ordinate of the tile on the screen.
-	 */
-	@Override
-	public int getXPositionOnScreen() {
-		return currentPositionOnScreen.getX();
 	}
 
 	/**
@@ -260,8 +224,7 @@ public class Chap implements Tile {
 	 */
 	public void newLevel(Maze m) {
 		resetPosition(new XYPos(m.getStartingPos().getX(), m.getStartingPos().getY()));
-		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY(),
-				m.getStartingPos().getX(), m.getStartingPos().getY()));
+		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY()));
 		resetInventory();
 	}
 }

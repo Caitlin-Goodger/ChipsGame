@@ -20,10 +20,6 @@ public interface Tile {
      */
     XYPos currentPosition = null; 
     /**
-     * Position of the tile on the screen 
-     */
-    XYPos currentPositionOnScreen = null; 
-    /**
      * IMage for the tile. 
      */
     BufferedImage imageToDisplay = null;
@@ -49,34 +45,10 @@ public interface Tile {
     public void resetPosition(XYPos pos);
 
     /**
-     *  Used to load the images based off the file path note using bufferedImage
-     * @return boolean. 
-     */
-    public boolean loadImage();
-
-    /**
      * used to get the tiles positions
      * @return XYPos
      */
     public XYPos getTilePosition();
-
-    /**
-     * used to get the on screen position
-     * @return XYPos
-     */
-    public XYPos getCurrentPositionOnScreen();
-    
-    /**
-     * used for testing and just get Y position
-     * @return int
-     */
-    public int getYPositionOnScreen();
-
-    /**
-     * used for testing and just get X position
-     * @return int
-     */
-    public int getXPositionOnScreen();
     
     /**
      *  check to see if the player can walk through this tile
