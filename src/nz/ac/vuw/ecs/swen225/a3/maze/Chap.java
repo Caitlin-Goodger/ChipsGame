@@ -26,10 +26,10 @@ public class Chap implements Tile {
 	 * @param yGrid
 	 */
 	public Chap(int xGrid, int yGrid) {
-		currentPosition = new Position(xGrid, yGrid);
+		this.currentPosition = new Position(xGrid, yGrid);
 
-		inventory = new HashMap<String, String>();
-		onTile = new Free(xGrid, yGrid); // Will always be on free tile initially.
+		this.inventory = new HashMap<String, String>();
+		this.onTile = new Free(xGrid, yGrid); // Will always be on free tile initially.
 	}
 
 	/**
