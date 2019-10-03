@@ -66,13 +66,6 @@ public class Game {
 	}
 
 	/**
-	 * Delete the maze.
-	 */
-	public void delete() {
-		maze = null;
-	}
-
-	/**
 	 * Move all the monsters
 	 */
 	public void moveMonsters() {
