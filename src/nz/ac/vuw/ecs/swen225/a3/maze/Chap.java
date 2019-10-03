@@ -125,7 +125,6 @@ public class Chap implements Tile {
 	 * 
 	 * @param direction = direction.
 	 */
-	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
 			facing = 5;

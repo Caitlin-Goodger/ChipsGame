@@ -31,24 +31,6 @@ public class ExitLock implements Tile {
 	}
 
 	/**
-	 * Update the position that the tile is in.
-	 * 
-	 * @param direction = direction.
-	 */
-	@Override
-	public void updatePosition(char direction) {
-		if (direction == 'N') {
-			currentPosition.updatePosition(0, 1);
-		} else if (direction == 'S') {
-			currentPosition.updatePosition(0, -1);
-		} else if (direction == 'E') {
-			currentPosition.updatePosition(1, 0);
-		} else if (direction == 'W') {
-			currentPosition.updatePosition(-1, 0);
-		}
-	}
-
-	/**
 	 * Check if the tile is solid
 	 * 
 	 * @param set

@@ -99,7 +99,6 @@ public class Monster implements Tile {
 	 * 
 	 * @param direction = direction.
 	 */
-	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
 			currentPosition.updatePosition(0, 1);
