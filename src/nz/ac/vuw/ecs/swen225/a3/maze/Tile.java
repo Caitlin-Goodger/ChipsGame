@@ -27,14 +27,6 @@ public interface Tile {
 	public void updatePosition(char direction);
 
 	/**
-	 * check to see if the player can walk through this tile
-	 * true means they cannot walk here false means they can
-	 * 
-	 * @return boolean
-	 */
-	public boolean isObjectSolid();
-
-	/**
 	 * returns the image so it can be rendered
 	 * 
 	 * @return String

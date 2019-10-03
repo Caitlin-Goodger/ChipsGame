@@ -113,14 +113,6 @@ public class Monster implements Tile {
 	}
 
 	/**
-	 * Check whether the object is solid.
-	 */
-	@Override
-	public boolean isObjectSolid() {
-		return isSolid;
-	}
-
-	/**
 	 * Get the path of the image.
 	 */
 	@Override
