@@ -30,7 +30,6 @@ public class TimeLimit {
 		if (time == 0) {
 			timer.cancel();
 		}
-
 		return time--;
 	}
 

@@ -341,4 +341,8 @@ public class MainFrame extends JFrame {
 	public InterfacePanel getInterfacePanel() {
 		return interfacePanel;
 	}
+
+	public Game getGame() {
+		return game;
+	}
 }

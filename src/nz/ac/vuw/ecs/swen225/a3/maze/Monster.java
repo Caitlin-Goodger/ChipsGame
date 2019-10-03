@@ -38,20 +38,34 @@ public class Monster implements Tile {
 		ArrayList<Tile> freeTiles = new ArrayList();
 		int x = currentPosition.getX();
 		int y = currentPosition.getY();
-		if(m.getTile(x-1, y) instanceof Free) {
-			freeTiles.add(m.getTile(x-1, y));
-		}if(m.getTile(x+1, y) instanceof Free) {
-			freeTiles.add(m.getTile(x+1, y));
-		}if(m.getTile(x, y-1) instanceof Free) {
-			freeTiles.add(m.getTile(x, y-1));
-		}if(m.getTile(x, y+1) instanceof Free) {
-			freeTiles.add(m.getTile(x, y+1));
+		if(m.getTile(y,x-1) instanceof Free && m.getTile(y,x-1).toString().equals("F")) {
+			freeTiles.add(m.getTile(y,x-1));
+		} else {
+			freeTiles.add(null);
 		}
-		
+		if(m.getTile(y,x+1) instanceof Free && m.getTile(y,x+1).toString().equals("F")) {
+			freeTiles.add(m.getTile(y,x+1));
+		}else {
+			freeTiles.add(null);
+		}
+		if(m.getTile(y-1,x) instanceof Free && m.getTile(y-1,x).toString().equals("F")) {
+			freeTiles.add(m.getTile(y-1,x));
+		}else {
+			freeTiles.add(null);
+		}
+		if(m.getTile(y+1,x) instanceof Free && m.getTile(y+1,x).toString().equals("F")) {
+			freeTiles.add(m.getTile(y+1,x));
+		}else {
+			freeTiles.add(null);
+		}
 		Random r = new Random();
-		int directionN = r.nextInt(freeTiles.size());
+		int directionN = r.nextInt(4);
 		Tile moveTo = freeTiles.get(directionN);
-		
+		while(moveTo==null) {
+			r = new Random();
+			directionN = r.nextInt(4);
+			moveTo = freeTiles.get(directionN);
+		}
 		char direction = 'D';
 		
 		if(directionN==0) {
@@ -70,20 +84,7 @@ public class Monster implements Tile {
 		m.setTile(original,onTile);
 		m.setTile(destination,this);
 		setOnTile(moveTo);
-		
 
-//		if(m.getTile(x, y+1) instanceof Free) {
-//			Tile moveTo = (m.getTile(x, y+1));
-//			System.out.println("fjdksahf");
-//			char direction = 'N';
-//			
-//			XYPos original = new XYPos(currentPosition.getX(),currentPosition.getY());
-//			updatePosition(direction);
-//			XYPos destination = currentPosition;
-//			m.setTile(original,onTile);
-//			m.setTile(destination,this);
-//			setOnTile(moveTo);
-//		}	
 	}
 
 	private void setOnTile(Tile moveTo) {
