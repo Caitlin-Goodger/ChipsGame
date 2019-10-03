@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Game class. Where all the game logic is.
@@ -166,10 +166,10 @@ public class Game {
 	 * @param destinationTile = tile to move to.
 	 */
 	public void moveChap(char direction, Tile destinationTile) {
-		XYPos originalPos = new XYPos(chap.getXPosition(), chap.getYPosition());
+		Position originalPos = new Position(chap.getXPosition(), chap.getYPosition());
 		// move chap in direction
 		chap.updatePosition(direction);
-		XYPos destinationPos = chap.getCurrentPosition();
+		Position destinationPos = chap.getCurrentPosition();
 		maze.setTile(originalPos, chap.getOnTile());
 		maze.setTile(destinationPos, chap);
 		// update onTile for chap

@@ -13,7 +13,7 @@ import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.*;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Display panel displays the board to the user.
@@ -59,7 +59,7 @@ public class DisplayPanel extends JPanel {
 
 		ExitLock exit;
 		Chap chap = game.getMaze().findChap();
-		XYPos chapLocation = chap.getTilePosition();
+		Position chapLocation = chap.getTilePosition();
 
 		// Minus 4 from Chap's location for each dimension to get
 		// starting

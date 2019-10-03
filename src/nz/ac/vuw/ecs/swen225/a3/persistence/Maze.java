@@ -3,11 +3,10 @@ package nz.ac.vuw.ecs.swen225.a3.persistence;
 import java.util.ArrayList;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.Free;
 import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Class for the Maze of the game.
@@ -114,7 +113,7 @@ public class Maze {
 	 * @return - the corresponding neighbouring tile if there is
 	 *         one, or null
 	 */
-	public Tile getNeighbouringTile(XYPos origin, char direction) {
+	public Tile getNeighbouringTile(Position origin, char direction) {
 		int x = origin.getX();
 		int y = origin.getY();
 		Tile originTile = tiles[y][x]; // row, col
@@ -160,7 +159,7 @@ public class Maze {
 	 * @param tile = Tile to set.
 	 * @return boolean
 	 */
-	public boolean setTile(XYPos pos, Tile tile) {
+	public boolean setTile(Position pos, Tile tile) {
 		int x = pos.getX();
 		int y = pos.getY();
 		tiles[y][x] = tile;
@@ -254,13 +253,13 @@ public class Maze {
 	 * 
 	 * @return spawn
 	 */
-	public XYPos getStartingPos() {
-		XYPos spawn = null;
+	public Position getStartingPos() {
+		Position spawn = null;
 
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
 				if (tiles[row][col] instanceof Chap) {
-					spawn = new XYPos(col, row);
+					spawn = new Position(col, row);
 				}
 			}
 		}

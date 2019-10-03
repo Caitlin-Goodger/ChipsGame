@@ -17,7 +17,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 import org.junit.Test;
 
@@ -40,8 +40,8 @@ public class GameTest {
 	 * Testing XYPOS update method.
 	 */
 	@Test public void test02() {
-		XYPos pos = new XYPos(5,5);
-		pos.updatePos(2,0);
+		Position pos = new Position(5,5);
+		pos.updatePosition(2,0);
 		assertEquals(7,pos.getX());
 	}
 
@@ -49,8 +49,8 @@ public class GameTest {
 	 * Testing XYPOS update method.
 	 */
 	@Test public void test03() {
-		XYPos pos = new XYPos(5,5);
-		pos.updatePos(0,3);
+		Position pos = new Position(5,5);
+		pos.updatePosition(0,3);
 		assertEquals(8,pos.getY());
 	}
 	
@@ -58,16 +58,16 @@ public class GameTest {
 	 * Testing XYPOS update method.
 	 */
 	@Test public void test04() {
-		XYPos pos = new XYPos(5,5);
-		pos.updatePos(-2,0);
+		Position pos = new Position(5,5);
+		pos.updatePosition(-2,0);
 		assertEquals(3,pos.getX());
 	}
 	/**
 	 * Testing XYPOS update method.
 	 */
 	@Test public void test05() {
-		XYPos pos = new XYPos(5,5);
-		pos.updatePos(0,-3);
+		Position pos = new Position(5,5);
+		pos.updatePosition(0,-3);
 		assertEquals(2,pos.getY());
 	}
 	
@@ -1305,7 +1305,7 @@ public class GameTest {
 	 */
 	@Test public void test153() {
 		Chap tile = new Chap(5,5);	
-		tile.resetPosition(new XYPos(4,4));
+		tile.resetPosition(new Position(4,4));
 		assertEquals(4, tile.getXPosition());
 	}
 	
@@ -1565,7 +1565,7 @@ public class GameTest {
 	 */
 	@Test public void test178() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'N');
 		assertEquals(t,maze.getTile(1, 2));
 	}
@@ -1575,7 +1575,7 @@ public class GameTest {
 	 */
 	@Test public void test179() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(t,maze.getTile(2, 3));
 	}
@@ -1585,7 +1585,7 @@ public class GameTest {
 	 */
 	@Test public void test180() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'S');
 		assertEquals(t,maze.getTile(3, 2));
 	}
@@ -1595,7 +1595,7 @@ public class GameTest {
 	 */
 	@Test public void test181() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		Tile t = maze.getNeighbouringTile(xy, 'W');
 		assertEquals(t,maze.getTile(2, 1));
 	}
@@ -1605,7 +1605,7 @@ public class GameTest {
 	 */
 	@Test public void test182() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(32,32);
+		Position xy = new Position(32,32);
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> { 
 			maze.getNeighbouringTile(xy, 'W');
 		});		
@@ -1616,7 +1616,7 @@ public class GameTest {
 	 */
 	@Test public void test183() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(0,0);
+		Position xy = new Position(0,0);
 		Tile t = maze.getNeighbouringTile(xy, 'N');
 		assertEquals(t,null);
 	}
@@ -1626,7 +1626,7 @@ public class GameTest {
 	 */
 	@Test public void test184() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(31,31);
+		Position xy = new Position(31,31);
 		Tile t = maze.getNeighbouringTile(xy, 'S');
 		assertEquals(t,null);
 	}
@@ -1636,7 +1636,7 @@ public class GameTest {
 	 */
 	@Test public void test185() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(0,0);
+		Position xy = new Position(0,0);
 		Tile t = maze.getNeighbouringTile(xy, 'W');
 		assertEquals(t,null);
 	}
@@ -1646,7 +1646,7 @@ public class GameTest {
 	 */
 	@Test public void test186() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(31,31);
+		Position xy = new Position(31,31);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(t,null);
 	}
@@ -1656,7 +1656,7 @@ public class GameTest {
 	 */
 	@Test public void test187() {
 		Maze maze = new Maze(32,32,"level-1");
-		XYPos xy = new XYPos(7,7);
+		Position xy = new Position(7,7);
 		Tile t = maze.getNeighbouringTile(xy, 'E');
 		assertEquals(true,maze.setTile(xy, t));
 	}
@@ -1694,7 +1694,7 @@ public class GameTest {
 	 */
 	@Test public void test191() {
 		Chap tile = new Chap(4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1704,7 +1704,7 @@ public class GameTest {
 	 */
 	@Test public void test192() {
 		Exit tile = new Exit(4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1714,7 +1714,7 @@ public class GameTest {
 	 */
 	@Test public void test193() {
 		Tile tile = new ExitLock(4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1724,7 +1724,7 @@ public class GameTest {
 	 */
 	@Test public void test194() {
 		Tile tile = new Free(4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1734,7 +1734,7 @@ public class GameTest {
 	 */
 	@Test public void test195() {
 		Tile tile = new InfoField(null,4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1744,7 +1744,7 @@ public class GameTest {
 	 */
 	@Test public void test196() {
 		Tile tile = new Key(null,4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1754,7 +1754,7 @@ public class GameTest {
 	 */
 	@Test public void test197() {
 		Tile tile = new LockedDoor(null,4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1764,7 +1764,7 @@ public class GameTest {
 	 */
 	@Test public void test198() {
 		Tile tile = new Treasure(4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}
@@ -1774,7 +1774,7 @@ public class GameTest {
 	 */
 	@Test public void test199() {
 		Wall tile = new Wall(4,4);
-		XYPos xy = new XYPos(2,2);
+		Position xy = new Position(2,2);
 		tile.resetPosition(xy);
 		assertEquals(2,tile.getXPosition());
 	}

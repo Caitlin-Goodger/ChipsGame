@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Interface for all the tiles.
@@ -17,7 +17,7 @@ public interface Tile {
 	/**
 	 * Position of the tile in the maze
 	 */
-	XYPos currentPosition = null;
+	Position currentPosition = null;
 
 	/**
 	 * the char that are used to indicated direction are shown
@@ -34,14 +34,14 @@ public interface Tile {
 	 * 
 	 * @param pos = position to reset to.
 	 */
-	public void resetPosition(XYPos pos);
+	public void resetPosition(Position pos);
 
 	/**
 	 * used to get the tiles positions
 	 * 
 	 * @return XYPos
 	 */
-	public XYPos getTilePosition();
+	public Position getTilePosition();
 
 	/**
 	 * check to see if the player can walk through this tile

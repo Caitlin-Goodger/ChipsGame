@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Monster Tile. Is an implementation of the tile class.
@@ -13,7 +13,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  */
 public class Monster implements Tile {
 	private boolean isSolid = true; // check if player can walkThrought
-	private XYPos currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition; // keeps track of tiles position within a grid
 	private Tile onTile;
 
 	/**
@@ -29,7 +29,7 @@ public class Monster implements Tile {
 	 *                screen.
 	 */
 	public Monster(int xGrid, int yGrid) {
-		currentPosition = new XYPos(xGrid, yGrid);
+		currentPosition = new Position(xGrid, yGrid);
 		onTile = new Free(xGrid, yGrid);
 	}
 
@@ -81,9 +81,9 @@ public class Monster implements Tile {
 			direction = 'N';
 		}
 
-		XYPos original = new XYPos(currentPosition.getX(), currentPosition.getY());
+		Position original = new Position(currentPosition.getX(), currentPosition.getY());
 		updatePosition(direction);
-		XYPos destination = currentPosition;
+		Position destination = currentPosition;
 		m.setTile(original, onTile);
 		m.setTile(destination, this);
 		setOnTile(moveTo);
@@ -102,13 +102,13 @@ public class Monster implements Tile {
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
-			currentPosition.updatePos(0, 1);
+			currentPosition.updatePosition(0, 1);
 		} else if (direction == 'S') {
-			currentPosition.updatePos(0, -1);
+			currentPosition.updatePosition(0, -1);
 		} else if (direction == 'E') {
-			currentPosition.updatePos(1, 0);
+			currentPosition.updatePosition(1, 0);
 		} else if (direction == 'W') {
-			currentPosition.updatePos(-1, 0);
+			currentPosition.updatePosition(-1, 0);
 		}
 	}
 
@@ -116,7 +116,7 @@ public class Monster implements Tile {
 	 * Get the current position of the tile on the grid.
 	 */
 	@Override
-	public XYPos getTilePosition() {
+	public Position getTilePosition() {
 		return currentPosition;
 	}
 
@@ -164,7 +164,7 @@ public class Monster implements Tile {
 	 * re-set the XYPos
 	 */
 	@Override
-	public void resetPosition(XYPos pos) {
+	public void resetPosition(Position pos) {
 		this.currentPosition = pos;
 
 	}

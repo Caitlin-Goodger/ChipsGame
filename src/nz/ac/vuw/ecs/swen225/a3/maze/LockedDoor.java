@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Locked Door tile. Is an implementation of the tile class.
@@ -11,7 +11,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 public class LockedDoor implements Tile {
 	private String colour;
 	private boolean isSolid = true; // check if player can walkThrought
-	private XYPos currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition; // keeps track of tiles position within a grid
 
 	/**
 	 * Constructor for the LockedDoor class.
@@ -28,7 +28,7 @@ public class LockedDoor implements Tile {
 	 */
 	public LockedDoor(String aColour, int xGrid, int yGrid) {
 		colour = aColour;
-		currentPosition = new XYPos(xGrid, yGrid);
+		currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
@@ -71,13 +71,13 @@ public class LockedDoor implements Tile {
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
-			currentPosition.updatePos(0, 1);
+			currentPosition.updatePosition(0, 1);
 		} else if (direction == 'S') {
-			currentPosition.updatePos(0, -1);
+			currentPosition.updatePosition(0, -1);
 		} else if (direction == 'E') {
-			currentPosition.updatePos(1, 0);
+			currentPosition.updatePosition(1, 0);
 		} else if (direction == 'W') {
-			currentPosition.updatePos(-1, 0);
+			currentPosition.updatePosition(-1, 0);
 		}
 	}
 
@@ -85,7 +85,7 @@ public class LockedDoor implements Tile {
 	 * Get the current position of the tile on the grid.
 	 */
 	@Override
-	public XYPos getTilePosition() {
+	public Position getTilePosition() {
 		return currentPosition;
 	}
 
@@ -134,7 +134,7 @@ public class LockedDoor implements Tile {
 	 * re-set the XYPos
 	 */
 	@Override
-	public void resetPosition(XYPos pos) {
+	public void resetPosition(Position pos) {
 		this.currentPosition = pos;
 
 	}

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Chap tile. It is a implementation of Tile.
@@ -14,7 +14,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  */
 public class Chap implements Tile {
 	private boolean isSolid = false;
-	private XYPos currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition; // keeps track of tiles position within a grid
 
 	private int facing = 6;
 	private Map<String, String> inventory;
@@ -33,7 +33,7 @@ public class Chap implements Tile {
 	 *                screen.
 	 */
 	public Chap(int xGrid, int yGrid) {
-		currentPosition = new XYPos(xGrid, yGrid);
+		currentPosition = new Position(xGrid, yGrid);
 		inventory = new HashMap<String, String>();
 		onTile = new Free(xGrid, yGrid);
 	}
@@ -129,16 +129,16 @@ public class Chap implements Tile {
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
 			facing = 5;
-			currentPosition.updatePos(0, -1);
+			currentPosition.updatePosition(0, -1);
 		} else if (direction == 'S') {
 			facing = 6;
-			currentPosition.updatePos(0, 1);
+			currentPosition.updatePosition(0, 1);
 		} else if (direction == 'E') {
 			facing = 3;
-			currentPosition.updatePos(1, 0);
+			currentPosition.updatePosition(1, 0);
 		} else if (direction == 'W') {
 			facing = 4;
-			currentPosition.updatePos(-1, 0);
+			currentPosition.updatePosition(-1, 0);
 		}
 	}
 
@@ -146,7 +146,7 @@ public class Chap implements Tile {
 	 * Get the current position of the tile on the grid.
 	 */
 	@Override
-	public XYPos getTilePosition() {
+	public Position getTilePosition() {
 		return currentPosition;
 	}
 
@@ -195,7 +195,7 @@ public class Chap implements Tile {
 	 * re-set the XYPos
 	 */
 	@Override
-	public void resetPosition(XYPos pos) {
+	public void resetPosition(Position pos) {
 		this.currentPosition = pos;
 
 	}
@@ -225,7 +225,7 @@ public class Chap implements Tile {
 	 * @param m
 	 */
 	public void newLevel(Maze m) {
-		resetPosition(new XYPos(m.getStartingPos().getX(), m.getStartingPos().getY()));
+		resetPosition(new Position(m.getStartingPos().getX(), m.getStartingPos().getY()));
 		setOnTile(new Free(m.getStartingPos().getX(), m.getStartingPos().getY()));
 		resetInventory();
 	}
@@ -235,7 +235,7 @@ public class Chap implements Tile {
 	 * 
 	 * @return currentPosition
 	 */
-	public XYPos getCurrentPosition() {
+	public Position getCurrentPosition() {
 		return currentPosition;
 	}
 }

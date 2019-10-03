@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
+import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * ExitLock Tile. Is an implementation of the Tile class.
@@ -10,7 +10,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
  */
 public class ExitLock implements Tile {
 	private boolean isSolid = true; // check if player can walkThrought
-	private XYPos currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition; // keeps track of tiles position within a grid
 
 	private boolean unlocked;
 
@@ -27,7 +27,7 @@ public class ExitLock implements Tile {
 	 *                screen.
 	 */
 	public ExitLock(int xGrid, int yGrid) {
-		currentPosition = new XYPos(xGrid, yGrid);
+		currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
@@ -38,13 +38,13 @@ public class ExitLock implements Tile {
 	@Override
 	public void updatePosition(char direction) {
 		if (direction == 'N') {
-			currentPosition.updatePos(0, 1);
+			currentPosition.updatePosition(0, 1);
 		} else if (direction == 'S') {
-			currentPosition.updatePos(0, -1);
+			currentPosition.updatePosition(0, -1);
 		} else if (direction == 'E') {
-			currentPosition.updatePos(1, 0);
+			currentPosition.updatePosition(1, 0);
 		} else if (direction == 'W') {
-			currentPosition.updatePos(-1, 0);
+			currentPosition.updatePosition(-1, 0);
 		}
 	}
 
@@ -61,7 +61,7 @@ public class ExitLock implements Tile {
 	 * Get the current position of the tile on the grid.
 	 */
 	@Override
-	public XYPos getTilePosition() {
+	public Position getTilePosition() {
 		return currentPosition;
 	}
 
@@ -109,7 +109,7 @@ public class ExitLock implements Tile {
 	 * re-set the XYPos
 	 */
 	@Override
-	public void resetPosition(XYPos pos) {
+	public void resetPosition(Position pos) {
 		this.currentPosition = pos;
 
 	}
