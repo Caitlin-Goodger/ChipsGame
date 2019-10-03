@@ -28,12 +28,12 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
  * @author Caitlin
  *
  */
-public class Map {
+public class FileReader {
 
 	/**
 	 * Constructor for the Map class.
 	 */
-	public Map() {
+	public FileReader() {
 
 	}
 
@@ -46,7 +46,7 @@ public class Map {
 	 * @param filename  = file name that level is stored in.
 	 * @return boolean.
 	 */
-	public boolean readFile(Maze maze, String levelName, String filename) {
+	public boolean read(Maze maze, String levelName, String filename) {
 		try {
 			int keyColor = 0;
 			int doorColor = 0;

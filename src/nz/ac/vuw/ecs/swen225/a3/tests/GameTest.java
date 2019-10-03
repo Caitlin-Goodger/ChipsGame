@@ -16,7 +16,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
-import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 import org.junit.Test;
@@ -1527,28 +1527,28 @@ public class GameTest {
 	 * Testing reading in File in Map class. 
 	 */
 	@Test public void test174() {
-		Map m = new Map();
+		FileReader m = new FileReader();
 		Maze maze = new Maze(32,32,"level-1");
-		assertEquals(true, m.readFile(maze, "level-1","levels.json"));
+		assertEquals(true, m.read(maze, "level-1","levels.json"));
 	}
 	
 	/**
 	 * Testing reading in File in Map class. 
 	 */
 	@Test public void test175() {
-		Map m = new Map();
+		FileReader m = new FileReader();
 		Maze maze = new Maze(32,32,"level-1");
-		assertEquals(false, m.readFile(maze, "level-1","level.json"));
+		assertEquals(false, m.read(maze, "level-1","level.json"));
 	}
 	
 	/**
 	 * Testing reading in File in Map class. 
 	 */
 	@Test public void test176() {
-		Map m = new Map();
+		FileReader m = new FileReader();
 		Maze maze = new Maze(32,32,"level-1");
 		assertThrows(NullPointerException.class, () -> { 
-			m.readFile(maze, "level-76","levels.json");
+			m.read(maze, "level-76","levels.json");
 		});		
 	}
 	

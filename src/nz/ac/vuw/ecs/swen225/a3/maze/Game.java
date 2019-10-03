@@ -2,7 +2,7 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.ArrayList;
 
-import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
@@ -146,7 +146,7 @@ public class Game {
 		} else if (destination instanceof Exit) {
 			String level = maze.getNextLevel();
 			System.out.println(level);
-			new Map().readFile(maze, level, "levels.json");
+			new FileReader().read(maze, level, "levels.json");
 			this.getChap().newLevel(this.getMaze());
 			tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
 			// LEVEL COMPLETED

@@ -2,7 +2,7 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.ArrayList;
 
-import nz.ac.vuw.ecs.swen225.a3.persistence.Map;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.util.XYPos;
 
 /**
@@ -38,7 +38,7 @@ public class Maze {
 		levels.add("level-3");
 		levels.add("level-4");
 		levels.add("level-5");
-		new Map().readFile(this, level, "levels.json");
+		new FileReader().read(this, level, "levels.json");
 	}
 
 	/**
