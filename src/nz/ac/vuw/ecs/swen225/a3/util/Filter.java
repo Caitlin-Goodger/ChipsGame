@@ -5,8 +5,8 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
 /**
- * Responsible for filtering files that can be opened. Should be limited to only
- * JSON files.
+ * Filter class is responsible for filtering files that can
+ * be opened. Defaults to JSON files.
  */
 public class Filter extends FileFilter {
 
@@ -31,6 +31,9 @@ public class Filter extends FileFilter {
 		return false;
 	}
 
+	/**
+	 * Returns the description of the file.
+	 */
 	@Override
 	public String getDescription() {
 		return "JSON files (*.json)";
@@ -41,9 +44,10 @@ public class Filter extends FileFilter {
 	 */
 	public static class Utils {
 		/**
-		 * Get the file Extension. 
+		 * Get the file Extension.
+		 * 
 		 * @param name
-		 * @return String. 
+		 * @return String
 		 */
 		public static String getFileExtension(String name) {
 			int pointIndex = name.lastIndexOf(".");

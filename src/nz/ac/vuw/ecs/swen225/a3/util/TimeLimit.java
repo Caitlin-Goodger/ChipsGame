@@ -5,15 +5,16 @@ import java.util.TimerTask;
 
 import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 
+/**
+ * TimeLimit class is responsible for the timer.
+ */
 public class TimeLimit {
 	private Timer timer;
 	private int time;
-	private MainFrame mf;
 
 	public TimeLimit(int seconds, MainFrame mf) {
 		this.timer = new Timer();
 		this.time = seconds;
-		this.mf = mf;
 
 		timer.scheduleAtFixedRate(new TimerTask() {
 
@@ -24,15 +25,18 @@ public class TimeLimit {
 	}
 
 	/**
-	 * Decreases time until time is 0, then timer stops
+	 * Decreases time until time is 0, then timer stops.
 	 * 
-	 * @return time--
+	 * @return time
 	 */
 	private int tick() {
 		if (time == 0) {
 			timer.cancel();
 		}
-		return time--;
+
+		this.time--;
+
+		return time;
 	}
 
 	/**
