@@ -39,7 +39,7 @@ public class Free implements Tile {
 	}
 
 	/**
-	 * Get the y-coordinate of the free tile.
+	 * Get the x-coordinate of the free tile.
 	 */
 	@Override
 	public int getXPosition() {
