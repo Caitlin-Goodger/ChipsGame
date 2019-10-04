@@ -4,63 +4,63 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Locked Door tile. Is an implementation of the tile class.
- * 
- * @author Caitlin
- *
+ * LockedDoor class is responsible for keeping the position
+ * of the locked door.
  */
 public class LockedDoor implements Tile {
 	private String colour;
-	private boolean isSolid = true; // check if player can walkThrought
-	private Position currentPosition; // keeps track of tiles position within a grid
+	private boolean isSolid = true;
+	private Position currentPosition;
 
 	/**
-	 * Constructor for the LockedDoor class.
+	 * Constructor for the locked door.
 	 * 
-	 * @param aColour = colour of the lock.
-	 * @param xGrid   = x co-ordinate in of the tile on the
-	 *                grid.
-	 * @param yGrid   = y co-ordinate in of the tile on the
-	 *                grid.
-	 * @param xScreen = x co-ordinate in of the tile on the
-	 *                screen.
-	 * @param yScreen = y co-ordinate in of the tile on the
-	 *                screen.
+	 * @param colour
+	 * @param xGrid
+	 * @param yGrid
 	 */
-	public LockedDoor(String aColour, int xGrid, int yGrid) {
-		colour = aColour;
-		currentPosition = new Position(xGrid, yGrid);
+	public LockedDoor(String colour, int xGrid, int yGrid) {
+		this.colour = colour;
+		this.currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
-	 * Set the colour of the lock.
+	 * Sets the colour of the locked door.
 	 * 
-	 * @param aColour = colour to set.
-	 * @return boolean.
+	 * @param colour
 	 */
-	public boolean setColour(String aColour) {
-		boolean wasSet = false;
-		colour = aColour;
-		wasSet = true;
-		return wasSet;
+	public void setColour(String colour) {
+		if (colour == null) {
+			throw new IllegalArgumentException("Argument must be a String.");
+		}
+
+		this.colour = colour;
+
+		assert this.colour != null;
 	}
 
 	/**
-	 * Get the colour of the lock.
+	 * Gets the colour of the locked door.
 	 * 
-	 * @return String.
+	 * @return colour
 	 */
 	public String getColour() {
-		return colour;
+		assert this.colour != null;
+
+		return this.colour;
 	}
 
 	/**
-	 * Check to see if the chap can unlock this door.
+	 * Checks if the player can unlock the door.
 	 * 
-	 * @param chap = Chap tile trying to unlock the door.
-	 * @return - whether chap can unlock this door
+	 * @param chap
+	 * @return
 	 */
 	public boolean canUnlock(Chap chap) {
+		if (chap == null) {
+			throw new IllegalArgumentException("Argument must be a Chap.");
+		}
+
 		return chap.canUnlock(this);
 	}
 
@@ -69,28 +69,27 @@ public class LockedDoor implements Tile {
 	 */
 	@Override
 	public String getImagePath() {
-
-		return isSolid == true ? "resources/CC11.png" : "resources/CC2.png";
+		return this.isSolid == true ? "resources/CC11.png" : "resources/CC2.png";
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid.
+	 * Get the y-coordinate of the locked door.
 	 */
 	@Override
 	public int getYPosition() {
-		return currentPosition.getY();
+		return this.currentPosition.getY();
 	}
 
 	/**
-	 * Get the x co-ordinate of the tile on the grid.
+	 * Get the x-coordinate of the locked door.
 	 */
 	@Override
 	public int getXPosition() {
-		return currentPosition.getX();
+		return this.currentPosition.getX();
 	}
 
 	/**
-	 * To String Method.
+	 * Turns the tile into a string. Used for debugging.
 	 */
 	@Override
 	public String toString() {

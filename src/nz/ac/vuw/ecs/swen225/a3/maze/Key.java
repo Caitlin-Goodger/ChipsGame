@@ -20,7 +20,7 @@ public class Key implements Tile {
 	 */
 	public Key(String colour, int xGrid, int yGrid) {
 		this.colour = colour;
-		currentPosition = new Position(xGrid, yGrid);
+		this.currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
