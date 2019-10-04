@@ -84,10 +84,6 @@ public class FileReader {
 	 * Creates the maze layout.
 	 */
 	private void createMazeLayout() {
-		int keyColor = 0;
-		int doorColor = 0;
-		int infoFieldID = 0;
-
 		JsonArray jsonArray = level.getJsonArray("tiles");
 
 		for (int col = 0; col < width; col++) {
@@ -120,13 +116,14 @@ public class FileReader {
 
 					break;
 				case 7:
-					if (infoFieldID == 0) {
-						tile = new InfoField("<html>" + "Welcome to Chip's Challenge! <br>"
-								+ "Collect the correct key colours <br>"
-								+ "to unlock the doors and <br>" + "collect all the treasure!"
-								+ "<html>", row, col);
-					} else {
-						tile = new InfoField("null", row, col);
+					tile = new InfoField("null", row, col);
+
+					InfoField infoField = (InfoField) tile;
+
+					if (infoField.getID() == 0) {
+						infoField.setInfoFieldText("Welcome player!");
+					} else if (infoField.getID() == 1) {
+						infoField.setInfoFieldText("You have reached the second level!");
 					}
 
 					break;
@@ -159,12 +156,16 @@ public class FileReader {
 					break;
 				default:
 					tile = new Free(row, col);
-					break;
 				}
 
-				mazeLayout[col][row] = tile;
+				this.mazeLayout[col][row] = tile;
 			}
 		}
+
+		// Make sure the maze is not null and has the correct width
+		// and height after it has been created.
+		assert this.mazeLayout != null && this.mazeLayout[0].length == this.width
+				&& this.mazeLayout.length == this.height;
 	}
 
 	/**
@@ -173,6 +174,8 @@ public class FileReader {
 	 * @return width
 	 */
 	public int getWidth() {
+		assert this.width != -1;
+
 		return this.width;
 	}
 
@@ -182,6 +185,8 @@ public class FileReader {
 	 * @return height
 	 */
 	public int getHeight() {
+		assert this.height != -1;
+
 		return this.height;
 	}
 
@@ -191,6 +196,8 @@ public class FileReader {
 	 * @return timeLimit
 	 */
 	public int getTimeLimit() {
+		assert this.timeLimit != -1;
+
 		return this.timeLimit;
 	}
 
@@ -200,6 +207,8 @@ public class FileReader {
 	 * @return mazeLayout
 	 */
 	public Tile[][] getMazeLayout() {
+		assert this.mazeLayout != null;
+
 		return this.mazeLayout;
 	}
 
@@ -209,6 +218,8 @@ public class FileReader {
 	 * @return levelName
 	 */
 	public String getLevelName() {
+		assert this.levelName != null;
+
 		return this.levelName;
 	}
 
@@ -219,6 +230,8 @@ public class FileReader {
 	 * @return
 	 */
 	public List<Monster> getMonsters() {
+		assert this.monsters != null;
+
 		return Collections.unmodifiableList(this.monsters);
 	}
 
@@ -228,6 +241,12 @@ public class FileReader {
 	 * @param monster
 	 */
 	private void addMonster(Monster monster) {
+		if (monster == null) {
+			throw new IllegalArgumentException("Argument must be a Monster.");
+		}
+
 		this.monsters.add(monster);
+
+		assert this.monsters.contains(monster);
 	}
 }

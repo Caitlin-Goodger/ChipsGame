@@ -3,38 +3,39 @@ package nz.ac.vuw.ecs.swen225.a3.maze.interfaces;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Interface for all the tiles.
+ * Interface for all the tiles, all classes that extend this
+ * interface must implement these variables and methods.
  */
 public interface Tile {
 
 	/**
-	 * Check if the tile is solid.
+	 * Used to check if the tile is solid.
 	 */
 	boolean isSolid = false;
+
 	/**
-	 * Position of the tile in the maze
+	 * Holds the position of the tile in the maze.
 	 */
 	Position currentPosition = null;
 
 	/**
-	 * returns the image so it can be rendered
+	 * Returns the image to be displayed.
 	 * 
 	 * @return String
 	 */
 	public String getImagePath();
 
 	/**
-	 * used for testing and just get X position on map
+	 * Used for testing and gets X position on maze.
 	 * 
-	 * @return int.
+	 * @return int
 	 */
 	public int getXPosition();
 
 	/**
-	 * used for testing and just get Y position on map
+	 * Used for testing and gets Y position on maze.
 	 * 
-	 * @return int.
+	 * @return int
 	 */
 	public int getYPosition();
-
 }

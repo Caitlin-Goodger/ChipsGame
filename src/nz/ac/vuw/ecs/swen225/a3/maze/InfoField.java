@@ -8,6 +8,8 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
  * of the info field and storing the information.
  */
 public class InfoField implements Tile {
+	private static int id = -1;
+
 	private String text;
 	private Position currentPosition;
 
@@ -19,6 +21,8 @@ public class InfoField implements Tile {
 	 * @param yGrid
 	 */
 	public InfoField(String text, int xGrid, int yGrid) {
+		InfoField.id++;
+
 		this.text = text;
 		this.currentPosition = new Position(xGrid, yGrid);
 	}
@@ -47,6 +51,17 @@ public class InfoField implements Tile {
 		assert this.text != null;
 
 		return this.text;
+	}
+
+	/**
+	 * Returns the id of the info field.
+	 * 
+	 * @return id
+	 */
+	public int getID() {
+		assert InfoField.id != -1;
+
+		return InfoField.id;
 	}
 
 	/**
