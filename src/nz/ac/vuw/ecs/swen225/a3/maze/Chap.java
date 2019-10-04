@@ -40,7 +40,9 @@ public class Chap implements Tile {
 	 * @return canUnlock
 	 */
 	public boolean canUnlock(LockedDoor door) {
-		assert door != null; // Check door exists.
+		if (door == null) {
+			throw new IllegalArgumentException("Argument must be a LockedDoor.");
+		}
 
 		boolean canUnlock = false;
 
@@ -54,8 +56,12 @@ public class Chap implements Tile {
 
 			if (key.equalsIgnoreCase("Key")) {
 				canUnlock = true;
+				
+				assert canUnlock == true;
 			}
 		}
+		
+		assert canUnlock == false;
 
 		return canUnlock;
 	}
@@ -67,12 +73,16 @@ public class Chap implements Tile {
 	 * @param item
 	 */
 	public void pickupItem(Tile item) {
-		assert item != null; // Check if item exists.
+		if (item == null) {
+			throw new IllegalArgumentException("Argument must be a Tile.");
+		}
 
 		if (item instanceof Key) {
 			Key key = (Key) item;
 
 			inventory.put(key.getColour(), "Key");
+
+			assert inventory.containsKey(key.getColour()); // Check key actually was added.
 		}
 	}
 
