@@ -63,18 +63,26 @@ public class FileReader {
 	 */
 	public void read() {
 		try {
-			input = new FileInputStream(fileName);
-			reader = Json.createReader(input);
-			obj = reader.readObject();
-			level = obj.getJsonObject(levelName);
+			this.input = new FileInputStream(fileName);
+			this.reader = Json.createReader(input);
+			this.obj = reader.readObject();
+			this.level = obj.getJsonObject(levelName);
+
+			assert this.input != null && this.reader != null && this.obj != null
+					&& this.level == null;
 
 			// Holds the parameters of the maze read.
-			width = level.getInt("width");
-			height = level.getInt("height");
-			timeLimit = level.getInt("time");
-			mazeLayout = new Tile[width][height];
+			this.width = level.getInt("width");
+			this.height = level.getInt("height");
+			this.timeLimit = level.getInt("time");
+			this.mazeLayout = new Tile[width][height];
 
-			createMazeLayout();
+			assert this.width != -1 && this.height != -1 && this.timeLimit != -1
+					&& this.mazeLayout == null;
+
+			boolean mazeCreated = createMazeLayout();
+
+			assert mazeCreated;
 		} catch (FileNotFoundException e) {
 			throw new Error("File not found.", e);
 		}
@@ -83,30 +91,43 @@ public class FileReader {
 	/**
 	 * Creates the maze layout.
 	 */
-	private void createMazeLayout() {
+	private boolean createMazeLayout() {
 		JsonArray jsonArray = level.getJsonArray("tiles");
+
+		if (jsonArray == null) {
+			throw new NullPointerException("Array does not exist.");
+		}
 
 		for (int col = 0; col < width; col++) {
 			JsonArray array = jsonArray.getJsonArray(col);
 
+			if (array == null) {
+				throw new NullPointerException("Array does not exist.");
+			}
+
 			for (int row = 0; row < height; row++) {
-				Tile tile;
+				Tile tile = null;
 
 				switch (array.getInt(row)) {
 				case 0:
 					tile = new Free(row, col);
+
 					break;
 				case 1:
 					tile = new Wall(row, col);
+
 					break;
 				case 2:
 					tile = new Chap(row, col);
+
 					break;
 				case 3:
 					tile = new Exit(row, col);
+
 					break;
 				case 4:
 					tile = new ExitLock(row, col);
+
 					break;
 				case 5:
 					tile = new Monster(row, col);
@@ -120,6 +141,8 @@ public class FileReader {
 
 					InfoField infoField = (InfoField) tile;
 
+					// ID is static therefore each info field id will be unique.
+					// Allows for unique messages.
 					if (infoField.getID() == 0) {
 						infoField.setInfoFieldText("Welcome player!");
 					} else if (infoField.getID() == 1) {
@@ -129,36 +152,49 @@ public class FileReader {
 					break;
 				case 8:
 					tile = new Treasure(row, col);
+
 					break;
 				case 9:
 					tile = new Key("red", row, col);
+
 					break;
 				case 10:
 					tile = new Key("blue", row, col);
+
 					break;
 				case 11:
 					tile = new Key("green", row, col);
+
 					break;
 				case 12:
 					tile = new Key("yellow", row, col);
+
 					break;
 				case 13:
 					tile = new LockedDoor("red", row, col);
+
 					break;
 				case 14:
 					tile = new LockedDoor("blue", row, col);
+
 					break;
 				case 15:
 					tile = new LockedDoor("green", row, col);
+
 					break;
 				case 16:
 					tile = new LockedDoor("yellow", row, col);
+
 					break;
 				default:
 					tile = new Free(row, col);
 				}
 
+				assert tile != null;
+
 				this.mazeLayout[col][row] = tile;
+
+				assert this.mazeLayout[col][row] == tile; // Ensure tile set.
 			}
 		}
 
@@ -166,6 +202,13 @@ public class FileReader {
 		// and height after it has been created.
 		assert this.mazeLayout != null && this.mazeLayout[0].length == this.width
 				&& this.mazeLayout.length == this.height;
+
+		if (this.mazeLayout != null && this.mazeLayout[0].length == this.width
+				&& this.mazeLayout.length == this.height) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
