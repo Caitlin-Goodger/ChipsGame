@@ -62,8 +62,10 @@ public class FileReader {
 
   /**
    * Reads the file and gets the width, height and time limit.
+   * 
+   * @return true if successfully read
    */
-  public void read() {
+  public boolean read() {
     try {
       this.input = new FileInputStream(fileName);
       this.reader = Json.createReader(input);
@@ -82,6 +84,8 @@ public class FileReader {
       boolean mazeCreated = createMazeLayout();
 
       assert mazeCreated;
+      
+      return true;
     } catch (FileNotFoundException e) {
       throw new Error("File not found.", e);
     }
