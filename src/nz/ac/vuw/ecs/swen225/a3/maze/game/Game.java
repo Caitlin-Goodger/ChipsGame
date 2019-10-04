@@ -122,7 +122,6 @@ public class Game {
 				// chap.removeItem(door.getColour(), "Key"); //removes key
 				// from inventory
 			} else {
-				System.out.println("No Corresponding Key!");
 				// do nothing
 			}
 		} else if (destination instanceof Treasure) {
