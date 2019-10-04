@@ -13,8 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 
@@ -34,7 +32,8 @@ public class InventoryPanel extends JPanel {
 
 	/**
 	 * Constructor for the inventory panel.
-	 * @param game = Game that this is for. 
+	 * 
+	 * @param game = Game that this is for.
 	 */
 	public InventoryPanel(Game game) {
 		setPreferredSize(new Dimension(getWidth(), 40));
@@ -65,15 +64,17 @@ public class InventoryPanel extends JPanel {
 		for (String item : inventory.keySet()) {
 			String path = null;
 
-			if (item.equals("yellow") || item.equals("blue") || item.equals("red") || item.equals("green")) {
+			if (item.equals("yellow") || item.equals("blue") || item.equals("red")
+					|| item.equals("green")) {
 				path = "resources/CC12.png";
 			}
-			
-			if(path!= null) {
+
+			if (path != null) {
 				ImageIcon icon = new ImageIcon(new File(path).getPath());
 				Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-	
-				// change color of key image to match color value of key being displayed
+
+				// change color of key image to match color value of key
+				// being displayed
 				switch (item) {
 				case "red":
 					scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50,
@@ -91,11 +92,11 @@ public class InventoryPanel extends JPanel {
 					scaledImage = ren.mergeImages(path, 3, Color.BLUE).getScaledInstance(50, 50,
 							Image.SCALE_SMOOTH);
 				}
-	
+
 				JLabel img = new JLabel(new ImageIcon(scaledImage));
-	
+
 				add(img);
-	
+
 				itemsAdded++;
 			}
 		}

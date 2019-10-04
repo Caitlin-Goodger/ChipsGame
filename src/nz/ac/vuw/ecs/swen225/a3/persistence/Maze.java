@@ -247,7 +247,12 @@ public class Maze {
 	 * Gets the next level.
 	 */
 	public void getNextLevel() {
-		fileReader = new FileReader(levels.get(Maze.currentLevel));
+		// Gets the next level in array.
+		if (Maze.currentLevel < levels.size()) {
+			Maze.currentLevel++;
+		}
+
+		fileReader = new FileReader(levels.get(Maze.currentLevel - 1));
 		fileReader.read();
 
 		this.width = fileReader.getWidth();

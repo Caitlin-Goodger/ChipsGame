@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -14,10 +13,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
-import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
-import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
-import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
@@ -77,7 +73,7 @@ public class GameTest {
 	}
 
 	// Don't need these anymore
-	
+
 //	/**
 //	 * Testing update position method in wall tile.
 //	 */

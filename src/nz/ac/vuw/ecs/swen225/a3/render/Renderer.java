@@ -1,11 +1,12 @@
 package nz.ac.vuw.ecs.swen225.a3.render;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /**
  * Renderer class. Used to render the GUI. 

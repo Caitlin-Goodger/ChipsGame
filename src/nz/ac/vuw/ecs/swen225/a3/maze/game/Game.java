@@ -208,6 +208,6 @@ public class Game {
 	 * @param tl
 	 */
 	public void setTimeLimit(TimeLimit tl) {
-		this.tl = tl;
+		Game.tl = tl;
 	}
 }

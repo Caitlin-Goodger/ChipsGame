@@ -118,7 +118,7 @@ public class MainFrame extends JFrame {
 		rulesPanel = new RulesPanel();
 		add(rulesPanel, gc);
 
-		textPanel = new TextPanel(game);
+		textPanel = new TextPanel();
 		add(textPanel, gc);
 
 		pack();
