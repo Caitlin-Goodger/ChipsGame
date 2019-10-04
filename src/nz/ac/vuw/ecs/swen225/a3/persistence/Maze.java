@@ -110,7 +110,7 @@ public class Maze {
   /**
    * Gets the neighbouring tile.
    * 
-   * @param origin = the original position
+   * @param origin    = the original position
    * @param direction = the direction you are checking
    * @return the destination of neighbouring tile
    */
@@ -175,9 +175,10 @@ public class Maze {
    * Sets a tile on the maze.
    * 
    * @param position = the position you want to set
-   * @param tile = the tile you want to set the position to
+   * @param tile     = the tile you want to set the position to
+   * @return true if tile is set
    */
-  public void setTile(Position position, Tile tile) {
+  public boolean setTile(Position position, Tile tile) {
     if (position == null) {
       throw new IllegalArgumentException("Argument must be a Position.");
     }
@@ -192,6 +193,8 @@ public class Maze {
     this.mazeLayout[y][x] = tile;
 
     assert this.mazeLayout[y][x] == tile;
+
+    return true;
   }
 
   /**

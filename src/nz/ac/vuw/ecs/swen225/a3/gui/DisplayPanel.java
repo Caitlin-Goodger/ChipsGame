@@ -96,15 +96,15 @@ public class DisplayPanel extends JPanel {
           switch (key.getColour()) {
             case "red":
               scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
               break;
             case "yellow":
               scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
               break;
             case "green":
               scaledImage = ren.mergeImages(path, 1, Color.GREEN).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
               break;
             default:
               scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50,
@@ -116,19 +116,19 @@ public class DisplayPanel extends JPanel {
           switch (lockedDoor.getColour()) {
             case "red":
               scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
               break;
             case "yellow":
               scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
               break;
             case "green":
               scaledImage = ren.mergeImages(path, 2, Color.GREEN).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
               break;
             default:
               scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
-                Image.SCALE_SMOOTH);
+                  Image.SCALE_SMOOTH);
           }
         }
 

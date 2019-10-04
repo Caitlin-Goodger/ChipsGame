@@ -77,15 +77,15 @@ public class InventoryPanel extends JPanel {
         switch (item) {
           case "red":
             scaledImage = ren.mergeImages(path, 3, Color.RED).getScaledInstance(50, 50,
-              Image.SCALE_SMOOTH);
+                Image.SCALE_SMOOTH);
             break;
           case "yellow":
             scaledImage = ren.mergeImages(path, 3, Color.YELLOW).getScaledInstance(50, 50,
-              Image.SCALE_SMOOTH);
+                Image.SCALE_SMOOTH);
             break;
           case "green":
             scaledImage = ren.mergeImages(path, 3, Color.GREEN).getScaledInstance(50, 50,
-              Image.SCALE_SMOOTH);
+                Image.SCALE_SMOOTH);
             break;
           default:
             scaledImage = ren.mergeImages(path, 3, Color.BLUE).getScaledInstance(50, 50,

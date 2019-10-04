@@ -84,7 +84,7 @@ public class FileReader {
       boolean mazeCreated = createMazeLayout();
 
       assert mazeCreated;
-      
+
       return true;
     } catch (FileNotFoundException e) {
       throw new Error("File not found.", e);
@@ -144,7 +144,7 @@ public class FileReader {
   
             InfoField infoField = (InfoField) tile;
             String text = null;
-
+  
             // ID is static therefore each info field id will be unique.
             // Allows for unique messages.
             switch (infoField.getID()) {

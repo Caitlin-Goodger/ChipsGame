@@ -47,11 +47,11 @@ public class Position {
    * @param y = the amount you want to move y
    */
   public void updatePosition(int x, int y) {
-    if (x >= 1) {
+    if (x > 1 || x < -1) {
       throw new IllegalArgumentException("Argument must be between -1 and 1.");
     }
 
-    if (y >= 1) {
+    if (y > 1 || x < -1) {
       throw new IllegalArgumentException("Argument must be between -1 and 1.");
     }
 

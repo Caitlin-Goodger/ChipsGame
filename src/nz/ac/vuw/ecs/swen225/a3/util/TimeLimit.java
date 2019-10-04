@@ -16,7 +16,7 @@ public class TimeLimit {
    * Constructor for the time limit.
    * 
    * @param seconds = the time you want on the timer
-   * @param mf = the main frame to update time
+   * @param mf      = the main frame to update time
    */
   public TimeLimit(int seconds, MainFrame mf) {
     this.timer = new Timer();

@@ -17,8 +17,8 @@ public class InfoField implements Tile {
    * Constructor for the info field.
    * 
    * @param text = the text you want in the info field
-   * @param x = x position relative to maze
-   * @param y = y position relative to maze
+   * @param x    = x position relative to maze
+   * @param y    = y position relative to maze
    */
   public InfoField(String text, int x, int y) {
     InfoField.id++;

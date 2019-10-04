@@ -14,8 +14,8 @@ public class Key implements Tile {
    * Constructor for the key.
    * 
    * @param colour = the colour of the key
-   * @param x = x position relative to maze
-   * @param y = y position relative to maze
+   * @param x      = x position relative to maze
+   * @param y      = y position relative to maze
    */
   public Key(String colour, int x, int y) {
     this.colour = colour;

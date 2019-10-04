@@ -15,8 +15,8 @@ public class LockedDoor implements Tile {
    * Constructor for the locked door.
    * 
    * @param colour = the colour of the door
-   * @param x = x position relative to maze
-   * @param y = y position relative to maze
+   * @param x      = x position relative to maze
+   * @param y      = y position relative to maze
    */
   public LockedDoor(String colour, int x, int y) {
     this.colour = colour;

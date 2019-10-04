@@ -3,10 +3,6 @@ package nz.ac.vuw.ecs.swen225.a3.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.FileNotFoundException;
-
-import org.junit.Test;
-
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Exit;
 import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
@@ -16,10 +12,13 @@ import nz.ac.vuw.ecs.swen225.a3.maze.Key;
 import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
+import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
+
+import org.junit.Test;
 
 /**
  * Tests for the Game.
@@ -37,25 +36,25 @@ public class GameTest {
     assertEquals(1, 1);
   }
 
-  // /**
-  // * Testing XYPOS update method.
-  // */
-  // @Test
-  // public void test02() {
-  // Position pos = new Position(5, 5);
-  // pos.updatePosition(2, 0);
-  // assertEquals(7, pos.getX());
-  // }
+  /**
+   * Testing XYPOS update method.
+   */
+  @Test
+  public void test02() {
+    Position pos = new Position(5, 5);
+    pos.updatePosition(1, 0);
+    assertEquals(6, pos.getX());
+  }
 
-  // /**
-  // * Testing XYPOS update method.
-  // */
-  // @Test
-  // public void test03() {
-  // Position pos = new Position(5, 5);
-  // pos.updatePosition(0, 3);
-  // assertEquals(8, pos.getY());
-  // }
+  /**
+   * Testing XYPOS update method.
+   */
+  @Test
+  public void test03() {
+    Position pos = new Position(5, 5);
+    pos.updatePosition(0, 1);
+    assertEquals(6, pos.getY());
+  }
 
   /**
    * Testing XYPOS update method.
@@ -63,8 +62,8 @@ public class GameTest {
   @Test
   public void test04() {
     Position pos = new Position(5, 5);
-    pos.updatePosition(-2, 0);
-    assertEquals(3, pos.getX());
+    pos.updatePosition(-1, 0);
+    assertEquals(4, pos.getX());
   }
 
   /**
@@ -762,33 +761,23 @@ public class GameTest {
     assertEquals(true, l.canUnlock(tile));
   }
 
-  // /**
-  // * Testing reading in File in Map class.
-  // */
-  // @Test
-  // public void test174() {
-  // FileReader m = new FileReader("level-1");
-  // m.read();
-  // assertEquals(true, m.read());
-  // }
-
-  // /**
-  // * Testing reading in File in Map class.
-  // */
-  // @Test
-  // public void test175() {
-  // FileReader m = new FileReader("level-5");
-  // m.read();
-  // assertEquals(false, m.read());
-  // }
+  /**
+   * Testing reading in File in Map class.
+   */
+  @Test
+  public void test174() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    assertEquals(true, m.read());
+  }
 
   /**
    * Testing reading in File in Map class.
    */
   @Test
   public void test176() {
-    FileReader m = new FileReader("level-1");
-    assertThrows(FileNotFoundException.class, () -> {
+    FileReader m = new FileReader("level-5");
+    assertThrows(NullPointerException.class, () -> {
       m.read();
     });
   }
@@ -800,361 +789,287 @@ public class GameTest {
   public void test177() {
     FileReader m = new FileReader("level-1");
     m.read();
-    Maze maze = new Maze(m, m.getWidth(), m.getHeight(),
-        m.getTimeLimit(), m.getMazeLayout());
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     assertEquals(15, maze.findChap().getXPosition());
   }
 
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test178() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(2, 2);
-//    Tile t = maze.getNeighbouringTile(xy, 'N');
-//    assertEquals(t, maze.getTile(1, 2));
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test179() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(2, 2);
-//    Tile t = maze.getNeighbouringTile(xy, 'E');
-//    assertEquals(t, maze.getTile(2, 3));
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test180() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(2, 2);
-//    Tile t = maze.getNeighbouringTile(xy, 'S');
-//    assertEquals(t, maze.getTile(3, 2));
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test181() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(2, 2);
-//    Tile t = maze.getNeighbouringTile(xy, 'W');
-//    assertEquals(t, maze.getTile(2, 1));
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test182() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(32, 32);
-//    assertThrows(ArrayIndexOutOfBoundsException.class, () ->
-//      {
-//        maze.getNeighbouringTile(xy, 'W');
-//      });
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test183() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(0, 0);
-//    Tile t = maze.getNeighbouringTile(xy, 'N');
-//    assertEquals(t, null);
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test184() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(31, 31);
-//    Tile t = maze.getNeighbouringTile(xy, 'S');
-//    assertEquals(t, null);
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test185() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(0, 0);
-//    Tile t = maze.getNeighbouringTile(xy, 'W');
-//    assertEquals(t, null);
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test186() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(31, 31);
-//    Tile t = maze.getNeighbouringTile(xy, 'E');
-//    assertEquals(t, null);
-//  }
-//
-//  /**
-//   * Testing get neighbour tile method in Maze class.
-//   */
-//  @Test
-//  public void test187() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Position xy = new Position(7, 7);
-//    Tile t = maze.getNeighbouringTile(xy, 'E');
-//    assertEquals(true, maze.setTile(xy, t));
-//  }
-//
-//  // Don't need these anymore
-//
-////	/**
-////	 * Testing change to free method in Maze class.  
-////	 */
-////	@Test public void test188() {
-////		Maze maze = new Maze(32,32,"level-1");
-////		XYPos xy = new XYPos(7,7);
-////		Tile t = maze.getNeighbouringTile(xy, 'E');
-////		assertEquals(true,maze.changeToFree(t));
-////	}
-//
-//  /**
-//   * Testing get amount of remaining treasure method in Maze class.
-//   */
-//  @Test
-//  public void test189() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    assertEquals(11, maze.remainingTreasure());
-//  }
-//
-//  /**
-//   * Testing the get tiles method maze class.
-//   */
-//  @Test
-//  public void test190() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    assertEquals("C", maze.getTiles()[14][15].toString());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test191() {
-//    Chap tile = new Chap(4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test192() {
-//    Exit tile = new Exit(4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test193() {
-//    Tile tile = new ExitLock(4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test194() {
-//    Tile tile = new Free(4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test195() {
-//    Tile tile = new InfoField(null, 4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test196() {
-//    Tile tile = new Key(null, 4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test197() {
-//    Tile tile = new LockedDoor(null, 4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test198() {
-//    Tile tile = new Treasure(4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing reset position in the tile class.
-//   */
-//  @Test
-//  public void test199() {
-//    Wall tile = new Wall(4, 4);
-//    Position xy = new Position(2, 2);
-//    tile.resetPosition(xy);
-//    assertEquals(2, tile.getXPosition());
-//  }
-//
-//  /**
-//   * Testing get Maze method in game class.
-//   */
-//  @Test
-//  public void test200() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    assertEquals(maze, game.getMaze());
-//  }
-//
-//  /**
-//   * Testing delete maze method in game class.
-//   */
-//  @Test
-//  public void test201() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.delete();
-//    assertEquals(null, game.getMaze());
-//  }
-//
-//  /**
-//   * Testing set maze method in game class.
-//   */
-//  @Test
-//  public void test202() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    assertEquals(false, game.setMaze(null));
-//  }
-//
-//  /**
-//   * Testing move method in the game class.
-//   */
-//  @Test
-//  public void test203() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.move('N');
-//    assertEquals(true, true);
-//  }
-//
-//  /**
-//   * Testing move method in the game class.
-//   */
-//  @Test
-//  public void test204() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.move('W');
-//    game.move('W');
-//    game.move('W');
-//    assertEquals(true, true);
-//  }
-//
-//  /**
-//   * Testing move method in the game class.
-//   */
-//  @Test
-//  public void test205() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.move('W');
-//    game.move('W');
-//    game.move('N');
-//    assertEquals(true, true);
-//  }
-//
-//  /**
-//   * Testing move method in the game class.
-//   */
-//  @Test
-//  public void test206() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.move('W');
-//    game.move('W');
-//    game.move('N');
-//    game.move('N');
-//    game.move('W');
-//    assertEquals(true, true);
-//  }
-//
-//  /**
-//   * Testing move method in the game class.
-//   */
-//  @Test
-//  public void test207() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.move('N');
-//    game.move('N');
-//    game.move('N');
-//    assertEquals(true, true);
-//  }
-//
-//  /**
-//   * Testing move method in the game class.
-//   */
-//  @Test
-//  public void test208() {
-//    Maze maze = new Maze(32, 32, "level-1");
-//    Game game = new Game(maze);
-//    game.move('N');
-//    game.move('N');
-//    game.move('W');
-//    game.move('W');
-//    game.move('W');
-//    assertEquals(true, true);
-//  }
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test178() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(2, 2);
+    Tile t = maze.getNeighbouringTile(xy, 'N');
+    assertEquals(t, maze.getTile(1, 2));
+  }
 
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test179() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(2, 2);
+    Tile t = maze.getNeighbouringTile(xy, 'E');
+    assertEquals(t, maze.getTile(2, 3));
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test180() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(2, 2);
+    Tile t = maze.getNeighbouringTile(xy, 'S');
+    assertEquals(t, maze.getTile(3, 2));
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test181() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(2, 2);
+    Tile t = maze.getNeighbouringTile(xy, 'W');
+    assertEquals(t, maze.getTile(2, 1));
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test182() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(32, 32);
+    assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+      maze.getNeighbouringTile(xy, 'W');
+    });
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test183() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(0, 0);
+    Tile t = maze.getNeighbouringTile(xy, 'N');
+    assertEquals(t, null);
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test184() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(31, 31);
+    Tile t = maze.getNeighbouringTile(xy, 'S');
+    assertEquals(t, null);
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test185() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(0, 0);
+    Tile t = maze.getNeighbouringTile(xy, 'W');
+    assertEquals(t, null);
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test186() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(31, 31);
+    Tile t = maze.getNeighbouringTile(xy, 'E');
+    assertEquals(t, null);
+  }
+
+  /**
+   * Testing get neighbour tile method in Maze class.
+   */
+  @Test
+  public void test187() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Position xy = new Position(7, 7);
+    Tile t = maze.getNeighbouringTile(xy, 'E');
+    assertEquals(true, maze.setTile(xy, t));
+  }
+
+  /**
+   * Testing get amount of remaining treasure method in Maze class.
+   */
+  @Test
+  public void test189() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    assertEquals(11, maze.remainingTreasure());
+  }
+
+  /**
+   * Testing the get tiles method maze class.
+   */
+  @Test
+  public void test190() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    assertEquals("C", maze.getTiles()[14][15].toString());
+  }
+
+  /**
+   * Testing reset position in the tile class.
+   */
+  @Test
+  public void test191() {
+    Chap tile = new Chap(4, 4);
+    Position xy = new Position(2, 2);
+    tile.resetPosition(xy);
+    assertEquals(2, tile.getXPosition());
+  }
+
+  /**
+   * Testing get Maze method in game class.
+   */
+  @Test
+  public void test200() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    assertEquals(maze, game.getMaze());
+  }
+
+  /**
+   * Testing set maze method in game class.
+   */
+  @Test
+  public void test202() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    assertEquals(false, game.setMaze(null));
+  }
+
+  /**
+   * Testing move method in the game class.
+   */
+  @Test
+  public void test203() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    game.move('N');
+    assertEquals(true, true);
+  }
+
+  /**
+   * Testing move method in the game class.
+   */
+  @Test
+  public void test204() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    game.move('W');
+    game.move('W');
+    game.move('W');
+    assertEquals(true, true);
+  }
+
+  /**
+   * Testing move method in the game class.
+   */
+  @Test
+  public void test205() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    game.move('W');
+    game.move('W');
+    game.move('N');
+    assertEquals(true, true);
+  }
+
+  /**
+   * Testing move method in the game class.
+   */
+  @Test
+  public void test206() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    game.move('W');
+    game.move('W');
+    game.move('N');
+    game.move('N');
+    game.move('W');
+    assertEquals(true, true);
+  }
+
+  /**
+   * Testing move method in the game class.
+   */
+  @Test
+  public void test207() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    game.move('N');
+    game.move('N');
+    game.move('N');
+    assertEquals(true, true);
+  }
+
+  /**
+   * Testing move method in the game class.
+   */
+  @Test
+  public void test208() {
+    FileReader m = new FileReader("level-1");
+    m.read();
+    Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
+    Game game = new Game(maze);
+    game.move('N');
+    game.move('N');
+    game.move('W');
+    game.move('W');
+    game.move('W');
+    assertEquals(true, true);
+  }
 }
