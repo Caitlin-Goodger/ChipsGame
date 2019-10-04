@@ -56,11 +56,11 @@ public class Chap implements Tile {
 
 			if (key.equalsIgnoreCase("Key")) {
 				canUnlock = true;
-				
+
 				assert canUnlock == true;
 			}
 		}
-		
+
 		assert canUnlock == false;
 
 		return canUnlock;
@@ -207,7 +207,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the y-coordinate of player.
+	 * Get the y-coordinate of the player.
 	 */
 	@Override
 	public int getYPosition() {
@@ -217,7 +217,7 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Get the x-coordinate of player.
+	 * Get the x-coordinate of the player.
 	 */
 	@Override
 	public int getXPosition() {
