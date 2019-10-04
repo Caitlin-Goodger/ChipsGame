@@ -12,8 +12,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
- * Interface panel holds the information of the game such as level, time and
- * chips left.
+ * Interface panel holds the information of the game such as
+ * level, time and chips left.
  */
 public class InterfacePanel extends JPanel {
 	private JLabel levelLabel;
@@ -26,7 +26,7 @@ public class InterfacePanel extends JPanel {
 	public JTextField levelField;
 	private JTextField timeField;
 	/**
-	 * Text field for the chips left. 
+	 * Text field for the chips left.
 	 */
 	public JTextField chipsLeftField;
 
@@ -40,7 +40,7 @@ public class InterfacePanel extends JPanel {
 	 */
 	public InterfacePanel() {
 		setPreferredSize(new Dimension(250, getHeight()));
-		
+
 		levelLabel = new JLabel("LEVEL");
 		timeLabel = new JLabel("TIME");
 		chipsLeftLabel = new JLabel("CHIPS LEFT");
@@ -111,9 +111,13 @@ public class InterfacePanel extends JPanel {
 	/**
 	 * Sets the time displayed.
 	 * 
-	 * @param setInterval
+	 * @param time
 	 */
 	public void setTime(int time) {
-		timeField.setText(Integer.toString(time));
+		if (time < 0) {
+			throw new IllegalArgumentException("Argument must be greater than 0.");
+		}
+
+		this.timeField.setText(Integer.toString(time));
 	}
 }

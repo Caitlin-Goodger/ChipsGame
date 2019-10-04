@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 /**
- * Rules panel shows when the rules item is ticked. Displays the rules for the
- * game to the player.
+ * Rules panel shows when the rules item is ticked. Displays
+ * the rules for the game to the player.
  */
 public class RulesPanel extends JPanel {
 	private JLabel text;
@@ -27,14 +27,10 @@ public class RulesPanel extends JPanel {
 
 		text = new JLabel();
 
-		text.setText(
-				  "<html>" 
-				+ "Your player can move forwards, backwards, left and right. <br>"
+		text.setText("<html>" + "Your player can move forwards, backwards, left and right. <br>"
 				+ "The goal of the game is to reach the exit while avoiding all obstacles. <br>"
-				+ "Collect keys to unlock doors,  avoid traps and push blocks. <br>" 
-				+ "<br>" 
-				+ "Good luck! <br>"
-				+ "</html>");
+				+ "Collect keys to unlock doors,  avoid traps and push blocks. <br>" + "<br>"
+				+ "Good luck! <br>" + "</html>");
 
 		add(text);
 

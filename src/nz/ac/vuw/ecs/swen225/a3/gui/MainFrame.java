@@ -49,7 +49,8 @@ public class MainFrame extends JFrame {
 
 	/**
 	 * Constructor for main frame.
-	 * @param game = Game for this frame. 
+	 * 
+	 * @param game = Game for this frame.
 	 */
 	public MainFrame(Game game) {
 		super("Chip's Challenge");
@@ -258,40 +259,28 @@ public class MainFrame extends JFrame {
 	class KeyListener extends KeyAdapter {
 		public void keyPressed(KeyEvent evt) {
 			if (!paused) {
-				// Movement
+				// Movement.
 				if (evt.getKeyCode() == KeyEvent.VK_UP) {
-//					System.out.println();
-//					System.out.println("Up was pressed");
 					game.move('N');
 					game.moveMonsters();
-//					 game.getMaze().printConvertedLevel();
 				}
 
 				if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-//					System.out.println();
-//					System.out.println("Down was pressed");
 					game.move('S');
 					game.moveMonsters();
-//					 game.getMaze().printConvertedLevel();
 				}
 
 				if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
-//					System.out.println();
-//					System.out.println("Left was pressed");
 					game.move('W');
 					game.moveMonsters();
-//					 game.getMaze().printConvertedLevel();
 				}
 
 				if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
-//					System.out.println();
-//					System.out.println("Right was pressed");
 					game.move('E');
 					game.moveMonsters();
-//					 game.getMaze().printConvertedLevel();
 				}
 
-				// Other
+				// Other.
 				if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
 					System.out.println("Space was pressed");
 				}
@@ -333,17 +322,15 @@ public class MainFrame extends JFrame {
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns the interface panel.
 	 * 
 	 * @return interfacePanel
 	 */
 	public InterfacePanel getInterfacePanel() {
-		return interfacePanel;
-	}
+		assert this.interfacePanel != null;
 
-	public Game getGame() {
-		return game;
+		return this.interfacePanel;
 	}
 }

@@ -11,7 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.*;
+import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
+import nz.ac.vuw.ecs.swen225.a3.maze.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
@@ -23,7 +26,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
 public class DisplayPanel extends JPanel {
 	private GridLayout gl;
 	/**
-	 * Total number of chips left in the maze. 
+	 * Total number of chips left in the maze.
 	 */
 	public int totalChipsLeft;
 
@@ -35,12 +38,13 @@ public class DisplayPanel extends JPanel {
 
 	/**
 	 * Constructor for the display panel.
-	 * @param game = Game to display. 
+	 * 
+	 * @param game = Game to display.
 	 */
 	public DisplayPanel(Game game) {
 		this.game = game;
 		this.totalChipsLeft = game.getMaze().remainingTreasure();
-		
+
 		Border innerBorder = BorderFactory.createTitledBorder("Display");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
@@ -63,11 +67,6 @@ public class DisplayPanel extends JPanel {
 		Chap chap = game.getMaze().findChap();
 		Position chapLocation = chap.getChapPosition();
 
-		// Minus 4 from Chap's location for each dimension to get
-		// starting
-		// point.
-		// chapLocation.getX() - 4
-		// chapLocation.getY() - 4
 		for (int y = chapLocation.getY() - 4; y < chapLocation.getY() - 4 + gl.getColumns(); y++) {
 			for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getRows(); x++) {
 				if (totalChipsLeft == 0 && level[y][x] instanceof ExitLock) {
@@ -75,7 +74,7 @@ public class DisplayPanel extends JPanel {
 					exit.unlockExitLock();
 					level[y][x] = exit;
 				}
-				
+
 				String path;
 
 				// Gets the correct image path.
@@ -143,9 +142,15 @@ public class DisplayPanel extends JPanel {
 	/**
 	 * Sets total chips left.
 	 * 
-	 * @param i = chips to set. 
+	 * @param chips
 	 */
-	public void setTotalChips(int i) {
-		totalChipsLeft = i;
+	public void setTotalChips(int chips) {
+		if (chips < 0) {
+			throw new IllegalArgumentException("Argument must be greater than 0.");
+		}
+
+		this.totalChipsLeft = chips;
+
+		assert this.totalChipsLeft == chips;
 	}
 }

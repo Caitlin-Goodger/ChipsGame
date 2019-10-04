@@ -8,7 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 /**
- * Inventory panel that holds the objects collected by the player.
+ * Inventory panel that holds the objects collected by the
+ * player.
  */
 public class TextPanel extends JPanel {
 
@@ -21,17 +22,18 @@ public class TextPanel extends JPanel {
 
 	/**
 	 * Constructor for the inventory panel.
-	 * @param game = Game for this panel. 
+	 * 
+	 * @param game = Game for this panel.
 	 */
 	public TextPanel() {
 		setPreferredSize(new Dimension(getWidth(), 40));
-		
+
 		Border innerBorder = BorderFactory.createTitledBorder("Text");
 		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
 		text = new JLabel();
-		
+
 		add(text);
 	}
 
@@ -41,6 +43,8 @@ public class TextPanel extends JPanel {
 	 * @return text
 	 */
 	public JLabel getLabel() {
-		return text;
+		assert this.text != null;
+		
+		return this.text;
 	}
 }
