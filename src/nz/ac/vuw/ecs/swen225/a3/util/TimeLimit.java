@@ -12,11 +12,17 @@ public class TimeLimit {
 	private Timer timer;
 	private int time;
 
+	/**
+	 * Constructor for the time limit.
+	 * 
+	 * @param seconds
+	 * @param mf
+	 */
 	public TimeLimit(int seconds, MainFrame mf) {
 		this.timer = new Timer();
 		this.time = seconds;
 
-		timer.scheduleAtFixedRate(new TimerTask() {
+		this.timer.scheduleAtFixedRate(new TimerTask() {
 
 			public void run() {
 				mf.getInterfacePanel().setTime(tick());
@@ -30,13 +36,19 @@ public class TimeLimit {
 	 * @return time
 	 */
 	private int tick() {
-		if (time == 0) {
-			timer.cancel();
+		if (this.time == 0) {
+			this.timer.cancel();
 		}
 
 		this.time--;
 
-		return time;
+		if (this.time > 0) {
+			assert this.time > 0;
+
+			return this.time;
+		}
+
+		return 0;
 	}
 
 	/**
@@ -45,6 +57,12 @@ public class TimeLimit {
 	 * @param time
 	 */
 	public void setTime(int time) {
+		if (time < 0) {
+			throw new IllegalArgumentException("Argument must be greater than 0.");
+		}
+
 		this.time = time;
+
+		assert this.time == time;
 	}
 }

@@ -10,6 +10,9 @@ import javax.swing.filechooser.FileFilter;
  */
 public class Filter extends FileFilter {
 
+	/**
+	 * Checks to see if file extension is allowed.
+	 */
 	@Override
 	public boolean accept(File f) {
 		if (f.isDirectory()) {
@@ -50,6 +53,10 @@ public class Filter extends FileFilter {
 		 * @return String
 		 */
 		public static String getFileExtension(String name) {
+			if (name == null) {
+				throw new IllegalArgumentException("Argument must be a String.");
+			}
+
 			int pointIndex = name.lastIndexOf(".");
 
 			if (pointIndex == -1) {

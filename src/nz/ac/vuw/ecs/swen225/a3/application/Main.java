@@ -42,7 +42,7 @@ public class Main {
 
 				mainFrame = new MainFrame(game);
 
-				timeLimit = new TimeLimit(60, mainFrame);
+				timeLimit = new TimeLimit(fileReader.getTimeLimit(), mainFrame);
 
 				game.setTimeLimit(timeLimit);
 			}

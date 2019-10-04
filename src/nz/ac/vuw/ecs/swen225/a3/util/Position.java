@@ -18,6 +18,8 @@ public class Position {
 	 * @return x
 	 */
 	public int getX() {
+		assert this.x >= 0;
+
 		return this.x;
 	}
 
@@ -27,6 +29,8 @@ public class Position {
 	 * @return y
 	 */
 	public int getY() {
+		assert this.y >= 0;
+
 		return this.y;
 	}
 
@@ -37,6 +41,14 @@ public class Position {
 	 * @param yOffset
 	 */
 	public void updatePosition(int xOffset, int yOffset) {
+		if (xOffset <= -1 && xOffset >= 1) {
+			throw new IllegalArgumentException("Argument must be between -1 and 1.");
+		}
+
+		if (yOffset <= -1 && yOffset >= 1) {
+			throw new IllegalArgumentException("Argument must be between -1 and 1.");
+		}
+
 		this.x += xOffset;
 		this.y += yOffset;
 	}
