@@ -43,6 +43,7 @@ public class Monster implements Tile {
 		int x = this.currentPosition.getX();
 		int y = this.currentPosition.getY();
 
+		// Adds tiles that are free to the array.
 		if (maze.getTile(y, x - 1) instanceof Free
 				&& maze.getTile(y, x - 1).toString().equals("F")) {
 			freeTiles.add(maze.getTile(y, x - 1));
@@ -95,22 +96,23 @@ public class Monster implements Tile {
 			direction = 'N';
 		}
 
-		assert direction != 'D';
-
 		Position original = new Position(currentPosition.getX(), currentPosition.getY());
-		updatePosition(direction);
+		boolean positionUpdated = updatePosition(direction);
 		Position destination = currentPosition;
 		maze.setTile(original, onTile);
 		maze.setTile(destination, this);
-		setOnTile(moveTo);
+		boolean onTileUpdated = setOnTile(moveTo);
+
+		assert direction != 'D' && positionUpdated && onTileUpdated;
 	}
 
 	/**
 	 * Set the onTile of the monster.
 	 * 
 	 * @param tile
+	 * @return
 	 */
-	private void setOnTile(Tile tile) {
+	private boolean setOnTile(Tile tile) {
 		if (tile == null) {
 			throw new IllegalArgumentException("Argument must be a Tile.");
 		}
@@ -118,14 +120,21 @@ public class Monster implements Tile {
 		this.onTile = tile;
 
 		assert this.onTile != null;
+
+		if (this.onTile == tile) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
 	 * Update the position of the monster.
 	 * 
 	 * @param direction
+	 * @return
 	 */
-	public void updatePosition(Character direction) {
+	public boolean updatePosition(Character direction) {
 		if (direction == null) {
 			throw new IllegalArgumentException("Argument must be a Character.");
 		}
@@ -139,6 +148,16 @@ public class Monster implements Tile {
 		} else if (direction == 'W') {
 			this.currentPosition.updatePosition(-1, 0);
 		}
+
+		// Make sure direction was set, if so then current position
+		// of monster will be updated.
+		assert direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W';
+
+		if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
