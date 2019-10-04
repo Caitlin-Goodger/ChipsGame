@@ -11,9 +11,12 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Class for the Maze of the game.
+ * Maze class is responsible for holding the current maze
+ * and it's parameters.
  */
 public class Maze {
+	private static int currentLevel;
+
 	private ArrayList<String> levels = new ArrayList<String>();
 
 	private FileReader fileReader;
@@ -29,11 +32,15 @@ public class Maze {
 	/**
 	 * Constructor for Maze.
 	 * 
+	 * @param fileReader
 	 * @param width
 	 * @param height
-	 * @param levelName
+	 * @param timeLimit
+	 * @param mapLayout
 	 */
 	public Maze(FileReader fileReader, int width, int height, int timeLimit, Tile[][] mapLayout) {
+		Maze.currentLevel = 1;
+
 		this.fileReader = fileReader;
 
 		this.levelName = fileReader.getLevelName();
@@ -50,12 +57,14 @@ public class Maze {
 	}
 
 	/**
-	 * Get the 2D array of tile for this maze.
+	 * Get the 2D array of tiles for this maze.
 	 * 
 	 * @return Tile[][]
 	 */
 	public Tile[][] getTiles() {
-		return mazeLayout;
+		assert this.mazeLayout != null;
+
+		return this.mazeLayout;
 	}
 
 	/**
@@ -63,19 +72,15 @@ public class Maze {
 	 * if it looks correct.
 	 */
 	public void printConvertedLevel() {
-		// Gets the width and height of the current level.
-		int height = mazeLayout[0].length;
-		int width = mazeLayout.length;
-
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
+		for (int row = 0; row < this.height; row++) {
+			for (int col = 0; col < this.width; col++) {
 				// Go to next line once end of line is reached.
-				if (x == width - 1) {
-					System.out.print(mazeLayout[y][x].toString() + " ");
+				if (col == this.width - 1) {
+					System.out.print(this.mazeLayout[row][col].toString() + " ");
 
 					System.out.println();
 				} else {
-					System.out.print(mazeLayout[y][x].toString() + " ");
+					System.out.print(this.mazeLayout[row][col].toString() + " ");
 				}
 			}
 		}
@@ -84,17 +89,20 @@ public class Maze {
 	/**
 	 * Find Chap in the maze.
 	 * 
-	 * @return Chap.
+	 * @return chap
 	 */
 	public Chap findChap() {
-		Tile target;
+		Tile target = null;
 		Chap chap = null;
 
-		for (int row = 0; row < height; row++) {
-			for (int col = 0; col < width; col++) {
+		for (int row = 0; row < this.height; row++) {
+			for (int col = 0; col < this.width; col++) {
 				target = mazeLayout[row][col];
+
 				if (target instanceof Chap) {
 					chap = (Chap) target;
+
+					assert chap == target;
 				}
 			}
 		}
@@ -103,98 +111,143 @@ public class Maze {
 	}
 
 	/**
-	 * Get the neighbouring tile from a given position and
-	 * direction
+	 * Gets the neighbouring tile.
 	 * 
-	 * @param origin    - original position
-	 * 
-	 * @param direction - the direction to look in
-	 * 
-	 * @return - the corresponding neighbouring tile if there is
-	 *         one, or null
+	 * @param origin
+	 * @param direction
+	 * @return
 	 */
-	public Tile getNeighbouringTile(Position origin, char direction) {
-		int x = origin.getX();
-		int y = origin.getY();
-		Tile originTile = mazeLayout[y][x]; // row, col
+	public Tile getNeighbouringTile(Position origin, Character direction) {
+		if (origin == null) {
+			throw new IllegalArgumentException("Argument must be a Position.");
+		}
+
+		if (direction == null) {
+			throw new IllegalArgumentException("Argument must be a Character.");
+		}
+
+		int col = origin.getX();
+		int row = origin.getY();
+
+		Tile originTile = mazeLayout[row][col];
 		Tile destination;
-		if (originTile == null)
+
+		if (originTile == null) {
 			return null;
+		}
 
 		switch (direction) {
 		case 'N':
-			if (y - 1 < 0)
+			if (row - 1 < 0) {
 				return null;
-			destination = mazeLayout[y - 1][x];
+			}
+
+			destination = mazeLayout[row - 1][col];
+
 			break;
 		case 'E':
-			if (x + 1 >= width)
+			if (col + 1 >= width) {
 				return null;
-			destination = mazeLayout[y][x + 1];
+			}
+
+			destination = mazeLayout[row][col + 1];
+
 			break;
 		case 'S':
-			if (y + 1 >= height)
+			if (row + 1 >= height) {
 				return null;
-			destination = mazeLayout[y + 1][x];
+			}
+
+			destination = mazeLayout[row + 1][col];
+
 			break;
 		default: // W
-			if (x - 1 < 0)
+			if (col - 1 < 0) {
 				return null;
-			destination = mazeLayout[y][x - 1];
-			break;
+			}
+
+			destination = mazeLayout[row][col - 1];
 		}
+
+		assert destination != null;
 
 		return destination;
 	}
 
 	/**
-	 * set a tile on the maze
+	 * Sets a tile on the maze.
 	 * 
-	 * @param pos  = position to set the tile at.
-	 * @param tile = Tile to set.
-	 * @return boolean
+	 * @param position
+	 * @param tile
 	 */
-	public boolean setTile(Position pos, Tile tile) {
-		int x = pos.getX();
-		int y = pos.getY();
-		mazeLayout[y][x] = tile;
-		return true;
+	public void setTile(Position position, Tile tile) {
+		if (position == null) {
+			throw new IllegalArgumentException("Argument must be a Position.");
+		}
+
+		if (tile == null) {
+			throw new IllegalArgumentException("Argument must be a Tile.");
+		}
+
+		int x = position.getX();
+		int y = position.getY();
+
+		this.mazeLayout[y][x] = tile;
+
+		assert this.mazeLayout[y][x] == tile;
 	}
 
 	/**
-	 * Get a tile on the maze
+	 * Gets a tile on maze.
 	 * 
-	 * @param x = x value to get the tile at.
-	 * @param y = y value to get the tile at.
-	 * @return Tile.
+	 * @param x
+	 * @param y
+	 * @return mazeLayout
 	 */
 	public Tile getTile(int x, int y) {
-		return mazeLayout[x][y];
+		if (x < 0) {
+			throw new IllegalArgumentException("Argument must be greater than 0.");
+		}
+
+		if (y < 0) {
+			throw new IllegalArgumentException("Argument must be greater than 0.");
+		}
+
+		assert this.mazeLayout[x][y] != null;
+
+		return this.mazeLayout[x][y];
 	}
 
 	/**
-	 * @return - number of treasures remaining in this level
+	 * Gets the number of treasure remaining.
+	 * 
+	 * @return count
 	 */
 	public int remainingTreasure() {
 		Tile target;
 		int count = 0;
+
 		for (int row = 0; row < height; row++) {
 			for (int col = 0; col < width; col++) {
 				target = mazeLayout[row][col];
+
+				assert target != null;
+
 				if (target instanceof Treasure)
 					count++;
 			}
 		}
+
+		assert count >= 0;
+
 		return count;
 	}
 
 	/**
-	 * Get the next level name.
-	 * 
-	 * @return String
+	 * Gets the next level.
 	 */
 	public void getNextLevel() {
-		fileReader = new FileReader("level-2");
+		fileReader = new FileReader(levels.get(Maze.currentLevel));
 		fileReader.read();
 
 		this.width = fileReader.getWidth();
@@ -202,12 +255,17 @@ public class Maze {
 		this.timeLimit = fileReader.getTimeLimit();
 		this.mazeLayout = fileReader.getMazeLayout();
 
+		assert this.width >= 0 && this.height >= 0 && this.timeLimit >= 0
+				&& this.mazeLayout != null;
+
 		this.levelName = fileReader.getLevelName();
 		this.monsters = fileReader.getMonsters();
+
+		assert this.levelName != null && this.monsters != null;
 	}
 
 	/**
-	 * Gets the XYPos for new map.
+	 * Gets the position chap will spawn on the new maze.
 	 * 
 	 * @return spawn
 	 */
@@ -222,20 +280,31 @@ public class Maze {
 			}
 		}
 
+		assert spawn != null;
+
 		return spawn;
 	}
 
+	/**
+	 * Gets the list of monsters.
+	 * 
+	 * @return monsters
+	 */
 	public List<Monster> getMonsters() {
+		assert this.monsters != null;
+
 		return Collections.unmodifiableList(this.monsters);
 	}
 
 	/**
 	 * Gets the time of maze.
 	 * 
-	 * @return time
+	 * @return timeLimit
 	 */
 	public int getTime() {
-		return timeLimit;
+		assert this.timeLimit >= 0;
+
+		return this.timeLimit;
 	}
 
 	/**
@@ -244,6 +313,8 @@ public class Maze {
 	 * @return levelName
 	 */
 	public String getLevelName() {
-		return levelName;
+		assert this.levelName != null;
+
+		return this.levelName;
 	}
 }
