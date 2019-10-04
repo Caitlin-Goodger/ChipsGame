@@ -4,29 +4,20 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Treasure tile. Is an implementation of the tile class.
- * 
- * @author Caitlin
- *
+ * Treasure class is responsible for keeping the position of
+ * the treasure.
  */
 public class Treasure implements Tile {
-	private boolean isSolid = false; // check if player can walkThrought
-	private Position currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition;
 
 	/**
-	 * Constructor for the Treasure Class.
+	 * Constructor for the treasure.
 	 * 
-	 * @param xGrid   = x co-ordinate in of the tile on the
-	 *                grid.
-	 * @param yGrid   = y co-ordinate in of the tile on the
-	 *                grid.
-	 * @param xScreen = x co-ordinate in of the tile on the
-	 *                screen.
-	 * @param yScreen = y co-ordinate in of the tile on the
-	 *                screen.
+	 * @param xGrid
+	 * @param yGrid
 	 */
 	public Treasure(int xGrid, int yGrid) {
-		currentPosition = new Position(xGrid, yGrid);
+		this.currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
@@ -38,23 +29,27 @@ public class Treasure implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid.
+	 * Get the y-coordinate of the treasure.
 	 */
 	@Override
 	public int getYPosition() {
-		return currentPosition.getY();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getY();
 	}
 
 	/**
-	 * Get the x co-ordinate of the tile on the grid.
+	 * Get the x-coordinate of the treasure.
 	 */
 	@Override
 	public int getXPosition() {
-		return currentPosition.getX();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getX();
 	}
 
 	/**
-	 * To String Method.
+	 * Turns the tile into a string. Used for debugging.
 	 */
 	@Override
 	public String toString() {
