@@ -4,84 +4,83 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Key class is responsible for keeping the position of the
- * key.
+ * Key class is responsible for keeping the position of the key.
  */
 public class Key implements Tile {
-	private String colour;
-	private Position currentPosition;
+  private String colour;
+  private Position currentPosition;
 
-	/**
-	 * Constructor for the key.
-	 * 
-	 * @param colour
-	 * @param xGrid
-	 * @param yGrid
-	 */
-	public Key(String colour, int xGrid, int yGrid) {
-		this.colour = colour;
-		this.currentPosition = new Position(xGrid, yGrid);
-	}
+  /**
+   * Constructor for the key.
+   * 
+   * @param colour = the colour of the key
+   * @param x = x position relative to maze
+   * @param y = y position relative to maze
+   */
+  public Key(String colour, int x, int y) {
+    this.colour = colour;
+    this.currentPosition = new Position(x, y);
+  }
 
-	/**
-	 * Sets the colour of the key.
-	 * 
-	 * @param colour
-	 */
-	public void setColour(String colour) {
-		if (colour == null) {
-			throw new IllegalArgumentException("Argument must be a String.");
-		}
+  /**
+   * Sets the colour of the key.
+   * 
+   * @param colour = the colour you want to set the key to
+   */
+  public void setColour(String colour) {
+    if (colour == null) {
+      throw new IllegalArgumentException("Argument must be a String.");
+    }
 
-		this.colour = colour;
+    this.colour = colour;
 
-		assert this.colour != null;
-	}
+    assert this.colour != null;
+  }
 
-	/**
-	 * Gets the colour of the key.
-	 * 
-	 * @return colour
-	 */
-	public String getColour() {
-		assert this.colour != null;
+  /**
+   * Gets the colour of the key.
+   * 
+   * @return colour
+   */
+  public String getColour() {
+    assert this.colour != null;
 
-		return this.colour;
-	}
+    return this.colour;
+  }
 
-	/**
-	 * Get the path of the image.
-	 */
-	@Override
-	public String getImagePath() {
-		return "resources/CC12.png";
-	}
+  /**
+   * Get the path of the image.
+   */
+  @Override
+  public String getImagePath() {
+    return "resources/CC12.png";
+  }
 
-	/**
-	 * Get the y-coordinate of the key.
-	 */
-	@Override
-	public int getYPosition() {
-		assert this.currentPosition != null;
+  /**
+   * Get the y-coordinate of the key.
+   */
+  @Override
+  public int getYPosition() {
+    assert this.currentPosition != null;
 
-		return this.currentPosition.getY();
-	}
+    return this.currentPosition.getY();
+  }
 
-	/**
-	 * Get the x-coordinate of the key.
-	 */
-	@Override
-	public int getXPosition() {
-		assert this.currentPosition != null;
+  /**
+   * Get the x-coordinate of the key.
+   */
+  @Override
+  public int getXPosition() {
+    assert this.currentPosition != null;
 
-		return this.currentPosition.getX();
-	}
+    return this.currentPosition.getX();
+  }
 
-	/**
-	 * Turns the tile into a string. Used for debugging.
-	 */
-	@Override
-	public String toString() {
-		return "K";
-	}
+  /**
+   * Turns the tile into a string. Used for debugging.
+   */
+  @Override
+  public String toString() {
+    return "K";
+  }
 }

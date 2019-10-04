@@ -9,191 +9,182 @@ import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Monster class is responsible for the position and
- * movement of the monsters.
+ * Monster class is responsible for the position and movement of the monsters.
  */
 public class Monster implements Tile {
-	private Position currentPosition;
-	private Tile onTile;
+  private Position currentPosition;
+  private Tile onTile;
 
-	/**
-	 * Constructor for the monster.
-	 * 
-	 * @param xGrid
-	 * @param yGrid
-	 */
-	public Monster(int xGrid, int yGrid) {
-		this.currentPosition = new Position(xGrid, yGrid);
-		this.onTile = new Free(xGrid, yGrid);
-	}
+  /**
+   * Constructor for the monster.
+   * 
+   * @param x = x position relative to maze
+   * @param y = y position relative to maze
+   */
+  public Monster(int x, int y) {
+    this.currentPosition = new Position(x, y);
+    this.onTile = new Free(x, y);
+  }
 
-	/**
-	 * Moves the monster in a random direction that is free.
-	 * 
-	 * @param game
-	 */
-	public void move(Game game) {
-		if (game == null) {
-			throw new IllegalArgumentException("Argument must be a Game.");
-		}
+  /**
+   * Moves the monster in a random direction that is free.
+   * 
+   * @param game = the game with the maze you want to move
+   */
+  public void move(Game game) {
+    if (game == null) {
+      throw new IllegalArgumentException("Argument must be a Game.");
+    }
 
-		ArrayList<Tile> freeTiles = new ArrayList<Tile>();
+    ArrayList<Tile> freeTiles = new ArrayList<Tile>();
 
-		Maze maze = game.getMaze();
+    Maze maze = game.getMaze();
 
-		int x = this.currentPosition.getX();
-		int y = this.currentPosition.getY();
+    int x = this.currentPosition.getX();
+    int y = this.currentPosition.getY();
 
-		// Adds tiles that are free to the array.
-		if (maze.getTile(y, x - 1) instanceof Free
-				&& maze.getTile(y, x - 1).toString().equals("F")) {
-			freeTiles.add(maze.getTile(y, x - 1));
-		} else {
-			freeTiles.add(null);
-		}
-		if (maze.getTile(y, x + 1) instanceof Free
-				&& maze.getTile(y, x + 1).toString().equals("F")) {
-			freeTiles.add(maze.getTile(y, x + 1));
-		} else {
-			freeTiles.add(null);
-		}
-		if (maze.getTile(y - 1, x) instanceof Free
-				&& maze.getTile(y - 1, x).toString().equals("F")) {
-			freeTiles.add(maze.getTile(y - 1, x));
-		} else {
-			freeTiles.add(null);
-		}
-		if (maze.getTile(y + 1, x) instanceof Free
-				&& maze.getTile(y + 1, x).toString().equals("F")) {
-			freeTiles.add(maze.getTile(y + 1, x));
-		} else {
-			freeTiles.add(null);
-		}
+    // Adds tiles that are free to the array.
+    if (maze.getTile(y, x - 1) instanceof Free && maze.getTile(y, x - 1).toString().equals("F")) {
+      freeTiles.add(maze.getTile(y, x - 1));
+    } else {
+      freeTiles.add(null);
+    }
+    if (maze.getTile(y, x + 1) instanceof Free && maze.getTile(y, x + 1).toString().equals("F")) {
+      freeTiles.add(maze.getTile(y, x + 1));
+    } else {
+      freeTiles.add(null);
+    }
+    if (maze.getTile(y - 1, x) instanceof Free && maze.getTile(y - 1, x).toString().equals("F")) {
+      freeTiles.add(maze.getTile(y - 1, x));
+    } else {
+      freeTiles.add(null);
+    }
+    if (maze.getTile(y + 1, x) instanceof Free && maze.getTile(y + 1, x).toString().equals("F")) {
+      freeTiles.add(maze.getTile(y + 1, x));
+    } else {
+      freeTiles.add(null);
+    }
 
-		int randomDirection = new Random().nextInt(4);
-		Tile moveTo = freeTiles.get(randomDirection);
+    int randomDirection = new Random().nextInt(4);
+    Tile moveTo = freeTiles.get(randomDirection);
 
-		while (moveTo == null) {
-			randomDirection = new Random().nextInt(4);
-			moveTo = freeTiles.get(randomDirection);
-		}
+    while (moveTo == null) {
+      randomDirection = new Random().nextInt(4);
+      moveTo = freeTiles.get(randomDirection);
+    }
 
-		char direction = 'D';
+    char direction = 'D';
 
-		switch (randomDirection) {
-		case 0:
-			direction = 'W';
+    switch (randomDirection) {
+      case 0:
+        direction = 'W';
+  
+        break;
+      case 1:
+        direction = 'E';
+  
+        break;
+      case 2:
+        direction = 'S';
+  
+        break;
+      default:
+        direction = 'N';
+    }
 
-			break;
-		case 1:
-			direction = 'E';
+    Position original = new Position(currentPosition.getX(), currentPosition.getY());
+    boolean positionUpdated = updatePosition(direction);
+    Position destination = currentPosition;
+    maze.setTile(original, onTile);
+    maze.setTile(destination, this);
+    boolean onTileUpdated = setOnTile(moveTo);
 
-			break;
-		case 2:
-			direction = 'S';
+    assert direction != 'D' && positionUpdated && onTileUpdated;
+  }
 
-			break;
-		default:
-			direction = 'N';
-		}
+  /**
+   * Set the onTile of the monster.
+   * 
+   * @param tile = the tile you want onTile to
+   * @return
+   */
+  private boolean setOnTile(Tile tile) {
+    if (tile == null) {
+      throw new IllegalArgumentException("Argument must be a Tile.");
+    }
 
-		Position original = new Position(currentPosition.getX(), currentPosition.getY());
-		boolean positionUpdated = updatePosition(direction);
-		Position destination = currentPosition;
-		maze.setTile(original, onTile);
-		maze.setTile(destination, this);
-		boolean onTileUpdated = setOnTile(moveTo);
+    this.onTile = tile;
 
-		assert direction != 'D' && positionUpdated && onTileUpdated;
-	}
+    assert this.onTile != null;
 
-	/**
-	 * Set the onTile of the monster.
-	 * 
-	 * @param tile
-	 * @return
-	 */
-	private boolean setOnTile(Tile tile) {
-		if (tile == null) {
-			throw new IllegalArgumentException("Argument must be a Tile.");
-		}
+    if (this.onTile == tile) {
+      return true;
+    }
 
-		this.onTile = tile;
+    return false;
+  }
 
-		assert this.onTile != null;
+  /**
+   * Update the position of the monster.
+   * 
+   * @param direction = direction you want the monster to go
+   * @return true if position updated
+   */
+  public boolean updatePosition(Character direction) {
+    if (direction == null) {
+      throw new IllegalArgumentException("Argument must be a Character.");
+    }
 
-		if (this.onTile == tile) {
-			return true;
-		}
+    if (direction == 'N') {
+      this.currentPosition.updatePosition(0, 1);
+    } else if (direction == 'S') {
+      this.currentPosition.updatePosition(0, -1);
+    } else if (direction == 'E') {
+      this.currentPosition.updatePosition(1, 0);
+    } else if (direction == 'W') {
+      this.currentPosition.updatePosition(-1, 0);
+    }
 
-		return false;
-	}
+    // Make sure direction was set, if so then current position
+    // of monster will be updated.
+    assert direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W';
 
-	/**
-	 * Update the position of the monster.
-	 * 
-	 * @param direction
-	 * @return
-	 */
-	public boolean updatePosition(Character direction) {
-		if (direction == null) {
-			throw new IllegalArgumentException("Argument must be a Character.");
-		}
+    return true;
+  }
 
-		if (direction == 'N') {
-			this.currentPosition.updatePosition(0, 1);
-		} else if (direction == 'S') {
-			this.currentPosition.updatePosition(0, -1);
-		} else if (direction == 'E') {
-			this.currentPosition.updatePosition(1, 0);
-		} else if (direction == 'W') {
-			this.currentPosition.updatePosition(-1, 0);
-		}
+  /**
+   * Get the path of the image.
+   */
+  @Override
+  public String getImagePath() {
+    return "resources/CC14.png";
+  }
 
-		// Make sure direction was set, if so then current position
-		// of monster will be updated.
-		assert direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W';
+  /**
+   * Get the y-coordinate of the monster.
+   */
+  @Override
+  public int getYPosition() {
+    assert this.currentPosition != null;
 
-		if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
-			return true;
-		}
+    return this.currentPosition.getY();
+  }
 
-		return false;
-	}
+  /**
+   * Get the x co-ordinate of the tile on the grid.
+   */
+  @Override
+  public int getXPosition() {
+    assert this.currentPosition != null;
 
-	/**
-	 * Get the path of the image.
-	 */
-	@Override
-	public String getImagePath() {
-		return "resources/CC14.png";
-	}
+    return this.currentPosition.getX();
+  }
 
-	/**
-	 * Get the y-coordinate of the monster.
-	 */
-	@Override
-	public int getYPosition() {
-		assert this.currentPosition != null;
-
-		return this.currentPosition.getY();
-	}
-
-	/**
-	 * Get the x co-ordinate of the tile on the grid.
-	 */
-	@Override
-	public int getXPosition() {
-		assert this.currentPosition != null;
-
-		return this.currentPosition.getX();
-	}
-
-	/**
-	 * Turns the tile into a string. Used for debugging.
-	 */
-	@Override
-	public String toString() {
-		return "M";
-	}
+  /**
+   * Turns the tile into a string. Used for debugging.
+   */
+  @Override
+  public String toString() {
+    return "M";
+  }
 }

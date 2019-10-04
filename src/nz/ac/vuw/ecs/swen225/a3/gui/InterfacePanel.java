@@ -12,112 +12,112 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
- * Interface panel holds the information of the game such as
- * level, time and chips left.
+ * Interface panel holds the information of the game such as level, time and
+ * chips left.
  */
 public class InterfacePanel extends JPanel {
-	private JLabel levelLabel;
-	private JLabel timeLabel;
-	private JLabel chipsLeftLabel;
+  private JLabel levelLabel;
+  private JLabel timeLabel;
+  private JLabel chipsLeftLabel;
 
-	/**
-	 * Text field for the level.
-	 */
-	public JTextField levelField;
-	private JTextField timeField;
-	/**
-	 * Text field for the chips left.
-	 */
-	public JTextField chipsLeftField;
+  /**
+   * Text field for the level.
+   */
+  public JTextField levelField;
+  private JTextField timeField;
+  /**
+   * Text field for the chips left.
+   */
+  public JTextField chipsLeftField;
 
-	/**
-	 * Serial ID.
-	 */
-	private static final long serialVersionUID = 1L;
+  /**
+   * Serial ID.
+   */
+  private static final long serialVersionUID = 1L;
 
-	/**
-	 * Constructor for the interface panel.
-	 */
-	public InterfacePanel() {
-		setPreferredSize(new Dimension(250, getHeight()));
+  /**
+   * Constructor for the interface panel.
+   */
+  public InterfacePanel() {
+    setPreferredSize(new Dimension(250, getHeight()));
 
-		levelLabel = new JLabel("LEVEL");
-		timeLabel = new JLabel("TIME");
-		chipsLeftLabel = new JLabel("CHIPS LEFT");
+    levelLabel = new JLabel("LEVEL");
+    timeLabel = new JLabel("TIME");
+    chipsLeftLabel = new JLabel("CHIPS LEFT");
 
-		levelField = new JTextField("0", 5);
-		timeField = new JTextField("0", 5);
-		chipsLeftField = new JTextField("0", 5);
+    levelField = new JTextField("0", 5);
+    timeField = new JTextField("0", 5);
+    chipsLeftField = new JTextField("0", 5);
 
-		Border innerBorder = BorderFactory.createTitledBorder("Information");
-		Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
-		setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
+    Border innerBorder = BorderFactory.createTitledBorder("Information");
+    Border outerBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+    setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
 
-		setLayout(new GridBagLayout());
+    setLayout(new GridBagLayout());
 
-		GridBagConstraints gc = new GridBagConstraints();
+    GridBagConstraints gc = new GridBagConstraints();
 
-		gc.gridx = 0;
-		gc.gridy = 0;
-		gc.weightx = 1;
-		gc.weighty = 1;
-		gc.fill = GridBagConstraints.NONE;
+    gc.gridx = 0;
+    gc.gridy = 0;
+    gc.weightx = 1;
+    gc.weighty = 1;
+    gc.fill = GridBagConstraints.NONE;
 
-		// LEVEL.
-		add(levelLabel, gc);
+    // LEVEL.
+    add(levelLabel, gc);
 
-		gc.gridy++;
+    gc.gridy++;
 
-		levelField.setHorizontalAlignment(SwingConstants.RIGHT);
-		levelField.setEnabled(false);
+    levelField.setHorizontalAlignment(SwingConstants.RIGHT);
+    levelField.setEnabled(false);
 
-		gc.anchor = GridBagConstraints.PAGE_START;
+    gc.anchor = GridBagConstraints.PAGE_START;
 
-		add(levelField, gc);
+    add(levelField, gc);
 
-		// TIME.
-		gc.gridy++;
+    // TIME.
+    gc.gridy++;
 
-		gc.anchor = GridBagConstraints.CENTER;
+    gc.anchor = GridBagConstraints.CENTER;
 
-		add(timeLabel, gc);
+    add(timeLabel, gc);
 
-		gc.gridy++;
+    gc.gridy++;
 
-		timeField.setHorizontalAlignment(SwingConstants.RIGHT);
-		timeField.setEnabled(false);
+    timeField.setHorizontalAlignment(SwingConstants.RIGHT);
+    timeField.setEnabled(false);
 
-		gc.anchor = GridBagConstraints.PAGE_START;
+    gc.anchor = GridBagConstraints.PAGE_START;
 
-		add(timeField, gc);
+    add(timeField, gc);
 
-		// CHIPS LEFT.
-		gc.gridy++;
+    // CHIPS LEFT.
+    gc.gridy++;
 
-		gc.anchor = GridBagConstraints.CENTER;
+    gc.anchor = GridBagConstraints.CENTER;
 
-		add(chipsLeftLabel, gc);
+    add(chipsLeftLabel, gc);
 
-		gc.gridy++;
+    gc.gridy++;
 
-		chipsLeftField.setHorizontalAlignment(SwingConstants.RIGHT);
-		chipsLeftField.setEnabled(false);
+    chipsLeftField.setHorizontalAlignment(SwingConstants.RIGHT);
+    chipsLeftField.setEnabled(false);
 
-		gc.anchor = GridBagConstraints.PAGE_START;
+    gc.anchor = GridBagConstraints.PAGE_START;
 
-		add(chipsLeftField, gc);
-	}
+    add(chipsLeftField, gc);
+  }
 
-	/**
-	 * Sets the time displayed.
-	 * 
-	 * @param time
-	 */
-	public void setTime(int time) {
-		if (time < 0) {
-			throw new IllegalArgumentException("Argument must be greater than 0.");
-		}
+  /**
+   * Sets the time displayed.
+   * 
+   * @param time = the time you want to set the time field to
+   */
+  public void setTime(int time) {
+    if (time < 0) {
+      throw new IllegalArgumentException("Argument must be greater than 0.");
+    }
 
-		this.timeField.setText(Integer.toString(time));
-	}
+    this.timeField.setText(Integer.toString(time));
+  }
 }

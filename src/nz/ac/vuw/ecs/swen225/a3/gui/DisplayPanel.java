@@ -94,40 +94,40 @@ public class DisplayPanel extends JPanel {
           Key key = (Key) level[y][x];
 
           switch (key.getColour()) {
-          case "red":
-            scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50,
+            case "red":
+              scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
-            break;
-          case "yellow":
-            scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50, 50,
+              break;
+            case "yellow":
+              scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
-            break;
-          case "green":
-            scaledImage = ren.mergeImages(path, 1, Color.GREEN).getScaledInstance(50, 50,
+              break;
+            case "green":
+              scaledImage = ren.mergeImages(path, 1, Color.GREEN).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
-            break;
-          default:
-            scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50,
+              break;
+            default:
+              scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
           }
         } else if (level[y][x] instanceof LockedDoor) {
           LockedDoor lockedDoor = (LockedDoor) level[y][x];
 
           switch (lockedDoor.getColour()) {
-          case "red":
-            scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50,
+            case "red":
+              scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
-            break;
-          case "yellow":
-            scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50, 50,
+              break;
+            case "yellow":
+              scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
-            break;
-          case "green":
-            scaledImage = ren.mergeImages(path, 2, Color.GREEN).getScaledInstance(50, 50,
+              break;
+            case "green":
+              scaledImage = ren.mergeImages(path, 2, Color.GREEN).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
-            break;
-          default:
-            scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
+              break;
+            default:
+              scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
           }
         }

@@ -34,7 +34,8 @@ public class FileReader {
   private String fileName;
 
   // Variables that will be read in.
-  private int width, height;
+  private int width;
+  private int height;
   private int timeLimit;
   private Tile[][] mazeLayout;
 
@@ -50,7 +51,7 @@ public class FileReader {
   /**
    * Constructor for the file reader.
    * 
-   * @param levelName
+   * @param levelName = the name of the level
    */
   public FileReader(String levelName) {
     this.levelName = levelName;
@@ -68,8 +69,6 @@ public class FileReader {
       this.reader = Json.createReader(input);
       this.obj = reader.readObject();
       this.level = obj.getJsonObject(levelName);
-
-      assert this.input != null && this.reader != null && this.obj != null && this.level != null;
 
       // Holds the parameters of the maze read.
       this.width = level.getInt("width");
@@ -109,97 +108,97 @@ public class FileReader {
         Tile tile = null;
 
         switch (array.getInt(row)) {
-        case 0:
-          tile = new Free(row, col);
-
-          break;
-        case 1:
-          tile = new Wall(row, col);
-
-          break;
-        case 2:
-          tile = new Chap(row, col);
-
-          break;
-        case 3:
-          tile = new Exit(row, col);
-
-          break;
-        case 4:
-          tile = new ExitLock(row, col);
-
-          break;
-        case 5:
-          tile = new Monster(row, col);
-
-          Monster m = (Monster) tile;
-          addMonster(m);
-
-          break;
-        case 7:
-          tile = new InfoField("null", row, col);
-
-          InfoField infoField = (InfoField) tile;
-          String text = null;
-
-          // ID is static therefore each info field id will be unique.
-          // Allows for unique messages.
-          switch (infoField.getID()) {
           case 0:
-            text = "Welcome player!";
-
+            tile = new Free(row, col);
+  
             break;
           case 1:
-            text = "You have reached the second level!";
-
+            tile = new Wall(row, col);
+  
             break;
-          default:
-            text = "Please add message.";
-          }
+          case 2:
+            tile = new Chap(row, col);
+  
+            break;
+          case 3:
+            tile = new Exit(row, col);
+  
+            break;
+          case 4:
+            tile = new ExitLock(row, col);
+  
+            break;
+          case 5:
+            tile = new Monster(row, col);
+  
+            Monster m = (Monster) tile;
+            addMonster(m);
+  
+            break;
+          case 7:
+            tile = new InfoField("null", row, col);
+  
+            InfoField infoField = (InfoField) tile;
+            String text = null;
 
-          infoField.setInfoFieldText(text);
+            // ID is static therefore each info field id will be unique.
+            // Allows for unique messages.
+            switch (infoField.getID()) {
+              case 0:
+                text = "Welcome player!";
+    
+                break;
+              case 1:
+                text = "You have reached the second level!";
+    
+                break;
+              default:
+                text = "Please add message.";
+            }
+  
+            infoField.setInfoFieldText(text);
 
           assert infoField.getInfoFieldText().equals(text);
 
-          break;
-        case 8:
-          tile = new Treasure(row, col);
-
-          break;
-        case 9:
-          tile = new Key("red", row, col);
-
-          break;
-        case 10:
-          tile = new Key("blue", row, col);
-
-          break;
-        case 11:
-          tile = new Key("green", row, col);
-
-          break;
-        case 12:
-          tile = new Key("yellow", row, col);
-
-          break;
-        case 13:
-          tile = new LockedDoor("red", row, col);
-
-          break;
-        case 14:
-          tile = new LockedDoor("blue", row, col);
-
-          break;
-        case 15:
-          tile = new LockedDoor("green", row, col);
-
-          break;
-        case 16:
-          tile = new LockedDoor("yellow", row, col);
-
-          break;
-        default:
-          tile = new Free(row, col);
+            break;
+          case 8:
+            tile = new Treasure(row, col);
+  
+            break;
+          case 9:
+            tile = new Key("red", row, col);
+  
+            break;
+          case 10:
+            tile = new Key("blue", row, col);
+  
+            break;
+          case 11:
+            tile = new Key("green", row, col);
+  
+            break;
+          case 12:
+            tile = new Key("yellow", row, col);
+  
+            break;
+          case 13:
+            tile = new LockedDoor("red", row, col);
+  
+            break;
+          case 14:
+            tile = new LockedDoor("blue", row, col);
+  
+            break;
+          case 15:
+            tile = new LockedDoor("green", row, col);
+  
+            break;
+          case 16:
+            tile = new LockedDoor("yellow", row, col);
+  
+            break;
+          default:
+            tile = new Free(row, col);
         }
 
         assert tile != null;
@@ -292,7 +291,7 @@ public class FileReader {
   /**
    * Add monster.
    * 
-   * @param monster
+   * @param monster = the monster you want to add
    */
   private void addMonster(Monster monster) {
     if (monster == null) {
