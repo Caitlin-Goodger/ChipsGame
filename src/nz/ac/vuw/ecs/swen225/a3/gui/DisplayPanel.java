@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.*;
+import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
