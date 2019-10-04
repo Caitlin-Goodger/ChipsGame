@@ -29,9 +29,13 @@ public class InfoField implements Tile {
 	 * @param text
 	 */
 	public void setInfoFieldText(String text) {
-		assert text != null;
+		if (text == null) {
+			throw new IllegalArgumentException("Argument must be a String.");
+		}
 
 		this.text = text;
+
+		assert this.text != null;
 	}
 
 	/**

@@ -77,6 +77,8 @@ public class LockedDoor implements Tile {
 	 */
 	@Override
 	public int getYPosition() {
+		assert this.currentPosition != null;
+
 		return this.currentPosition.getY();
 	}
 
@@ -85,6 +87,8 @@ public class LockedDoor implements Tile {
 	 */
 	@Override
 	public int getXPosition() {
+		assert this.currentPosition != null;
+
 		return this.currentPosition.getX();
 	}
 

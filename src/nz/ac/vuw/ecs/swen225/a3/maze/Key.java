@@ -29,9 +29,13 @@ public class Key implements Tile {
 	 * @param colour
 	 */
 	public void setColour(String colour) {
-		assert colour != null;
+		if (colour == null) {
+			throw new IllegalArgumentException("Argument must be a String.");
+		}
 
 		this.colour = colour;
+
+		assert this.colour != null;
 	}
 
 	/**

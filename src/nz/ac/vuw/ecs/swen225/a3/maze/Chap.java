@@ -106,9 +106,22 @@ public class Chap implements Tile {
 	 * Updates the onTile.
 	 * 
 	 * @param tile
+	 * @return
 	 */
-	public void setOnTile(Tile tile) {
+	public boolean setOnTile(Tile tile) {
+		if (tile == null) {
+			throw new IllegalArgumentException("Argument must be a Tile.");
+		}
+
 		this.onTile = tile;
+
+		assert this.onTile != null;
+
+		if (this.onTile == tile) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -116,29 +129,36 @@ public class Chap implements Tile {
 	 * 
 	 * @param direction
 	 */
-	public void updatePosition(char direction) {
+	public void updatePosition(Character direction) {
+		if (direction == null) {
+			throw new IllegalArgumentException("Argument must be a Character.");
+		}
+
 		switch (direction) {
 		case 'S':
-			facingDirection = 6;
-			currentPosition.updatePosition(0, 1);
+			this.facingDirection = 6;
+			this.currentPosition.updatePosition(0, 1);
 
 			break;
 		case 'E':
-			facingDirection = 3;
-			currentPosition.updatePosition(1, 0);
+			this.facingDirection = 3;
+			this.currentPosition.updatePosition(1, 0);
 
 			break;
 		case 'W':
-			facingDirection = 4;
-			currentPosition.updatePosition(-1, 0);
+			this.facingDirection = 4;
+			this.currentPosition.updatePosition(-1, 0);
 
 			break;
 		default:
-			facingDirection = 5;
-			currentPosition.updatePosition(0, -1);
+			this.facingDirection = 5;
+			this.currentPosition.updatePosition(0, -1);
 
 			break;
 		}
+
+		assert this.facingDirection == 6 || this.facingDirection == 3
+				|| this.facingDirection == 4 | this.facingDirection == 5;
 	}
 
 	/**
@@ -157,10 +177,22 @@ public class Chap implements Tile {
 	 * levels.
 	 * 
 	 * @param position
+	 * @return
 	 */
-	public void resetPosition(Position position) {
+	public boolean resetPosition(Position position) {
+		if (position == null) {
+			throw new IllegalArgumentException("Argument must be a Position.");
+		}
+
 		this.currentPosition = position;
 
+		assert this.currentPosition != null;
+
+		if (this.currentPosition == position) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -175,18 +207,25 @@ public class Chap implements Tile {
 	}
 
 	/**
-	 * Takes the new level and gets the starting position of
-	 * that new level, sets the onYile of the character to a
-	 * free tile with parameters of starting position and resets
+	 * Takes the new maze and gets the starting position of that
+	 * new maze, sets the onTile of the character to a free tile
+	 * with parameters of starting position and resets
 	 * inventory.
 	 * 
 	 * @param maze
 	 */
 	public void resetPlayer(Maze maze) {
-		resetPosition(new Position(maze.getSpawn().getX(), maze.getSpawn().getY()));
-		setOnTile(new Free(maze.getSpawn().getX(), maze.getSpawn().getY()));
+		if (maze == null) {
+			throw new IllegalArgumentException("Argument must be a Maze.");
+		}
+
+		boolean positionReset = resetPosition(
+				new Position(maze.getSpawn().getX(), maze.getSpawn().getY()));
+		boolean onTileReset = setOnTile(new Free(maze.getSpawn().getX(), maze.getSpawn().getY()));
 
 		this.inventory.clear(); // Clears the player's inventory.
+
+		assert positionReset && onTileReset && inventory.size() == 0; // Checks reset.
 	}
 
 	/**
@@ -195,7 +234,9 @@ public class Chap implements Tile {
 	 * @return currentPosition
 	 */
 	public Position getCurrentPosition() {
-		return currentPosition;
+		assert this.currentPosition != null;
+
+		return this.currentPosition;
 	}
 
 	/**

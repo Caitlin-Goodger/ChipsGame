@@ -71,7 +71,7 @@ public class Game {
 	 */
 	public void moveMonsters() {
 		List<Monster> monsters = maze.getMonsters();
-		
+
 		for (int i = 0; i < monsters.size(); i++) {
 			Monster m = monsters.get(i);
 			m.move(this);
@@ -154,7 +154,7 @@ public class Game {
 	 * @param direction       = direction to move.
 	 * @param destinationTile = tile to move to.
 	 */
-	public void moveChap(char direction, Tile destinationTile) {
+	public void moveChap(Character direction, Tile destinationTile) {
 		Position originalPos = new Position(chap.getXPosition(), chap.getYPosition());
 		// move chap in direction
 		chap.updatePosition(direction);

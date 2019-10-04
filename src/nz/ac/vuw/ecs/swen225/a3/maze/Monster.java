@@ -32,6 +32,10 @@ public class Monster implements Tile {
 	 * @param game
 	 */
 	public void move(Game game) {
+		if (game == null) {
+			throw new IllegalArgumentException("Argument must be a Game.");
+		}
+
 		ArrayList<Tile> freeTiles = new ArrayList<Tile>();
 
 		Maze maze = game.getMaze();
@@ -113,7 +117,7 @@ public class Monster implements Tile {
 
 		this.onTile = tile;
 
-		assert tile != null;
+		assert this.onTile != null;
 	}
 
 	/**
@@ -121,7 +125,11 @@ public class Monster implements Tile {
 	 * 
 	 * @param direction
 	 */
-	public void updatePosition(char direction) {
+	public void updatePosition(Character direction) {
+		if (direction == null) {
+			throw new IllegalArgumentException("Argument must be a Character.");
+		}
+
 		if (direction == 'N') {
 			this.currentPosition.updatePosition(0, 1);
 		} else if (direction == 'S') {

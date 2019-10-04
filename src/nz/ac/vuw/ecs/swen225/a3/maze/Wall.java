@@ -5,13 +5,13 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Wall class is responsible for keeping the position of the
- * walls.
+ * wall.
  */
 public class Wall implements Tile {
 	private Position currentPosition;
 
 	/**
-	 * Constructor for the walls.
+	 * Constructor for the wall.
 	 * 
 	 * @param xGrid
 	 * @param yGrid

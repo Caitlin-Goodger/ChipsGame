@@ -28,6 +28,8 @@ public class ExitLock implements Tile {
 	 */
 	public void unlockExitLock() {
 		this.isSolid = false;
+
+		assert this.isSolid == false;
 	}
 
 	/**
@@ -49,7 +51,7 @@ public class ExitLock implements Tile {
 	}
 
 	/**
-	 * Get the x-coordinate of the exit.
+	 * Get the x-coordinate of the exit lock.
 	 */
 	@Override
 	public int getXPosition() {
