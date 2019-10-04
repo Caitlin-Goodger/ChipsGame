@@ -61,8 +61,6 @@ public class Chap implements Tile {
 			}
 		}
 
-		assert canUnlock == false;
-
 		return canUnlock;
 	}
 

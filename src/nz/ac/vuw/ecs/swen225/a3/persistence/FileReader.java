@@ -68,7 +68,7 @@ public class FileReader {
 			this.level = obj.getJsonObject(levelName);
 
 			assert this.input != null && this.reader != null && this.obj != null
-					&& this.level == null;
+					&& this.level != null;
 
 			// Holds the parameters of the maze read.
 			this.width = level.getInt("width");
@@ -77,7 +77,7 @@ public class FileReader {
 			this.mazeLayout = new Tile[width][height];
 
 			assert this.width != -1 && this.height != -1 && this.timeLimit != -1
-					&& this.mazeLayout == null;
+					&& this.mazeLayout != null;
 
 			boolean mazeCreated = createMazeLayout();
 
