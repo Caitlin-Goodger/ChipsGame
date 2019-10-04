@@ -26,8 +26,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 
 /**
  * FileReader class is responsible for reading in a file to
- * get a maze's parameters and then create the maze.
- *
+ * get a maze's parameters and then creating the maze.
  */
 public class FileReader {
 	// Variables for constructor.
@@ -140,14 +139,26 @@ public class FileReader {
 					tile = new InfoField("null", row, col);
 
 					InfoField infoField = (InfoField) tile;
+					String text = null;
 
 					// ID is static therefore each info field id will be unique.
 					// Allows for unique messages.
-					if (infoField.getID() == 0) {
-						infoField.setInfoFieldText("Welcome player!");
-					} else if (infoField.getID() == 1) {
-						infoField.setInfoFieldText("You have reached the second level!");
+					switch (infoField.getID()) {
+					case 0:
+						text = "Welcome player!";
+
+						break;
+					case 1:
+						text = "You have reached the second level!";
+
+						break;
+					default:
+						text = "Please add message.";
 					}
+
+					infoField.setInfoFieldText(text);
+
+					assert infoField.getInfoFieldText().equals(text);
 
 					break;
 				case 8:
