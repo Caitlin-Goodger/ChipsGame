@@ -4,53 +4,45 @@ import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * 
- * @author Caitlin
- *
+ * Key class is responsible for keeping the position of the
+ * key.
  */
 public class Key implements Tile {
 	private String colour;
-	private boolean isSolid = false; // check if player can walkThrought
-	private Position currentPosition; // keeps track of tiles position within a grid
+	private Position currentPosition;
 
 	/**
-	 * Constructor for the Key class.
+	 * Constructor for the key.
 	 * 
-	 * @param aColour = colour of the key.
-	 * @param xGrid   = x co-ordinate in of the tile on the
-	 *                grid.
-	 * @param yGrid   = y co-ordinate in of the tile on the
-	 *                grid.
-	 * @param xScreen = x co-ordinate in of the tile on the
-	 *                screen.
-	 * @param yScreen = y co-ordinate in of the tile on the
-	 *                screen.
+	 * @param colour
+	 * @param xGrid
+	 * @param yGrid
 	 */
-	public Key(String aColour, int xGrid, int yGrid) {
-		colour = aColour;
+	public Key(String colour, int xGrid, int yGrid) {
+		this.colour = colour;
 		currentPosition = new Position(xGrid, yGrid);
 	}
 
 	/**
-	 * Set of the colour of the key.
+	 * Sets the colour of the key.
 	 * 
-	 * @param aColour
-	 * @return boolean
+	 * @param colour
 	 */
-	public boolean setColour(String aColour) {
-		boolean wasSet = false;
-		colour = aColour;
-		wasSet = true;
-		return wasSet;
+	public void setColour(String colour) {
+		assert colour != null;
+
+		this.colour = colour;
 	}
 
 	/**
-	 * Get the colour of the key.
+	 * Gets the colour of the key.
 	 * 
-	 * @return boolean
+	 * @return colour
 	 */
 	public String getColour() {
-		return colour;
+		assert this.colour != null;
+
+		return this.colour;
 	}
 
 	/**
@@ -62,23 +54,27 @@ public class Key implements Tile {
 	}
 
 	/**
-	 * Get the y co-ordinate of the tile on the grid.
+	 * Get the y-coordinate of the key.
 	 */
 	@Override
 	public int getYPosition() {
-		return currentPosition.getY();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getY();
 	}
 
 	/**
-	 * Get the x co-ordinate of the tile on the grid.
+	 * Get the x-coordinate of the key.
 	 */
 	@Override
 	public int getXPosition() {
-		return currentPosition.getX();
+		assert this.currentPosition != null;
+
+		return this.currentPosition.getX();
 	}
 
 	/**
-	 * To String Method.
+	 * Turns the tile into a string. Used for debugging.
 	 */
 	@Override
 	public String toString() {
