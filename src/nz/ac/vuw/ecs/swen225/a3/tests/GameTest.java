@@ -767,8 +767,8 @@ public class GameTest {
   @Test
   public void test174() {
     FileReader m = new FileReader("level-1");
-    m.read();
-    assertEquals(true, m.read());
+    m.read("levels.json");
+    assertEquals(true, m.read("levels.json"));
   }
 
   /**
@@ -778,7 +778,7 @@ public class GameTest {
   public void test176() {
     FileReader m = new FileReader("level-5");
     assertThrows(NullPointerException.class, () -> {
-      m.read();
+      m.read("levels.json");
     });
   }
 
@@ -788,7 +788,7 @@ public class GameTest {
   @Test
   public void test177() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     assertEquals(15, maze.findChap().getXPosition());
   }
@@ -799,7 +799,7 @@ public class GameTest {
   @Test
   public void test178() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(2, 2);
     Tile t = maze.getNeighbouringTile(xy, 'N');
@@ -812,7 +812,7 @@ public class GameTest {
   @Test
   public void test179() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(2, 2);
     Tile t = maze.getNeighbouringTile(xy, 'E');
@@ -825,7 +825,7 @@ public class GameTest {
   @Test
   public void test180() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(2, 2);
     Tile t = maze.getNeighbouringTile(xy, 'S');
@@ -838,7 +838,7 @@ public class GameTest {
   @Test
   public void test181() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(2, 2);
     Tile t = maze.getNeighbouringTile(xy, 'W');
@@ -851,7 +851,7 @@ public class GameTest {
   @Test
   public void test182() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(32, 32);
     assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
@@ -865,7 +865,7 @@ public class GameTest {
   @Test
   public void test183() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(0, 0);
     Tile t = maze.getNeighbouringTile(xy, 'N');
@@ -878,7 +878,7 @@ public class GameTest {
   @Test
   public void test184() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(31, 31);
     Tile t = maze.getNeighbouringTile(xy, 'S');
@@ -891,7 +891,7 @@ public class GameTest {
   @Test
   public void test185() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(0, 0);
     Tile t = maze.getNeighbouringTile(xy, 'W');
@@ -904,7 +904,7 @@ public class GameTest {
   @Test
   public void test186() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(31, 31);
     Tile t = maze.getNeighbouringTile(xy, 'E');
@@ -917,7 +917,7 @@ public class GameTest {
   @Test
   public void test187() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Position xy = new Position(7, 7);
     Tile t = maze.getNeighbouringTile(xy, 'E');
@@ -930,7 +930,7 @@ public class GameTest {
   @Test
   public void test189() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     assertEquals(11, maze.remainingTreasure());
   }
@@ -941,7 +941,7 @@ public class GameTest {
   @Test
   public void test190() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     assertEquals("C", maze.getTiles()[14][15].toString());
   }
@@ -963,7 +963,7 @@ public class GameTest {
   @Test
   public void test200() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     assertEquals(maze, game.getMaze());
@@ -975,7 +975,7 @@ public class GameTest {
   @Test
   public void test202() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     assertEquals(false, game.setMaze(null));
@@ -987,7 +987,7 @@ public class GameTest {
   @Test
   public void test203() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     game.move('N');
@@ -1000,7 +1000,7 @@ public class GameTest {
   @Test
   public void test204() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     game.move('W');
@@ -1015,7 +1015,7 @@ public class GameTest {
   @Test
   public void test205() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     game.move('W');
@@ -1030,7 +1030,7 @@ public class GameTest {
   @Test
   public void test206() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     game.move('W');
@@ -1047,7 +1047,7 @@ public class GameTest {
   @Test
   public void test207() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     game.move('N');
@@ -1062,7 +1062,7 @@ public class GameTest {
   @Test
   public void test208() {
     FileReader m = new FileReader("level-1");
-    m.read();
+    m.read("levels.json");
     Maze maze = new Maze(m, m.getWidth(), m.getHeight(), m.getTimeLimit(), m.getMazeLayout());
     Game game = new Game(maze);
     game.move('N');
