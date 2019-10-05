@@ -64,4 +64,9 @@ public class ExitLock implements Tile {
   public String toString() {
     return "L";
   }
+
+  @Override
+  public int getValue() {
+    return 4;
+  }
 }

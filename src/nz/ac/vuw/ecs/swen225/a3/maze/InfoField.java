@@ -99,4 +99,9 @@ public class InfoField implements Tile {
   public String toString() {
     return "I";
   }
+
+  @Override
+  public int getValue() {
+    return 7;
+  }
 }

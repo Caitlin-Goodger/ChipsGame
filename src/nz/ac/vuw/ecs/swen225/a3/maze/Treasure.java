@@ -54,4 +54,9 @@ public class Treasure implements Tile {
   public String toString() {
     return "T";
   }
+
+  @Override
+  public int getValue() {
+    return 8;
+  }
 }

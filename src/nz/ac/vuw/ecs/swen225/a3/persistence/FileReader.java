@@ -2,15 +2,22 @@ package nz.ac.vuw.ecs.swen225.a3.persistence;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonBuilderFactory;
 import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
+import javax.json.JsonWriter;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.Exit;
@@ -88,6 +95,39 @@ public class FileReader {
       return true;
     } catch (FileNotFoundException e) {
       throw new Error("File not found.", e);
+    }
+  }
+  
+  /**
+   * Save the current maze to a file. 
+   * @param m = Maze to save to file
+   */
+  public void save(Maze m) { 
+    try 
+      (FileWriter fw = new FileWriter("savedLevel.json");
+      JsonWriter jsonWriter = Json.createWriter(fw);) {
+      JsonBuilderFactory jbf = Json.createBuilderFactory(null);
+      JsonObjectBuilder jsonObj = jbf.createObjectBuilder();
+      jsonObj.add("width", width);
+      jsonObj.add("height", height);
+      jsonObj.add("time", timeLimit);
+      JsonArrayBuilder jsonArray = jbf.createArrayBuilder();
+      for (int i = 0; i < height;i++) {
+        JsonArrayBuilder row = jbf.createArrayBuilder();
+        for (int j = 0; j < width;j++) {
+          row.add(mazeLayout[i][j].getValue());
+        }
+        jsonArray.add(row);
+      }
+      jsonObj.add("tiles",jsonArray);
+      JsonObjectBuilder jsonLevel = jbf.createObjectBuilder();
+      jsonLevel.add(m.getLevelName(), jsonObj);
+      JsonObject j = jsonLevel.build();
+      jsonWriter.writeObject(j);
+      
+      
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
@@ -305,5 +345,19 @@ public class FileReader {
     this.monsters.add(monster);
 
     assert this.monsters.contains(monster);
+  }
+  
+  /**
+   * @param args
+   */
+  public static void main(String[]args) {
+    FileReader fileReader = new FileReader("level-1");
+    fileReader.read();
+
+    // Create a new maze passing in the parameters generated
+    // from the file reader.
+    Maze maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
+        fileReader.getTimeLimit(), fileReader.getMazeLayout());
+    fileReader.save(maze);
   }
 }

@@ -83,4 +83,17 @@ public class Key implements Tile {
   public String toString() {
     return "K";
   }
+
+  @Override
+  public int getValue() {
+    if (colour.equals("red")) {
+      return 9;
+    } else if (colour.equals("blue")) {
+      return 10;
+    } else if (colour.equals("green")) {
+      return 11;
+    } else {
+      return 12;
+    }
+  }
 }

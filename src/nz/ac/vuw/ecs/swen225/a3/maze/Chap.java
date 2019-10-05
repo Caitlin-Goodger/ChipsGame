@@ -267,4 +267,9 @@ public class Chap implements Tile {
   public String toString() {
     return "C";
   }
+
+  @Override
+  public int getValue() {
+    return 2;
+  }
 }

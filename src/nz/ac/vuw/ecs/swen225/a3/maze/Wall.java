@@ -54,4 +54,9 @@ public class Wall implements Tile {
   public String toString() {
     return "W";
   }
+
+  @Override
+  public int getValue() {
+    return 1;
+  }
 }

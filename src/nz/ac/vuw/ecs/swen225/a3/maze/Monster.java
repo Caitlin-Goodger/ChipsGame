@@ -187,4 +187,9 @@ public class Monster implements Tile {
   public String toString() {
     return "M";
   }
+
+  @Override
+  public int getValue() {
+    return 5;
+  }
 }

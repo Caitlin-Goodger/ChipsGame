@@ -54,4 +54,9 @@ public class Exit implements Tile {
   public String toString() {
     return "X";
   }
+
+  @Override
+  public int getValue() {
+    return 3;
+  }
 }

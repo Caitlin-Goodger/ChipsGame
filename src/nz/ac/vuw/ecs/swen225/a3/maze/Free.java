@@ -55,4 +55,9 @@ public class Free implements Tile {
   public String toString() {
     return "F";
   }
+
+  @Override
+  public int getValue() {
+    return 0;
+  }
 }

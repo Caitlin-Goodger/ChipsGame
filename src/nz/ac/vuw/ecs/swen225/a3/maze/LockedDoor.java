@@ -98,4 +98,17 @@ public class LockedDoor implements Tile {
   public String toString() {
     return "D";
   }
+
+  @Override
+  public int getValue() {
+    if (colour.equals("red")) {
+      return 13;
+    } else if (colour.equals("blue")) {
+      return 14;
+    } else if (colour.equals("green")) {
+      return 15;
+    } else {
+      return 16;
+    }
+  }
 }
