@@ -69,10 +69,12 @@ public class FileReader {
 
   /**
    * Reads the file and gets the width, height and time limit.
+   * @param fname = name of file to read in. 
    * 
    * @return true if successfully read
    */
-  public boolean read() {
+  public boolean read(String fname) {
+    fileName = fname;
     try {
       this.input = new FileInputStream(fileName);
       this.reader = Json.createReader(input);
@@ -347,17 +349,4 @@ public class FileReader {
     assert this.monsters.contains(monster);
   }
   
-  /**
-   * @param args
-   */
-  public static void main(String[]args) {
-    FileReader fileReader = new FileReader("level-1");
-    fileReader.read();
-
-    // Create a new maze passing in the parameters generated
-    // from the file reader.
-    Maze maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
-        fileReader.getTimeLimit(), fileReader.getMazeLayout());
-    fileReader.save(maze);
-  }
 }

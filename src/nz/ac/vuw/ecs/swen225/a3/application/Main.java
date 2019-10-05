@@ -31,7 +31,7 @@ public class Main {
       @Override
       public void run() {
         fileReader = new FileReader("level-1");
-        fileReader.read();
+        fileReader.read("levels.json");
 
         // Create a new maze passing in the parameters generated
         // from the file reader.

@@ -254,7 +254,7 @@ public class Maze {
     }
 
     fileReader = new FileReader(levels.get(this.currentLevel - 1));
-    fileReader.read();
+    fileReader.read("levels.json");
 
     this.width = fileReader.getWidth();
     this.height = fileReader.getHeight();
