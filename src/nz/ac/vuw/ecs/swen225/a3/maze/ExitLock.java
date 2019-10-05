@@ -7,7 +7,10 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
  * ExitLock class is responsible for keeping the position of the exit lock.
  */
 public class ExitLock implements Tile {
-  private boolean isSolid = true; // Checks if player can walk through exit lock.
+  /**
+   * Checks if player can walk through exit lock.
+   */
+  public boolean isSolid = true;
   private Position currentPosition;
 
   /**

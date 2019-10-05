@@ -106,9 +106,9 @@ public class Monster implements Tile {
    * Set the onTile of the monster.
    * 
    * @param tile = the tile you want onTile to
-   * @return
+   * @return boolean
    */
-  private boolean setOnTile(Tile tile) {
+  public boolean setOnTile(Tile tile) {
     if (tile == null) {
       throw new IllegalArgumentException("Argument must be a Tile.");
     }

@@ -69,8 +69,9 @@ public class Maze {
 
   /**
    * Method for debugging, prints the converted level to see if it looks correct.
+   * @return boolean
    */
-  public void printConvertedLevel() {
+  public boolean printConvertedLevel() {
     for (int row = 0; row < this.height; row++) {
       for (int col = 0; col < this.width; col++) {
         // Go to next line once end of line is reached.
@@ -83,6 +84,7 @@ public class Maze {
         }
       }
     }
+    return true;
   }
 
   /**
@@ -246,8 +248,9 @@ public class Maze {
 
   /**
    * Gets the next level.
+   * @return boolean
    */
-  public void getNextLevel() {
+  public boolean getNextLevel() {
     // Gets the next level in array.
     if (this.currentLevel < levels.size()) {
       this.currentLevel++;
@@ -267,6 +270,7 @@ public class Maze {
     this.monsters = fileReader.getMonsters();
 
     assert this.levelName != null && this.monsters != null;
+    return true;
   }
 
   /**
