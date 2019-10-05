@@ -107,7 +107,7 @@ public class FileReader {
   public void save(Maze m) { 
     try 
       (FileWriter fw = new FileWriter("savedLevel.json");
-      JsonWriter jsonWriter = Json.createWriter(fw);) {
+        JsonWriter jsonWriter = Json.createWriter(fw);) {
       JsonBuilderFactory jbf = Json.createBuilderFactory(null);
       JsonObjectBuilder jsonObj = jbf.createObjectBuilder();
       jsonObj.add("width", width);
