@@ -5,8 +5,6 @@
 To-do:
 - Fix JPanel scaling (Make it dynamic)
 - Implement pause game
-- Method to save game
-- Method to load game
 
 ## How to play: ##
 
