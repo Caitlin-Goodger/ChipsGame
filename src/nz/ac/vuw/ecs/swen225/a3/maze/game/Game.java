@@ -146,6 +146,7 @@ public class Game {
 
       }
     } else if (destination instanceof Exit) {
+      maze.getFileReader().save(maze);
       maze.getNextLevel();
       this.getChap().resetPlayer(this.getMaze());
       tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
@@ -212,7 +213,6 @@ public class Game {
    * Set where chap is by finding him. 
    */
   public void setChap() {
-    // TODO Auto-generated method stub
     this.chap = this.maze.findChap();
   }
 
