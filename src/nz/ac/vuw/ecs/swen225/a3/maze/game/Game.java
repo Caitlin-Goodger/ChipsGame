@@ -207,4 +207,14 @@ public class Game {
   public void setTimeLimit(TimeLimit tl) {
     this.tl = tl;
   }
+
+  /**
+   * Set where chap is by finding him. 
+   */
+  public void setChap() {
+    // TODO Auto-generated method stub
+    this.chap = this.maze.findChap();
+  }
+
+ 
 }

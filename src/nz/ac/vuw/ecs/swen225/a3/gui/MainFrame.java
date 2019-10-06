@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
+import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
 import nz.ac.vuw.ecs.swen225.a3.util.Filter;
 
 /**
@@ -148,10 +150,32 @@ public class MainFrame extends JFrame {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        if (fileChooser.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
-          // Debug : print file chosen
-          System.out.println(fileChooser.getSelectedFile());
-        }
+        FileReader fileReader = game.getMaze().getFileReader();
+        fileReader.read("savedLevel.json");
+        Maze maze =  new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
+            fileReader.getTimeLimit(), fileReader.getMazeLayout());
+        game.setMaze(maze);
+        game.setChap();
+        displayPanel.setTotalChips(game.getMaze().remainingTreasure());
+
+        inventoryPanel.setVisible(!game.onField());
+        textPanel.setVisible(game.onField());
+
+        interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
+        interfacePanel.levelField.setText(game.getMaze().getLevelName());
+
+        displayPanel.removeAll();
+        displayPanel.drawPanel();
+
+        displayPanel.revalidate();
+        displayPanel.repaint();
+
+        inventoryPanel.removeAll();
+        inventoryPanel.drawInventory();
+
+        inventoryPanel.revalidate();
+        inventoryPanel.repaint();
+        JOptionPane.showMessageDialog(MainFrame.this, "Saved Game has been loaded");
       }
     });
 
@@ -160,10 +184,8 @@ public class MainFrame extends JFrame {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        if (fileChooser.showSaveDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
-          // Debug : print file chosen
-          System.out.println(fileChooser.getSelectedFile());
-        }
+        game.getMaze().getFileReader().save(game.getMaze());
+        JOptionPane.showMessageDialog(MainFrame.this, "Game has been saved");
       }
     });
 

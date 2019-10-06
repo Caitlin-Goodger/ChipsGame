@@ -326,4 +326,12 @@ public class Maze {
 
     return this.levelName;
   }
+
+  /**
+   * Get the fileReader of this maze.
+   * @return FileReader
+   */
+  public FileReader getFileReader() {
+    return fileReader;
+  }
 }
