@@ -60,6 +60,8 @@ public class DisplayPanel extends JPanel {
    * For display purposes only. Draws 9x9 tiles to screen.
    */
   public void drawPanel() {
+    removeAll();
+    
     Renderer ren = new Renderer();
     Tile[][] level = game.getMaze().getTiles();
 

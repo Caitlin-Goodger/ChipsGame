@@ -163,10 +163,10 @@ public class MainFrame extends JFrame {
 
         interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
         interfacePanel.levelField.setText(game.getMaze().getLevelName());
-
+        
         displayPanel.removeAll();
         displayPanel.drawPanel();
-
+        
         displayPanel.revalidate();
         displayPanel.repaint();
 
@@ -327,10 +327,10 @@ public class MainFrame extends JFrame {
 
         displayPanel.removeAll();
         displayPanel.drawPanel();
-
+        
         displayPanel.revalidate();
         displayPanel.repaint();
-
+        
         inventoryPanel.removeAll();
         inventoryPanel.drawInventory();
 
@@ -347,7 +347,7 @@ public class MainFrame extends JFrame {
    * Returns the interface panel.
    * 
    * @return interfacePanel
-   */
+   */ 
   public InterfacePanel getInterfacePanel() {
     assert this.interfacePanel != null;
 

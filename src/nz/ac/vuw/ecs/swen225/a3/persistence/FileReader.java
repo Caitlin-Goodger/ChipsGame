@@ -49,6 +49,7 @@ public class FileReader {
 
   // Variables for monsters.
   private List<Monster> monsters = new ArrayList<Monster>();
+  private String monsterSteps;
 
   // Variables for reader.
   private InputStream input;
@@ -87,6 +88,7 @@ public class FileReader {
       this.height = level.getInt("height");
       this.timeLimit = level.getInt("time");
       this.mazeLayout = new Tile[width][height];
+      this.monsterSteps = level.getString("monster_pattern");
 
       assert this.width != -1 && this.height != -1 && this.timeLimit != -1
           && this.mazeLayout != null;
@@ -176,7 +178,7 @@ public class FileReader {
   
             break;
           case 5:
-            tile = new Monster(row, col);
+            tile = new Monster(row, col, monsterSteps);
   
             Monster m = (Monster) tile;
             addMonster(m);

@@ -27,8 +27,10 @@ public class TimeLimit {
       public void run() {
         mf.getInterfacePanel().setTime(tick());
       }
-    }, 0, 1000);
+    }, 0, 1000);    
   }
+  
+  
 
   /**
    * Decreases time until time is 0, then timer stops.

@@ -73,17 +73,6 @@ public class Game {
     return wasSet;
   }
 
-  /**
-   * Move all the monsters.
-   */
-  public void moveMonsters() {
-    List<Monster> monsters = maze.getMonsters();
-
-    for (int i = 0; i < monsters.size(); i++) {
-      Monster m = monsters.get(i);
-      m.move(this);
-    }
-  }
 
   /**
    * update chap's location in the given direction if its applicable.
@@ -101,37 +90,22 @@ public class Game {
     } else if (destination instanceof Free) {
       moveChap(direction, destination);
     } else if (destination instanceof Key) {
-      // pickup the key
       chap.pickupItem(destination);
-      // remove key from map
-      // maze.changeToFree(destination);
-      // move chap in direction
       moveChap(direction, destination);
     } else if (destination instanceof LockedDoor) {
       LockedDoor door = (LockedDoor) destination;
       if (door.canUnlock(chap)) {
-        // change the key tile to free
-        // maze.changeToFree(destination);
-        // move chap in direction
         moveChap(direction, destination);
-        // remove the used key from chap's inventory
-        // chap.removeItem(door.getColour(), "Key"); //removes key
-        // from inventory
       } else {
         // do nothing
       }
     } else if (destination instanceof Treasure) {
-      // remove treasure from map
-      // maze.changeToFree(destination);
-      // move chap in direction
       moveChap(direction, destination);
     } else if (destination instanceof InfoField) {
       info = (InfoField) this.getMaze().getTile(destination.getYPosition(),
           destination.getXPosition());
 
       onField = true;
-
-      // move chap in direction
       moveChap(direction, destination);
       // displayInfo
       // ...........
@@ -169,6 +143,24 @@ public class Game {
     // update onTile for chap
     chap.setOnTile(destinationTile);
 
+  }
+  
+  /**
+   * Move all the monsters.
+   */
+  public void moveMonsters() {
+    List<Monster> monsters = maze.getMonsters();
+
+    for (int i = 0; i < monsters.size(); i++) {
+      Monster m = monsters.get(i);
+      Position originalPos = new Position(m.getXPosition(), m.getYPosition());
+      //m.move(this);
+      m.move();
+      Position destinationPos = m.getCurrentPosition();
+      maze.setTile(originalPos, new Free(originalPos.getX(), originalPos.getY()));
+      maze.setTile(destinationPos, m);
+      
+    }
   }
 
   /**
