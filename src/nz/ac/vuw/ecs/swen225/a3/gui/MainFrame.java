@@ -377,11 +377,10 @@ public class MainFrame extends JFrame {
    * refresh the board only
    */
   public void refreshBoard() {
-      if(game.monsterPresent()) {
         if(refreshing == true)
           try {
             //System.out.println("CLASH");
-            Thread.sleep(50);
+            Thread.sleep(80);
           } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -396,7 +395,6 @@ public class MainFrame extends JFrame {
           displayPanel.repaint();
         //}
         refreshing = false;
-      }
   }
 
   /**

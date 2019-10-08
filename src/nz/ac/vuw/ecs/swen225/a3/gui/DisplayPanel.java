@@ -70,8 +70,6 @@ public class DisplayPanel extends JPanel {
     ExitLock exit;
     Chap chap = game.getMaze().findChap();
     Position chapLocation = chap.getChapPosition();
-    
-    game.setMonsterPresent(false);
 
     for (int y = chapLocation.getY() - 4; y < chapLocation.getY() - 4 + gl.getColumns(); y++) {
       for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getRows(); x++) {
@@ -143,9 +141,6 @@ public class DisplayPanel extends JPanel {
           }
         }
         
-        else if (level[y][x] instanceof Monster) {
-          game.setMonsterPresent(true);
-        }
 
         JLabel img = new JLabel(new ImageIcon(scaledImage));
 

@@ -30,7 +30,6 @@ public class Game {
 
   private TimeLimit tl;
   private boolean finished;
-  private boolean monsterPresent;
 
   /**
    * Constructor for the Game.
@@ -50,7 +49,6 @@ public class Game {
 
     this.chap = this.maze.findChap();
     finished = false;
-    monsterPresent = false;
   }
 
   /**
@@ -191,20 +189,7 @@ public class Game {
     return this.finished;
   }
   
-  
-  /**
-   * @return if there is currently a monster present on screen
-   */
-  public boolean monsterPresent() {
-    return this.monsterPresent;
-  }
-  
-  /**
-   * @param b input
-   */
-  public void setMonsterPresent(boolean b) {
-    this.monsterPresent = b;
-  }
+
 
   /**
    * Returns the info field.
