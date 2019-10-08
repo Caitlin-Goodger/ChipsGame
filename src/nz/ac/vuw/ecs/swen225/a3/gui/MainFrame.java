@@ -328,8 +328,17 @@ public class MainFrame extends JFrame {
    * Re-render the display screen
    */
   public void refreshDisplay() {
+    
+    if(refreshing == true)
+      try {
+        Thread.sleep(50);
+        //System.out.println("CLASHChap");
+      } catch (InterruptedException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
    
-    while(refreshing==false) {
+    //while(refreshing==false) {
       refreshing = true;
     
       // Only get the label of InfoField if standing on one, need
@@ -359,7 +368,7 @@ public class MainFrame extends JFrame {
   
       inventoryPanel.revalidate();
       inventoryPanel.repaint();
-    }
+    //}
     refreshing = false;
     
   }
@@ -369,15 +378,23 @@ public class MainFrame extends JFrame {
    */
   public void refreshBoard() {
       if(game.monsterPresent()) {
+        if(refreshing == true)
+          try {
+            //System.out.println("CLASH");
+            Thread.sleep(50);
+          } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
   
-        while(refreshing==false) {
+        //while(refreshing==false) {
           refreshing = true;
-        //displayPanel.removeAll();
-        displayPanel.drawPanel();
-        
-        displayPanel.revalidate();
-        displayPanel.repaint();
-        }
+          //displayPanel.removeAll();
+          displayPanel.drawPanel();
+          
+          displayPanel.revalidate();
+          displayPanel.repaint();
+        //}
         refreshing = false;
       }
   }
