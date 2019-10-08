@@ -29,6 +29,8 @@ public class Game {
   private boolean onField = false;
 
   private TimeLimit tl;
+  private boolean finished;
+  private boolean monsterPresent;
 
   /**
    * Constructor for the Game.
@@ -47,6 +49,8 @@ public class Game {
     }
 
     this.chap = this.maze.findChap();
+    finished = false;
+    monsterPresent = false;
   }
 
   /**
@@ -122,6 +126,9 @@ public class Game {
       maze.getNextLevel();
       this.getChap().resetPlayer(this.getMaze());
       tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
+    }else if (destination instanceof Monster) {
+      moveChap(direction, destination);
+      this.finished = true;
     }
   }
 
@@ -157,8 +164,13 @@ public class Game {
       //m.move(this);
       m.move();
       Position destinationPos = m.getCurrentPosition();
-      maze.setTile(originalPos, new Free(originalPos.getX(), originalPos.getY()));
-      maze.setTile(destinationPos, m);
+      if(destinationPos.equals(chap.getChapPosition())) {
+        this.finished = true;
+      }
+      else {
+        maze.setTile(originalPos, new Free(originalPos.getX(), originalPos.getY()));
+        maze.setTile(destinationPos, m);
+      }
       
     }
   }
@@ -170,6 +182,28 @@ public class Game {
    */
   public Chap getChap() {
     return chap;
+  }
+  
+  /**
+   * @return if the state of the game (won or lost)
+   */
+  public boolean isFinished() {
+    return this.finished;
+  }
+  
+  
+  /**
+   * @return if there is currently a monster present on screen
+   */
+  public boolean monsterPresent() {
+    return this.monsterPresent;
+  }
+  
+  /**
+   * @param b input
+   */
+  public void setMonsterPresent(boolean b) {
+    this.monsterPresent = b;
   }
 
   /**

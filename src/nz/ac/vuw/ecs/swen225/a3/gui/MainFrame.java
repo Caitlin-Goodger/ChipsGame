@@ -40,6 +40,8 @@ public class MainFrame extends JFrame {
   private Game game;
 
   private boolean paused = false;
+  
+  private boolean refreshing;
 
   // used for tracking states in game
 
@@ -128,6 +130,7 @@ public class MainFrame extends JFrame {
 
     interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
     interfacePanel.levelField.setText(game.getMaze().getLevelName());
+    refreshing = false;
   }
 
   /**
@@ -278,26 +281,29 @@ public class MainFrame extends JFrame {
    */
   class KeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent evt) {
-      if (!paused) {
+      if (game.isFinished()==true) {
+        System.out.println("GAME FINISHED!");      
+        }
+      else if (!paused) {
         // Movement.
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
           game.move('N');
-          game.moveMonsters();
+          //game.moveMonsters();
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
           game.move('S');
-          game.moveMonsters();
+          //game.moveMonsters();
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
           game.move('W');
-          game.moveMonsters();
+          //game.moveMonsters();
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
           game.move('E');
-          game.moveMonsters();
+          //game.moveMonsters();
         }
 
         // Other.
@@ -308,39 +314,72 @@ public class MainFrame extends JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
           System.out.println("ESC was pressed");
         }
-
-        // Only get the label of InfoField if standing on one, need
-        // otherwise error from
-        // grabbing nothing.
-        if (game.onField()) {
-          textPanel.getLabel().setText(game.getInfoField().getInfoFieldText());
-        }
-
-        // Update the total number of chips every move.
-        displayPanel.setTotalChips(game.getMaze().remainingTreasure());
-
-        inventoryPanel.setVisible(!game.onField());
-        textPanel.setVisible(game.onField());
-
-        interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
-        interfacePanel.levelField.setText(game.getMaze().getLevelName());
-
-        displayPanel.removeAll();
-        displayPanel.drawPanel();
         
-        displayPanel.revalidate();
-        displayPanel.repaint();
+        refreshDisplay();
         
-        inventoryPanel.removeAll();
-        inventoryPanel.drawInventory();
-
-        inventoryPanel.revalidate();
-        inventoryPanel.repaint();
       } else {
         // Debug : checks game is paused in rules
         System.out.println("Game is paused");
       }
     }
+  }
+  
+  /**
+   * Re-render the display screen
+   */
+  public void refreshDisplay() {
+   
+    while(refreshing==false) {
+      refreshing = true;
+    
+      // Only get the label of InfoField if standing on one, need
+      // otherwise error from
+      // grabbing nothing.
+      if (game.onField()) {
+        textPanel.getLabel().setText(game.getInfoField().getInfoFieldText());
+      }
+  
+      // Update the total number of chips every move.
+      displayPanel.setTotalChips(game.getMaze().remainingTreasure());
+  
+      inventoryPanel.setVisible(!game.onField());
+      textPanel.setVisible(game.onField());
+  
+      interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
+      interfacePanel.levelField.setText(game.getMaze().getLevelName());
+  
+      //displayPanel.removeAll();
+      displayPanel.drawPanel();
+      
+      displayPanel.revalidate();
+      displayPanel.repaint();
+      
+      inventoryPanel.removeAll();
+      inventoryPanel.drawInventory();
+  
+      inventoryPanel.revalidate();
+      inventoryPanel.repaint();
+    }
+    refreshing = false;
+    
+  }
+  
+  /**
+   * refresh the board only
+   */
+  public void refreshBoard() {
+      if(game.monsterPresent()) {
+  
+        while(refreshing==false) {
+          refreshing = true;
+        //displayPanel.removeAll();
+        displayPanel.drawPanel();
+        
+        displayPanel.revalidate();
+        displayPanel.repaint();
+        }
+        refreshing = false;
+      }
   }
 
   /**
@@ -352,5 +391,12 @@ public class MainFrame extends JFrame {
     assert this.interfacePanel != null;
 
     return this.interfacePanel;
+  }
+  
+  /**
+   * @return the game that is currently contained
+   */
+  public Game getGame() {
+    return this.game;
   }
 }

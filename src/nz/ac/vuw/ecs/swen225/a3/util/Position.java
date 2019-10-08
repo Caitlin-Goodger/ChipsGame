@@ -66,4 +66,16 @@ public class Position {
   public String toString() {
     return "(" + this.posX + ", " + this.posY + ")";
   }
+  
+  /**
+   * @return if this position is identical to another
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o instanceof Position) {
+      Position O = (Position)o;
+      return O.getX() == this.posX && O.getY() == this.posY;
+    }
+    return false;
+  }
 }
