@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.maze.interfaces;
+package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import javax.json.JsonValue;
 

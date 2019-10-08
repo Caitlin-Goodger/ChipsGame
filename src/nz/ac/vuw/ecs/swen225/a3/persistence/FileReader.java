@@ -19,17 +19,18 @@ import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
 import javax.json.JsonWriter;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.Exit;
-import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
-import nz.ac.vuw.ecs.swen225.a3.maze.Free;
-import nz.ac.vuw.ecs.swen225.a3.maze.InfoField;
-import nz.ac.vuw.ecs.swen225.a3.maze.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
-import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
-import nz.ac.vuw.ecs.swen225.a3.maze.Wall;
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Exit;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.ExitLock;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Free;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.InfoField;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.LockedDoor;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Treasure;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Wall;
 
 /**
  * FileReader class is responsible for reading in a file to get a maze's

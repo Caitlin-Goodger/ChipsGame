@@ -11,12 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.ExitLock;
-import nz.ac.vuw.ecs.swen225.a3.maze.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.LockedDoor;
-import nz.ac.vuw.ecs.swen225.a3.maze.game.Game;
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.Game;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.ExitLock;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 

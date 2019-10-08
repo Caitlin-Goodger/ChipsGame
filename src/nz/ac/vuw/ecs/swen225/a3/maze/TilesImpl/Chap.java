@@ -1,10 +1,10 @@
-package nz.ac.vuw.ecs.swen225.a3.maze;
+package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
-import nz.ac.vuw.ecs.swen225.a3.persistence.Maze;
+import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**

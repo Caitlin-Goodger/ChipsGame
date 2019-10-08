@@ -1,13 +1,13 @@
-package nz.ac.vuw.ecs.swen225.a3.persistence;
+package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.Treasure;
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Treasure;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
@@ -15,6 +15,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
  */
 public class Maze {
   private int currentLevel;
+  private final int NUM_OF_LEVELS = 2;
 
   private ArrayList<String> levels = new ArrayList<String>();
 
@@ -51,9 +52,9 @@ public class Maze {
     this.timeLimit = timeLimit;
     this.mazeLayout = mapLayout;
 
-    // Adds the levels.
-    levels.add("level-1");
-    levels.add("level-2");
+    // Adds the levels, for loop so we don't have to write 100 lines for 100 levels
+    for(int i = 1; i<=NUM_OF_LEVELS; i++)
+      levels.add("level-"+i);
   }
 
   /**

@@ -1,21 +1,21 @@
-package nz.ac.vuw.ecs.swen225.a3.maze;
+package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Exit class is responsible for keeping the position of the exit.
+ * Wall class is responsible for keeping the position of the wall.
  */
-public class Exit implements Tile {
-  private Position currentPosition; // Keeps track of the exit.
+public class Wall implements Tile {
+  private Position currentPosition;
 
   /**
-   * Constructor for the exit.
+   * Constructor for the wall.
    * 
    * @param x = x position relative to maze
    * @param y = y position relative to maze
    */
-  public Exit(int x, int y) {
+  public Wall(int x, int y) {
     this.currentPosition = new Position(x, y);
   }
 
@@ -24,11 +24,11 @@ public class Exit implements Tile {
    */
   @Override
   public String getImagePath() {
-    return "resources/CC10.png";
+    return "resources/CC1.png";
   }
 
   /**
-   * Get the y-coordinate of the exit.
+   * Get the y-coordinate of the wall.
    */
   @Override
   public int getYPosition() {
@@ -38,7 +38,7 @@ public class Exit implements Tile {
   }
 
   /**
-   * Get the x-coordinate of the exit.
+   * Get the x-coordinate of the treasure.
    */
   @Override
   public int getXPosition() {
@@ -52,11 +52,11 @@ public class Exit implements Tile {
    */
   @Override
   public String toString() {
-    return "X";
+    return "W";
   }
 
   @Override
   public int getValue() {
-    return 3;
+    return 1;
   }
 }

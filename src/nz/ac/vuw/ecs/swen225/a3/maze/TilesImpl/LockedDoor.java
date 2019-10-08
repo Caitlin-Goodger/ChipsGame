@@ -1,31 +1,32 @@
-package nz.ac.vuw.ecs.swen225.a3.maze;
+package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Key class is responsible for keeping the position of the key.
+ * LockedDoor class is responsible for keeping the position of the locked door.
  */
-public class Key implements Tile {
+public class LockedDoor implements Tile {
   private String colour;
+  private boolean isSolid = true;
   private Position currentPosition;
 
   /**
-   * Constructor for the key.
+   * Constructor for the locked door.
    * 
-   * @param colour = the colour of the key
+   * @param colour = the colour of the door
    * @param x      = x position relative to maze
    * @param y      = y position relative to maze
    */
-  public Key(String colour, int x, int y) {
+  public LockedDoor(String colour, int x, int y) {
     this.colour = colour;
     this.currentPosition = new Position(x, y);
   }
 
   /**
-   * Sets the colour of the key.
+   * Sets the colour of the locked door.
    * 
-   * @param colour = the colour you want to set the key to
+   * @param colour = the colour you want to set the door to
    */
   public void setColour(String colour) {
     if (colour == null) {
@@ -38,7 +39,7 @@ public class Key implements Tile {
   }
 
   /**
-   * Gets the colour of the key.
+   * Gets the colour of the locked door.
    * 
    * @return colour
    */
@@ -49,15 +50,29 @@ public class Key implements Tile {
   }
 
   /**
+   * Checks if the player can unlock the door.
+   * 
+   * @param chap = checks if player can unlock
+   * @return whether or not door can be unlocked
+   */
+  public boolean canUnlock(Chap chap) {
+    if (chap == null) {
+      throw new IllegalArgumentException("Argument must be a Chap.");
+    }
+
+    return chap.canUnlock(this);
+  }
+
+  /**
    * Get the path of the image.
    */
   @Override
   public String getImagePath() {
-    return "resources/CC12.png";
+    return this.isSolid == true ? "resources/CC11.png" : "resources/CC2.png";
   }
 
   /**
-   * Get the y-coordinate of the key.
+   * Get the y-coordinate of the locked door.
    */
   @Override
   public int getYPosition() {
@@ -67,7 +82,7 @@ public class Key implements Tile {
   }
 
   /**
-   * Get the x-coordinate of the key.
+   * Get the x-coordinate of the locked door.
    */
   @Override
   public int getXPosition() {
@@ -81,19 +96,19 @@ public class Key implements Tile {
    */
   @Override
   public String toString() {
-    return "K";
+    return "D";
   }
 
   @Override
   public int getValue() {
     if (colour.equals("red")) {
-      return 9;
+      return 13;
     } else if (colour.equals("blue")) {
-      return 10;
+      return 14;
     } else if (colour.equals("green")) {
-      return 11;
+      return 15;
     } else {
-      return 12;
+      return 16;
     }
   }
 }

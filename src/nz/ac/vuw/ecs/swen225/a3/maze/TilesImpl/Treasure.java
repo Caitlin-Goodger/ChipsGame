@@ -1,21 +1,21 @@
-package nz.ac.vuw.ecs.swen225.a3.maze;
+package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.interfaces.Tile;
+import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Wall class is responsible for keeping the position of the wall.
+ * Treasure class is responsible for keeping the position of the treasure.
  */
-public class Wall implements Tile {
+public class Treasure implements Tile {
   private Position currentPosition;
 
   /**
-   * Constructor for the wall.
+   * Constructor for the treasure.
    * 
    * @param x = x position relative to maze
    * @param y = y position relative to maze
    */
-  public Wall(int x, int y) {
+  public Treasure(int x, int y) {
     this.currentPosition = new Position(x, y);
   }
 
@@ -24,11 +24,11 @@ public class Wall implements Tile {
    */
   @Override
   public String getImagePath() {
-    return "resources/CC1.png";
+    return "resources/CC7.png";
   }
 
   /**
-   * Get the y-coordinate of the wall.
+   * Get the y-coordinate of the treasure.
    */
   @Override
   public int getYPosition() {
@@ -52,11 +52,11 @@ public class Wall implements Tile {
    */
   @Override
   public String toString() {
-    return "W";
+    return "T";
   }
 
   @Override
   public int getValue() {
-    return 1;
+    return 8;
   }
 }
