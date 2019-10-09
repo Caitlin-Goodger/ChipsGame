@@ -286,22 +286,22 @@ public class MainFrame extends JFrame {
         System.out.println("Game is finished!");
       } else if (!paused) {
         // Movement.
-        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+        if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_W) {
           game.move('N');
           // game.moveMonsters();
         }
 
-        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN || evt.getKeyCode() == KeyEvent.VK_S) {
           game.move('S');
           // game.moveMonsters();
         }
 
-        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_A) {
           game.move('W');
           // game.moveMonsters();
         }
 
-        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_D) {
           game.move('E');
           // game.moveMonsters();
         }
