@@ -3,6 +3,8 @@ package nz.ac.vuw.ecs.swen225.a3.util;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JOptionPane;
+
 import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 
 /**
@@ -24,8 +26,16 @@ public class TimeLimit {
 
     this.timer.scheduleAtFixedRate(new TimerTask() {
       public void run() {
-        if (mf.getGame().isFinished() == false) {
+        if (mf.getGame().isFinished() == false && time > 0) {
           mf.getInterfacePanel().setTime(tick());
+        } else {
+          timer.cancel();
+          
+          int result = JOptionPane.showConfirmDialog(null,
+              "Are you sure you wish to exit application?", null, JOptionPane.YES_NO_OPTION);
+          if (result == JOptionPane.YES_OPTION) {
+            System.exit(0);
+          }
         }
       }
     }, 0, 1000);
