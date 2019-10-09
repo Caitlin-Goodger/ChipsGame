@@ -1558,7 +1558,7 @@ public class GameTest {
     fileReader.read("levels.json");
     Maze maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
         fileReader.getTimeLimit(), fileReader.getMazeLayout());
-    assertEquals(45, maze.getTime());
+    assertEquals(100, maze.getTime());
   }
 
   /**
@@ -1658,13 +1658,13 @@ public class GameTest {
   /**
    * Testing the chap class.
    */
-  @Test
-  public void test264() {
-    // Monster m = new Monster(3, 3, "");
-    assertThrows(IllegalArgumentException.class, () -> {
-      // m.move(null);
-    });
-  }
+  //@Test
+  //public void test264() {
+    //Monster m = new Monster(3, 3, "");
+    //assertThrows(IllegalArgumentException.class, () -> {
+    //m.move(null);
+    //});
+  //}
 
   /**
    * Testing the chap class.
