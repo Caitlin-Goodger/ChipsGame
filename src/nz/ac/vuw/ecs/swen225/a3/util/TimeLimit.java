@@ -11,6 +11,7 @@ import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 public class TimeLimit {
   private Timer timer;
   private int time;
+
   /**
    * Constructor for the time limit.
    * 
@@ -23,23 +24,22 @@ public class TimeLimit {
 
     this.timer.scheduleAtFixedRate(new TimerTask() {
       public void run() {
-        if(mf.getGame().isFinished()==false)
+        if (mf.getGame().isFinished() == false) {
           mf.getInterfacePanel().setTime(tick());
+        }
       }
-    }, 0, 1000);    
-    
+    }, 0, 1000);
+
     this.timer.scheduleAtFixedRate(new TimerTask() {
 
       public void run() {
-        if(mf.getGame().isFinished()==false) {
+        if (mf.getGame().isFinished() == false) {
           mf.getGame().moveMonsters();
           mf.refreshBoard();
         }
       }
-    }, 0, 250);    
+    }, 0, 250);
   }
-  
-  
 
   /**
    * Decreases time until time is 0, then timer stops.

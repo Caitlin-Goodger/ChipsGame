@@ -1,7 +1,5 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import javax.json.JsonValue;
-
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
@@ -42,7 +40,8 @@ public interface Tile {
   public int getYPosition();
 
   /**
-   * Used to get the integer value for the json file. 
+   * Used to get the integer value for the json file.
+   * 
    * @return int
    */
   public int getValue();

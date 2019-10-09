@@ -40,7 +40,7 @@ public class MainFrame extends JFrame {
   private Game game;
 
   private boolean paused = false;
-  
+
   private boolean refreshing;
 
   // used for tracking states in game
@@ -155,7 +155,7 @@ public class MainFrame extends JFrame {
       public void actionPerformed(ActionEvent e) {
         FileReader fileReader = game.getMaze().getFileReader();
         fileReader.read("savedLevel.json");
-        Maze maze =  new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
+        Maze maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
             fileReader.getTimeLimit(), fileReader.getMazeLayout());
         game.setMaze(maze);
         game.setChap();
@@ -166,10 +166,10 @@ public class MainFrame extends JFrame {
 
         interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
         interfacePanel.levelField.setText(game.getMaze().getLevelName());
-        
+
         displayPanel.removeAll();
         displayPanel.drawPanel();
-        
+
         displayPanel.revalidate();
         displayPanel.repaint();
 
@@ -281,29 +281,29 @@ public class MainFrame extends JFrame {
    */
   class KeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent evt) {
-      if (game.isFinished()==true) {
-        System.out.println("GAME FINISHED!");      
-        }
-      else if (!paused) {
+      if (game.isFinished() == true) {
+        // Debug : Checks game is finished
+        System.out.println("Game is finished!");
+      } else if (!paused) {
         // Movement.
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
           game.move('N');
-          //game.moveMonsters();
+          // game.moveMonsters();
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
           game.move('S');
-          //game.moveMonsters();
+          // game.moveMonsters();
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
           game.move('W');
-          //game.moveMonsters();
+          // game.moveMonsters();
         }
 
         if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
           game.move('E');
-          //game.moveMonsters();
+          // game.moveMonsters();
         }
 
         // Other.
@@ -314,101 +314,104 @@ public class MainFrame extends JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
           System.out.println("ESC was pressed");
         }
-        
+
         refreshDisplay();
-        
+
       } else {
         // Debug : checks game is paused in rules
         System.out.println("Game is paused");
       }
     }
+
   }
-  
+
   /**
-   * Re-render the display screen
+   * Re-render the display screen.
    */
   public void refreshDisplay() {
-    
-    if(refreshing == true)
+
+    if (refreshing == true) {
       try {
         Thread.sleep(50);
-        //System.out.println("CLASHChap");
+        // System.out.println("CLASHChap");
       } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
       }
-   
-    //while(refreshing==false) {
-      refreshing = true;
-    
-      // Only get the label of InfoField if standing on one, need
-      // otherwise error from
-      // grabbing nothing.
-      if (game.onField()) {
-        textPanel.getLabel().setText(game.getInfoField().getInfoFieldText());
-      }
-  
-      // Update the total number of chips every move.
-      displayPanel.setTotalChips(game.getMaze().remainingTreasure());
-  
-      inventoryPanel.setVisible(!game.onField());
-      textPanel.setVisible(game.onField());
-  
-      interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
-      interfacePanel.levelField.setText(game.getMaze().getLevelName());
-  
-      //displayPanel.removeAll();
-      displayPanel.drawPanel();
-      
-      displayPanel.revalidate();
-      displayPanel.repaint();
-      
-      inventoryPanel.removeAll();
-      inventoryPanel.drawInventory();
-  
-      inventoryPanel.revalidate();
-      inventoryPanel.repaint();
-    //}
+    }
+
+    // while(refreshing==false) {
+    refreshing = true;
+
+    // Only get the label of InfoField if standing on one, need
+    // otherwise error from
+    // grabbing nothing.
+    if (game.onField()) {
+      textPanel.getLabel().setText(game.getInfoField().getInfoFieldText());
+    }
+
+    // Update the total number of chips every move.
+    displayPanel.setTotalChips(game.getMaze().remainingTreasure());
+
+    inventoryPanel.setVisible(!game.onField());
+    textPanel.setVisible(game.onField());
+
+    interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
+    interfacePanel.levelField.setText(game.getMaze().getLevelName());
+
+    // displayPanel.removeAll();
+    displayPanel.drawPanel();
+
+    displayPanel.revalidate();
+    displayPanel.repaint();
+
+    inventoryPanel.removeAll();
+    inventoryPanel.drawInventory();
+
+    inventoryPanel.revalidate();
+    inventoryPanel.repaint();
+    // }
     refreshing = false;
-    
+
   }
-  
+
   /**
-   * refresh the board only
+   * Refresh the board only.
    */
   public void refreshBoard() {
-        if(refreshing == true)
-          try {
-            //System.out.println("CLASH");
-            Thread.sleep(80);
-          } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-          }
-  
-        //while(refreshing==false) {
-          refreshing = true;
-          //displayPanel.removeAll();
-          displayPanel.drawPanel();
-          
-          displayPanel.revalidate();
-          displayPanel.repaint();
-        //}
-        refreshing = false;
+    if (refreshing == true) {
+      try {
+        // System.out.println("CLASH");
+        Thread.sleep(80);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+
+    // while(refreshing==false) {
+    refreshing = true;
+    // displayPanel.removeAll();
+    displayPanel.drawPanel();
+
+    displayPanel.revalidate();
+    displayPanel.repaint();
+    // }
+    refreshing = false;
   }
 
   /**
    * Returns the interface panel.
    * 
    * @return interfacePanel
-   */ 
+   */
   public InterfacePanel getInterfacePanel() {
     assert this.interfacePanel != null;
 
     return this.interfacePanel;
   }
-  
+
   /**
+   * Returns the game.
+   * 
    * @return the game that is currently contained
    */
   public Game getGame() {

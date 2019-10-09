@@ -1,35 +1,23 @@
-package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
+package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * ExitLock class is responsible for keeping the position of the exit lock.
+ * Free class is responsible for keeping the position of the tiles a player can
+ * move on.
  */
-public class ExitLock implements Tile {
-  /**
-   * Checks if player can walk through exit lock.
-   */
-  public boolean isSolid = true;
+public class Free implements Tile {
   private Position currentPosition;
 
   /**
-   * Constructor for the exit lock.
+   * Constructor for the free tiles.
    * 
    * @param x = x position relative to maze
    * @param y = y position relative to maze
    */
-  public ExitLock(int x, int y) {
+  public Free(int x, int y) {
     this.currentPosition = new Position(x, y);
-  }
-
-  /**
-   * Sets the exit lock to un-solid when unlocked.
-   */
-  public void unlockExitLock() {
-    this.isSolid = false;
-
-    assert this.isSolid == false;
   }
 
   /**
@@ -37,11 +25,11 @@ public class ExitLock implements Tile {
    */
   @Override
   public String getImagePath() {
-    return this.isSolid ? "resources/CC9.png" : "resources/CC15.png";
+    return "resources/CC2.png";
   }
 
   /**
-   * Get the y-coordinate of the exit lock.
+   * Get the y-coordinate of the free tile.
    */
   @Override
   public int getYPosition() {
@@ -51,7 +39,7 @@ public class ExitLock implements Tile {
   }
 
   /**
-   * Get the x-coordinate of the exit lock.
+   * Get the x-coordinate of the free tile.
    */
   @Override
   public int getXPosition() {
@@ -65,11 +53,11 @@ public class ExitLock implements Tile {
    */
   @Override
   public String toString() {
-    return "L";
+    return "F";
   }
 
   @Override
   public int getValue() {
-    return 4;
+    return 0;
   }
 }

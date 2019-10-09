@@ -1,10 +1,5 @@
-package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
+package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 
-import java.util.ArrayList;
-import java.util.Random;
-
-import nz.ac.vuw.ecs.swen225.a3.maze.Game;
-import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
@@ -20,8 +15,8 @@ public class Monster implements Tile {
   /**
    * Constructor for the monster.
    * 
-   * @param x = x position relative to maze
-   * @param y = y position relative to maze
+   * @param x  = x position relative to maze
+   * @param y  = y position relative to maze
    * @param mp = monster pattern
    */
   public Monster(int x, int y, String mp) {
@@ -32,89 +27,13 @@ public class Monster implements Tile {
   }
 
   /**
-   * Moves the monster in a random direction that is free.
-   * 
-   //* @param game = the game with the maze you want to move
-   */
-//  public void move(Game game) {
-//    if (game == null) {
-//      throw new IllegalArgumentException("Argument must be a Game.");
-//    }
-//
-//    ArrayList<Tile> freeTiles = new ArrayList<Tile>();
-//
-//    Maze maze = game.getMaze();
-//
-//    int x = this.currentPosition.getX();
-//    int y = this.currentPosition.getY();
-//
-//    // Adds tiles that are free to the array.
-//    if (maze.getTile(y, x - 1) instanceof Free && maze.getTile(y, x - 1).toString().equals("F")) {
-//      freeTiles.add(maze.getTile(y, x - 1));
-//    } else {
-//      freeTiles.add(null);
-//    }
-//    if (maze.getTile(y, x + 1) instanceof Free && maze.getTile(y, x + 1).toString().equals("F")) {
-//      freeTiles.add(maze.getTile(y, x + 1));
-//    } else {
-//      freeTiles.add(null);
-//    }
-//    if (maze.getTile(y - 1, x) instanceof Free && maze.getTile(y - 1, x).toString().equals("F")) {
-//      freeTiles.add(maze.getTile(y - 1, x));
-//    } else {
-//      freeTiles.add(null);
-//    }
-//    if (maze.getTile(y + 1, x) instanceof Free && maze.getTile(y + 1, x).toString().equals("F")) {
-//      freeTiles.add(maze.getTile(y + 1, x));
-//    } else {
-//      freeTiles.add(null);
-//    }
-//
-//    int randomDirection = new Random().nextInt(4);
-//    Tile moveTo = freeTiles.get(randomDirection);
-//
-//    while (moveTo == null) {
-//      randomDirection = new Random().nextInt(4);
-//      moveTo = freeTiles.get(randomDirection);
-//    }
-//
-//    char direction = 'D';
-//
-//    switch (randomDirection) {
-//      case 0:
-//        direction = 'W';
-//  
-//        break;
-//      case 1:
-//        direction = 'E';
-//  
-//        break;
-//      case 2:
-//        direction = 'S';
-//  
-//        break;
-//      default:
-//        direction = 'N';
-//    }
-//
-//    Position original = new Position(currentPosition.getX(), currentPosition.getY());
-//    boolean positionUpdated = updatePosition(direction);
-//    Position destination = currentPosition;
-//    maze.setTile(original, onTile);
-//    maze.setTile(destination, this);
-//    boolean onTileUpdated = setOnTile(moveTo);
-//
-//    assert direction != 'D' && positionUpdated && onTileUpdated;
-//  }
-  
-  /*
-   * move monster accordingly to the pattern
+   * Move monster accordingly to the pattern.
    */
   public void move() {
     Character direction = monsterPattern.charAt(currentPattern);
     updatePosition(direction);
     currentPattern++;
-    if(currentPattern >= monsterPattern.length()) {
+    if (currentPattern >= monsterPattern.length()) {
       currentPattern = 0;
     }
   }
@@ -211,6 +130,8 @@ public class Monster implements Tile {
   }
 
   /**
+   * Returns the current position.
+   * 
    * @return currentPosition
    */
   public Position getCurrentPosition() {

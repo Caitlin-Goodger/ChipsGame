@@ -2,16 +2,16 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.List;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Exit;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.ExitLock;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Free;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.InfoField;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.LockedDoor;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Treasure;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Wall;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Exit;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.ExitLock;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Free;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.InfoField;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.LockedDoor;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Wall;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
@@ -75,7 +75,6 @@ public class Game {
     return wasSet;
   }
 
-
   /**
    * update chap's location in the given direction if its applicable.
    * 
@@ -124,7 +123,7 @@ public class Game {
       maze.getNextLevel();
       this.getChap().resetPlayer(this.getMaze());
       tl.setTime(maze.getTime()); // Set time at the moment, implement time for each level.
-    }else if (destination instanceof Monster) {
+    } else if (destination instanceof Monster) {
       moveChap(direction, destination);
       this.finished = true;
     }
@@ -149,7 +148,7 @@ public class Game {
     chap.setOnTile(destinationTile);
 
   }
-  
+
   /**
    * Move all the monsters.
    */
@@ -159,17 +158,16 @@ public class Game {
     for (int i = 0; i < monsters.size(); i++) {
       Monster m = monsters.get(i);
       Position originalPos = new Position(m.getXPosition(), m.getYPosition());
-      //m.move(this);
+      // m.move(this);
       m.move();
       Position destinationPos = m.getCurrentPosition();
-      if(destinationPos.equals(chap.getChapPosition())) {
+      if (destinationPos.equals(chap.getChapPosition())) {
         this.finished = true;
-      }
-      else {
+      } else {
         maze.setTile(originalPos, new Free(originalPos.getX(), originalPos.getY()));
         maze.setTile(destinationPos, m);
       }
-      
+
     }
   }
 
@@ -181,15 +179,15 @@ public class Game {
   public Chap getChap() {
     return chap;
   }
-  
+
   /**
+   * Checks if game is finished.
+   * 
    * @return if the state of the game (won or lost)
    */
   public boolean isFinished() {
     return this.finished;
   }
-  
-
 
   /**
    * Returns the info field.
@@ -219,11 +217,10 @@ public class Game {
   }
 
   /**
-   * Set where chap is by finding him. 
+   * Set where chap is by finding him.
    */
   public void setChap() {
     this.chap = this.maze.findChap();
   }
 
- 
 }

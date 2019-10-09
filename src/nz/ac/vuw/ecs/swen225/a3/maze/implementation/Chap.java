@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
+package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 
 import java.util.HashMap;
 import java.util.Map;

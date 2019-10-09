@@ -13,11 +13,10 @@ import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.ExitLock;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.LockedDoor;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.ExitLock;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
@@ -32,7 +31,7 @@ public class DisplayPanel extends JPanel {
   public int totalChipsLeft;
 
   private Game game;
-  
+
   /**
    * Serial ID.
    */
@@ -63,7 +62,7 @@ public class DisplayPanel extends JPanel {
    */
   public void drawPanel() {
     removeAll();
-    
+
     Renderer ren = new Renderer();
     Tile[][] level = game.getMaze().getTiles();
 
@@ -73,7 +72,6 @@ public class DisplayPanel extends JPanel {
 
     for (int y = chapLocation.getY() - 4; y < chapLocation.getY() - 4 + gl.getColumns(); y++) {
       for (int x = chapLocation.getX() - 4; x < chapLocation.getX() - 4 + gl.getRows(); x++) {
-        
 
         String path;
 
@@ -128,19 +126,16 @@ public class DisplayPanel extends JPanel {
               break;
             default:
               scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
-                  Image.SCALE_SMOOTH);
+                Image.SCALE_SMOOTH);
           }
-          
-        }
-        
-        else if (level[y][x] instanceof ExitLock) {
-          if(totalChipsLeft == 0) {
+
+        } else if (level[y][x] instanceof ExitLock) {
+          if (totalChipsLeft == 0) {
             exit = (ExitLock) level[y][x];
             exit.unlockExitLock();
             level[y][x] = exit;
           }
         }
-        
 
         JLabel img = new JLabel(new ImageIcon(scaledImage));
 

@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -21,16 +20,16 @@ import javax.json.JsonWriter;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Exit;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.ExitLock;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Free;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.InfoField;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.LockedDoor;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Treasure;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Wall;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Exit;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.ExitLock;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Free;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.InfoField;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Key;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.LockedDoor;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Wall;
 
 /**
  * FileReader class is responsible for reading in a file to get a maze's
@@ -71,7 +70,8 @@ public class FileReader {
 
   /**
    * Reads the file and gets the width, height and time limit.
-   * @param fname = name of file to read in. 
+   * 
+   * @param fname = name of file to read in.
    * 
    * @return true if successfully read
    */
@@ -102,14 +102,14 @@ public class FileReader {
       throw new Error("File not found.", e);
     }
   }
-  
+
   /**
-   * Save the current maze to a file. 
+   * Save the current maze to a file.
+   * 
    * @param m = Maze to save to file
    */
-  public void save(Maze m) { 
-    try 
-      (FileWriter fw = new FileWriter("savedLevel.json");
+  public void save(Maze m) {
+    try (FileWriter fw = new FileWriter("savedLevel.json");
         JsonWriter jsonWriter = Json.createWriter(fw);) {
       JsonBuilderFactory jbf = Json.createBuilderFactory(null);
       JsonObjectBuilder jsonObj = jbf.createObjectBuilder();
@@ -117,20 +117,19 @@ public class FileReader {
       jsonObj.add("height", height);
       jsonObj.add("time", timeLimit);
       JsonArrayBuilder jsonArray = jbf.createArrayBuilder();
-      for (int i = 0; i < height;i++) {
+      for (int i = 0; i < height; i++) {
         JsonArrayBuilder row = jbf.createArrayBuilder();
-        for (int j = 0; j < width;j++) {
+        for (int j = 0; j < width; j++) {
           row.add(mazeLayout[i][j].getValue());
         }
         jsonArray.add(row);
       }
-      jsonObj.add("tiles",jsonArray);
+      jsonObj.add("tiles", jsonArray);
       JsonObjectBuilder jsonLevel = jbf.createObjectBuilder();
       jsonLevel.add(m.getLevelName(), jsonObj);
       JsonObject j = jsonLevel.build();
       jsonWriter.writeObject(j);
-      
-      
+
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -206,9 +205,9 @@ public class FileReader {
             }
   
             infoField.setInfoFieldText(text);
-
-          assert infoField.getInfoFieldText().equals(text);
-
+  
+            assert infoField.getInfoFieldText().equals(text);
+  
             break;
           case 8:
             tile = new Treasure(row, col);
@@ -351,5 +350,5 @@ public class FileReader {
 
     assert this.monsters.contains(monster);
   }
-  
+
 }

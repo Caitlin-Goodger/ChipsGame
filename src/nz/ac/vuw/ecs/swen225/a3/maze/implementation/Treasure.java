@@ -1,22 +1,21 @@
-package nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl;
+package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
- * Free class is responsible for keeping the position of the tiles a player can
- * move on.
+ * Treasure class is responsible for keeping the position of the treasure.
  */
-public class Free implements Tile {
+public class Treasure implements Tile {
   private Position currentPosition;
 
   /**
-   * Constructor for the free tiles.
+   * Constructor for the treasure.
    * 
    * @param x = x position relative to maze
    * @param y = y position relative to maze
    */
-  public Free(int x, int y) {
+  public Treasure(int x, int y) {
     this.currentPosition = new Position(x, y);
   }
 
@@ -25,11 +24,11 @@ public class Free implements Tile {
    */
   @Override
   public String getImagePath() {
-    return "resources/CC2.png";
+    return "resources/CC7.png";
   }
 
   /**
-   * Get the y-coordinate of the free tile.
+   * Get the y-coordinate of the treasure.
    */
   @Override
   public int getYPosition() {
@@ -39,7 +38,7 @@ public class Free implements Tile {
   }
 
   /**
-   * Get the x-coordinate of the free tile.
+   * Get the x-coordinate of the treasure.
    */
   @Override
   public int getXPosition() {
@@ -53,11 +52,11 @@ public class Free implements Tile {
    */
   @Override
   public String toString() {
-    return "F";
+    return "T";
   }
 
   @Override
   public int getValue() {
-    return 0;
+    return 8;
   }
 }

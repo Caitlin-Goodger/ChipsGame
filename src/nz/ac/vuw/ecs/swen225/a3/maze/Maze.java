@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Monster;
-import nz.ac.vuw.ecs.swen225.a3.maze.TilesImpl.Treasure;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
@@ -15,7 +15,7 @@ import nz.ac.vuw.ecs.swen225.a3.util.Position;
  */
 public class Maze {
   private int currentLevel;
-  private final int NUM_OF_LEVELS = 2;
+  private final int numberOfLevels = 2;
 
   private ArrayList<String> levels = new ArrayList<String>();
 
@@ -53,8 +53,9 @@ public class Maze {
     this.mazeLayout = mapLayout;
 
     // Adds the levels, for loop so we don't have to write 100 lines for 100 levels
-    for(int i = 1; i<=NUM_OF_LEVELS; i++)
-      levels.add("level-"+i);
+    for (int i = 1; i <= numberOfLevels; i++) {
+      levels.add("level-" + i);
+    }
   }
 
   /**
@@ -70,6 +71,7 @@ public class Maze {
 
   /**
    * Method for debugging, prints the converted level to see if it looks correct.
+   * 
    * @return boolean
    */
   public boolean printConvertedLevel() {
@@ -165,7 +167,7 @@ public class Maze {
         if (col - 1 < 0) {
           return null;
         }
-  
+
         destination = mazeLayout[row][col - 1];
     }
 
@@ -249,6 +251,7 @@ public class Maze {
 
   /**
    * Gets the next level.
+   * 
    * @return boolean
    */
   public boolean getNextLevel() {
@@ -330,6 +333,7 @@ public class Maze {
 
   /**
    * Get the fileReader of this maze.
+   * 
    * @return FileReader
    */
   public FileReader getFileReader() {
