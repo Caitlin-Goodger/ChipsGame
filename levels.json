@@ -4,6 +4,10 @@
 	"height":32,
 	"time":60,
 	"monster_pattern":"",
+	"blue_key":false,
+	"green_key":false,
+	"red_key":false,
+	"yellow_key":false,
 	"tiles":[
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -45,6 +49,10 @@
 	"height":32,
 	"time":100,
 	"monster_pattern":"WWWNNEEEESSW",
+	"blue_key":false,
+	"green_key":false,
+	"red_key":false,
+	"yellow_key":false,
 	"tiles":[
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],

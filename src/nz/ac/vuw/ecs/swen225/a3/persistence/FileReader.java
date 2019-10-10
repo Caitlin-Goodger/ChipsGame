@@ -96,8 +96,49 @@ public class FileReader {
       boolean mazeCreated = createMazeLayout();
 
       assert mazeCreated;
-
+      
       return true;
+    } catch (FileNotFoundException e) {
+      throw new Error("File not found.", e); 
+    }
+  }
+  
+  /**
+   * Load inventory into the game.
+   * 
+   * @param m = maze to load inventory into.
+   * @param fname = name of file.
+   */
+  public void loadInventory(Maze m, String fname) {
+    fileName = fname;
+    try {
+      this.input = new FileInputStream(fileName);
+      this.reader = Json.createReader(input);
+      this.obj = reader.readObject();
+      this.level = obj.getJsonObject(levelName);
+
+      boolean color = level.getBoolean("blue_key");
+      if (color) {
+        Chap c = m.findChap();
+        c.addToInventory("blue");
+      }
+      color = level.getBoolean("green_key");
+      if (color) {
+        Chap c = m.findChap();
+        c.addToInventory("green");
+      }
+      color = level.getBoolean("red_key");
+      if (color) {
+        Chap c = m.findChap();
+        c.addToInventory("red");
+      }
+      color = level.getBoolean("yellow_key");
+      if (color) {
+        Chap c = m.findChap();
+        c.addToInventory("yellow");
+      }
+      
+      
     } catch (FileNotFoundException e) {
       throw new Error("File not found.", e); 
     }
@@ -117,6 +158,10 @@ public class FileReader {
       jsonObj.add("height", height);
       jsonObj.add("time", timeLimit);
       jsonObj.add("monster_pattern", monsterSteps);
+      jsonObj.add("blue_key", m.getChap().getInventory().containsKey("blue"));
+      jsonObj.add("green_key", m.getChap().getInventory().containsKey("green"));
+      jsonObj.add("red_key", m.getChap().getInventory().containsKey("red"));
+      jsonObj.add("yellow_key", m.getChap().getInventory().containsKey("yellow"));
       JsonArrayBuilder jsonArray = jbf.createArrayBuilder();
       for (int i = 0; i < height; i++) {
         JsonArrayBuilder row = jbf.createArrayBuilder();

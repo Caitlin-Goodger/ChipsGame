@@ -65,7 +65,7 @@ public class InventoryPanel extends JPanel {
 
       if (item.equals("yellow") || item.equals("blue") || item.equals("red")
           || item.equals("green")) {
-        path = "resources/CC12.png";
+        path = "resources/CC12.png"; 
       }
 
       if (path != null) {

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.json.JsonValue;
+
 import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
@@ -338,5 +340,14 @@ public class Maze {
    */
   public FileReader getFileReader() {
     return fileReader;
+  }
+
+  /**
+   * Gets Chap character
+   * 
+   * @return chap
+   */
+  public Chap getChap() {
+    return findChap();
   }
 }

@@ -26,7 +26,7 @@ public class Chap implements Tile {
    */
   public Chap(int x, int y) {
     this.currentPosition = new Position(x, y);
-
+ 
     this.inventory = new HashMap<String, String>();
     this.onTile = new Free(x, y); // Will always be on free tile initially.
   }
@@ -198,6 +198,15 @@ public class Chap implements Tile {
     assert this.inventory != null; // Makes sure the inventory exists.
 
     return this.inventory;
+  }
+  
+  /**
+   * Add a key of a certain color to the inventory.
+   * 
+   * @param color = color of key being added to inventory
+   */
+  public void addToInventory(String color) {
+    inventory.put(color, "Key");
   }
 
   /**
