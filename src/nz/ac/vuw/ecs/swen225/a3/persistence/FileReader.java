@@ -99,7 +99,7 @@ public class FileReader {
 
       return true;
     } catch (FileNotFoundException e) {
-      throw new Error("File not found.", e);
+      throw new Error("File not found.", e); 
     }
   }
 
@@ -116,6 +116,7 @@ public class FileReader {
       jsonObj.add("width", width);
       jsonObj.add("height", height);
       jsonObj.add("time", timeLimit);
+      jsonObj.add("monster_pattern", monsterSteps);
       JsonArrayBuilder jsonArray = jbf.createArrayBuilder();
       for (int i = 0; i < height; i++) {
         JsonArrayBuilder row = jbf.createArrayBuilder();
