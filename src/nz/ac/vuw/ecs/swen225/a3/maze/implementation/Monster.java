@@ -11,6 +11,7 @@ public class Monster implements Tile {
   private Tile onTile;
   private String monsterPattern;
   private int currentPattern;
+  private Character direction;
 
   /**
    * Constructor for the monster.
@@ -30,7 +31,7 @@ public class Monster implements Tile {
    * Move monster accordingly to the pattern.
    */
   public void move() {
-    Character direction = monsterPattern.charAt(currentPattern);
+     direction = monsterPattern.charAt(currentPattern);
     updatePosition(direction);
     currentPattern++;
     if (currentPattern >= monsterPattern.length()) {
@@ -86,6 +87,13 @@ public class Monster implements Tile {
     assert direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W';
 
     return true;
+  }
+
+  /**
+   * Get the current Direction
+   */
+  public Character getDirection() {
+    return direction;
   }
 
   /**
