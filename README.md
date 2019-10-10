@@ -4,7 +4,6 @@
 
 To-do:
 - Fix JPanel scaling (Make it dynamic)
-- Implement pause game AND resume
 - Display "YOU LOSE" when timer runs out or hits monster
 - Display "YOU WON" when finished last level
 
