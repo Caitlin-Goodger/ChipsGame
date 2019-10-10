@@ -404,20 +404,20 @@ public class MainFrame extends JFrame {
     if (refreshing == true) {
       try {
         // System.out.println("CLASH");
-        Thread.sleep(80);
+        Thread.sleep(100);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
     }
 
-    // while(refreshing==false) {
+    while(refreshing==false) {
     refreshing = true;
     // displayPanel.removeAll();
     displayPanel.drawPanel();
 
     displayPanel.revalidate();
     displayPanel.repaint();
-    // }
+    }
     refreshing = false;
   }
 
