@@ -6,7 +6,6 @@ import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
-import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
 /**
  * Main class of the game. Where the game is run from.

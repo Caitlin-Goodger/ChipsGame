@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.util;
+package nz.ac.vuw.ecs.swen225.a3.application;
 
 /**
  * Position class is responsible for storing the X and Y coordinates.

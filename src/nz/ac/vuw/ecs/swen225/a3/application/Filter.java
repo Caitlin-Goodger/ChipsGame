@@ -1,4 +1,4 @@
-package nz.ac.vuw.ecs.swen225.a3.util;
+package nz.ac.vuw.ecs.swen225.a3.application;
 
 import java.io.File;
 

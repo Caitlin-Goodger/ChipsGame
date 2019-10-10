@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Filter;
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
+import nz.ac.vuw.ecs.swen225.a3.application.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
 import nz.ac.vuw.ecs.swen225.a3.gui.TextPanel;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
@@ -21,9 +24,6 @@ import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Wall;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
-import nz.ac.vuw.ecs.swen225.a3.util.Filter;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
-import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
 import org.junit.Test;
 

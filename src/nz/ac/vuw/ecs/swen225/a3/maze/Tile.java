@@ -1,6 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.maze;
 
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
 
 /**
  * Interface for all the tiles, all classes that extend this interface must

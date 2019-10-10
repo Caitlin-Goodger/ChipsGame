@@ -1,7 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Monster class is responsible for the position and movement of the monsters.

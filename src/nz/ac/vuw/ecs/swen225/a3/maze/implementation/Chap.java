@@ -3,9 +3,9 @@ package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 import java.util.HashMap;
 import java.util.Map;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Chap class is responsible for the position and movement of the player.

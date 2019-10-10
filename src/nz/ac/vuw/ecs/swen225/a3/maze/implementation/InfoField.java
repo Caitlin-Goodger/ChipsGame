@@ -1,7 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.maze.implementation;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * InfoField class is responsible for keeping the position of the info field and

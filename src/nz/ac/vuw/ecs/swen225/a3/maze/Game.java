@@ -2,6 +2,8 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.List;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
+import nz.ac.vuw.ecs.swen225.a3.application.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Exit;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.ExitLock;
@@ -12,8 +14,6 @@ import nz.ac.vuw.ecs.swen225.a3.maze.implementation.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Wall;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
-import nz.ac.vuw.ecs.swen225.a3.util.TimeLimit;
 
 /**
  * Game class. Where all the game logic is.

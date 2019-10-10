@@ -17,10 +17,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Filter;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Maze;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
-import nz.ac.vuw.ecs.swen225.a3.util.Filter;
 
 /**
  * MainFrame that will hold panels and menus that will be responsible for
@@ -217,6 +217,7 @@ public class MainFrame extends JFrame {
     JMenuItem resumeItem = new JMenuItem("Resume");
     JMenuItem pauseItem = new JMenuItem("Pause");
     
+    // Add action listener to pause game
     pauseItem.addActionListener(new ActionListener() {
 
       @Override
@@ -225,6 +226,7 @@ public class MainFrame extends JFrame {
         }
       });
     
+    // Add action listener to resume game
     resumeItem.addActionListener(new ActionListener() {
 
       @Override

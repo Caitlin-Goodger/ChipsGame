@@ -11,11 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.*;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Display panel displays the board to the user.

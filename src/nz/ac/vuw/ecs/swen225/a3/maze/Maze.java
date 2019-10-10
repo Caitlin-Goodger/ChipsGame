@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
-import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
 /**
  * Maze class is responsible for holding the current maze and it's parameters.
