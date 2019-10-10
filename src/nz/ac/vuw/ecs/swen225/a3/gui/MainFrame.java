@@ -216,6 +216,14 @@ public class MainFrame extends JFrame {
 
     JMenuItem resumeItem = new JMenuItem("Resume");
     JMenuItem pauseItem = new JMenuItem("Pause");
+    
+    pauseItem.addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent ev) {
+        paused = true;
+        }
+      });
 
     optionsMenu.add(resumeItem);
     optionsMenu.add(pauseItem);
@@ -270,7 +278,8 @@ public class MainFrame extends JFrame {
     exitItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
     saveItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
     resumeItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
-    loadItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+    pauseItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+    loadItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
     resetItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
 
     return menuBar;
