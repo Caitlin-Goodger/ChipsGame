@@ -134,7 +134,7 @@ public class Renderer {
       }
     }
 
-    // needed for the pause converstions
+    // needed for the pause conversations
     if (grayScale == false){
       for (int i = 0 ; i < toAdd.getHeight(); i++){
         for (int j = 0 ; j < toAdd.getWidth(); j++){
@@ -149,6 +149,12 @@ public class Renderer {
     return returnImage;
   }
 
+  /**
+   * greyScale screen when paused
+   * 
+   * @param image = to be gray scaled
+   * @return Image
+   */
   public Image greyScale (String image){
     Image returnValue;
     BufferedImage toRot = null;
@@ -180,6 +186,7 @@ public class Renderer {
    * @param toRotate = image to rotate
    * @param totalRorations  = how many times the image will be rotated by 90degrees
    * @param bufferZone = colour tint to add.
+   * @param greyScale = if image needs to be gray scaled
    * @return Image.
    */
   public Image rotateImage(String toRotate, int totalRorations, int bufferZone, boolean greyScale){
