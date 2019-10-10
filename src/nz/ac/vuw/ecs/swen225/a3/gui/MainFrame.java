@@ -434,4 +434,13 @@ public class MainFrame extends JFrame {
   public Game getGame() {
     return this.game;
   }
+  
+  /**
+   * Returns pause.
+   * 
+   * @return if game is paused
+   */
+  public boolean getPause() {
+    return paused;
+  }
 }

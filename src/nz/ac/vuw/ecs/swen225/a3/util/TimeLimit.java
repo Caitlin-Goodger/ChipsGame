@@ -26,6 +26,16 @@ public class TimeLimit {
 
     this.timer.scheduleAtFixedRate(new TimerTask() {
       public void run() {
+        if (mf.getPause() == true) { 
+          while(mf.getPause()) {
+            try {
+              wait();
+            } catch (InterruptedException e) {
+              // TODO Auto-generated catch block
+              e.printStackTrace();
+            }
+          }
+        }
         if (mf.getGame().isFinished() == false && time > 0) {
           mf.getInterfacePanel().setTime(tick());
         } else {
