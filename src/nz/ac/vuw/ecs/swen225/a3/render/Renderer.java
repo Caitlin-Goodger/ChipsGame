@@ -1,7 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.render;
 
-import java.awt.Color;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -90,20 +89,24 @@ public class Renderer {
    * @param toAddOnTop = image to put on the top.
    * @param addToWall  = boolean. True is a wall and false is free.
    * @param tintColor  = colour tint to add.
+   * @param grayScale  = creates the greyscale affect for pausing the game
    * @return Image.
    */
-  public Image mergeImages(String toAddOnTop, int addToWall, Color tintColor) {
+  public Image mergeImages(String toAddOnTop, int addToWall, Color tintColor, boolean grayScale) {
     // creates the image
     Image returnImage;
     Color col;
     Color holdColor;
     BufferedImage toAdd = null;
+    BufferedImage hold;
+
 
     try {
       toAdd = (BufferedImage) ImageIO.read(new File(toAddOnTop));
     } catch (IOException e) {
       e.printStackTrace();
     }
+    hold = new BufferedImage(toAdd.getHeight(),  toAdd.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
 
     // combine the images
     if (toAdd != null) {
@@ -131,10 +134,45 @@ public class Renderer {
       }
     }
 
+    // needed for the pause converstions
+    if (grayScale == false){
+      for (int i = 0 ; i < toAdd.getHeight(); i++){
+        for (int j = 0 ; j < toAdd.getWidth(); j++){
+          hold.setRGB(i,j,toAdd.getRGB(i,j));
+        }
+      }
+      toAdd = hold;
+    }
+
     returnImage = toAdd;
 
     return returnImage;
   }
+
+  public Image greyScale (String image){
+    Image returnValue;
+    BufferedImage toRot = null;
+    BufferedImage hold;
+
+    try {
+      toRot = (BufferedImage) ImageIO.read(new File(image));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    hold = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
+
+    for (int i = 0 ; i < toRot.getHeight(); i++){
+      for (int j = 0 ; j < toRot.getWidth(); j++){
+        hold.setRGB(i,j,toRot.getRGB(i,j));
+      }
+    }
+    returnValue = hold;
+    return returnValue;
+
+  }
+
+
 
   /**
    * Rotate images by 90
@@ -144,7 +182,7 @@ public class Renderer {
    * @param bufferZone = colour tint to add.
    * @return Image.
    */
-  public Image rotateImage(String toRotate, int totalRorations, int bufferZone){
+  public Image rotateImage(String toRotate, int totalRorations, int bufferZone, boolean greyScale){
     BufferedImage toRot = null;
     BufferedImage rotated = null;
     Image returnImage;
@@ -157,7 +195,8 @@ public class Renderer {
 
     if (toRot != null || totalRorations == 0) {
         for (int r = 0 ; r < totalRorations; r++){
-          rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_INT_RGB);
+          if (greyScale)rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_INT_RGB);
+          else rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
 
           for(int i=0; i<toRot.getHeight(); i++) {
             for(int j=0; j< toRot.getWidth(); j++) {

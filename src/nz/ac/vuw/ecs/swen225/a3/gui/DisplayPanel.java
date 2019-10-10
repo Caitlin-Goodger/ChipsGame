@@ -26,6 +26,7 @@ public class DisplayPanel extends JPanel {
    * Total number of chips left in the maze.
    */
   public int totalChipsLeft;
+  private boolean gamePaused = true;
 
   private Game game;
 
@@ -59,6 +60,7 @@ public class DisplayPanel extends JPanel {
    */
   public void drawPanel() {
     removeAll();
+    Image scaledImage;
 
     Renderer ren = new Renderer();
     Tile[][] level = game.getMaze().getTiles();
@@ -80,7 +82,8 @@ public class DisplayPanel extends JPanel {
         }
 
         ImageIcon icon = new ImageIcon(new File(path).getPath());
-        Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        if(gamePaused) scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+        else scaledImage = ren.greyScale(path).getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
         // used to change the color of the key and lock also able to
         // place them on backgrounds
@@ -89,68 +92,74 @@ public class DisplayPanel extends JPanel {
 
           switch (key.getColour()) {
             case "red":
-              scaledImage = ren.mergeImages(path, 1, Color.RED).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 1, Color.RED, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);
               break;
             case "yellow":
-              scaledImage = ren.mergeImages(path, 1, Color.YELLOW).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 1, Color.YELLOW, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);
               break;
             case "green":
-              scaledImage = ren.mergeImages(path, 1, Color.GREEN).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 1, Color.GREEN, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);
               break;
             default:
-              scaledImage = ren.mergeImages(path, 1, Color.BLUE).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 1, Color.BLUE, gamePaused).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
           }
-        } else if (level[y][x] instanceof LockedDoor) {
+        }
+
+        //renders the locked door with corret color
+        else if (level[y][x] instanceof LockedDoor) {
           LockedDoor lockedDoor = (LockedDoor) level[y][x];
 
           switch (lockedDoor.getColour()) {
             case "red":
-              scaledImage = ren.mergeImages(path, 2, Color.RED).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 2, Color.RED, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);
               break;
             case "yellow":
-              scaledImage = ren.mergeImages(path, 2, Color.YELLOW).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 2, Color.YELLOW, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);
               break;
             case "green":
-              scaledImage = ren.mergeImages(path, 2, Color.GREEN).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 2, Color.GREEN, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);
               break;
             default:
-              scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
+              scaledImage = ren.mergeImages(path, 2, Color.BLUE, gamePaused).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
           }
         }
+        // renders the monster based on it direction
         else if (level[y][x] instanceof Monster) {
           Monster mon = (Monster) level[y][x];
 
           switch (mon.getDirection()){
             case 'N':
-              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 2,2, gamePaused).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             case 'E':
-              scaledImage = ren.rotateImage(path, 3,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 3,2, gamePaused).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             case 'S':
-              scaledImage = ren.rotateImage(path, 0,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 0,2, gamePaused).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             case 'W':
-              scaledImage  = ren.rotateImage(path, 1,2).getScaledInstance(50, 50,
+              scaledImage  = ren.rotateImage(path, 1,2, gamePaused).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             default:
-              scaledImage = ren.rotateImage(path, 0,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 0,2, gamePaused).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);;
                   break;
           }
         }
+
+        // renders the exit door and then render a open version if all chips are collected
         else if (level[y][x] instanceof ExitLock) {
           if (totalChipsLeft == 0) {
             exit = (ExitLock) level[y][x];
@@ -180,4 +189,11 @@ public class DisplayPanel extends JPanel {
 
     assert this.totalChipsLeft == chips;
   }
+
+  /**
+   * Sets the pause variable
+   *
+   * @param paused = allows the pause affect
+   */
+  public void setGamePaused(boolean paused ){ gamePaused = paused;}
 }

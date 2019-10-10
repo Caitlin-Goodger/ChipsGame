@@ -225,6 +225,7 @@ public class MainFrame extends JFrame {
       @Override
       public void actionPerformed(ActionEvent ev) {
         paused = true;
+        displayPanel.setGamePaused(!paused);
         }
       });
     
@@ -234,7 +235,7 @@ public class MainFrame extends JFrame {
       @Override
       public void actionPerformed(ActionEvent ev) {
         paused = false;
-        
+        displayPanel.setGamePaused(!paused);
         }
       });
 
