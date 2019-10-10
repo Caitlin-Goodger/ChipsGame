@@ -27,7 +27,7 @@ public class Main {
   public static void main(String[] args) {
     SwingUtilities.invokeLater(new Runnable() {
 
-      @Override
+      @Override 
       public void run() {
         fileReader = new FileReader("level-1");
         fileReader.read("levels.json");
@@ -37,6 +37,8 @@ public class Main {
         maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
             fileReader.getTimeLimit(), fileReader.getMazeLayout());
 
+        fileReader.loadInventory(maze, "levels.json");
+        
         game = new Game(maze);
 
         mainFrame = new MainFrame(game);

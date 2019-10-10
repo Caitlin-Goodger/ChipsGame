@@ -157,6 +157,7 @@ public class MainFrame extends JFrame {
         fileReader.read("savedLevel.json");
         Maze maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
             fileReader.getTimeLimit(), fileReader.getMazeLayout());
+        fileReader.loadInventory(maze, "savedLevel.json");
         game.setMaze(maze);
         game.setChap();
         displayPanel.setTotalChips(game.getMaze().remainingTreasure());
@@ -166,7 +167,8 @@ public class MainFrame extends JFrame {
 
         interfacePanel.chipsLeftField.setText(String.valueOf(displayPanel.totalChipsLeft));
         interfacePanel.levelField.setText(game.getMaze().getLevelName());
-
+        
+        
         displayPanel.removeAll();
         displayPanel.drawPanel();
 
