@@ -350,7 +350,7 @@ public class MainFrame extends JFrame {
    */
   public void refreshDisplay() {
 
-    if (refreshing == true) {
+    if (refreshing == true) { 
       try {
         Thread.sleep(50);
         // System.out.println("CLASHChap");

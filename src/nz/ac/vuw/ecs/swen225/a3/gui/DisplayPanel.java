@@ -83,8 +83,7 @@ public class DisplayPanel extends JPanel {
         Image scaledImage = icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
         // used to change the color of the key and lock also able to
-        // place them on
-        // backgrounds
+        // place them on backgrounds
         if (level[y][x] instanceof Key) {
           Key key = (Key) level[y][x];
 
@@ -146,7 +145,10 @@ public class DisplayPanel extends JPanel {
               scaledImage  = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
-
+            default:
+              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+                  Image.SCALE_SMOOTH);;
+                  break;
           }
         }
         else if (level[y][x] instanceof ExitLock) {

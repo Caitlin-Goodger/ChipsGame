@@ -127,7 +127,7 @@ public class Renderer {
 
             toAdd.setRGB(i, u, col.getRGB());
           }
-        }
+        } 
       }
     }
 

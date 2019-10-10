@@ -37,7 +37,7 @@ public class Game {
    * @param maze = maze for the game.
    */
   public Game(Maze maze) {
-    this.maze = maze;
+    this.maze = maze; 
 
     if (!setMaze(maze)) {
       throw new RuntimeException(

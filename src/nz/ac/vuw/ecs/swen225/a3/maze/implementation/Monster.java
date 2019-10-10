@@ -25,6 +25,7 @@ public class Monster implements Tile {
     this.onTile = new Free(x, y);
     this.monsterPattern = mp;
     currentPattern = 0;
+    direction = 'N';
   }
 
   /**
@@ -97,7 +98,7 @@ public class Monster implements Tile {
   public Character getDirection() {
     return direction;
   }
-
+ 
   /**
    * Get the path of the image.
    */

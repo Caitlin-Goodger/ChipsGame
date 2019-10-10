@@ -28,7 +28,7 @@ public class Filter extends FileFilter {
     }
 
     if (extension.equals("json")) {
-      return true;
+      return true; 
     }
 
     return false;
