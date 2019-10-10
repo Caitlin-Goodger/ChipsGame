@@ -136,4 +136,37 @@ public class Renderer {
     return returnImage;
   }
 
+  /**
+   * Rotate images by 90
+   *
+   * @param toRotate = image to rotate
+   * @param totalRorations  = how many times the image will be rotated by 90degrees
+   * @param bufferZone = colour tint to add.
+   * @return Image.
+   */
+  public Image rotateImage(String toRotate, int totalRorations, int bufferZone){
+    BufferedImage toRot = null;
+    BufferedImage rotated = null;
+    Image returnImage = null;
+
+    try {
+      toRot = (BufferedImage) ImageIO.read(new File(toRotate));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
+    rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
+
+
+    for(int i=0; i<toRot.getHeight(); i++) {
+      for(int j=0; j< toRot.getWidth(); j++) {
+        rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
+      }
+    }
+
+    returnImage = rotated;
+    return returnImage;
+  }
+
+
 }

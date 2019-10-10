@@ -13,10 +13,7 @@ import javax.swing.border.Border;
 
 import nz.ac.vuw.ecs.swen225.a3.maze.Game;
 import nz.ac.vuw.ecs.swen225.a3.maze.Tile;
-import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
-import nz.ac.vuw.ecs.swen225.a3.maze.implementation.ExitLock;
-import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Key;
-import nz.ac.vuw.ecs.swen225.a3.maze.implementation.LockedDoor;
+import nz.ac.vuw.ecs.swen225.a3.maze.implementation.*;
 import nz.ac.vuw.ecs.swen225.a3.render.Renderer;
 import nz.ac.vuw.ecs.swen225.a3.util.Position;
 
@@ -128,8 +125,27 @@ public class DisplayPanel extends JPanel {
               scaledImage = ren.mergeImages(path, 2, Color.BLUE).getScaledInstance(50, 50,
                 Image.SCALE_SMOOTH);
           }
+        }
+        else if (level[y][x] instanceof Monster) {
+          Monster mon = (Monster) level[y][x];
 
-        } else if (level[y][x] instanceof ExitLock) {
+          switch (mon.getDirection()){
+            case 'N':
+              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+                      Image.SCALE_SMOOTH);;
+            case 'E':
+              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+                      Image.SCALE_SMOOTH);;
+            case 'S':
+              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+                      Image.SCALE_SMOOTH);;
+            case 'W':
+              scaledImage  = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+                      Image.SCALE_SMOOTH);;
+
+          }
+        }
+        else if (level[y][x] instanceof ExitLock) {
           if (totalChipsLeft == 0) {
             exit = (ExitLock) level[y][x];
             exit.unlockExitLock();
