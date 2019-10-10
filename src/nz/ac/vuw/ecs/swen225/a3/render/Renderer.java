@@ -157,11 +157,14 @@ public class Renderer {
 
     if (toRot != null || totalRorations == 0) {
         for (int r = 0 ; r < totalRorations; r++){
-          rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
+          rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_INT_RGB);
 
           for(int i=0; i<toRot.getHeight(); i++) {
             for(int j=0; j< toRot.getWidth(); j++) {
-              rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
+              if ((i < bufferZone) || (i > toRot.getHeight() - bufferZone)) rotated.setRGB(i ,j, toRot.getRGB(i, j));
+              else{
+                rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
+              }
             }
           }
           toRot = rotated;
