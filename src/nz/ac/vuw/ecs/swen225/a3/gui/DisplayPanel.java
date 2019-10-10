@@ -134,19 +134,19 @@ public class DisplayPanel extends JPanel {
                       Image.SCALE_SMOOTH);;
                       break;
             case 'E':
-              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 3,2).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             case 'S':
-              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 0,2).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             case 'W':
-              scaledImage  = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+              scaledImage  = ren.rotateImage(path, 1,2).getScaledInstance(50, 50,
                       Image.SCALE_SMOOTH);;
                       break;
             default:
-              scaledImage = ren.rotateImage(path, 2,2).getScaledInstance(50, 50,
+              scaledImage = ren.rotateImage(path, 0,2).getScaledInstance(50, 50,
                   Image.SCALE_SMOOTH);;
                   break;
           }

@@ -147,7 +147,7 @@ public class Renderer {
   public Image rotateImage(String toRotate, int totalRorations, int bufferZone){
     BufferedImage toRot = null;
     BufferedImage rotated = null;
-    Image returnImage = null;
+    Image returnImage;
 
     try {
       toRot = (BufferedImage) ImageIO.read(new File(toRotate));
@@ -155,16 +155,20 @@ public class Renderer {
       e.printStackTrace();
     }
 
-    if (toRot != null) {
-      rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
-    
-      for(int i=0; i<toRot.getHeight(); i++) {
-        for(int j=0; j< toRot.getWidth(); j++) {
-          rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
+    if (toRot != null || totalRorations == 0) {
+        for (int r = 0 ; r < totalRorations; r++){
+          rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
+
+          for(int i=0; i<toRot.getHeight(); i++) {
+            for(int j=0; j< toRot.getWidth(); j++) {
+              rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
+            }
+          }
+          toRot = rotated;
         }
       }
-    }
 
+    if (rotated == null) rotated = toRot;
     returnImage = rotated;
     return returnImage;
   }
