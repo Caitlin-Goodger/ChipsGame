@@ -161,10 +161,10 @@ public class Renderer {
 
           for(int i=0; i<toRot.getHeight(); i++) {
             for(int j=0; j< toRot.getWidth(); j++) {
-              if ((i < bufferZone) || (i > toRot.getHeight() - bufferZone)) rotated.setRGB(i ,j, toRot.getRGB(i, j));
-              else{
-                rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
-              }
+              if ((i < bufferZone) || (i > toRot.getHeight() - bufferZone)
+                      || (j < bufferZone) || (j > toRot.getWidth() - bufferZone)) rotated.setRGB(i ,j, toRot.getRGB(i, j));
+              else rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
+
             }
           }
           toRot = rotated;
