@@ -224,6 +224,14 @@ public class MainFrame extends JFrame {
         paused = true;
         }
       });
+    
+    resumeItem.addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent ev) {
+        paused = false;
+        }
+      });
 
     optionsMenu.add(resumeItem);
     optionsMenu.add(pauseItem);
