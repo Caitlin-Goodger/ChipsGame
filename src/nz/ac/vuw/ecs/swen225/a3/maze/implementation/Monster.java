@@ -91,6 +91,8 @@ public class Monster implements Tile {
 
   /**
    * Get the current Direction
+   * @return 
+   * Returns direction character is facing
    */
   public Character getDirection() {
     return direction;
