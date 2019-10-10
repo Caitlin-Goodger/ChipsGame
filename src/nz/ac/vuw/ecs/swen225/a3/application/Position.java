@@ -78,4 +78,14 @@ public class Position {
     }
     return false;
   }
+  
+  /**
+   * Hash code method for position.
+   */
+  public int hashCode() {
+    assert false : "hashCode not designed";
+    return 42; // any arbitrary constant will do
+}
+
+  
 }
