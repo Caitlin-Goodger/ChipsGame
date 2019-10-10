@@ -27,9 +27,9 @@ public class TimeLimit {
     this.timer.scheduleAtFixedRate(new TimerTask() {
       public void run() {
         if (mf.getPause() == true) { 
-          while(mf.getPause()) {
+          while(mf.getPause() == true) {
             try {
-              wait();
+              Thread.sleep(1);
             } catch (InterruptedException e) {
               // TODO Auto-generated catch block
               e.printStackTrace();
@@ -40,7 +40,7 @@ public class TimeLimit {
           mf.getInterfacePanel().setTime(tick());
         } else {
           timer.cancel();
-          
+
           int result = JOptionPane.showConfirmDialog(null,
               "Are you sure you wish to exit application?", null, JOptionPane.YES_NO_OPTION);
           if (result == JOptionPane.YES_OPTION) {
