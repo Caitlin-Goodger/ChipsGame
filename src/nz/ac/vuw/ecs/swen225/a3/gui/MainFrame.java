@@ -42,6 +42,8 @@ public class MainFrame extends JFrame {
   private boolean paused = false;
 
   private boolean refreshing;
+  
+  private boolean replay = false; 
 
   // used for tracking states in game
 
@@ -146,6 +148,8 @@ public class MainFrame extends JFrame {
 
     JMenuItem loadItem = new JMenuItem("Load");
     JMenuItem saveItem = new JMenuItem("Save");
+    JMenuItem replayItem = new JMenuItem("Replay");
+    JMenuItem stopReplayItem = new JMenuItem("Stop Replay");
     JMenuItem exitItem = new JMenuItem("Exit");
 
     // Add action listener to load a saved game
@@ -193,6 +197,24 @@ public class MainFrame extends JFrame {
         JOptionPane.showMessageDialog(MainFrame.this, "Game has been saved");
       }
     });
+    
+    replayItem.addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        replay = true;
+        JOptionPane.showMessageDialog(MainFrame.this, "Moved to Replaying Mode");
+      }
+    });
+    
+    stopReplayItem.addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        replay = true;
+        JOptionPane.showMessageDialog(MainFrame.this, "Moved to Replaying Mode");
+      }
+    });
 
     // Add action listener to exit game
     exitItem.addActionListener(new ActionListener() {
@@ -210,6 +232,8 @@ public class MainFrame extends JFrame {
 
     gameMenu.add(loadItem);
     gameMenu.add(saveItem);
+    gameMenu.add(replayItem);
+    gameMenu.add(stopReplayItem);
     gameMenu.addSeparator();
     gameMenu.add(exitItem);
 
@@ -297,7 +321,9 @@ public class MainFrame extends JFrame {
     pauseItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
     loadItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
     resetItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.CTRL_MASK));
-
+    replayItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK));
+    stopReplayItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+    
     return menuBar;
   }
 
@@ -309,7 +335,7 @@ public class MainFrame extends JFrame {
       if (game.isFinished() == true) {
         // Debug : Checks game is finished
         System.out.println("Game is finished!");
-      } else if (!paused) {
+      } else if (!paused && !replay) {
         // Movement.
         if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_W) {
           game.move('N');
@@ -331,6 +357,22 @@ public class MainFrame extends JFrame {
           // game.moveMonsters();
         }
         refreshDisplay();
+      } else if (replay) {
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT || evt.getKeyCode() == KeyEvent.VK_A) {
+          game.moveBackward();
+          displayPanel.drawPanel();
+          
+          displayPanel.revalidate();
+          displayPanel.repaint();
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_D) {
+          game.moveForward();
+          displayPanel.drawPanel();
+          
+          displayPanel.revalidate();
+          displayPanel.repaint();
+        }
       }
     }
 
@@ -399,12 +441,12 @@ public class MainFrame extends JFrame {
     }
 
     while(refreshing==false) {
-    refreshing = true;
-    // displayPanel.removeAll();
-    displayPanel.drawPanel();
-
-    displayPanel.revalidate();
-    displayPanel.repaint();
+      refreshing = true;
+      // displayPanel.removeAll();
+      displayPanel.drawPanel();
+  
+      displayPanel.revalidate();
+      displayPanel.repaint();
     }
     refreshing = false;
   }

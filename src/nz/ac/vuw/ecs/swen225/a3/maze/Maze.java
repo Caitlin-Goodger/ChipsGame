@@ -28,6 +28,7 @@ public class Maze {
   private int height;
   private String levelName;
   private int timeLimit;
+  private int moveCounter = 0;
 
   // Monster array.
   private List<Monster> monsters = new ArrayList<Monster>();
@@ -53,6 +54,7 @@ public class Maze {
     this.height = height;
     this.timeLimit = timeLimit;
     this.mazeLayout = mapLayout;
+    
 
     // Adds the levels, for loop so we don't have to write 100 lines for 100 levels
     for (int i = 1; i <= numberOfLevels; i++) {
@@ -343,11 +345,36 @@ public class Maze {
   }
 
   /**
-   * Gets Chap character
+   * Gets Chap character.
    * 
    * @return chap
    */
   public Chap getChap() {
     return findChap();
+  }
+
+  /**
+   * Set the tiles. 
+   * @param mazeLayout2 = maze to set. 
+   */
+  public void setTiles(Tile[][] mazeLayout2) {
+    // TODO Auto-generated method stub
+    mazeLayout = mazeLayout2;
+  }
+  
+  /**
+   * Get the move counter.
+   * @return int
+   */
+  public int getMoveCounter() {
+    return moveCounter;
+  }
+
+  /**
+   * Record the state of the current board.
+   */
+  public void record() {
+    fileReader.saveRecord(this, moveCounter);
+    moveCounter++;
   }
 }

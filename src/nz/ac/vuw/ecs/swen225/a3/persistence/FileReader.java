@@ -180,6 +180,36 @@ public class FileReader {
       e.printStackTrace();
     }
   }
+  
+  /**
+   * Save the current maze to a file.
+   * 
+   * @param m = Maze to save to file
+   * @param moveCounter = moveCounter 
+   */
+  public void saveRecord(Maze m, int moveCounter) {
+    try (FileWriter fw = new FileWriter(moveCounter + ".json");
+        JsonWriter jsonWriter = Json.createWriter(fw);) {
+      JsonBuilderFactory jbf = Json.createBuilderFactory(null);
+      JsonObjectBuilder jsonObj = jbf.createObjectBuilder();
+      JsonArrayBuilder jsonArray = jbf.createArrayBuilder();
+      for (int i = 0; i < height; i++) {
+        JsonArrayBuilder row = jbf.createArrayBuilder();
+        for (int j = 0; j < width; j++) {
+          row.add(mazeLayout[i][j].getValue());
+        }
+        jsonArray.add(row);
+      }
+      jsonObj.add("tiles", jsonArray);
+      JsonObjectBuilder jsonLevel = jbf.createObjectBuilder();
+      jsonLevel.add(Integer.toString(moveCounter), jsonObj);
+      JsonObject j = jsonLevel.build();
+      jsonWriter.writeObject(j);
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 
   /**
    * Creates the maze layout.
@@ -395,6 +425,34 @@ public class FileReader {
     this.monsters.add(monster);
 
     assert this.monsters.contains(monster);
+  }
+  
+  /**
+   * Load a file in for the replay. 
+   * @param fname = file to read in from.
+   * @param moveCounter = move number; 
+   * @return boolean
+   */
+  public boolean loadReplay(String fname, int moveCounter) {
+    try {
+      this.input = new FileInputStream(fname);
+      this.reader = Json.createReader(input);
+      this.obj = reader.readObject();
+      this.level = obj.getJsonObject(Integer.toString(moveCounter));
+
+      this.mazeLayout = new Tile[32][32];
+
+      assert this.width != -1 && this.height != -1 && this.timeLimit != -1
+          && this.mazeLayout != null;
+
+      boolean mazeCreated = createMazeLayout();
+
+      assert mazeCreated;
+      
+      return true;
+    } catch (FileNotFoundException e) {
+      return false; 
+    }
   }
 
 }

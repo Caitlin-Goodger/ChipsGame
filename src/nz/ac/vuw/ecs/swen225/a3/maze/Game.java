@@ -14,6 +14,7 @@ import nz.ac.vuw.ecs.swen225.a3.maze.implementation.LockedDoor;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Monster;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Treasure;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Wall;
+import nz.ac.vuw.ecs.swen225.a3.persistence.FileReader;
 
 /**
  * Game class. Where all the game logic is.
@@ -32,6 +33,8 @@ public class Game {
   private boolean finished;
 
   private boolean isGamePaused = true;
+  
+  private int moveCounter = 0;
 
   /**
    * Constructor for the Game.
@@ -50,6 +53,7 @@ public class Game {
     }
 
     this.chap = this.maze.findChap();
+    maze.record();
     finished = false;
   }
 
@@ -148,6 +152,7 @@ public class Game {
     maze.setTile(destinationPos, chap);
     // update onTile for chap
     chap.setOnTile(destinationTile);
+    maze.record();
 
   }
 
@@ -228,9 +233,35 @@ public class Game {
   }
 
   /**
-   * Set isGamePaused
+   * Set isGamePaused. 
    * 
    * @param set = boolean representing if game is paused.
    */
   public void setisGamePaused(boolean set) {isGamePaused = set;}
+
+  /**
+   * When replaying move a step forward. 
+   */
+  public void moveForward() {
+    FileReader fileReader = maze.getFileReader();
+    fileReader.loadReplay(moveCounter + ".json", moveCounter);
+    maze.setTiles(fileReader.getMazeLayout());
+    moveCounter++;
+    if (moveCounter > maze.getMoveCounter()) {
+      moveCounter = maze.getMoveCounter();
+    }
+  }
+
+  /**
+   * When replaying move a step backwards. 
+   */
+  public void moveBackward() {
+    FileReader fileReader = maze.getFileReader();
+    fileReader.loadReplay(moveCounter + ".json", moveCounter);
+    maze.setTiles(fileReader.getMazeLayout());
+    moveCounter--;
+    if (moveCounter < 0) {
+      moveCounter = 0;
+    }
+  }
 }
