@@ -229,6 +229,8 @@ public class Game {
 
   /**
    * Set isGamePaused
+   * 
+   * @param set = boolean representing if game is paused.
    */
   public void setisGamePaused(boolean set) {isGamePaused = set;}
 }

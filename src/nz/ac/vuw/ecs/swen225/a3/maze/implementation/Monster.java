@@ -152,5 +152,10 @@ public class Monster implements Tile {
     return currentPosition;
   }
 
+  /**
+   * Switches whether game is paused or not.
+   * 
+   * @param gamePaused = boolean of if game is paused
+   */
   public void setGamePaused(boolean gamePaused) { isGamePaused = gamePaused;  }
 }
