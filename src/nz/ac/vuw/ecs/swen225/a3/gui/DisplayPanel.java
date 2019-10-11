@@ -135,6 +135,7 @@ public class DisplayPanel extends JPanel {
         else if (level[y][x] instanceof Monster) {
           Monster mon = (Monster) level[y][x];
 
+
           switch (mon.getDirection()){
             case 'N':
               scaledImage = ren.rotateImage(path, 2,2, gamePaused).getScaledInstance(50, 50,

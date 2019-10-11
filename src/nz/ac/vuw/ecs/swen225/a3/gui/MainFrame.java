@@ -226,6 +226,7 @@ public class MainFrame extends JFrame {
       public void actionPerformed(ActionEvent ev) {
         paused = true;
         displayPanel.setGamePaused(!paused);
+        game.setisGamePaused(!paused);
         }
       });
     
@@ -236,6 +237,7 @@ public class MainFrame extends JFrame {
       public void actionPerformed(ActionEvent ev) {
         paused = false;
         displayPanel.setGamePaused(!paused);
+        game.setisGamePaused(!paused);
         }
       });
 

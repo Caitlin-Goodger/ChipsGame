@@ -31,6 +31,8 @@ public class Game {
   private TimeLimit tl;
   private boolean finished;
 
+  private boolean isGamePaused = true;
+
   /**
    * Constructor for the Game.
    * 
@@ -157,6 +159,7 @@ public class Game {
 
     for (int i = 0; i < monsters.size(); i++) {
       Monster m = monsters.get(i);
+      m.setGamePaused(isGamePaused);
       Position originalPos = new Position(m.getXPosition(), m.getYPosition());
       // m.move(this);
       m.move();
@@ -167,6 +170,7 @@ public class Game {
         maze.setTile(originalPos, new Free(originalPos.getX(), originalPos.getY()));
         maze.setTile(destinationPos, m);
       }
+
 
     }
   }
@@ -223,4 +227,8 @@ public class Game {
     this.chap = this.maze.findChap();
   }
 
+  /**
+   * Set isGamePaused
+   */
+  public void setisGamePaused(boolean set) {isGamePaused = set;}
 }

@@ -12,6 +12,7 @@ public class Monster implements Tile {
   private String monsterPattern;
   private int currentPattern;
   private Character direction;
+  private boolean isGamePaused = true;
 
   /**
    * Constructor for the monster.
@@ -32,11 +33,13 @@ public class Monster implements Tile {
    * Move monster accordingly to the pattern.
    */
   public void move() {
-     direction = monsterPattern.charAt(currentPattern);
-    updatePosition(direction);
-    currentPattern++;
-    if (currentPattern >= monsterPattern.length()) {
-      currentPattern = 0;
+    if(isGamePaused){
+      direction = monsterPattern.charAt(currentPattern);
+      updatePosition(direction);
+      currentPattern++;
+      if (currentPattern >= monsterPattern.length()) {
+        currentPattern = 0;
+      }
     }
   }
 
@@ -148,4 +151,6 @@ public class Monster implements Tile {
   public Position getCurrentPosition() {
     return currentPosition;
   }
+
+  public void setGamePaused(boolean gamePaused) { isGamePaused = gamePaused;  }
 }
