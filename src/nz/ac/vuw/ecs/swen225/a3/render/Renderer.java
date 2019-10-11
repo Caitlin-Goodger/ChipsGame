@@ -84,11 +84,11 @@ public class Renderer {
   }
 
   /**
-   * Merge two images together with a colour tint.
+   * Merge two images together with a color tint.
    * 
    * @param toAddOnTop = image to put on the top.
    * @param addToWall  = boolean. True is a wall and false is free.
-   * @param tintColor  = colour tint to add.
+   * @param tintColor  = color tint to add.
    * @param grayScale  = creates the greyscale affect for pausing the game
    * @return Image.
    */
@@ -98,16 +98,18 @@ public class Renderer {
     Color col;
     Color holdColor;
     BufferedImage toAdd = null;
-    BufferedImage hold;
+    BufferedImage hold = null;
 
 
     try {
       toAdd = (BufferedImage) ImageIO.read(new File(toAddOnTop));
+      hold = new BufferedImage(toAdd.getHeight(),  toAdd.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
     } catch (IOException e) {
       e.printStackTrace();
     }
-    hold = new BufferedImage(toAdd.getHeight(),  toAdd.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
-
+    
+    
+    
     // combine the images
     if (toAdd != null) {
       for (int i = 0; i < toAdd.getWidth(); i++) {
@@ -158,21 +160,22 @@ public class Renderer {
   public Image greyScale (String image){
     Image returnValue;
     BufferedImage toRot = null;
-    BufferedImage hold;
+    BufferedImage hold = null;
 
     try {
       toRot = (BufferedImage) ImageIO.read(new File(image));
+      hold = new BufferedImage(toRot.getHeight(), toRot.getWidth(), BufferedImage.TYPE_BYTE_GRAY);
+
+      for (int i = 0 ; i < toRot.getHeight(); i++){
+        for (int j = 0 ; j < toRot.getWidth(); j++){
+          hold.setRGB(i,j,toRot.getRGB(i,j));
+        }
+      }
+      
     } catch (IOException e) {
       e.printStackTrace();
     }
 
-    hold = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
-
-    for (int i = 0 ; i < toRot.getHeight(); i++){
-      for (int j = 0 ; j < toRot.getWidth(); j++){
-        hold.setRGB(i,j,toRot.getRGB(i,j));
-      }
-    }
     returnValue = hold;
     return returnValue;
 
@@ -185,7 +188,7 @@ public class Renderer {
    *
    * @param toRotate = image to rotate
    * @param totalRorations  = how many times the image will be rotated by 90degrees
-   * @param bufferZone = colour tint to add.
+   * @param bufferZone = color tint to add.
    * @param greyScale = if image needs to be gray scaled
    * @return Image.
    */
