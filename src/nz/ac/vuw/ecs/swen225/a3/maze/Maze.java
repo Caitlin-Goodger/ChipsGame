@@ -358,7 +358,6 @@ public class Maze {
    * @param mazeLayout2 = maze to set. 
    */
   public void setTiles(Tile[][] mazeLayout2) {
-    // TODO Auto-generated method stub
     mazeLayout = mazeLayout2;
   }
   

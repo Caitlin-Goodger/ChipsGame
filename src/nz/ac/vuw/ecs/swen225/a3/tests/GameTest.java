@@ -1656,15 +1656,16 @@ public class GameTest {
   }
 
   /**
-   * Testing the chap class.
+   * Testing the maze class.
    */
-  //@Test
-  //public void test264() {
-    //Monster m = new Monster(3, 3, "");
-    //assertThrows(IllegalArgumentException.class, () -> {
-    //m.move(null);
-    //});
-  //}
+  @Test
+  public void test264() {
+    FileReader fileReader = new FileReader("level-2");
+    fileReader.read("levels.json");
+    Maze maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
+        fileReader.getTimeLimit(), fileReader.getMazeLayout());
+    assertEquals(0,maze.getMoveCounter());
+  }
 
   /**
    * Testing the chap class.
@@ -1716,4 +1717,5 @@ public class GameTest {
     InfoField t = new InfoField("text", 3, 3);
     assertEquals(7, t.getValue());
   }
+  
 }
