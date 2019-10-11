@@ -38,6 +38,7 @@ public class Main {
         fileReader = new FileReader("level-1");
         fileReader.read("levels.json");
 
+        
         // Create a new maze passing in the parameters generated
         // from the file reader.
         maze = new Maze(fileReader, fileReader.getWidth(), fileReader.getHeight(),
