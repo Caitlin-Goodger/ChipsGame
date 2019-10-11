@@ -1,12 +1,5 @@
 # Chip's Challenge #
 
-## For my team mates ##
-
-To-do:
-- Fix JPanel scaling (Make it dynamic)
-- Display "YOU LOSE" when timer runs out or hits monster
-- Display "YOU WON" when finished last level
-
 ## How to play: ##
 
 Start the game by running **nz.ac.vuw.ecs.swen225.a3.application.Main** from Eclipse
