@@ -1,5 +1,6 @@
 package nz.ac.vuw.ecs.swen225.a3.persistence;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -188,7 +189,7 @@ public class FileReader {
    * @param moveCounter = moveCounter 
    */
   public void saveRecord(Maze m, int moveCounter) {
-    try (FileWriter fw = new FileWriter(moveCounter + ".json");
+    try (FileWriter fw = new FileWriter("resources/recordFiles/" + moveCounter + ".json");
         JsonWriter jsonWriter = Json.createWriter(fw);) {
       JsonBuilderFactory jbf = Json.createBuilderFactory(null);
       JsonObjectBuilder jsonObj = jbf.createObjectBuilder();
@@ -435,7 +436,7 @@ public class FileReader {
    */
   public boolean loadReplay(String fname, int moveCounter) {
     try {
-      this.input = new FileInputStream(fname);
+      this.input = new FileInputStream("resources/recordFiles/" + fname);
       this.reader = Json.createReader(input);
       this.obj = reader.readObject();
       this.level = obj.getJsonObject(Integer.toString(moveCounter));

@@ -2,6 +2,8 @@ package nz.ac.vuw.ecs.swen225.a3.maze;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import nz.ac.vuw.ecs.swen225.a3.application.Position;
 import nz.ac.vuw.ecs.swen225.a3.application.TimeLimit;
 import nz.ac.vuw.ecs.swen225.a3.maze.implementation.Chap;
@@ -263,5 +265,13 @@ public class Game {
     if (moveCounter < 0) {
       moveCounter = 0;
     }
+  }
+
+  /**
+   * Set the move Counter.
+   * @param i = value. 
+   */
+  public void setMoveCounter(int i) {
+    moveCounter = i;
   }
 }

@@ -7,6 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFileChooser;
@@ -211,8 +214,13 @@ public class MainFrame extends JFrame {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        replay = true;
-        JOptionPane.showMessageDialog(MainFrame.this, "Moved to Replaying Mode");
+        replay = false;
+        File f = new File("resources/recordFiles/");
+        for (File f1 : f.listFiles()) {
+          f1.delete();
+        }
+        
+        JOptionPane.showMessageDialog(MainFrame.this, "Stop Replaying Mode");
       }
     });
 
@@ -373,11 +381,22 @@ public class MainFrame extends JFrame {
           displayPanel.repaint();
         }
         
-        if (evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_W) {
-          game.moveForward();
-          displayPanel.drawPanel();
-          displayPanel.revalidate();
-          displayPanel.repaint();
+        if (evt.getKeyCode() == KeyEvent.VK_W) {
+          int max = game.getMaze().getMoveCounter();
+          //for (int i = 0; i < max; i++) {
+            game.setMoveCounter(3);
+            System.out.println(3);
+            game.moveForward();
+            displayPanel.drawPanel();
+            displayPanel.revalidate();
+            displayPanel.repaint();
+//            try {
+//              Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//              // TODO Auto-generated catch block
+//              e.printStackTrace();
+//            }
+          //}
         }
       }
     }

@@ -1,5 +1,7 @@
 package nz.ac.vuw.ecs.swen225.a3.application;
 
+import java.io.File;
+
 import javax.swing.SwingUtilities;
 
 import nz.ac.vuw.ecs.swen225.a3.gui.MainFrame;
@@ -42,7 +44,10 @@ public class Main {
         game = new Game(maze);
 
         mainFrame = new MainFrame(game);
-
+        File f = new File("resources/recordFiles/");
+        for (File f1 : f.listFiles()) {
+          f1.delete();
+        }
         timeLimit = new TimeLimit(fileReader.getTimeLimit(), mainFrame);
 
         game.setTimeLimit(timeLimit);
