@@ -330,21 +330,7 @@ public class MainFrame extends JFrame {
           game.move('E');
           // game.moveMonsters();
         }
-
-        // Other.
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-          System.out.println("Space was pressed");
-        }
-
-        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
-          System.out.println("ESC was pressed");
-        }
-
         refreshDisplay();
-
-      } else {
-        // Debug : checks game is paused in rules
-        System.out.println("Game is paused");
       }
     }
 
