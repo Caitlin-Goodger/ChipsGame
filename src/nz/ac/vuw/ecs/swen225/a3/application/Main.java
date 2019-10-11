@@ -31,6 +31,10 @@ public class Main {
 
       @Override 
       public void run() {
+        File f = new File("resources/recordFiles/");
+        for (File f1 : f.listFiles()) {
+          f1.delete();
+        }
         fileReader = new FileReader("level-1");
         fileReader.read("levels.json");
 
@@ -44,10 +48,6 @@ public class Main {
         game = new Game(maze);
 
         mainFrame = new MainFrame(game);
-        File f = new File("resources/recordFiles/");
-        for (File f1 : f.listFiles()) {
-          f1.delete();
-        }
         timeLimit = new TimeLimit(fileReader.getTimeLimit(), mainFrame);
 
         game.setTimeLimit(timeLimit);
