@@ -34,11 +34,9 @@ public class TimeLimit {
         } else {
           timer.cancel();
 
-          int result = JOptionPane.showConfirmDialog(null,
-              "Are you sure you wish to exit application?", null, JOptionPane.YES_NO_OPTION);
-          if (result == JOptionPane.YES_OPTION) {
-            System.exit(0);
-          }
+          JOptionPane.showMessageDialog(mf, "The game has expired. You lost");
+          
+          System.exit(0);
         }
       }
     }, 0, 1000);

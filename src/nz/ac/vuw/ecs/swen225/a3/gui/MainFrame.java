@@ -369,7 +369,13 @@ public class MainFrame extends JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_D) {
           game.moveForward();
           displayPanel.drawPanel();
-          
+          displayPanel.revalidate();
+          displayPanel.repaint();
+        }
+        
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT || evt.getKeyCode() == KeyEvent.VK_W) {
+          game.moveForward();
+          displayPanel.drawPanel();
           displayPanel.revalidate();
           displayPanel.repaint();
         }
