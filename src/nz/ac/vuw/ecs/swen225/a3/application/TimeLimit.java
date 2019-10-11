@@ -28,8 +28,7 @@ public class TimeLimit {
       public void run() {
         if (mf.getPause() == true) { 
           return;
-        }
-        else if (mf.getGame().isFinished() == false && time > 0) {
+        } else if (mf.getGame().isFinished() == false && time > 0) {
           mf.getInterfacePanel().setTime(tick());
         } else {
           timer.cancel();

@@ -33,7 +33,7 @@ public class Monster implements Tile {
    * Move monster accordingly to the pattern.
    */
   public void move() {
-    if(isGamePaused){
+    if (isGamePaused) {
       direction = monsterPattern.charAt(currentPattern);
       updatePosition(direction);
       currentPattern++;

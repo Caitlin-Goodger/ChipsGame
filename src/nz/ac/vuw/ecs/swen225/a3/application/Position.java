@@ -68,13 +68,14 @@ public class Position {
   }
   
   /**
+   * Equals method. 
    * @return if this position is identical to another
    */
   @Override
   public boolean equals(Object o) {
     if (o instanceof Position) {
-      Position O = (Position)o;
-      return O.getX() == this.posX && O.getY() == this.posY;
+      Position p1 = (Position) o;
+      return p1.getX() == this.posX && p1.getY() == this.posY;
     }
     return false;
   }
@@ -85,7 +86,7 @@ public class Position {
   public int hashCode() {
     assert false : "hashCode not designed";
     return 42; // any arbitrary constant will do
-}
+  }
 
   
 }

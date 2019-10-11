@@ -103,7 +103,7 @@ public class Renderer {
 
     try {
       toAdd = (BufferedImage) ImageIO.read(new File(toAddOnTop));
-      hold = new BufferedImage(toAdd.getHeight(),  toAdd.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
+      hold = new BufferedImage(toAdd.getHeight(),  toAdd.getWidth(), BufferedImage.TYPE_BYTE_GRAY);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -137,9 +137,9 @@ public class Renderer {
     }
 
     // needed for the pause conversations
-    if (grayScale == false){
-      for (int i = 0 ; i < toAdd.getHeight(); i++){
-        for (int j = 0 ; j < toAdd.getWidth(); j++){
+    if (grayScale == false) {
+      for (int i = 0; i < toAdd.getHeight(); i++) {
+        for (int j = 0; j < toAdd.getWidth(); j++) {
           hold.setRGB(i,j,toAdd.getRGB(i,j));
         }
       }
@@ -152,12 +152,12 @@ public class Renderer {
   }
 
   /**
-   * greyScale screen when paused
+   * greyScale screen when paused. 
    * 
    * @param image = to be gray scaled
    * @return Image
    */
-  public Image greyScale (String image){
+  public Image greyScale(String image) {
     Image returnValue;
     BufferedImage toRot = null;
     BufferedImage hold = null;
@@ -166,8 +166,8 @@ public class Renderer {
       toRot = (BufferedImage) ImageIO.read(new File(image));
       hold = new BufferedImage(toRot.getHeight(), toRot.getWidth(), BufferedImage.TYPE_BYTE_GRAY);
 
-      for (int i = 0 ; i < toRot.getHeight(); i++){
-        for (int j = 0 ; j < toRot.getWidth(); j++){
+      for (int i = 0; i < toRot.getHeight(); i++) {
+        for (int j = 0; j < toRot.getWidth(); j++) {
           hold.setRGB(i,j,toRot.getRGB(i,j));
         }
       }
@@ -184,7 +184,7 @@ public class Renderer {
 
 
   /**
-   * Rotate images by 90
+   * Rotate images by 90. 
    *
    * @param toRotate = image to rotate
    * @param totalRorations  = how many times the image will be rotated by 90degrees
@@ -204,23 +204,33 @@ public class Renderer {
     }
 
     if (toRot != null || totalRorations == 0) {
-        for (int r = 0 ; r < totalRorations; r++){
-          if (greyScale)rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_INT_RGB);
-          else rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth() , BufferedImage.TYPE_BYTE_GRAY);
-
-          for(int i=0; i<toRot.getHeight(); i++) {
-            for(int j=0; j< toRot.getWidth(); j++) {
-              if ((i < bufferZone) || (i > toRot.getHeight() - bufferZone)
-                      || (j < bufferZone) || (j > toRot.getWidth() - bufferZone)) rotated.setRGB(i ,j, toRot.getRGB(i, j));
-              else rotated.setRGB(i ,j, toRot.getRGB((toRot.getWidth()-1-j), i));
-
-            }
-          }
-          toRot = rotated;
+      for (int r = 0; r < totalRorations; r++) {
+        if (greyScale) {
+          rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth(),
+              BufferedImage.TYPE_INT_RGB);
+        } else {
+          rotated = new BufferedImage(toRot.getHeight(), toRot.getWidth(),
+              BufferedImage.TYPE_BYTE_GRAY);
         }
-      }
 
-    if (rotated == null) rotated = toRot;
+        for (int i = 0; i < toRot.getHeight(); i++) {
+          for (int j = 0; j < toRot.getWidth(); j++) {
+            if ((i < bufferZone) || (i > toRot.getHeight() - bufferZone)
+                      || (j < bufferZone) || (j > toRot.getWidth() - bufferZone)) {
+              rotated.setRGB(i,j,toRot.getRGB(i, j));
+            } else {
+              rotated.setRGB(i,j,toRot.getRGB((toRot.getWidth() - 1 - j),i));
+            }
+
+          }
+        }
+        toRot = rotated;
+      }
+    }
+
+    if (rotated == null) {
+      rotated = toRot;
+    }
     returnImage = rotated;
     return returnImage;
   }

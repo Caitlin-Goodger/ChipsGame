@@ -239,7 +239,9 @@ public class Game {
    * 
    * @param set = boolean representing if game is paused.
    */
-  public void setisGamePaused(boolean set) {isGamePaused = set;}
+  public void setisGamePaused(boolean set) {
+    isGamePaused = set;
+  }
 
   /**
    * When replaying move a step forward. 

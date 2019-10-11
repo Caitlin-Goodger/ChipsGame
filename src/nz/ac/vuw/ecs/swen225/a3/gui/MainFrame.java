@@ -455,7 +455,7 @@ public class MainFrame extends JFrame {
       }
     }
 
-    while(refreshing==false) {
+    while (refreshing == false) {
       refreshing = true;
       // displayPanel.removeAll();
       displayPanel.drawPanel();
