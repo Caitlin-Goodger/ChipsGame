@@ -1,0 +1,179 @@
+class Filter {
+   
+}
+
+class Main {
+  FileReader fileReader;
+  1 -> 1 Maze maze;
+  1 -> 1 MainFrame mainFrame;
+  1 -> 1 Game game;
+  TimeLimit timeLimit;
+  
+}
+
+class Position {
+  int x;
+  int y;
+}
+
+class TimeLimit {
+  Timer timer;
+  int time;
+}
+
+
+class DisplayPanel {
+  int chipsLeft;
+  boolean gamePaused;
+  Game game;
+}
+
+class InterfacePanel {
+  JLabel levelLabel;
+  JLabel timeLabel;
+  JLabel chipsLeftLabel;
+  JTextField levelField;
+  JTextField timeField;
+}
+
+
+class InventoryPanel {
+  Game game;
+}
+
+class MainFrame {
+  1->1 DisplayPanel displayPanel;
+  1->1 InterfacePanel interfacePanel;
+  1->1 InventoryPanel inventoryPanel;
+  1->1 RulesPanel rulesPanel;
+  1->1 TextPanel textPanel;
+  Filter filter;
+  Game game;
+  boolean paused;
+  boolean refreshing;
+  boolean replay;
+  
+}
+
+class RulesPanel {
+  JLabel text;
+  
+}
+
+class TextPanel {
+    JLabel text;
+}
+
+
+class Game {
+  1->1 Maze maze;
+  1->1 Chap;
+  InfoField info;
+  boolean onField;
+  1->1 TimeLimit timeLimit;
+  boolean finished;
+  
+}
+
+class Maze {
+    int currentLevel;
+    int numberOfLevels;
+    FileReader fileReader;
+    1->* Tile Tiles;
+    int width;
+    int height;
+    String levelName;
+    int timeLimit;
+    List<Monster> monsters;
+  
+}
+
+interface Tile {
+  boolean isSolid;
+  Position currentPosition;
+  
+}
+
+class Chap {
+  isA Tile;
+  int facingDirection;
+  Map<String,String> inventory;
+  Tile onTile;
+  
+}
+
+class Exit {
+  isA Tile;
+  
+}
+
+class ExitLock {
+  isA Tile;
+  
+}
+
+class Free {
+  isA Tile;
+}
+
+class InfoField {
+    isA Tile;
+    String text;
+  
+}
+
+class Key {
+    isA Tile;
+    String colour;
+}
+
+class LockedDoor {
+  isA Tile;
+  String colour;
+}
+
+class Monster {
+  isA Tile;
+  Tile onTile;
+  String path;
+  int currentPatterm;
+  String direction;
+}
+
+class Treasure {
+  isA Tile;
+  
+}
+
+class Wall {
+  isA Tile;
+  
+}
+
+class FileReader {
+  String levelName;
+  String fileName;
+  int width;
+  int height;
+  int timeLimit;
+  1->* Tile mazeLayout;
+  List<Monster> monsters;
+  String monsterPath;
+  InputStream input;
+  JsonReader reader;
+  JsonObject obj;
+  JsonObject level;
+  
+  
+}
+
+class Renderer {
+  String wallPath;
+  String floorPath;
+  String inventoryPath;
+  
+  BufferedImage wall;
+  BufferedImage floor;
+  BufferedImage inventory;
+  
+}
